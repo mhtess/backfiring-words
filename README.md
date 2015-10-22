@@ -1,7 +1,7 @@
 # Backfiring words, or It goes without saying.
 
 
-## Wegner et al. ()1991)
+## Wegner et al. (1991)
 
 Headline: "Tom is not a thief." How bad is Tom?
 
