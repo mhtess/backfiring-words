@@ -1,12 +1,11 @@
-# Backfiring words ("It goes without saying.")
+# Backfiring words, or It goes without saying.
 
 
-## Wegner et al. 1991
+## Wegner et al. ()1991)
 
-"Tom is not a thief." as a headline. How bad is Tom?
+Headline: "Tom is not a thief." How bad is Tom?
 
-or
-
+also, 
 "Is Tom a thief?"
 
 Three explanations:
@@ -14,20 +13,18 @@ Three explanations:
 1. Pragmatic: Why have written this if it wasn't contentious?
 2. Negation processing requires processing the affirmative (a la Clark)
 
-
 ## Gruenfield and Wyer (1992)
 
 "Peter's IQ is over 100."
 
 + Semantics: > 100
-+ Pragmatics: ~ 100
-+ Depends on prior: 
-
++ Pragmatics: > 100 but just barely
++ Depends on prior
 
 #### Replicate Wegner et al. (1999)
 
 + Measured how much do you believe "JFK was a good guy."
-+ Sayed "JFK was not a bad guy."
++ Said "JFK was not a bad guy."
 + Measured "JFK was a good guy."
 
 + "Republican countrymen are part of country clubs."
