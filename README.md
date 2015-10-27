@@ -3,10 +3,12 @@
 
 ## Wegner et al. (1991)
 
-Headline: "Tom is not a thief." How bad is Tom?
 
-also, 
-"Is Tom a thief?"
+
+Headline of candidates:
+"John is affiliated with the mafia" & "Is John affiliated with the mafia?" > "John is not affiliated with the mafia." > "John is celebrating his birthday."
+
+Slight effect of reporter reliability (Washington Post vs. National Enquirer)
 
 Three explanations:
 
@@ -62,3 +64,21 @@ Item effects??
 + How important is this information?
 + How much do other people believe in this?
 + What % of the population do you think agree with this?
+
+### Negations
+
+Modeled on Wegner et al. (1991) but not necessarily political or tied to newspaper.
+
++ "Cows don't have Beta T-19 in their bones."
+
+Sally is talking with her roommate William about their other rooommate Jim. 
+Sally says to William: "Jim is not stealing your rent checks."
+
+Sally and Jim are dating and living together. They have a third roommate William.
+One day, Jim is out of the house and Sally says to William: "Jim is not stealing your rent checks."
+
+Sally and Jim were dating and living together, but they just broke up. They have a third roommate William.
+One day, Jim is out of the house and Sally says to William: "Jim is not stealing your rent checks."
+
+
+
