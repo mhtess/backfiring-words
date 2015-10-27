@@ -52,9 +52,9 @@ Goal:
 
 Speakers
 
-A. Truthful and informative
-B. Truthful, but uninformative
-C. Untruthful
+1. Truthful and informative
+2. Truthful, but uninformative
+3. Untruthful
 
 
 Sally is talking with her roommate William about their other rooommate Jim. 
