@@ -34,7 +34,38 @@ Three explanations:
 Item effects??
 
 
-# Our approach
+## Our approach
+
+Goal:
+
+1. Make these inferences in everyday conversation.
+2. Manipulate the context to show that these inferences can be pushed around.
+3. Model this.
+
+**2 x 2: QUD x Speaker**
+
+
+1. QUD1: Out of the blue: "Jim is not stealing your rent checks." is only informative if it is in question (so Jim is not a great guy)
+2. QUD2: (reasonable to say negation): Alternative question where the response is reasonable (a la Geurts, 1995: "I see you're chewing on your pencil. Have you recently stopped smoking?")
+3. QUD3: Explicit question. "Is Jim stealing my rent checks?" (Should be like QUD1)
+4. QUD4: Explicit accusation. "I think Jim is stealing my rent checks."
+
+Speakers
+
+A. Truthful and informative
+B. Truthful, but uninformative
+C. Untruthful
+
+
+Sally is talking with her roommate William about their other rooommate Jim. 
+Sally says to William: "Jim is not stealing your rent checks."
+
+Sally and Jim are dating and living together. They have a third roommate William.
+One day, Jim is out of the house and Sally says to William: "Jim is not stealing your rent checks."
+
+Sally and Jim were dating and living together, but they just broke up. They have a third roommate William.
+One day, Jim is out of the house and Sally says to William: "Jim is not stealing your rent checks."
+
 
 ### Different classes of sentences
 
@@ -57,8 +88,6 @@ Item effects??
 	+ "Boys play sports."
 	+ "Girls like dolls."
 	
-
-	
 ### Dependent measures
 
 + How important is this information?
@@ -70,15 +99,15 @@ Item effects??
 Modeled on Wegner et al. (1991) but not necessarily political or tied to newspaper.
 
 + "Cows don't have Beta T-19 in their bones."
++ Auto-denials: "I didn't do it." without a QUD.
++ Auto-denials: "Tom didn't do it." without any accusing Tom.
 
-Sally is talking with her roommate William about their other rooommate Jim. 
-Sally says to William: "Jim is not stealing your rent checks."
-
-Sally and Jim are dating and living together. They have a third roommate William.
-One day, Jim is out of the house and Sally says to William: "Jim is not stealing your rent checks."
-
-Sally and Jim were dating and living together, but they just broke up. They have a third roommate William.
-One day, Jim is out of the house and Sally says to William: "Jim is not stealing your rent checks."
+[Presupposition Triggers] (http://www-01.sil.org/linguistics/glossaryoflinguisticterms/WhatIsAPresuppositionTrigger.htm)
+e.g. "too", "now"
 
 
+
+### Modeling
+
+1. Nixon example: Is it QUD raising or is it inference about common ground?
 
