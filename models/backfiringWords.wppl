@@ -30,13 +30,10 @@ var statePrior = function(){
 var isThief = function(person){
 	return (person.needsMoney && person.isThrillSeeker) ? flip(0.9) :
 			person.needsMoney ? flip(0.5) :
-			person.isThrillSeeker ? flip(0.3) :
-			person.other ? flip(0.1) :
+			person.isThrillSeeker ? flip(0.5) :
+			person.other ? flip(0.01) :
 			false
 }
-
-
-
 
 var meaning = function(utt, person){
 		return utt=="is a thief" ? isThief(person) :
@@ -46,8 +43,8 @@ var meaning = function(utt, person){
 
 var normalPerson = function(){
 	return {
-		needsMoney: flip(0.01),
-		isThrillSeeker: flip(0.1),
+		needsMoney: flip(0.001),
+		isThrillSeeker: flip(0.001),
 		other: flip(0.01)
 	}
 }
@@ -60,6 +57,11 @@ var strangePerson = function(){
 	}
 }
 
+var cgDict = {
+	normal: normalPerson,
+	strange: strangePerson
+}
+
 var listener0 = cache(function(utterance, commonGround) {
   Enumerate(function(){
 	var person = commonGround() 
@@ -69,34 +71,51 @@ var listener0 = cache(function(utterance, commonGround) {
   })
 })
 
-// var results = listener0("is not a thief")
+var nullListener0 = cache(function(utterance) {
+  Enumerate(function(){
+  	var cg = flip(0.5) ? 'normal' : 'strange'
+  	var commonGround = cgDict[cg]
+  	var person = commonGround() 
+    var m = meaning(utterance, person)
+    condition(m) 
+    return person
+  })
+})
+
+// var results = nullListener0("is not a thief")
 // console.log(expectation(marginalizeERP(results, "needsMoney")))
 // console.log(expectation(marginalizeERP(results, "isThrillSeeker")))
 // console.log(expectation(marginalizeERP(results, "other")))
 
 var speaker1 = cache(function(person, commonGround) {
   Enumerate(function(){
-    var utterance = uniformDraw(["is a thief", "is not a thief"])
+    var utterance = uniformDraw(["is a thief", "is not a thief", "mu"])
     var L0 = listener0(utterance, commonGround)
+    // var L0 = nullListener0(utterance)
     factor(L0.score([],person))
     return utterance
   })
 })
 
 
+
 var listener1 = function(utterance) {
   Enumerate(function(){
-  	var commonGround = flip(0.5) ? normalPerson : strangePerson
+  	var cg = flip(0.5) ? 'normal' : 'strange'
+  	var commonGround = cgDict[cg]
 	var person = commonGround()
     var S1 = speaker1(person, commonGround)
     factor(S1.score([],utterance))
     return person
   })
 }
+var results = nullListener0("is not a thief")
+// var results = listener1("is not a thief")
+// var results = listener0("is not a thief", strangePerson)
+// results
 
-var results = listener1("is not a thief")
-console.log(expectation(marginalizeERP(results, "needsMoney")))
-console.log(expectation(marginalizeERP(results, "isThrillSeeker")))
-console.log(expectation(marginalizeERP(results, "other")))
+console.log("needs money " + expectation(marginalizeERP(results, "needsMoney")))
+console.log("seeks thrills " + expectation(marginalizeERP(results, "isThrillSeeker")))
+console.log("other " + expectation(marginalizeERP(results, "other")))
 
 
