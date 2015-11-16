@@ -1,0 +1,109 @@
+// webppl backfiringWords.wppl
+
+///fold:
+var marginalizeERP = function(myERP, label){
+	Enumerate(function(){
+		var x = sample(myERP)
+		return x[label]
+	})
+}
+
+var fillArray = function(n, val){
+	return repeat(n, function(x){return val})
+}
+///
+
+
+var meaning = function(utt, cause){
+		return utt=="is a" ? effect(cause) :
+				utt=="is NOT a" ? !(effect(cause)):
+				true
+}
+
+var effect = function(cause){
+	return cause ? flip(0.99) : flip(0.01)
+}
+
+
+var normalCG = 0.9
+
+var utt = "is a"
+var alpha = 10
+
+var nullListener0 = cache(function(utterance) {
+  Enumerate(function(){
+  	var commonGround = flip(normalCG) ? 0.99 : 0.5
+	var cause = flip(commonGround)
+    var m = meaning(utterance, cause)
+    // condition(m) 
+    // var cause1 = flip(commonGround)
+    return cause
+  })
+})
+
+var results = nullListener0(utt)
+console.log("null listener =  " + expectation(results))
+
+// results
+
+var listener0 = cache(function(utterance, commonGround) {
+  Enumerate(function(){
+	var cause = flip(commonGround)
+    var m = meaning(utterance, cause)
+    condition(m)
+    return cause
+  })
+})
+
+var standard_speaker1 = cache(function(cause) {
+  Enumerate(function(){
+    var utterance = uniformDraw(["is a", "is NOT a"])
+    var L0 = nullListener0(utterance)
+    factor(L0.score([],cause))
+    return utterance
+  })
+})
+
+var standard_listener1 = function(utterance) {
+  Enumerate(function(){
+  	var commonGround = flip(normalCG) ? 0.99 : 0.5
+	var cause = flip(commonGround)
+    var S1 = standard_speaker1(cause)
+    factor(alpha*S1.score([],utterance))
+     var cause1 = flip(commonGround)
+    return cause1
+    // return [commonGround, cause, Math.exp(S1.score([],utterance))]
+  })
+}
+
+var sl1 = standard_listener1(utt)
+console.log("pragmatic listener sans cg inference=  " + expectation(sl1))
+
+// sl1
+
+
+var speaker1 = cache(function(cause, commonGround) {
+  Enumerate(function(){
+    var utterance = uniformDraw(["is a", "is NOT a"])
+    var L0 = listener0(utterance, commonGround)
+    factor(L0.score([],cause))
+    return utterance
+  })
+})
+
+var listener1 = function(utterance) {
+  Enumerate(function(){
+  	var commonGround = flip(normalCG) ? 0.99 : 0.5
+	var cause = flip(commonGround)
+    var S1 = speaker1(cause, commonGround)
+    factor(alpha*S1.score([],utterance))
+    var cause1 = flip(commonGround)
+    // return commonGround
+    // return [commonGround, cause, Math.exp(S1.score([],utterance))]
+    return cause1
+  })
+}
+
+var l1 = listener1(utt)
+console.log("pragmatic listener =  " + expectation(l1))
+// l1
