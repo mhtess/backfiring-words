@@ -1,0 +1,46 @@
+var meaning = function(utt, effect){
+    return utt =="mm" ? true : utt==effect
+}
+
+var alpha = 10
+
+var nullListener0 = cache(function(utterance) {
+  Enumerate(function(){
+    var causalPower = flip(0.99) ? 0.99 : 0.5
+    var effect = flip(causalPower)
+    var m = meaning(utterance, effect)
+    condition(m)
+    return effect
+  })
+})
+
+var listener0 = cache(function(utterance, causalPower) {
+  Enumerate(function(){
+    var effect = flip(causalPower)
+    var m = meaning(utterance, effect)
+    condition(m)
+    return effect
+  })
+})
+
+var speaker1 = cache(function(effect, causalPower) {
+  Enumerate(function(){
+    var utterance = [true, false, "mm"][discrete([1,1,10])]
+    // var L0 = listener0(utterance, causalPower)
+    var L0 = nullListener0(utterance)
+    factor(L0.score([],effect))
+    return utterance
+  })
+})
+
+var listener1 = function(utterance) {
+  Enumerate(function(){
+  	var causalPower = flip(0.99) ? 0.99 : 0.5
+	  var effect = flip(causalPower)
+    var S1 = speaker1(effect, causalPower)
+    factor(alpha*S1.score([],utterance))
+    return causalPower
+  })
+}
+
+listener1(true)
