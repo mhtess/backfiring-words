@@ -33,28 +33,31 @@ function make_slides(f) {
     present : exp.stimuli,
     
     present_handle : function(stim) {
+      this.condition = stim[0]
       this.startTime = Date.now()
-      this.stim =  stim; 
+      this.stim =  stim[1]; 
       this.trialNum = exp.stimscopy.indexOf(stim);
       $(".err").hide();
 
-      // $("#context").html("Imagine you overhear the following conversation:");
-      $("#context").html("John is taking a survey about the habits of ordinary Americans. "+
+      var prompt = this.condition == "survey" ? "John is taking a survey about the habits of ordinary Americans. "+
         "It is a long survey with many different questions. " +
         "At the end of the survey, it compiled his answers and randomly printed them out. " + 
-        "One of his answers read: ");
+        "One of his answers read: " : 
+        "Imagine you overhear the following conversation:"
 
-      var targetSentence = stim.needsPossessive ? 
-          "John " + stim.pastverb + " his " + stim.pastobject + " today." :
-          "John " + stim.pastverb + " " + stim.pastobject + " today."
+      $("#context").html(prompt);
+
+      var targetSentence = this.stim.needsPossessive ? 
+          "John " + this.stim.pastverb + " his " + this.stim.pastobject + " today." :
+          "John " + this.stim.pastverb + " " + this.stim.pastobject + " today."
 
       $("#target").html(targetSentence)
       this.sentence_types = _.shuffle(["expl1", "expl2", "expl3", "habitual"]);
       var sentences = {
-        "expl1": "John " + stim.explanation1 + ".",
-        "expl2":  "John " + stim.explanation2 + ".",
-        "expl3":  "John " + stim.explanation3 + ".",
-        "habitual": "John " + stim.item + "."
+        "expl1": "John " + this.stim.explanation1 + ".",
+        "expl2":  "John " + this.stim.explanation2 + ".",
+        "expl3":  "John " + this.stim.explanation3 + ".",
+        "habitual": "John " + this.stim.item + "."
       };
 
       this.n_sliders = this.sentence_types.length;
@@ -142,37 +145,36 @@ function init() {
   exp.trials = [];
   exp.catch_trials = [];
 
-    var stimuli = [{
-      item: "does not wear high heels",
-      past: "did not wear high heels",
-      pastverb: "did not wear",
-      pastobject: "high heels",
-      needsPossessive: false,
-      explanation1: "likes to dress like a woman",
-      explanation2: "wishes he were taller",
-      explanation3: "likes the way he looks in high heels"
+    // var stimuli = [{
+    //   item: "does not wear high heels",
+    //   past: "did not wear high heels",
+    //   pastverb: "did not wear",
+    //   pastobject: "high heels",
+    //   needsPossessive: false,
+    //   explanation1: "likes to dress like a woman",
+    //   explanation2: "wishes he were taller",
+    //   explanation3: "likes the way he looks in high heels"
 
-    },
-    {
-      item: "fosters tigers",
-      past: "foster a tiger",
-      pastverb: "fostered",
-      pastobject: "tigers",
-      needsPossessive: false,
-      explanation1: "works with wild animals",
-      explanation2: "likes tigers",
-      explanation3: "is a risk taker"
-    }]
+    // },
+    // {
+    //   item: "fosters tigers",
+    //   past: "foster a tiger",
+    //   pastverb: "fostered",
+    //   pastobject: "tigers",
+    //   needsPossessive: false,
+    //   explanation1: "works with wild animals",
+    //   explanation2: "likes tigers",
+    //   explanation3: "is a risk taker"
+    // }]
 
 
     var names = ["Sally","John", "Susan", "Steven"]
     var contexts = ["communicative","survey"]
 
-  _.zip(contexts, _.flatten([stimuli, stimuli]))
-var stims = cartesianProductOf(contexts, stimuli)
+  var stims = cartesianProductOf(contexts, stimuli)
 
-  exp.stimuli = _.shuffle(stimuli);
-  exp.n_trials = stimuli.length
+  exp.stimuli = _.shuffle(stims);
+  exp.n_trials = stims.length
   exp.stimscopy = exp.stimuli.slice(0);
 
   // exp.condition = _.sample(["CONDITION 1", "condition 2"]); //can randomize between subject conditions here

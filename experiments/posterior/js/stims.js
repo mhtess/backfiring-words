@@ -46,7 +46,7 @@ var stimuli = [
 	pastobject: "animals",
 	needsPossessive: false,
 	explanation1: "is mentally ill",
-	explanation2: "is a cruel person".
+	explanation2: "is a cruel person",
 	explanation3: "was abused as a child"
 },
 {
@@ -82,7 +82,7 @@ var stimuli = [
 {
 	item: "works for the government",
 	past: "worked for the government",
-	pastverb: "worked,"
+	pastverb: "worked",
 	pastobject: "for the government",
 	needsPossessive: false,
 	explanation1: "has committed a felony",
@@ -123,7 +123,7 @@ var stimuli = [
 	item: "does not go for runs",
 	past: "did not go for a run",
 	pastverb: "did not go",
-	pastobject: "for a run,"
+	pastobject: "for a run",
 	needsPossessive: false,
 	explanation1: "likes to stay in shape",
 	explanation2: "wants to lose weight",
