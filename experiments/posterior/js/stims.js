@@ -17,7 +17,7 @@ var stimuli = [
 	needsPossessive: false,
 	explanation1: "works with wild animals",
 	explanation2: "likes tigers",
-	explanation3: "is a risk taker"
+	explanation3: "takes risks"
 },
 {
 	item: "does not steal cars",
@@ -25,9 +25,9 @@ var stimuli = [
 	pastverb: "did not steal",
 	pastobject: "a car",
 	needsPossessive: false,
-	explanation1: "is a thief",
+	explanation1: "often steals things",
 	explanation2: "is in need of money",
-	explanation3: "is a thrill-seeker"
+	explanation3: "likes to seek thrills"
 },
 {
 	item: "wears pants",
@@ -46,7 +46,7 @@ var stimuli = [
 	pastobject: "animals",
 	needsPossessive: false,
 	explanation1: "is mentally ill",
-	explanation2: "is a cruel person",
+	explanation2: "enjoys being cruel",
 	explanation3: "was abused as a child"
 },
 {
@@ -57,7 +57,7 @@ var stimuli = [
 	needsPossessive: false,
 	explanation1: "believes women can play any sport",
 	explanation2: "is tough and masculine",
-	explanation3: "is a really talented athlete"
+	explanation3: "is athletically talented"
 },
 {
 	item: "pays her taxes",
@@ -67,7 +67,7 @@ var stimuli = [
 	needsPossessive: true,
 	explanation1: "is not financially responsible",
 	explanation2: "is anti-establishment",
-	explanation3: "is a really talented athlete"
+	explanation3: "finds bureaucracy extremely confusing"
 },
 {
 	item: "does not drink beer",
@@ -96,7 +96,7 @@ var stimuli = [
 	pastobject: "trash",
 	needsPossessive: true,
 	explanation1: "is very lazy",
-	explanation2: "is a hoarder",
+	explanation2: "hoards things",
 	explanation3: "has a maid"
 },
 {	
@@ -115,7 +115,7 @@ var stimuli = [
 	pastverb: "went out of",
 	pastobject: "house",
 	needsPossessive: true,
-	explanation1: "is a socially anxious person",
+	explanation1: "is anxious about social situations",
 	explanation2: "is really concerned about germs",
 	explanation3: "is sick"
 },
@@ -146,7 +146,7 @@ var stimuli = [
 	pastobject: "shoes",
 	needsPossessive: false,
 	explanation1: "finds shoes uncomfortable",
-	explanation2: "is a hippie",
+	explanation2: "affiliates with hippies",
 	explanation3: "likes to be barefoot"
 },
 {
@@ -197,7 +197,7 @@ var stimuli = [
 	needsPossessive: false,
 	explanation1: "likes to dress like a woman",
 	explanation2: "does not believe in traditional gender roles",
-	explanation3: "is an artist"
+	explanation3: "is artistic"
 },
 {
 	item: "reads magazines",
@@ -227,7 +227,7 @@ var stimuli = [
 	needsPossessive: false,
 	explanation1: "has a criminal record",
 	explanation2: "is in need of money",
-	explanation3: "is a thrill-seeker"
+	explanation3: "likes to seek thrills"
 },
 {
 	item: "brushes his teeth",
@@ -236,7 +236,7 @@ var stimuli = [
 	pastobject: "teeth",
 	needsPossessive: true,
 	explanation1: "is lazy",
-	explanation2: "is a forgetful person",
+	explanation2: "forgets things often",
 	explanation3: "is unhygienic"
 }
 	]
