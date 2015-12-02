@@ -97,7 +97,7 @@ var stimuli = [
 	explanation2: "likes to get drunk",
 	explanation3: "was once an alcoholic",
 	subjectivePrior: "likely",
-	polarity:"negative",
+	polarity:"control",
 	requiresGender: false
 },
 // {
@@ -162,7 +162,7 @@ var stimuli = [
 	explanation2: "wants to lose weight",
 	explanation3: "is athletic",
 	subjectivePrior: "likely",
-	polarity:"negative",
+	polarity:"control",
 	requiresGender: false
 },
 {	
@@ -175,7 +175,7 @@ var stimuli = [
 	explanation2: "thinks Toyotas are efficient",
 	explanation3: "can afford Toyotas",
 	subjectivePrior: "likely",
-	polarity:"negative",
+	polarity:"control",
 	requiresGender: false
 },
 {	
@@ -201,7 +201,7 @@ var stimuli = [
 	explanation2: "does not like the taste of tomatoes",
 	explanation3: "does not know how to garden",
 	subjectivePrior: "unlikely",
-	polarity:"affirmative",
+	polarity:"control",
 	requiresGender: false
 },
 {
@@ -214,7 +214,7 @@ var stimuli = [
 	explanation2: "has a granola allergy",
 	explanation3: "has sensitive teeth",
 	subjectivePrior: "unlikely",
-	polarity:"affirmative",
+	polarity:"control",
 	requiresGender: false
 },
 {
@@ -240,7 +240,7 @@ var stimuli = [
 	explanation2: "likes to exercise",
 	explanation3: "does not own a car",
 	subjectivePrior: "likely",
-	polarity:"negative",
+	polarity:"control",
 	requiresGender: false
 },
 {
@@ -266,7 +266,7 @@ var stimuli = [
 	explanation2: "does not know how to read",
 	explanation3: "does not have a lot of free time",
 	subjectivePrior: "unlikely",
-	polarity:"affirmative",
+	polarity:"control",
 	requiresGender: false
 },
 {	
