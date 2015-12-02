@@ -31,7 +31,7 @@ var stimuli = [
 	needsPossessive: false,
 	explanation1: "often steals things",
 	explanation2: "is in need of money",
-	explanation3: "likes to seek thrills"
+	explanation3: "is not afraid of authority"
 },
 {
 	item: "wears pants",
@@ -52,7 +52,7 @@ var stimuli = [
 	needsPossessive: false,
 	explanation1: "is mentally ill",
 	explanation2: "enjoys being cruel",
-	explanation3: "was abused as a child",
+	explanation3: "is a seedy person",
 	requiresGender: false
 },
 {
@@ -94,7 +94,7 @@ var stimuli = [
 	pastobject: "for the government",
 	needsPossessive: false,
 	explanation1: "has committed a felony",
-	explanation2: "thinks the government is corrupt",
+	explanation2: "has a job other than working for the government",
 	explanation3: "has anti-establishment views",
 	requiresGender: false
 },
@@ -121,13 +121,13 @@ var stimuli = [
 	requiresGender: false
 },
 {
-	item: "goes out of her house",
+	item: "goes out of the house",
 	past: "went out of her house",
 	pastverb: "went out of",
 	pastobject: "house",
 	needsPossessive: true,
 	explanation1: "is anxious about social situations",
-	explanation2: "is really concerned about germs",
+	explanation2: "is fearful of germs",
 	explanation3: "is sick",
 	requiresGender: false
 },

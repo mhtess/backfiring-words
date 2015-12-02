@@ -36,9 +36,14 @@ function make_slides(f) {
       this.condition = stim[0]
       this.startTime = Date.now()
       this.stim =  stim[1]; 
-      this.character = stim[2];
+      this.character = this.stim.requiresGender == "male" ? 
+                        {name: "John",gender:"male"} : 
+                        this.stim.requiresGender == "female" ? 
+                        {name: "Kate",gender:"female"} : 
+                       stim[2];
       this.possessive =  this.character.gender == "male" ? "his" : "her"
       this.pronoun =  this.character.gender == "male" ? "he" : "she"
+      this.requiresGender = 
 
       this.trialNum = exp.stimscopy.indexOf(stim);
       $(".err").hide();
@@ -50,23 +55,25 @@ function make_slides(f) {
 
       var prompt = this.condition == "survey" ? this.character.name + " is taking an online survey about the habits of ordinary Americans. "+
         "It is a long survey with many different kinds of questions. " +
-        "At the end of the survey, it compiled all of " + this.character.name + "'s responses and displayed them on the screen. " + 
+        "At the end of the survey, the computer compiled all of " + this.character.name + "'s responses and displayed them on the screen. " + 
         "One of "+this.possessive+" answers read: <br>"  : 
-        "Imagine you overhear the following conversation: " + 
-        "<p>A: How is "+this.character.name+" these days? <br>"
+        "Imagine you overhear the following conversation between A and B: "
 
       $("#context").html(prompt);
 
       this.condition == "survey" ?
         $("#target").html(targetSentence):
-        $("#target").html("B: "+utils.upperCaseFirst(this.pronoun)+"'s good. " +  targetSentence +"</p>")
+        $("#target").html('<br><div id ="conversation">A: How is '+this.character.name+" these days? <br>" +
+        "B: "+utils.upperCaseFirst(this.pronoun)+"'s good. " +  targetSentence +"</div></br>")
+
+      $("#conversation").css("text-align","justify")
 
       this.sentence_types = _.shuffle(["expl1", "expl2", "expl3", "habitual"]);
       var sentences = {
-        "expl1": "John " + this.stim.explanation1 + ".",
-        "expl2":  "John " + this.stim.explanation2 + ".",
-        "expl3":  "John " + this.stim.explanation3 + ".",
-        "habitual": "John " + this.stim.item + "."
+        "expl1": this.character.name +  " " + this.stim.explanation1 + ".",
+        "expl2":  this.character.name + " " + this.stim.explanation2 + ".",
+        "expl3": this.character.name +  " " + this.stim.explanation3 + ".",
+        "habitual": this.character.name + " " + this.stim.item + "."
       };
 
       this.n_sliders = this.sentence_types.length;
