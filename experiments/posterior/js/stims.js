@@ -7,7 +7,10 @@ var stimuli = [
 	needsPossessive: false,
 	explanation1: "likes to dress like a woman",
 	explanation2: "wishes he were taller",
-	explanation3: "likes the way he looks in high heels"
+	explanation3: "likes the way he looks in high heels",
+	subjectivePrior: "unlikely",
+	polarity:"negative",
+	requiresGender: "male"
 },
 {
 	item: "does not foster tigers",
@@ -17,7 +20,8 @@ var stimuli = [
 	needsPossessive: false,
 	explanation1: "works with wild animals",
 	explanation2: "likes tigers",
-	explanation3: "takes risks"
+	explanation3: "takes risks",
+	requiresGender: false
 },
 {
 	item: "does not steal cars",
@@ -37,7 +41,8 @@ var stimuli = [
 	needsPossessive: false,
 	explanation1: "finds pants uncomfortable",
 	explanation2: "was once a nudist",
-	explanation3: "prefers shorts to pants"
+	explanation3: "prefers shorts to pants",
+	requiresGender: false
 },
 {
 	item: "does not torture animals",
@@ -47,7 +52,8 @@ var stimuli = [
 	needsPossessive: false,
 	explanation1: "is mentally ill",
 	explanation2: "enjoys being cruel",
-	explanation3: "was abused as a child"
+	explanation3: "was abused as a child",
+	requiresGender: false
 },
 {
 	item: "does not play professional football",
@@ -57,18 +63,19 @@ var stimuli = [
 	needsPossessive: false,
 	explanation1: "believes women can play any sport",
 	explanation2: "is tough and masculine",
-	explanation3: "is athletically talented"
+	explanation3: "is athletically talented",
+	requiresGender: "female"
 },
-{
-	item: "pays her taxes",
-	past: "paid her taxes",
-	pastverb: "paid",
-	pastobject: "taxes",
-	needsPossessive: true,
-	explanation1: "is not financially responsible",
-	explanation2: "is anti-establishment",
-	explanation3: "finds bureaucracy extremely confusing"
-},
+// {
+// 	item: "pays her taxes",
+// 	past: "paid her taxes",
+// 	pastverb: "paid",
+// 	pastobject: "taxes",
+// 	needsPossessive: true,
+// 	explanation1: "is not financially responsible",
+// 	explanation2: "is anti-establishment",
+// 	explanation3: "finds bureaucracy extremely confusing"
+// },
 {
 	item: "does not drink beer",
 	past: "did not drink beer",
@@ -77,7 +84,8 @@ var stimuli = [
 	needsPossessive: false,
 	explanation1: "likes the taste of beer",
 	explanation2: "likes to get drunk",
-	explanation3: "was once an alcoholic"
+	explanation3: "was once an alcoholic",
+	requiresGender: false
 },
 {
 	item: "works for the government",
@@ -87,7 +95,8 @@ var stimuli = [
 	needsPossessive: false,
 	explanation1: "has committed a felony",
 	explanation2: "thinks the government is corrupt",
-	explanation3: "has anti-establishment views"
+	explanation3: "has anti-establishment views",
+	requiresGender: false
 },
 {
 	item: "takes out his trash",
@@ -97,7 +106,8 @@ var stimuli = [
 	needsPossessive: true,
 	explanation1: "is very lazy",
 	explanation2: "hoards things",
-	explanation3: "has a maid"
+	explanation3: "has a maid",
+	requiresGender: false
 },
 {	
 	item: "buys groceries at the supermarket",
@@ -107,7 +117,8 @@ var stimuli = [
 	needsPossessive: false,
 	explanation1: "does not have a lot of money",
 	explanation2: "likes shopping at the farmers' market",
-	explanation3: "likes to buy groceries online"
+	explanation3: "likes to buy groceries online",
+	requiresGender: false
 },
 {
 	item: "goes out of her house",
@@ -117,7 +128,8 @@ var stimuli = [
 	needsPossessive: true,
 	explanation1: "is anxious about social situations",
 	explanation2: "is really concerned about germs",
-	explanation3: "is sick"
+	explanation3: "is sick",
+	requiresGender: false
 },
 {	
 	item: "does not go for runs",
@@ -127,7 +139,8 @@ var stimuli = [
 	needsPossessive: false,
 	explanation1: "likes to stay in shape",
 	explanation2: "wants to lose weight",
-	explanation3: "is athletic"
+	explanation3: "is athletic",
+	requiresGender: false
 },
 {	
 	item: "does not drive a Toyota",
@@ -137,7 +150,8 @@ var stimuli = [
 	needsPossessive: false,
 	explanation1: "thinks Toyotas are reliable",
 	explanation2: "thinks Toyotas are efficient",
-	explanation3: "can afford Toyotas"
+	explanation3: "can afford Toyotas",
+	requiresGender: false
 },
 {	
 	item: "wears shoes",
@@ -147,7 +161,8 @@ var stimuli = [
 	needsPossessive: false,
 	explanation1: "finds shoes uncomfortable",
 	explanation2: "affiliates with hippies",
-	explanation3: "likes to be barefoot"
+	explanation3: "likes to be barefoot",
+	requiresGender: false
 },
 {
 	item: "grows tomatoes",
@@ -157,7 +172,8 @@ var stimuli = [
 	needsPossessive: false,
 	explanation1: "does not like gardening",
 	explanation2: "does not like the taste of tomatoes",
-	explanation3: "does not know how to garden"
+	explanation3: "does not know how to garden",
+	requiresGender: false
 },
 {
 	item: "eats granola for breakfast",
@@ -167,7 +183,8 @@ var stimuli = [
 	needsPossessive: false,
 	explanation1: "does not like the taste of granola",
 	explanation2: "has a granola allergy",
-	explanation3: "has sensitive teeth"
+	explanation3: "has sensitive teeth",
+	requiresGender: false
 },
 {
 	item: "tips waiters",
@@ -177,7 +194,8 @@ var stimuli = [
 	needsPossessive: false,
 	explanation1: "is cheap",
 	explanation2: "does not believe in tipping",
-	explanation3: "does not respect the service industry"
+	explanation3: "does not respect the service industry",
+	requiresGender: false
 },
 {
 	item: "does not walk to work",
@@ -187,7 +205,8 @@ var stimuli = [
 	needsPossessive: false,
 	explanation1: "lives close to work",
 	explanation2: "likes to exercise",
-	explanation3: "does not own a car"
+	explanation3: "does not own a car",
+	requiresGender: false
 },
 {
 	item: "does not wear lipstick",
@@ -197,7 +216,8 @@ var stimuli = [
 	needsPossessive: false,
 	explanation1: "likes to dress like a woman",
 	explanation2: "does not believe in traditional gender roles",
-	explanation3: "is artistic"
+	explanation3: "is artistic",
+	requiresGender: false
 },
 {
 	item: "reads magazines",
@@ -207,7 +227,8 @@ var stimuli = [
 	needsPossessive: false,
 	explanation1: "does not like reading",
 	explanation2: "finds magazines boring",
-	explanation3: "does not have a lot of free time"
+	explanation3: "does not have a lot of free time",
+	requiresGender: false
 },
 {	
 	item: "does not sell cocaine",
@@ -217,7 +238,8 @@ var stimuli = [
 	needsPossessive: false,
 	explanation1: "is in need of money",
 	explanation2: "has the lifestyle of a drug dealer",
-	explanation3: "does drugs"
+	explanation3: "does drugs",
+	requiresGender: false
 },
 {
 	item: "does not rob banks",
@@ -227,7 +249,8 @@ var stimuli = [
 	needsPossessive: false,
 	explanation1: "has a criminal record",
 	explanation2: "is in need of money",
-	explanation3: "likes to seek thrills"
+	explanation3: "likes to seek thrills",
+	requiresGender: false
 },
 {
 	item: "brushes his teeth",
@@ -237,9 +260,10 @@ var stimuli = [
 	needsPossessive: true,
 	explanation1: "is lazy",
 	explanation2: "forgets things often",
-	explanation3: "is unhygienic"
+	explanation3: "is unhygienic",
+	requiresGender: false
 }
-	]
+]
 	
 var characters = [
 {

@@ -36,22 +36,31 @@ function make_slides(f) {
       this.condition = stim[0]
       this.startTime = Date.now()
       this.stim =  stim[1]; 
+      this.character = stim[2];
+      this.possessive =  this.character.gender == "male" ? "his" : "her"
+      this.pronoun =  this.character.gender == "male" ? "he" : "she"
+
       this.trialNum = exp.stimscopy.indexOf(stim);
       $(".err").hide();
+      // debugger;
 
-      var prompt = this.condition == "survey" ? "John is taking a survey about the habits of ordinary Americans. "+
-        "It is a long survey with many different questions. " +
-        "At the end of the survey, it compiled his answers and randomly printed them out. " + 
-        "One of his answers read: " : 
-        "Imagine you overhear the following conversation:"
+      var targetSentence = this.stim.needsPossessive ? 
+         this.character.name + " " + this.stim.pastverb + " "+ this.possessive + " " + this.stim.pastobject + " today." :
+          this.character.name + " " + this.stim.pastverb + " " + this.stim.pastobject + " today."
+
+      var prompt = this.condition == "survey" ? this.character.name + " is taking an online survey about the habits of ordinary Americans. "+
+        "It is a long survey with many different kinds of questions. " +
+        "At the end of the survey, it compiled all of " + this.character.name + "'s responses and displayed them on the screen. " + 
+        "One of "+this.possessive+" answers read: <br>"  : 
+        "Imagine you overhear the following conversation: " + 
+        "<p>A: How is "+this.character.name+" these days? <br>"
 
       $("#context").html(prompt);
 
-      var targetSentence = this.stim.needsPossessive ? 
-          "John " + this.stim.pastverb + " his " + this.stim.pastobject + " today." :
-          "John " + this.stim.pastverb + " " + this.stim.pastobject + " today."
+      this.condition == "survey" ?
+        $("#target").html(targetSentence):
+        $("#target").html("B: "+utils.upperCaseFirst(this.pronoun)+"'s good. " +  targetSentence +"</p>")
 
-      $("#target").html(targetSentence)
       this.sentence_types = _.shuffle(["expl1", "expl2", "expl3", "habitual"]);
       var sentences = {
         "expl1": "John " + this.stim.explanation1 + ".",
@@ -168,12 +177,12 @@ function init() {
     // }]
 
 
-    var names = ["Sally","John", "Susan", "Steven"]
-    var contexts = ["communicative","survey"]
+  var contexts = ["communicative","survey"]
 
   var stims = cartesianProductOf(contexts, stimuli)
 
-  exp.stimuli = _.shuffle(stims);
+  var names =  _.shuffle(_.flatten([characters, characters, characters], true).slice(0,stims.length))
+  exp.stimuli = _.map(_.zip(_.shuffle(stims), names), function(lst){return _.flatten(lst, true)});
   exp.n_trials = stims.length
   exp.stimscopy = exp.stimuli.slice(0);
 
@@ -187,7 +196,7 @@ function init() {
       screenUW: exp.width
     };
   //blocks of the experiment:
-  exp.structure=["i0", "instructions","multi_slider",'subj_info', 'thanks'];
+  exp.structure=["multi_slider","i0", "instructions","multi_slider",'subj_info', 'thanks'];
   
   exp.data_trials = [];
   //make corresponding slides:
