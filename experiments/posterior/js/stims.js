@@ -271,67 +271,67 @@ var characters = [
 	gender: "male"
 },
 {
-	name: "Tom"
+	name: "Tom",
 	gender: "male"
 },
 {
-	name: "Lucas"
+	name: "Lucas",
 	gender: "male"
 },
 {
-	name: "Michael"
+	name: "Michael",
 	gender: "male"
 },
 {
-	name: "Eric"
+	name: "Eric",
 	gender: "male"
 },
 {
-	name: "Cameron"
+	name: "Cameron",
 	gender: "male"
 },
 {
-	name: "Angela"
+	name: "Angela",
 	gender: "female"
 },
 {
-	name: "Jennifer"
+	name: "Jennifer",
 	gender: "female"	
 },
 {
-	name: "Monica"
+	name: "Monica",
 	gender: "female"
 },
 {
-	name: "Melinda"
+	name: "Melinda",
 	gender: "female"
 },
 {
-	name: "Veronica"
+	name: "Veronica",
 	gender: "female"	
 },
 {
-	name: "Alicia"
+	name: "Alicia",
 	gender: "female"
 },
 {
-	name: "Maya"
+	name: "Maya",
 	gender: "female"
 },
 {
-	name: "Sophia"
+	name: "Sophia",
 	gender: "female"
 },
 {
-	name: "Kim"
+	name: "Kim",
 	gender: "female"
 },
 {
-	name: "Laura"
+	name: "Laura",
 	gender: "female"	
 },
 {
-	name: "Julia"
+	name: "Julia",
 	gender: "female"
 }
 ]	
