@@ -93,6 +93,7 @@ function make_slides(f) {
       if (exp.sliderPost.length < this.n_sliders) {
         $(".err").show();
       } else {
+        this.rt = Date.now() - this.startTime;
         this.log_responses();
         _stream.apply(this); //use _stream.apply(this); if and only if there is "present" data.
       }
@@ -115,6 +116,7 @@ function make_slides(f) {
         var sentence = this.sentences[sentence_type];
         exp.data_trials.push({
           "trial_type" : "multi_slider",
+          "rt":this.rt,
           "trial_num": 1+this.trialNum,
           "evidence": this.stim.past,
           "sentence_type" : sentence_type,
