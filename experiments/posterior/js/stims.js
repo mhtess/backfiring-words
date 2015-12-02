@@ -100,19 +100,19 @@ var stimuli = [
 	polarity:"negative",
 	requiresGender: false
 },
-{
-	item: "works for the government",
-	past: "worked for the government",
-	pastverb: "worked",
-	pastobject: "for the government",
-	needsPossessive: false,
-	explanation1: "has committed a felony",
-	explanation2: "has a job other than working for the government",
-	explanation3: "has anti-establishment views",
-	subjectivePrior: "unlikely",
-	polarity:"affirmative",
-	requiresGender: false
-},
+// {
+// 	item: "works for the government",
+// 	past: "worked for the government",
+// 	pastverb: "worked",
+// 	pastobject: "for the government",
+// 	needsPossessive: false,
+// 	explanation1: "has committed a felony",
+// 	explanation2: "has a job other than working for the government",
+// 	explanation3: "has anti-establishment views",
+// 	subjectivePrior: "unlikely",
+// 	polarity:"affirmative",
+// 	requiresGender: false
+// },
 {
 	item: "takes out his trash",
 	past: "took out his trash",

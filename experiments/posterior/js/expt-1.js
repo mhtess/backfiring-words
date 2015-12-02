@@ -141,6 +141,8 @@ function make_slides(f) {
         gender : $("#gender").val(),
         education : $("#education").val(),
         comments : $("#comments").val(),
+        problems: $("#problems").val(),
+        fairprice: $("#fairprice").val()
       };
       exp.go(); //use exp.go() if and only if there is no "present" data.
     }
@@ -211,7 +213,7 @@ function init() {
       screenUW: exp.width
     };
   //blocks of the experiment:
-  exp.structure=["multi_slider","i0", "instructions","multi_slider",'subj_info', 'thanks'];
+  exp.structure=["i0", "instructions","multi_slider",'subj_info', 'thanks'];
   
   exp.data_trials = [];
   //make corresponding slides:
