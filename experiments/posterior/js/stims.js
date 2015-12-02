@@ -21,7 +21,9 @@ var stimuli = [
 	explanation1: "works with wild animals",
 	explanation2: "likes tigers",
 	explanation3: "takes risks",
-	requiresGender: false
+	requiresGender: false,
+	subjectivePrior: "unlikely",
+	polarity:"negative"
 },
 {
 	item: "does not steal cars",
@@ -31,7 +33,10 @@ var stimuli = [
 	needsPossessive: false,
 	explanation1: "often steals things",
 	explanation2: "is in need of money",
-	explanation3: "is not afraid of authority"
+	explanation3: "is not afraid of authority",
+	subjectivePrior: "unlikely",
+	polarity:"negative",
+	requiresGender: false
 },
 {
 	item: "wears pants",
@@ -42,6 +47,8 @@ var stimuli = [
 	explanation1: "finds pants uncomfortable",
 	explanation2: "was once a nudist",
 	explanation3: "prefers shorts to pants",
+	subjectivePrior: "likely",
+	polarity:"affirmative",
 	requiresGender: false
 },
 {
@@ -53,6 +60,8 @@ var stimuli = [
 	explanation1: "is mentally ill",
 	explanation2: "enjoys being cruel",
 	explanation3: "is a seedy person",
+	subjectivePrior: "unlikely",
+	polarity:"negative",
 	requiresGender: false
 },
 {
@@ -64,6 +73,8 @@ var stimuli = [
 	explanation1: "believes women can play any sport",
 	explanation2: "is tough and masculine",
 	explanation3: "is athletically talented",
+	subjectivePrior: "unlikely",
+	polarity:"negative",
 	requiresGender: "female"
 },
 // {
@@ -85,6 +96,8 @@ var stimuli = [
 	explanation1: "likes the taste of beer",
 	explanation2: "likes to get drunk",
 	explanation3: "was once an alcoholic",
+	subjectivePrior: "likely",
+	polarity:"negative",
 	requiresGender: false
 },
 {
@@ -96,6 +109,8 @@ var stimuli = [
 	explanation1: "has committed a felony",
 	explanation2: "has a job other than working for the government",
 	explanation3: "has anti-establishment views",
+	subjectivePrior: "unlikely",
+	polarity:"affirmative",
 	requiresGender: false
 },
 {
@@ -107,6 +122,8 @@ var stimuli = [
 	explanation1: "is very lazy",
 	explanation2: "hoards things",
 	explanation3: "has a maid",
+	subjectivePrior: "likely",
+	polarity:"affirmative",
 	requiresGender: false
 },
 {	
@@ -118,6 +135,8 @@ var stimuli = [
 	explanation1: "does not have a lot of money",
 	explanation2: "likes shopping at the farmers' market",
 	explanation3: "likes to buy groceries online",
+	subjectivePrior: "likely",
+	polarity:"affirmative",
 	requiresGender: false
 },
 {
@@ -129,6 +148,8 @@ var stimuli = [
 	explanation1: "is anxious about social situations",
 	explanation2: "is fearful of germs",
 	explanation3: "is sick",
+	subjectivePrior: "likely",
+	polarity:"affirmative",
 	requiresGender: false
 },
 {	
@@ -140,6 +161,8 @@ var stimuli = [
 	explanation1: "likes to stay in shape",
 	explanation2: "wants to lose weight",
 	explanation3: "is athletic",
+	subjectivePrior: "likely",
+	polarity:"negative",
 	requiresGender: false
 },
 {	
@@ -151,6 +174,8 @@ var stimuli = [
 	explanation1: "thinks Toyotas are reliable",
 	explanation2: "thinks Toyotas are efficient",
 	explanation3: "can afford Toyotas",
+	subjectivePrior: "likely",
+	polarity:"negative",
 	requiresGender: false
 },
 {	
@@ -162,6 +187,8 @@ var stimuli = [
 	explanation1: "finds shoes uncomfortable",
 	explanation2: "affiliates with hippies",
 	explanation3: "likes to be barefoot",
+	subjectivePrior: "likely",
+	polarity:"affirmative",
 	requiresGender: false
 },
 {
@@ -173,6 +200,8 @@ var stimuli = [
 	explanation1: "does not like gardening",
 	explanation2: "does not like the taste of tomatoes",
 	explanation3: "does not know how to garden",
+	subjectivePrior: "unlikely",
+	polarity:"affirmative",
 	requiresGender: false
 },
 {
@@ -184,6 +213,8 @@ var stimuli = [
 	explanation1: "does not like the taste of granola",
 	explanation2: "has a granola allergy",
 	explanation3: "has sensitive teeth",
+	subjectivePrior: "unlikely",
+	polarity:"affirmative",
 	requiresGender: false
 },
 {
@@ -195,6 +226,8 @@ var stimuli = [
 	explanation1: "is cheap",
 	explanation2: "does not believe in tipping",
 	explanation3: "does not respect the service industry",
+	subjectivePrior: "likely",
+	polarity:"affirmative",
 	requiresGender: false
 },
 {
@@ -206,6 +239,8 @@ var stimuli = [
 	explanation1: "lives close to work",
 	explanation2: "likes to exercise",
 	explanation3: "does not own a car",
+	subjectivePrior: "likely",
+	polarity:"negative",
 	requiresGender: false
 },
 {
@@ -217,6 +252,8 @@ var stimuli = [
 	explanation1: "likes to dress like a woman",
 	explanation2: "does not believe in traditional gender roles",
 	explanation3: "is artistic",
+	subjectivePrior: "unlikely",
+	polarity:"negative",
 	requiresGender: false
 },
 {
@@ -228,6 +265,8 @@ var stimuli = [
 	explanation1: "does not like reading",
 	explanation2: "finds magazines boring",
 	explanation3: "does not have a lot of free time",
+	subjectivePrior: "unlikely",
+	polarity:"affirmative",
 	requiresGender: false
 },
 {	
@@ -239,6 +278,8 @@ var stimuli = [
 	explanation1: "is in need of money",
 	explanation2: "has the lifestyle of a drug dealer",
 	explanation3: "does drugs",
+	subjectivePrior: "unlikely",
+	polarity:"negative",
 	requiresGender: false
 },
 {
@@ -250,6 +291,8 @@ var stimuli = [
 	explanation1: "has a criminal record",
 	explanation2: "is in need of money",
 	explanation3: "likes to seek thrills",
+	subjectivePrior: "unlikely",
+	polarity:"negative",
 	requiresGender: false
 },
 {
@@ -261,6 +304,8 @@ var stimuli = [
 	explanation1: "is lazy",
 	explanation2: "forgets things often",
 	explanation3: "is unhygienic",
+	subjectivePrior: "likely",
+	polarity:"affirmative",
 	requiresGender: false
 }
 ]
