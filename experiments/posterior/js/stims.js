@@ -213,7 +213,7 @@ var stimuli = [
 	explanation1: "does not like the taste of granola",
 	explanation2: "has a granola allergy",
 	explanation3: "has sensitive teeth",
-	subjectivePrior: "likely",
+	subjectivePrior: "unlikely",
 	polarity:"affirmative",
 	requiresGender: false
 },
