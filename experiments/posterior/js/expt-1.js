@@ -69,7 +69,7 @@ function make_slides(f) {
       $("#conversation").css("text-align","justify")
 
       this.sentence_types = _.shuffle(["expl1", "expl2", "expl3", "habitual"]);
-      var sentences = {
+      this.sentences = {
         "expl1": this.character.name +  " " + this.stim.explanation1 + ".",
         "expl2":  this.character.name + " " + this.stim.explanation2 + ".",
         "expl3": this.character.name +  " " + this.stim.explanation3 + ".",
@@ -80,7 +80,7 @@ function make_slides(f) {
       $(".slider_row").remove();
       for (var i=0; i<this.n_sliders; i++) {
         var sentence_type = this.sentence_types[i];
-        var sentence = sentences[sentence_type];
+        var sentence = this.sentences[sentence_type];
         $("#multi_slider_table").append('<tr class="slider_row"><td class="slider_target" id="sentence' + i + '">' + sentence + '</td><td colspan="2"><div id="slider' + i + '" class="slider">-------[ ]--------</div></td></tr>');
         utils.match_row_height("#multi_slider_table", ".slider_target");
       }
@@ -112,9 +112,15 @@ function make_slides(f) {
     log_responses : function() {
       for (var i=0; i<this.sentence_types.length; i++) {
         var sentence_type = this.sentence_types[i];
+        var sentence = this.sentences[sentence_type];
         exp.data_trials.push({
           "trial_type" : "multi_slider",
+          "trial_num": 1+this.trialNum,
+          "evidence": this.stim.past,
           "sentence_type" : sentence_type,
+          "explanation": sentence,
+          "character": this.character.name,
+          "character_gender":this.character.gender,
           "response" : exp.sliderPost[i]
         });
       }
