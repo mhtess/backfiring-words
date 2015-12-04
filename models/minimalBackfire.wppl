@@ -26,8 +26,8 @@ var listener0 = cache(function(utterance, causalPower) {
 var speaker1 = cache(function(effect, causalPower) {
   Enumerate(function(){
     var utterance = [true, false, "mm"][discrete([1,1,10])]
-    // var L0 = listener0(utterance, causalPower)
-    var L0 = nullListener0(utterance)
+    var L0 = listener0(utterance, causalPower)
+    // var L0 = nullListener0(utterance)
     factor(L0.score([],effect))
     return utterance
   })
@@ -43,4 +43,7 @@ var listener1 = function(utterance) {
   })
 }
 
-listener1(true)
+// listener1(true)
+// 
+// speaker1(true, 0.99)
+listener0(true, 0.99)
