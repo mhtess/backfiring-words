@@ -28,7 +28,7 @@ var stimuli = [
 },{
 	item: "high_school_teacher",
 	prompt: "Sally is having a hard time remembering who her son has for his high school teacher. She knows it is either Ms. Smith or Ms. Johnson.",
-	pragmatic: "She overhears her son say to a friend, 'My teacher took attendance today!'",
+	pragmatic: "At the dinner table, her son says to her, 'My teacher took attendance today!'",
 	literal: "At the dinner table, she notices her son Billy’s notebook, which has his daily report card in it. It reports that his teacher took attendance today.",
 	question: "Who is Billy's teacher?",
 	frequency: {
@@ -38,4 +38,17 @@ var stimuli = [
 	foil: "Ms. Johnson, she knows, rarely takes attendance.",
 	likely: "Ms. Smith",
 	unlikely: "Ms. Johnson"
+},{
+	item: "friend_movie",
+	prompt: "Matt is having a hard time remembering who his friend's, Gabe's, roommate is.  He knows it is either Jack or Dave.",
+	pragmatic: "During lunch Gabe says to Matt, 'My roommate took out the trash!'",
+	literal: "During lunch Matt notices a chore report on Gabe's apartment's wall.  It states that Gabe's roommate took out the trash.",
+	question: "Who is Gabe's roommate?",
+	frequency: {
+		high: "Jack, he knows, always takes out the trash.",
+		medium: "Jack, he knows, sometimes takes out the trash."	
+	},
+	foil: "Dave, he knows, never takes out the trash.",
+	likely: "Jack",
+	unlikely: "Dave"
 }]
