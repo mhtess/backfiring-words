@@ -1,0 +1,12 @@
+// webppl scratch.wppl --require utils
+
+expectation(backfireHypothesis(40,
+{
+	a_prior:0.99,
+	a_strength: 0.99,
+	b_strength: 0.5,
+	bg_strength:0.001,
+	primary_baserate_prior: 1,
+	primary_baserate: 1,
+	secondary_baserate: 0.001
+}))

@@ -1,0 +1,96 @@
+---
+title: "explore-backfire"
+author: "mht"
+date: "December 4, 2015"
+output: html_document
+---
+
+
+```{r} 
+  
+fpath<- "~/Documents/research/backfiring-words/models/results/exploration/"
+fileName = paste(fpath,"backfireHypothesis-exploration-free-cpWeight_fixed-cpStrength-bc0-br1-1a.csv", sep="")
+fileName2 = paste(fpath, "nullHypothesis-exploration-free-cpWeight_fixed-cpStrength-bc0-br1-1a.csv", sep="")
+d<-read.csv(fileName)
+d1<-read.csv(fileName2)
+
+```
+
+```{r}
+
+for (i in levels(factor(d$speakerOpt))){
+  
+  d.world <- d %>% 
+  filter(measure=='world' & speakerOpt == i) %>%
+  mutate(exp.val = (mixture*primaryTheta + (1-mixture)*backoffTheta)*15)
+
+  d.world1 <- d1 %>% 
+    filter(measure=='world' & speakerOpt == i) %>%
+    mutate(exp.val = (mixture*primaryTheta + (1-mixture)*backoffTheta)*15)
+  
+  plt1<-ggplot(d.world, aes(x=primaryTheta, y = Value))+
+    geom_point()+
+    facet_grid(backoffTheta~mixture)+
+    ggtitle("Mixture X backoff weight")
+  
+  plt2<-ggplot(d.world1, aes(x=primaryTheta, y = Value))+
+    geom_point()+
+    facet_grid(backoffTheta~mixture)+
+    ggtitle("Mixture X backoff weight")  
+  
+  speakerOpt = i
+  
+  ggsave(plt1,
+         file= paste(fpath, "plots/wonkyRSA-so", 
+                     speakerOpt, "-mixXbackoff.pdf", sep=""),
+         width = 20, height = 6)
+  
+  
+    ggsave(plt1,
+         file= paste(fpath, "plots/regularRSA-so", 
+                     speakerOpt, "-mixXbackoff.pdf", sep=""),
+         width = 20, height = 6)
+  print(i)
+}
+```
+
+
+```{r}
+for (i in levels(factor(d$speakerOpt))){
+  
+  d.world <- d %>% 
+  filter(measure=='wonky' & speakerOpt == i) %>%
+  mutate(exp.val = (mixture*primaryTheta + (1-mixture)*backoffTheta)*15)
+
+  d.world1 <- d1 %>% 
+    filter(measure=='wonky' & speakerOpt == i) %>%
+    mutate(exp.val = (mixture*primaryTheta + (1-mixture)*backoffTheta)*15)
+  
+  plt1<-ggplot(d.world, aes(x=primaryTheta, y = Value))+
+    geom_point()+
+    facet_grid(backoffTheta~mixture)+
+    ggtitle("Mixture X backoff weight")
+  
+  plt2<-ggplot(d.world1, aes(x=primaryTheta, y = Value))+
+    geom_point()+
+    facet_grid(backoffTheta~mixture)+
+    ggtitle("Mixture X backoff weight")  
+  
+  speakerOpt = i
+  
+  ggsave(plt1,
+         file= paste(fpath, "plots/wonkyRSA-wonkiness-so", 
+                     speakerOpt, "-mixXbackoff.pdf", sep=""),
+         width = 20, height = 6)
+  
+  
+    ggsave(plt1,
+         file= paste(fpath, "plots/regularRSA-wonkiness-so", 
+                     speakerOpt, "-mixXbackoff.pdf", sep=""),
+         width = 20, height = 6)
+  print(i)
+}
+
+
+
+```
