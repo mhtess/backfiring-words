@@ -39,7 +39,7 @@ var stimuli = [
 	likely: "Ms. Smith",
 	unlikely: "Ms. Johnson"
 },{
-	item: "friend_movie",
+	item: "roommate_trash",
 	prompt: "Matt is having a hard time remembering who his friend's, Gabe's, roommate is.  He knows it is either Jack or Dave.",
 	pragmatic: "During lunch Gabe says to Matt, 'My roommate took out the trash!'",
 	literal: "During lunch Matt notices a chore report on Gabe's apartment's wall.  It states that Gabe's roommate took out the trash.",
