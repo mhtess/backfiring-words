@@ -25,4 +25,17 @@ var stimuli = [
 	foil: "Ms. Johnson, she knows, only has a musical lesson occasionally.",
 	likely: "Ms. Smith",
 	unlikely: "Ms. Johnson"
+},{
+	item: "high_school_teacher",
+	prompt: "Sally is having a hard time remembering who her son has for his high school teacher. She knows it is either Ms. Smith or Ms. Johnson.",
+	pragmatic: "She overhears her son say to a friend, 'My teacher took attendance today!'",
+	literal: "At the dinner table, she notices her son Billy’s notebook, which has his daily report card in it. It reports that his teacher took attendance today.",
+	question: "Who is Billy's teacher?",
+	frequency: {
+		high: "Ms. Smith, she knows, takes attendance every day.",
+		medium: "Ms. Smith, she knows, takes attendance most days."	
+	},
+	foil: "Ms. Johnson, she knows, rarely takes attendance.",
+	likely: "Ms. Smith",
+	unlikely: "Ms. Johnson"
 }]
