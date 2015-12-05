@@ -2,11 +2,20 @@
 
 
 
-var a_prior_weights = [0.01,0.1,0.3,0.5,0.7,0.9,0.99]
-var a_strengths = [0.5, 0.6, 0.7, 0.8, 0.9, 0.99]
+// var a_prior_weights = [0.01,0.1,0.3,0.5,0.7,0.9,0.99]
+// var a_strengths = [0.5, 0.6, 0.7, 0.8, 0.9, 0.99]
+
+var a_prior_weights = [0.999]
+var a_strengths = [0.99]
+
 var alphas = [1,3,5,10,15,20]
 
-var prefix = "free-cpWeight-cpStrength_fixed-bc0-br1"
+var bg_strengths = [0.01, 0.1, 0.3, 0.5, 0.7, 0.9, 0.99]
+var primary_baserates = [0.5,0.6,0.7,0.8,0.9,0.99]
+var primary_baserate_prior_weights = [0.01,0.1,0.3,0.5,0.7,0.9,0.99]
+
+// var prefix = "free-cpWeight-cpStrength_fixed-bc0-br1"
+var prefix = "free-bc-br_fixed-cpWeight-cpStrength"
 
 var filename0 = "results/exploration/nullHypothesis-exploration-"+prefix+"-1a.csv"
 var filename1 = "results/exploration/backfireHypothesis-exploration-"+prefix+"-1a.csv"
@@ -30,69 +39,60 @@ utils.writeLine(h2file, header)
 
 // var a_strength = 0.99
 var b_strength = 0.5
-var bg_strength = 0.001
-var primary_baserate = 1
-var secondary_baserate = 0.001
-var primary_baserate_prior = 1
+// var a_prior = 0.999
 
-foreach(a_strengths, function(a_strength){
+// var bg_strength = 0.001
+// var primary_baserate = 0.99
+var secondary_baserate = 0.5
+// var primary_baserate_prior = 1
+
+var queries = ["baseRate", "causalPower"]
+
+foreach(primary_baserate_prior_weights, function(primary_baserate_prior){
 	var t0 = utils.getTime()
-	foreach(a_prior_weights, function(a_prior){
-		foreach(alphas, function(alpha){
+	foreach(primary_baserates, function(primary_baserate){
+		foreach(bg_strengths, function(bg_strength){
+			foreach(a_strengths, function(a_strength){
+				foreach(a_prior_weights, function(a_prior){
+					foreach(alphas, function(alpha){
 
-			var h0 = nullHypothesis(alpha, 
-						{
-							a_strength: a_strength,
-							a_prior:a_prior,
-							b_strength: b_strength,
-							bg_strength: bg_strength,
-							primary_baserate: primary_baserate,
-							secondary_baserate: secondary_baserate,
-							primary_baserate_prior: primary_baserate_prior
+						var modelParameters = {
+										a_strength: a_strength,
+										a_prior:a_prior,
+										b_strength: b_strength,
+										bg_strength: bg_strength,
+										primary_baserate: primary_baserate,
+										secondary_baserate: secondary_baserate,
+										primary_baserate_prior: primary_baserate_prior
+						}
+
+						var h0 = nullHypothesis(alpha, modelParameters)
+						var h1 = backfireHypothesis(alpha, modelParameters)
+						var h2 = literalBayesianHypothesis(alpha, modelParameters)
+
+						foreach(queries, function(query_return){
+
+							utils.writeLine(h0file, ["h0",query_return,a_strength, a_prior,b_strength,
+								bg_strength,primary_baserate, secondary_baserate, 
+								primary_baserate_prior, alpha, expectation(marginalize(h0, query_return))].join(','))
+
+							utils.writeLine(h1file, ["h1",query_return,a_strength, a_prior,b_strength,
+								bg_strength,primary_baserate, secondary_baserate, 
+								primary_baserate_prior, alpha, expectation(marginalize(h1, query_return))].join(','))
+
+							utils.writeLine(h2file, ["h_literal",query_return,a_strength, a_prior,b_strength,
+								bg_strength,primary_baserate, secondary_baserate, 
+								primary_baserate_prior, alpha, expectation(marginalize(h2, query_return))].join(','))
+
 						})
 
-			utils.writeLine(h0file, ["h0","causalPower",a_strength, a_prior,b_strength,
-				bg_strength,primary_baserate, secondary_baserate, 
-				primary_baserate_prior, alpha, expectation(h0)].join(','))
-
-
-			var h1 = backfireHypothesis(alpha, 
-						{
-							a_strength: a_strength,
-							a_prior:a_prior,
-							b_strength: b_strength,
-							bg_strength: bg_strength,
-							primary_baserate: primary_baserate,
-							secondary_baserate: secondary_baserate,
-							primary_baserate_prior: primary_baserate_prior
-						})
-
-			utils.writeLine(h1file, ["h1","causalPower",a_strength, a_prior,b_strength,
-				bg_strength,primary_baserate, secondary_baserate, 
-				primary_baserate_prior, alpha, expectation(h1)].join(','))
-
-
-			var h2 = literalBayesianHypothesis(alpha, 
-						{
-							a_strength: a_strength,
-							a_prior:a_prior,
-							b_strength: b_strength,
-							bg_strength: bg_strength,
-							primary_baserate: primary_baserate,
-							secondary_baserate: secondary_baserate,
-							primary_baserate_prior: primary_baserate_prior
-						})
-
-			utils.writeLine(h2file, ["h_literal","causalPower",a_strength, a_prior,b_strength,
-				bg_strength,primary_baserate, secondary_baserate, 
-				primary_baserate_prior, alpha, expectation(h2)].join(','))
-
-
+					})
+				})
+			})
 		})
 	})
 	console.log((utils.getTime()-t0)/1000)
 })
-
 utils.closeFile(h0file)
 console.log("output 1 written to ... " + filename0)
 utils.closeFile(h1file)
