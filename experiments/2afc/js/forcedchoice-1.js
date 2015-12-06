@@ -34,7 +34,7 @@ function make_slides(f) {
 
       $(".prompt").html(stim.prompt)
       $(".alternatives").html(stim.frequency.high + " <br> " + stim.foil)
-      $(".evidence").html(stim.pragmatic)
+      $(".evidence").html(stim[stim.condition])
       $(".question").html(stim.question)
 
       // this.stim.description = description
@@ -154,7 +154,9 @@ function init() {
   exp.judgeButtons = _.object(_.zip(["likely-key","unlikely-key"],
                             _.shuffle(["P","Q"])));
 
-  exp.stims = _.shuffle(stimuli)
+  var conditions =  _.shuffle(_.flatten([utils.fillArray("pragmatic", stimuli.length/2), utils.fillArray("literal", stimuli.length/2)]))
+
+  exp.stims = _.shuffle(_.map(_.zip(stimuli,conditions), function(s){return _.extend(s[0], {"condition": s[1]})}))
 
   // debugger;
   exp.numTrials = exp.stims.length;
