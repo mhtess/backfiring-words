@@ -41,8 +41,8 @@ var stimuli = [
 },{
 	item: "roommate_trash",
 	prompt: "Matt is having a hard time remembering who his friend's, Gabe's, roommate is.  He knows it is either Jack or Dave.",
-	pragmatic: "During lunch Gabe says to Matt, 'My roommate took out the trash!'",
-	literal: "During lunch Matt notices a chore report on Gabe's apartment's wall.  It states that Gabe's roommate took out the trash.",
+	pragmatic: "During lunch Gabe says to Matt, 'My roommate took out the trash today!'",
+	literal: "During lunch Matt notices a chore report on Gabe's apartment's wall.  It states that Gabe's roommate took out the trash today.",
 	question: "Who is Gabe's roommate?",
 	frequency: {
 		high: "Jack, he knows, always takes out the trash.",
@@ -51,4 +51,17 @@ var stimuli = [
 	foil: "Dave, he knows, never takes out the trash.",
 	likely: "Jack",
 	unlikely: "Dave"
+}.{
+	item: "tutor",
+	prompt: "Molly is having a hard time remembering which student her officemate, Jenna, is tutoring. She knows it is either Tom or Jim.",
+	pragmatic: "In their office Jenna says to her, 'My student turned his homework in on time today!'",
+	literal: "In their office, she notices some notes from tutoring on Jenna's desk. They state that her student turned his homework in on time today.",
+	question: "Who is Jenna's student?",
+	frequency: {
+		high: "Tom, she knows, always turns in his homework on time.",
+		medium: "Tom, she knows, sometimes turns in his homework on time."	
+	},
+	foil: "Jim, she knows, never turns in his homework on time.",
+	likely: "Tom",
+	unlikely: "Jim"
 }]
