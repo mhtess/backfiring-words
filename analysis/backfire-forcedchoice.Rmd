@@ -1,0 +1,23 @@
+---
+title: "backfire-fc"
+author: "mht"
+date: "December 6, 2015"
+output: html_document
+---
+
+
+```{r}
+
+d<-read.csv("~/Documents/research/backfiring-words/mturk/forcedchoice-1/forcedchoice-1-trials.csv")
+
+catch<-read.csv("~/Documents/research/backfiring-words/mturk/forcedchoice-1/forcedchoice-1-catch_trials.csv")
+
+d0 <- left_join(d, 
+                select(catch, workerid, pass)) %>% 
+  filter(pass==1) %>%
+  select(workerid, item, rt, response, condition) %>%
+  mutate(likelyPerson = response=="likely-key")
+
+
+
+```
