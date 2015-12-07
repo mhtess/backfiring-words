@@ -136,7 +136,7 @@ function make_slides(f) {
         "response2":responses[1],
         "response3":responses[2],
         "response4":responses[3],
-        "pass": arraysEqual(responses, ["veg","music","dishes","homework"]),
+        "pass": arraysEqual(responses, ["veg","music","dishes","homework"]) ? 1 : 0,
         "rt":this.rt
       });
 
