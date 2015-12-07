@@ -1,6 +1,6 @@
 var stimuli = [
 {
-	item: "vegetarian",
+	item: "girlfriend_vegetarian",
 	prompt: "Steve is having a hard time remembering who his roommate Jonathon is dating.<br>He knows it is either Jessica or Stephanie.",
 	pragmatic: "Jonathon arrives home from a date.<br>Steve asks, ''How was the date?''<br>Jonathon says, ''It was great. She ordered vegetarian food.''",
 	literal: "Steve notices on the kitchen counter a receipt for Jonathon's most recent date.<br>On the receipt, Steve saw that his date ordered vegetarian food.",
@@ -12,8 +12,9 @@ var stimuli = [
 	foil: "<strong>Stephanie</strong>, he knows, eats whatever.",
 	likely: "Jessica",
 	unlikely: "Stephanie"
-},{
-	item: "music_lesson",
+},
+{
+	item: "teacher_music",
 	prompt: "Sally is having a hard time remembering who her son has for his elementary school teacher.<br>She knows it is either Ms. Smith or Ms. Johnson.",
 	pragmatic: "Sally picks her son up from school.<br>She enters his classroom and he says: ''Mommy, the teacher taught music today.''",
 	literal: "Sally picks her son up from school.<br>She enters his classroom and sees the day's schedule; it read that the teacher taught music today.",
@@ -55,7 +56,7 @@ var stimuli = [
 	unlikely: "Maya"
 },
 {
-	item: "tutor",
+	item: "tutor_homework",
 	prompt: "Molly is having a hard time remembering which student her officemate, Jenna, is tutoring.<br>She knows it is either Tom or Jim.",
 	pragmatic: "In their office Jenna says to Molly, 'My student turned in his homework on time today.'",
 	literal: "In their office, Molly notices some papers on Jenna's desk.<br>Jenna's student turned in his homework on time today.",
