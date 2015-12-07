@@ -35,6 +35,13 @@
     padding-right: 150px
 }
 
+.checkboxes{
+    align:left;
+    text-align: left;
+    padding-left: 150px;
+/*    padding-right: 150px
+*/}
+
 
 .err{
 	color: red;

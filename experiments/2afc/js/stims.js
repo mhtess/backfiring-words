@@ -42,17 +42,17 @@ var stimuli = [
 // },
 {
 	item: "roommate_dishes",
-	prompt: "Matt is having a hard time remembering who his friend Gabe's roommate is.<br>He knows it is either Jack or Dave.",
-	pragmatic: "Gabe and Matt are having lunch at Gabe's apartment.<br>Gabe says to Matt, 'My roommate washed his dishes today.'",
-	literal: "Gabe and Matt are having lunch at Gabe's apartment.<br>Matt notices that the roommate has washed his dishes today.",
-	question: "Who is Gabe's roommate?",
+	prompt: "Matt is having a hard time remembering who his friend Sophia's roommate is.<br>He knows it is either Alicia or Maya.",
+	pragmatic: "Sophia and Matt are having lunch at Sophia's apartment.<br>Sophia says to Matt, 'My roommate washed her dishes today.'",
+	literal: "Sophia and Matt are having lunch at Sophia's apartment.<br>Matt notices that the roommate has washed her dishes today.",
+	question: "Who is Sophia's roommate?",
 	frequency: {
-		high: "<strong>Jack</strong>, he knows, always washes his dishes.",
-		medium: "<strong>Jack</strong>, he knows, almost always washes his dishes."	
+		high: "<strong>Alicia</strong>, he knows, always washes her dishes.",
+		medium: "<strong>Alicia</strong>, he knows, almost always washes her dishes."	
 	},
-	foil: "<strong>Dave</strong>, he knows, only occasionally washes his dishes.",
-	likely: "Jack",
-	unlikely: "Dave"
+	foil: "<strong>Maya</strong>, he knows, only occasionally washes her dishes.",
+	likely: "Alicia",
+	unlikely: "Maya"
 },
 {
 	item: "tutor",

@@ -1,3 +1,17 @@
+function arraysEqual(a, b) {
+  if (a === b) return true;
+  if (a == null || b == null) return false;
+  if (a.length != b.length) return false;
+
+  // If you don't care about the order of the elements inside
+  // the array, you should sort both arrays here.
+
+  for (var i = 0; i < a.length; ++i) {
+    if (a[i] !== b[i]) return false;
+  }
+  return true;
+}
+
 function make_slides(f) {
   var slides = {};
 
@@ -69,10 +83,20 @@ function make_slides(f) {
 
     log_responses : function(keyCode) {
       var response = _.invert(exp.judgeButtons)[exp.buttonCodes[keyCode]]
+      var person = response == "likely-key" ? this.stim.likely : this.stim.unlikely
 
       exp.data_trials.push({
         "trial_type" : "truthJudge",
+        "item": this.stim.item,
+        "condition": this.stim.condition,
+        "question": this.stim.question,
+        "prompt":this.stim.prompt,
         "response" : response,
+        "likely_person":this.stim.likely,
+        "unlikely_person": this.stim.unlikely,
+        "person": person,
+        "likely_info":this.stim.frequency.high,
+        "unlikely_info":this.stim.foil,
         "rt":_s.rt,
       });
     }
@@ -86,7 +110,11 @@ function make_slides(f) {
 
      },
     button : function() {
-      if (!($("input:radio[name=catch]").is(":checked"))) {
+     var responses = ["veg","vacuums","music","dishes","twojobs","attendance","homework"].filter(
+        function(x){
+          return $("input:checkbox[name="+x+"]").is(":checked")
+      })
+      if (responses.length != 4) {
         $(".err").show();
       } else {
         this.rt = Date.now() - this.startTime;
@@ -94,14 +122,24 @@ function make_slides(f) {
         exp.go();
       }
     },
+
     log_responses : function() {
-      var response = $("input:radio[name=catch]:checked").val()
+    
+     var responses = ["veg","vacuums","music","dishes","twojobs","attendance","homework"].filter(
+        function(x){
+          return $("input:checkbox[name="+x+"]").is(":checked")
+      })
+
       exp.catch_trials.push({
         "trial_type" : "catch",
-        "response" : response,
-        "pass": response == exp.judgeButtons["disagree-key"] ? 1 : 0,
+        "response1":responses[0],
+        "response2":responses[1],
+        "response3":responses[2],
+        "response4":responses[3],
+        "pass": arraysEqual(responses, ["veg","music","dishes","homework"]),
         "rt":this.rt
       });
+
     }
   });
 
@@ -171,7 +209,7 @@ function init() {
       screenUW: exp.width
     };
   //blocks of the experiment:
-   exp.structure=["i0", "instructions","truthJudge",'subj_info', 'thanks'];
+   exp.structure=["i0", "instructions","truthJudge","check",'subj_info', 'thanks'];
  
   exp.data_trials = [];
   //make corresponding slides:
