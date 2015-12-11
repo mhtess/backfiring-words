@@ -118,4 +118,18 @@ var stimuli = [
 	speakermanipulation: "When Barbara's husband comes home from his errands, he asks her if she can help him fill out an evaluation form for the mechanic since his hands are dirty.  Barbara begins to ask the questions.  She asks, 'Did the mechanic do the oil change in under fifteen minutes today?'  Her husband replies, 'Yes, the mechanic did the oil change in under fifteen minutes today.'"
 //THE QUESTION ON THIS FORM ACTUALLY IMPLIES THAT THE MECHANIC SHOULD HAVE DONE THIS... NOT SURE IF THAT'S OK
 },
+{
+	item: "doctor_writing",
+	prompt: "Rebecca is having a hard time remembering who her friend Jennifer's doctor is.<br>She knows it is either Dr. Smith or Dr. Jones.",
+	pragmatic: "When Jennifer comes back from her doctor's appointment, she says to Rebecca, 'My doctor wrote legibly today.'",
+	literal: "When Jennifer comes back from her doctor's appointment, she takes out her prescription and leaves it on the table.  Rebecca looks at the handwriting on the prescription.<br>Jennifer's doctor wrote legibly today.",
+	frequency: {
+		high: "<strong>Dr. Smith</strong>, she knows, always writes legibly.",
+	//	medium: "<strong>Tom</strong>, she knows, almost always turns in his homework on time."	
+	},
+	foil: "<strong>Dr. Jones</strong>, she knows, only occasionally writes legibly.",
+	likely: "Dr. Smith",
+	unlikely: "Dr. Jones",
+	speakermanipulation: "When Jennifer comes back from her doctor's appointment, she asks Rebecca if she can help her fill out an on-line review of the doctor since her hand is in a bandage.  Rebecca reads the questions out loud to Jennifer.  She asks, 'Did the doctor write legibly?'  Rebecca replies, 'Yes, my doctor wrote legibly today.'"
+},
 ]
