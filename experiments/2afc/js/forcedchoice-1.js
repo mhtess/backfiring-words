@@ -45,10 +45,10 @@ function make_slides(f) {
       this.startTime = Date.now();
 
       this.stim = stim 
-
+      console.log(stim.condition)
       $(".prompt").html(stim.prompt)
       $(".alternatives").html(stim.frequency.high + " <br> " + stim.foil)
-      $(".evidence").html(stim[stim.condition])
+      stim.condition !="prior" ?  $(".evidence").html(stim[stim.condition]) : $(".evidence").html("")
       $(".question").html(stim.question)
 
       // this.stim.description = description
@@ -192,7 +192,13 @@ function init() {
   exp.judgeButtons = _.object(_.zip(["likely-key","unlikely-key"],
                             _.shuffle(["P","Q"])));
 
-  var conditions =  _.shuffle(_.flatten([utils.fillArray("pragmatic", stimuli.length/2), utils.fillArray("literal", stimuli.length/2)]))
+  var allConditions = ["pragmatic2","literal","prior","speakermanipulation2"]
+
+  var conditions = _.shuffle(_.flatten(_.map(allConditions, function(c){
+    return utils.fillArray(c, stimuli.length/allConditions.length)
+  })))
+  // debugger;
+  // var conditions =  _.shuffle(_.flatten([utils.fillArray("pragmatic", stimuli.length/2), utils.fillArray("literal", stimuli.length/2)]))
 
   exp.stims = _.shuffle(_.map(_.zip(stimuli,conditions), function(s){return _.extend(s[0], {"condition": s[1]})}))
 
