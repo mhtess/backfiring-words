@@ -42,13 +42,13 @@ var stimuli = [
  	likely: "Professor Burke",
  	unlikely: "Professor Fought",
  	speakermanipulation: "When his daughter comes home after class, she has to fill out a survey for school.  She asks Ed if he can fill it out for her while she puts her things away.  Ed reads out loud the first question on the list, which is, 'Did your professor take attendance today?'  Lauren replies, 'Yes, My professor took attendance today.'",
- 	speakermanipulation2: "When his daughter comes home after class, she has to fill out a survey for school. He asks her, 'Did your professor take attendance?'  Lauren replies, 'Yes. My professor took attendance.'"
+ 	speakermanipulation2: "When his daughter comes home after class, she has to fill out a survey for school. He asks her, 'Did your professor take attendance?'  Lauren replies, 'Yes. My professor took attendance today.'"
  },
 {
 	item: "roommate_dishes",
 	prompt: "Matt is having a hard time remembering who his friend Sophia's roommate is.<br>He knows it is either Alicia or Maya.",
-	pragmatic: "Sophia and Matt are having lunch at Sophia's apartment.<br>Sophia says to Matt, 'My roommate washed her dishes.'",
-	literal: "Sophia and Matt are having lunch at Sophia's apartment. Matt looks around the kitchen area.<br>Sophia's roommate had washed her dishes.",
+	pragmatic: "Sophia and Matt are having lunch at Sophia's apartment.<br>Sophia says to Matt, 'My roommate washed her dishes today.'",
+	literal: "Sophia and Matt are having lunch at Sophia's apartment. Matt looks around the kitchen area.<br>Sophia's roommate had washed her dishes today.",
 	question: "Who is Sophia's roommate?",
 	frequency: {
 		high: "<strong>Alicia</strong>, he knows, always washes her dishes.",
@@ -58,7 +58,7 @@ var stimuli = [
 	likely: "Alicia",
 	unlikely: "Maya",
 	speakermanipulation: "Sophia and Matt are having lunch at Sophia's apartment.  Sophia has a chore chart she needs to fill out for the apartment, so she asks Matt if he can write down information while she prepares some food.  Matt reads out loud the first item on the chart, which concerns washing dishes.  He asks, 'Did your roommate wash her dishes today?'  Sophia replies, 'Yes, my roommate washed her dishes today.'",
-	speakermanipulation2: "Sophia and Matt are having lunch at Sophia's apartment. Matt asks Sophia: 'Did your roommate wash her dishes?'  Sophia replies, 'Yes. My roommate washed her dishes.'"
+	speakermanipulation2: "Sophia and Matt are having lunch at Sophia's apartment. Matt asks Sophia: 'Did your roommate wash her dishes?'  Sophia replies, 'Yes. My roommate washed her dishes today.'"
 },
 {
 	item: "boyfriend_bike",
@@ -74,13 +74,13 @@ var stimuli = [
 	likely: "Erica",
 	unlikely: "Cameron",
 	speakermanipulation: "Melinda and Monica are having lunch one day. Monica has a survey to fill out for the apartment, so she asks Melinda if she can write down her answers while she prepares some food.  Melinda reads out loud items from the survey. One of them asks about bike locking habits. She asks, 'Did your boyfriend lock up his bike today?'  Melinda replies, 'Yes. My boyfriend locked up his bike today.'",
-	speakermanipulation2: "Melinda and Monica are having lunch one day. Monica was describing a recent outing to the farmer's market with her boyfriend. Melinda says to Monica: 'That sounds like fun. Did your boyfriend lock up his bike?'  Monica replies, 'Yes. My boyfriend locked up his bike.'"
+	speakermanipulation2: "Melinda and Monica are having lunch one day. Monica was describing a recent outing to the farmer's market with her boyfriend. Melinda says to Monica: 'That sounds like fun. Did your boyfriend lock up his bike?'  Monica replies, 'Yes. My boyfriend locked up his bike today.'"
 },
 {
 	item: "tutor_homework",
 	prompt: "Molly is having a hard time remembering which student her officemate, Jenna, is tutoring.<br>She knows it is either Tom or Jim.",
-	pragmatic: "In their office Jenna says to Molly, 'My student turned in his homework on time.'",
-	literal: "In their office, Molly notices some papers on Jenna's desk.<br>Jenna's student turned in his homework on time.",
+	pragmatic: "In their office Jenna says to Molly, 'My student turned in his homework on time today.'",
+	literal: "In their office, Molly notices some papers on Jenna's desk.<br>Jenna's student turned in his homework on time today.",
 	question: "Who is Jenna's student?",
 	frequency: {
 		high: "<strong>Tom</strong>, she knows, always turns in his homework on time.",
@@ -90,13 +90,13 @@ var stimuli = [
 	likely: "Tom",
 	unlikely: "Jim",
 	speakermanipulation: "In their office, Jenna asks Molly if she can help her fill out a daily report card for her student while she files away some papers.  Molly reads out loud the first question on the form, which is, 'Did your student turn in their homework on time today?'  Jenna replies, 'Yes, my student turned in his homework on time today.'",
-	speakermanipulation2: "In their office, Molly asks Jenna: 'Did your student turn in their homework on time today?'  Jenna replies, 'Yes. My student turned in his homework on time.'"
+	speakermanipulation2: "In their office, Molly asks Jenna: 'Did your student turn in their homework on time today?'  Jenna replies, 'Yes. My student turned in his homework on time today.'"
 },
 {
 	item: "maid_dusting",
 	prompt: "Henry is having a hard time remembering which cleaning service his friend Phil's maid works for.<br>He knows it is either Maid By Me or Sunflowers Maid Service.",
-	pragmatic: "Henry visits Phil at his apartment. Phil says to Henry, 'My maid dusted the windows.'",
-	literal: "Henry visits Phil at his apartment. He inspects the windows. <br>The maid dusted the windows.",
+	pragmatic: "Henry visits Phil at his apartment. Phil says to Henry, 'My maid dusted the windows today.'",
+	literal: "Henry visits Phil at his apartment. He inspects the windows. <br>The maid dusted the windows today.",
 	question: "What cleaning service does Phil's maid work for?",
 	frequency: {
 		high: "<strong>Maid By Me</strong>, he knows, always dusts the windows.",
@@ -105,14 +105,14 @@ var stimuli = [
 	foil: "<strong>Sunflowers Maid Service</strong>, he knows, only occasionally dusts the windows.",
 	likely: "Maid By Me",
 	unlikely: "Sunflowers Maid Service",
-	speakermanipulation: "Henry visits Phil at his apartment.  Phil asks Henry if he can help him fill out an evaluation of his maid who just cleaned his apartment while he prepares some food.  Henry reads out loud the first question on the form, which is, 'Did your maid dust the windows today?'  Phil replies, 'Yes. My maid dusted the windows.'",
-	speakermanipulation2: "Henry visits Phil at his apartment.  Henry asks Phil: 'Did your maid dust the windows?'  Phil replies, 'Yes. My maid dusted the windows.'"
+	speakermanipulation: "Henry visits Phil at his apartment.  Phil asks Henry if he can help him fill out an evaluation of his maid who just cleaned his apartment while he prepares some food.  Henry reads out loud the first question on the form, which is, 'Did your maid dust the windows today?'  Phil replies, 'Yes. My maid dusted the windows today.'",
+	speakermanipulation2: "Henry visits Phil at his apartment.  Henry asks Phil: 'Did your maid dust the windows?'  Phil replies, 'Yes. My maid dusted the windows today.'"
 },
 {
 	item: "secretary_report",
 	prompt: "Brian is having a hard time remembering who his friend Michael's new secretary is.<br>He knows it is either Danielle or Erica.",
-	pragmatic: "Brian meets up with Michael at Michael's office to get lunch. Michael says to Brian, 'My secretary kept a call log for me.'",
-	literal: "Brian meets up with Michael at Michael's office to get lunch.  Brian looks over at Michael's desk and sees a report left on it.<br>His secretary kept a call log for him.",
+	pragmatic: "Brian meets up with Michael at Michael's office to get lunch. Michael says to Brian, 'My secretary kept a call log for me today.'",
+	literal: "Brian meets up with Michael at Michael's office to get lunch.  Brian looks over at Michael's desk and sees a report left on it.<br>His secretary kept a call log for him today.",
 	question: "Who is Michael's new secretary?",
 	frequency: {
 		high: "<strong>Danielle</strong>, she knows, always keeps a call log.",
@@ -122,14 +122,14 @@ var stimuli = [
 	likely: "Danielle",
 	unlikely: "Erica",
 	speakermanipulation: "Brian meets up with Michael at Michael's office to get lunch.  Before they eat, they decide to fill out a form from the company about the secretaries' performance.  Michael has his hands full, so Brian asks the questions out loud.  He asks, 'Did your secretary keep a call log today?'  Michael replies, 'Yes, my secretary kept a call log today.'",
-	speakermanipulation2: "Brian meets up with Michael at Michael's office. Briana asks Michael: 'Did your secretary keep a call log for you?'  Michael replies, 'Yes. My secretary kept a call log for me.'"
+	speakermanipulation2: "Brian meets up with Michael at Michael's office. Briana asks Michael: 'Did your secretary keep a call log for you?'  Michael replies, 'Yes. My secretary kept a call log for me today.'"
 },
 {
 	item: "mechanic_inspection",
 	prompt: "Barbara is having a hard time remembering who her husband's mechanic is.<br>She knows it is either Joe or Bob.",
-	pragmatic: "When Barbara's husband comes home from his errands, he says to her, 'The mechanic did the oil change in under fifteen minutes.'",
+	pragmatic: "When Barbara's husband comes home from his errands, he says to her, 'The mechanic did the oil change in under fifteen minutes today.'",
 	// literal: "When Barbara's husband comes home from his errands, she sees the receipt from his mechanic.<br>The mechanic did the oil change in under fifteen minutes today.",
-	literal: "Barbara picks up her husband's car from the mechanic this afternoon. The mechanic did the oil change in under fifteen minutes.",
+	literal: "Barbara picks up her husband's car from the mechanic this afternoon. The mechanic did the oil change in under fifteen minutes today.",
 	question: "Who is Barbara's husband's mechanic?",
 	frequency: {
 		high: "<strong>Joe</strong>, she knows, always does oil changes in under fifteen minutes.",
@@ -138,14 +138,15 @@ var stimuli = [
 	foil: "<strong>Bob</strong>, she knows, only occasionally does oil changes in under fifteen minutes.",
 	likely: "Joe",
 	unlikely: "Bob",
-	speakermanipulation: "When Barbara's husband comes home from his errands, he asks her if she can help him fill out an evaluation form for the mechanic since his hands are dirty.  Barbara begins to ask the questions.  She asks, 'Did the mechanic do the oil change in under fifteen minutes today?'  Her husband replies, 'Yes, the mechanic did the oil change in under fifteen minutes.'",
-	speakermanipulation2: "When Barbara's husband comes home from his errands, she asks him: 'Did the mechanic do the oil change in under fifteen minutes?'  Her husband replies, 'Yes. The mechanic did the oil change in under fifteen minutes.'"
+	speakermanipulation: "When Barbara's husband comes home from his errands, he asks her if she can help him fill out an evaluation form for the mechanic since his hands are dirty.  Barbara begins to ask the questions.  She asks, 'Did the mechanic do the oil change in under fifteen minutes today?'  Her husband replies, 'Yes, the mechanic did the oil change in under fifteen minutes today.'",
+	speakermanipulation2: "When Barbara's husband comes home from his errands, she asks him: 'Did the mechanic do the oil change in under fifteen minutes?'  Her husband replies, 'Yes. The mechanic did the oil change in under fifteen minutes today.'"
 //THE QUESTION ON THIS FORM ACTUALLY IMPLIES THAT THE MECHANIC SHOULD HAVE DONE THIS... NOT SURE IF THAT'S OK
+// possible solution: Make the questionnaire be from a third-party organization of mechanics (so, an interested party, but not necessarily expected)
 },
 {
 	item: "doctor_writing",
 	prompt: "Rebecca is having a hard time remembering who her friend Jennifer's doctor is.<br>She knows it is either Dr. Smith or Dr. Jones.",
-	pragmatic: "When Jennifer comes back from her doctor's appointment, she says to Rebecca, 'I got a prescription and My doctor wrote legibly.'",
+	pragmatic: "When Jennifer comes back from her doctor's appointment, she says to Rebecca, 'I got a prescription and my doctor wrote legibly today.'",
 	literal: "When Jennifer comes back from her doctor's appointment, she takes out her prescription and leaves it on the table.  Rebecca looks at the handwriting on the prescription.<br>Jennifer's doctor wrote legibly today.",
 	question: "Who is Jennifer's doctor?",
 	frequency: {
@@ -156,13 +157,13 @@ var stimuli = [
 	likely: "Dr. Smith",
 	unlikely: "Dr. Jones",
 	speakermanipulation: "When Jennifer comes back from her doctor's appointment, she asks Rebecca if she can help her fill out an on-line review of the doctor since her hand is in a bandage.  Rebecca reads the questions out loud to Jennifer.  She asks, 'Did the doctor write legibly?'  Rebecca replies, 'Yes, my doctor wrote legibly today.'",
-	speakermanipulation2: "When Jennifer comes back from her doctor's appointment, Rebecca asks her: 'Did the doctor write legibly?'  Rebecca replies, 'Yes. My doctor wrote legibly.'"
+	speakermanipulation2: "When Jennifer comes back from her doctor's appointment, Rebecca asks her: 'Did the doctor write legibly?'  Rebecca replies, 'Yes. My doctor wrote legibly today.'"
 },
 {
 	item: "italian_bread",
 	prompt: "Kim is having a hard time remembering where her roommates were going for dinner tonight.<br>She knows they were going out for Italian, so it is either Italian Garden or Viva Roma, as those are the only Italian restaurants in their town.",
-	pragmatic: "When her rooomates come back from dinner, Kim asks them how their dinner was. One of roommates says to Kim, 'It was great. The restaurant served bread with dinner.'",
-	literal: "When her rooomates come back from dinner, they leave the receipt on the table.  Rebecca looks at the receipt.<br> The restaurant served bread with dinner.",
+	pragmatic: "When her rooomates come back from dinner, Kim asks them how their dinner was. One of roommates says to Kim, 'It was great. The restaurant served bread with dinner today.'",
+	literal: "When her rooomates come back from dinner, they leave the receipt on the table.  Rebecca looks at the receipt.<br> The restaurant served bread with dinner today.",
 	question: "Where did Kim's roommates go for dinner?",
 	frequency: {
 		high: "<strong>Viva Roma</strong>, she knows, always serves bread with dinner."
@@ -170,14 +171,14 @@ var stimuli = [
 	foil: "<strong>Italian Garden</strong>, she knows, only occasionally serves bread with dinner.",
 	likely: "Viva Roma",
 	unlikely: "Italian Garden",
-	speakermanipulation: "When her rooomates come back from dinner, one of them asks Kim if she can help her fill out a survey of the retaurant since the roommate's hand is in a bandage.  Kim reads the questions out loud to her roommate.  She asks, 'Did the restaurant serve bread with dinner?'  The roommate replies, 'Yes. The restaurant served bread with dinner.'",
-	speakermanipulation2: "When her rooomates come back from dinner, Kim asks one of them: 'How was dinner? Did they serve bread with dinner?'  The roommate replies, 'Dinner was great. Yes. The restaurant served bread with dinner.'"
+	speakermanipulation: "When her rooomates come back from dinner, one of them asks Kim if she can help her fill out a survey of the retaurant since the roommate's hand is in a bandage.  Kim reads the questions out loud to her roommate.  She asks, 'Did the restaurant serve bread with dinner?'  The roommate replies, 'Yes. The restaurant served bread with dinner today.'",
+	speakermanipulation2: "When her rooomates come back from dinner, Kim asks one of them: 'How was dinner? Did they serve bread with dinner?'  The roommate replies, 'Dinner was great. Yes. The restaurant served bread with dinner today.'"
 },
 {
 	item: "chinese_fortune",
 	prompt: "Lucas is having a hard time remembering where his roommates were going for dinner tonight.<br>She knows they were going out for Chinese, so it is either Peking Garden or Beijing Cafe, as those are the only Chinese restaurants in their town.",
-	pragmatic: "When his rooomates come back from dinner, Lucas asks them how their dinner was. One of roommates says to Kim, 'It was great. The restaurant gave us fortune cookies.'",
-	literal: "When his rooomates come back from dinner, they leave the receipt on the table.  Lucas looks at the receipt.<br> The restaurant gave them fortune cookies.",
+	pragmatic: "When his rooomates come back from dinner, Lucas asks them how their dinner was. One of roommates says to Kim, 'It was great. The restaurant gave us fortune cookies today.'",
+	literal: "When his rooomates come back from dinner, they leave the receipt on the table.  Lucas looks at the receipt.<br> The restaurant gave them fortune cookies today.",
 	question: "Where did Lucas's roommates go for dinner?",
 	frequency: {
 		high: "<strong>Beijing Cafe</strong>, he knows, always gives out fortune cookies."
@@ -185,7 +186,7 @@ var stimuli = [
 	foil: "<strong>Peking Garden</strong>, she knows, only occasionally gives out fortune cookies.",
 	likely: "Beijing Cafe",
 	unlikely: "Italian Garden",
-	speakermanipulation: "When his rooomates come back from dinner, one of them asks Lucas if he can help her fill out a survey of the retaurant since the roommate's hand is in a bandage.  Lucas reads the questions out loud to her roommate.  He asks, 'Did the restaurant serve fortune cookies?'  The roommate replies, 'Yes. The restaurant served fortune cookies.'",
-	speakermanipulation2: "When his rooomates come back from dinner, Lucas asks one of them: 'How was dinner? Did they give out fortune cookies?'  The roommate replies, 'Dinner was great. Yes. The restaurant served bread with dinner.'"
+	speakermanipulation: "When his rooomates come back from dinner, one of them asks Lucas if he can help her fill out a survey of the retaurant since the roommate's hand is in a bandage.  Lucas reads the questions out loud to her roommate.  He asks, 'Did the restaurant serve fortune cookies?'  The roommate replies, 'Yes. The restaurant served fortune cookies today.'",
+	speakermanipulation2: "When his rooomates come back from dinner, Lucas asks one of them: 'How was dinner? Did they give out fortune cookies?'  The roommate replies, 'Dinner was great. Yes. The restaurant served bread with dinner today.'"
 },
 ]
