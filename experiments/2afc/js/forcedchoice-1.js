@@ -40,8 +40,11 @@ function make_slides(f) {
     name: "truthJudge",
     present : exp.stims,
     //this gets run only at the beginning of the block
-    present_handle : function(stim) {
+    present_handle : function(stim1) {
       // debugger;
+      var stim = stim1[0]
+      // debugger;
+      stim["condition"] = stim1[1]
       this.startTime = Date.now();
 
       this.stim = stim 
@@ -194,13 +197,26 @@ function init() {
 
   var allConditions = ["pragmatic2","literal","prior","speakermanipulation2"]
 
-  var conditions = _.shuffle(_.flatten(_.map(allConditions, function(c){
-    return utils.fillArray(c, stimuli.length/allConditions.length)
-  })))
+  // var conditions = _.shuffle(_.flatten(_.map(allConditions, function(c){
+  //   return utils.fillArray(c, stimuli.length/allConditions.length)
+  // })))
+
+  // var conditions = _.flatten(_.map(allConditions, function(c){
+  //   return utils.fillArray(c, stimuli.length)
+  // }))
+
+  var testSims = _.flatten(_.map(_.shuffle(stimuli), function(s){
+    return _.zip(utils.fillArray(s, 4), allConditions)
+  }), true)
+
   // debugger;
   // var conditions =  _.shuffle(_.flatten([utils.fillArray("pragmatic", stimuli.length/2), utils.fillArray("literal", stimuli.length/2)]))
 
-  exp.stims = _.shuffle(_.map(_.zip(stimuli,conditions), function(s){return _.extend(s[0], {"condition": s[1]})}))
+  // debugger;
+  // exp.stims = _.map(testSims, function(s){return _.extend(s[0], {"condition": s[1]})})
+  exp.stims = _.map(testSims, function(s){return [s[0], s[1]]})
+
+  // exp.stims = _.shuffle(_.map(_.zip(stimuli,conditions), function(s){return _.extend(s[0], {"condition": s[1]})}))
 
   // debugger;
   exp.numTrials = exp.stims.length;
@@ -213,7 +229,8 @@ function init() {
       screenUH: exp.height,
       screenW: screen.width,
       screenUW: exp.width
-    };
+  };
+
   //blocks of the experiment:
    exp.structure=["i0", "instructions","truthJudge","check",'subj_info', 'thanks'];
  
