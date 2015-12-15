@@ -42,6 +42,8 @@ function make_slides(f) {
     //this gets run only at the beginning of the block
     present_handle : function(stim1) {
       // debugger;
+     $(".err").hide();
+     $('input[name="response"]').attr("checked", false);//val()
       var stim = stim1[0]
       // debugger;
       stim["condition"] = stim1[1]
@@ -62,30 +64,49 @@ function make_slides(f) {
       }
 
       _.mapObject(exp.judgeButtons, function(val,key){
+        // $("#"+val+"response").text(keyDictionary[key]);
         $("#"+val+"key-reminder").html(keyDictionary[key]);
       });
 
-      $(document).one("keydown", _s.keyPressHandler);
+      // $(document).one("keydown", _s.keyPressHandler);
+
     },
 
-    keyPressHandler : function(event) {
-      var keyCode = event.which;
-      if (keyCode != 81 && keyCode != 80) {
-        // If a key that we don't care about is pressed, re-attach the handler (see the end of this script for more info)
-        $(document).one("keydown", _s.keyPressHandler);
+    button : function() {
+     var response = $('input[name="response"]:checked').val()
+    if (typeof response == 'undefined') {
+        $(".err").show();
+        console.log("err")
       } else {
-        // If a valid key is pressed (code 80 is p, 81 is q),
-          _s.rt = Date.now() - _s.startTime;
-          _s.log_responses(keyCode);
-          /* use _stream.apply(this); if and only if there is
-          "present" data. (and only *after* responses are logged) */
-         setTimeout(function(){_stream.apply(_s)}, 250);
-      }
+        this.rt = Date.now() - this.startTime;
+        this.log_responses();
+        // exp.go();
+        _stream.apply(this);
 
+      }
     },
 
-    log_responses : function(keyCode) {
-      var response = _.invert(exp.judgeButtons)[exp.buttonCodes[keyCode]]
+    // keyPressHandler : function(event) {
+    //   var keyCode = event.which;
+    //   if (keyCode != 81 && keyCode != 80) {
+    //     // If a key that we don't care about is pressed, re-attach the handler (see the end of this script for more info)
+    //     $(document).one("keydown", _s.keyPressHandler);
+    //   } else {
+    //     // If a valid key is pressed (code 80 is p, 81 is q),
+    //       _s.rt = Date.now() - _s.startTime;
+    //       _s.log_responses(keyCode);
+    //       /* use _stream.apply(this); if and only if there is
+    //       "present" data. (and only *after* responses are logged) */
+    //      setTimeout(function(){_stream.apply(_s)}, 250);
+    //   }
+
+    // },
+    // log_responses : function(keyCode) {
+    log_responses : function() {
+      console.log('log')
+      var response = _.invert(exp.judgeButtons)[$('input[name="response"]:checked').val()]
+
+      // var response = _.invert(exp.judgeButtons)[exp.buttonCodes[keyCode]]
       var person = response == "likely-key" ? this.stim.likely : this.stim.unlikely
 
       exp.data_trials.push({
@@ -100,7 +121,7 @@ function make_slides(f) {
         "person": person,
         "likely_info":this.stim.frequency.high,
         "unlikely_info":this.stim.foil,
-        "rt":_s.rt,
+        "rt":this.rt,
       });
     }
   });
@@ -232,7 +253,7 @@ function init() {
   };
 
   //blocks of the experiment:
-   exp.structure=["i0", "instructions","truthJudge","check",'subj_info', 'thanks'];
+   exp.structure=["truthJudge","i0", "instructions","check",'subj_info', 'thanks'];
  
   exp.data_trials = [];
   //make corresponding slides:

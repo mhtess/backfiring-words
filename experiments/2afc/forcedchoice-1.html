@@ -64,9 +64,16 @@
     <p class="evidence"></p>
     <p class="question"></p>
 
-<!--     <label><input type="radio"  name="response" value="Qkey-reminder"/>{{}}</label>
-    <label><input type="radio"  name="response" value="Pkey-reminder"/>{{}}</label> -->
+    <label><input type="radio" id="Qresponse" name="response" value="Q"/><span id='Qkey-reminder'>{{}}</span> </label>
+    <label><input type="radio"  id="Presponse" name="response" value="P"/><span id='Pkey-reminder'>{{}}</span> </label>
 
+
+    <br>
+      <button onclick="_s.button()">Continue</button>
+    <p class="err">Please select a response.</p>
+    </br>
+
+<!-- 
     <div id='reminders'>
         <div id='q-reminder'> 
           <span class="reminder-key">Q</span> <br> <br><span id='Qkey-reminder'>{{}}</span> 
@@ -74,7 +81,7 @@
         <div id='p-reminder'>
           <span class="reminder-key">P</span><br><br> <span id='Pkey-reminder'>{{}}</span>
         </div>
-    </div>
+    </div> -->
 
 
   </div>
