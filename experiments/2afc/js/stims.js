@@ -181,17 +181,17 @@ var stimuli = [
 },
 {
 	item: "latte_art",
-	prompt: "X is having a hard time remembering where her brother goes for coffee.<br>She knows it is either Cafe Vita or Eppie Coffee.",
-	pragmatic: "Her brother comes back from his daily coffee run. He says to her, <br>'My drink had latte art today.'",
-	literal: "Her brother comes back from his daily coffee run, and leaves his drink on the table. She sees his drink. His drink had latte art today.",
-	question: "Where did Kim's roommates go for dinner?",
+	prompt: "Julia is having a hard time remembering where her brother goes for coffee.<br>She knows it is either Cafe Vita or Epi Coffee.",
+	pragmatic: "Her brother comes back from his daily coffee run. He says to her, <br>'The barista did latte art today.'",
+	literal: "Her brother comes back from his daily coffee run, and leaves his drink on the table. She looks at his drink. The barista did latte art today.",
+	question: "Where does Julia's brother go for coffee?",
 	frequency: {
-		high: "<strong>Eppie Coffee</strong>, she knows, always does latte art."
+		high: "<strong>The baristas at Epi Coffee</strong>, she knows, always do latte art."
 	},
-	foil: "<strong>Cafe Vita</strong>, she knows, only occasionally does latte art.",
-	likely: "Eppie Coffee",
+	foil: "<strong>The baristas at Cafe Vita</strong>, she knows, only occasionally do latte art.",
+	likely: "Epi Coffee",
 	unlikely: "Cafe Vita",
-	speakermanipulation: "Her brother comes back from his daily coffee run. X helps her brother fill out a survey from the United Baristas Union, while he cleans the counter. X reads out loud, 'Did your drink have latte art today?'. Her brother replies, 'Yes. My drink had latte art today.'"
+	speakermanipulation: "Her brother comes back from his daily coffee run. Julia helps him fill out a survey from the United Baristas Union, while he cleans the counter. Julia reads out loud, 'Did the barista do latte art today?'. Her brother replies, 'Yes. The barista did latte art today.'"
 },
 {
 	item: "italian_bread",
