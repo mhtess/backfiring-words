@@ -81,7 +81,7 @@ var stimuli = [
 {
 	item: "boyfriend_bike",
 	prompt: "Laura is having a hard time remembering which one of her guy-friends her friend Monica is dating.<br>She knows it is either Eric or Cameron.",
-	pragmatic2: "Monica went for a bike ride with her boyfriend that morning.  She and Laura meet for lunch afterwards.<br>Monica says to Laura, 'My boyfriend wore a helmet today.'",
+	pragmatic: "Monica went for a bike ride with her boyfriend that morning.  She and Laura meet for lunch afterwards.<br>Monica says to Laura, 'My boyfriend wore a helmet today.'",
 	literal: "Laura and Monica meet for lunch. After lunch, Monica points out a bike: 'Oh look. There's my boyfriend's bike.'<br>Laura sees a helmet sitting on the bike. Monica's boyfriend wore a helmet today.",
 	question: "Who is Monica's boyfriend?",
 	frequency: {
@@ -97,7 +97,7 @@ var stimuli = [
 {
 	item: "tutor_homework",
 	prompt: "Molly is having a hard time remembering which student her officemate, Jenna, is tutoring.<br>She knows it is either Tom or Jim.",
-	pragmatic2: "In their office, Jenna says to Molly, 'My student turned in his homework on time today.'",
+	pragmatic: "In their office, Jenna says to Molly, 'My student turned in his homework on time today.'",
 	literal: "In their office, Molly notices some papers on Jenna's desk.<br>Jenna's student turned in his homework on time today.",
 	question: "Who is Jenna's student?",
 	frequency: {
@@ -113,7 +113,7 @@ var stimuli = [
 {
 	item: "maid_dusting",
 	prompt: "Henry is having a hard time remembering which weekly cleaning service his friend Phil's maid works for.<br>He knows it is either Maid By Me or Sunflowers Maid Service.",
-	pragmatic2: "Henry visits Phil at his apartment. <br>Phil says, 'My maid dusted the windows this week.'",
+	pragmatic: "Henry visits Phil at his apartment. <br>Phil says, 'My maid dusted the windows this week.'",
 	literal: "Henry visits Phil at his apartment. He inspects the windows. <br>The maid dusted the windows this week.",
 	question: "What cleaning service does Phil's maid work for?",
 	frequency: {
@@ -130,7 +130,7 @@ var stimuli = [
 {
 	item: "secretary_report",
 	prompt: "Suzanne manages secretaries and is having a hard time remembering who her friend Michael's new secretary is.<br>She knows it is either Danielle or Erica.",
-	pragmatic2: "Suzanne meets Michael at Michael's office at the end of the day to get dinner. Suzanne asks Michael, 'How was your day today?'<br>Michael says, 'Oh good. My secretary kept a call log for me today.'",
+	pragmatic: "Suzanne meets Michael at Michael's office at the end of the day to get dinner. Suzanne asks Michael, 'How was your day today?'<br>Michael says, 'Oh good. My secretary kept a call log for me today.'",
 	literal: "Suzanne meets Michael at Michael's office at the end of the day to get dinner.  Suzanne looks over at Michael's desk and sees a report left on it.<br>His secretary kept a call log for him today.",
 	question: "Who is Michael's new secretary?",
 	frequency: {
@@ -211,7 +211,7 @@ var stimuli = [
 {
 	item: "chinese_fortune",
 	prompt: "Lucas is having a hard time remembering where his roommates always go for Chinese food.<br>He knows it is either Beijing Cafe or Peking Garden.",
-	pragmatic2: "His rooomates went out for Chinese that night. When they get back, one of them says to him, 'The restaurant gave us fortune cookies today.'",
+	pragmatic: "His rooomates went out for Chinese that night. When they get back, one of them says to him, 'The restaurant gave us fortune cookies today.'",
 	literal: "His rooomates went out for Chinese that night. When they get back, they leave the receipt on the table.  Lucas looks at the receipt.<br> The restaurant gave them fortune cookies today.",
 	question: "Where did Lucas's roommates always go for Chinese food?",
 	frequency: {
@@ -227,7 +227,7 @@ var stimuli = [
 //MHT
 	item: "carwash_wheels",
 	prompt: "Lucas is having a hard time remembering where his roommates always go for Chinese food.<br>He knows it is either Beijing Cafe or Peking Garden.",
-	pragmatic2: "His rooomates went out for Chinese that night. When they get back, one of them says to him, 'The restaurant gave us fortune cookies today.'",
+	pragmatic: "His rooomates went out for Chinese that night. When they get back, one of them says to him, 'The restaurant gave us fortune cookies today.'",
 	literal: "His rooomates went out for Chinese that night. When they get back, they leave the receipt on the table.  Lucas looks at the receipt.<br> The restaurant gave them fortune cookies today.",
 	question: "Where did Lucas's roommates always go for Chinese food?",
 	frequency: {
@@ -243,7 +243,7 @@ var stimuli = [
 	// EC
 	item: "gym_towels",
 	prompt: "Lucas is having a hard time remembering where his roommates always go for Chinese food.<br>He knows it is either Beijing Cafe or Peking Garden.",
-	pragmatic2: "His rooomates went out for Chinese that night. When they get back, one of them says to him, 'The restaurant gave us fortune cookies today.'",
+	pragmatic: "His rooomates went out for Chinese that night. When they get back, one of them says to him, 'The restaurant gave us fortune cookies today.'",
 	literal: "His rooomates went out for Chinese that night. When they get back, they leave the receipt on the table.  Lucas looks at the receipt.<br> The restaurant gave them fortune cookies today.",
 	question: "Where did Lucas's roommates always go for Chinese food?",
 	frequency: {
@@ -259,7 +259,7 @@ var stimuli = [
 //MHT
 	item: "library_wifi",
 	prompt: "Lucas is having a hard time remembering where his roommates always go for Chinese food.<br>He knows it is either Beijing Cafe or Peking Garden.",
-	pragmatic2: "His rooomates went out for Chinese that night. When they get back, one of them says to him, 'The restaurant gave us fortune cookies today.'",
+	pragmatic: "His rooomates went out for Chinese that night. When they get back, one of them says to him, 'The restaurant gave us fortune cookies today.'",
 	literal: "His rooomates went out for Chinese that night. When they get back, they leave the receipt on the table.  Lucas looks at the receipt.<br> The restaurant gave them fortune cookies today.",
 	question: "Where did Lucas's roommates always go for Chinese food?",
 	frequency: {
@@ -275,7 +275,7 @@ var stimuli = [
 	// EC
 	item: "artstore_carries",
 	prompt: "Lucas is having a hard time remembering where his roommates always go for Chinese food.<br>He knows it is either Beijing Cafe or Peking Garden.",
-	pragmatic2: "His rooomates went out for Chinese that night. When they get back, one of them says to him, 'The restaurant gave us fortune cookies today.'",
+	pragmatic: "His rooomates went out for Chinese that night. When they get back, one of them says to him, 'The restaurant gave us fortune cookies today.'",
 	literal: "His rooomates went out for Chinese that night. When they get back, they leave the receipt on the table.  Lucas looks at the receipt.<br> The restaurant gave them fortune cookies today.",
 	question: "Where did Lucas's roommates always go for Chinese food?",
 	frequency: {

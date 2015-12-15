@@ -195,7 +195,7 @@ function init() {
   exp.judgeButtons = _.object(_.zip(["likely-key","unlikely-key"],
                             _.shuffle(["P","Q"])));
 
-  var allConditions = ["pragmatic2","literal","prior","speakermanipulation2"]
+  var allConditions = ["pragmatic","literal","prior","speakermanipulation"]
 
   // var conditions = _.shuffle(_.flatten(_.map(allConditions, function(c){
   //   return utils.fillArray(c, stimuli.length/allConditions.length)
