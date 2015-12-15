@@ -42,8 +42,8 @@ function make_slides(f) {
     //this gets run only at the beginning of the block
     present_handle : function(stim1) {
       // debugger;
-     $(".err").hide();
-     $('input[name="response"]').attr("checked", false);//val()
+       $(".err").hide();
+       $('input[name="response"]').attr("checked", false);//val()
       var stim = stim1[0]
       // debugger;
       stim["condition"] = stim1[1]
@@ -68,15 +68,23 @@ function make_slides(f) {
         $("#"+val+"key-reminder").html(keyDictionary[key]);
       });
 
+      this.init_sliders();
+      exp.sliderPost = null; //erase current slider value
       // $(document).one("keydown", _s.keyPressHandler);
 
     },
 
+    init_sliders : function() {
+      utils.make_slider("#single_slider", function(event, ui) {
+        exp.sliderPost = ui.value;
+      });
+    },
+
     button : function() {
      var response = $('input[name="response"]:checked').val()
-    if (typeof response == 'undefined') {
+    if ( (typeof response == 'undefined') ||  (exp.sliderPost == null)  ){
         $(".err").show();
-        console.log("err")
+        // console.log("err")
       } else {
         this.rt = Date.now() - this.startTime;
         this.log_responses();
@@ -103,9 +111,8 @@ function make_slides(f) {
     // },
     // log_responses : function(keyCode) {
     log_responses : function() {
-      console.log('log')
+      // console.log('log')
       var response = _.invert(exp.judgeButtons)[$('input[name="response"]:checked').val()]
-
       // var response = _.invert(exp.judgeButtons)[exp.buttonCodes[keyCode]]
       var person = response == "likely-key" ? this.stim.likely : this.stim.unlikely
 
@@ -116,6 +123,7 @@ function make_slides(f) {
         "question": this.stim.question,
         "prompt":this.stim.prompt,
         "response" : response,
+        "confidence": exp.sliderPost,
         "likely_person":this.stim.likely,
         "unlikely_person": this.stim.unlikely,
         "person": person,
