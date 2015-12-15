@@ -242,8 +242,8 @@ var stimuli = [
 	// EC
 	item: "gym_towels",
 	prompt: "Katie is having a hard time remembering which gym her friend Vanessa always goes to.<br>She knows it is either Pump Gym or Core Fitness.",
-	pragmatic: "Vanessa went to the gym yesterday morning. When she gets back, she says to Katie, 'The gym had clean towels today.'",
-	literal: "Vanessa went to the gym yesterday morning. When she gets back, she leaves her gym bag on the table.  Katie looks inside the bag and sees a white towel.<br> The gym had clean towels today.",
+	pragmatic: "Vanessa goes to the gym in the morning. When she gets back, she says to Katie, 'The gym had clean towels today.'",
+	literal: "Vanessa goes to the gym in the morning. When she gets back, she leaves her gym bag on the table.  Katie looks inside the bag and sees a white towel.<br> The gym had clean towels today.",
 	question: "Which gym does Vanessa always go to?",
 	frequency: {
 		high: "<strong>Pump Gym</strong>, she knows, always has clean towels."
@@ -251,15 +251,15 @@ var stimuli = [
 	foil: "<strong>Core Fitness</strong>, she knows, only occasionally has clean towels.",
 	likely: "Pump Gym",
 	unlikely: "Core Fitness",
-	speakermanipulation: "Vanessa went to the gym yesterday morning. When Vanessa gets back, Katie helps her fill out a questionnaire from Fitness Centers of America, while she puts her gym things away. Katie reads out loud, 'Did the gym have clean towels today?'  Vanessa replies, 'Yes. The gym had clean towels today.'",
+	speakermanipulation: "Vanessa goes to the gym in the morning. When she gets back, Katie helps her fill out a questionnaire from Fitness Centers of America, while Vanessa puts her gym clothes away. Katie reads out loud, 'Did the gym have clean towels today?'  Vanessa replies, 'Yes. The gym had clean towels today.'",
 	speakermanipulation2: "When his rooomates come back from dinner, Lucas asks one of them: 'How was dinner? Did they give out fortune cookies?' <br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
 },
 {
 //MHT
 	item: "library_wifi",
 	prompt: "Claire is having a hard time remembering which library her uncle always goes to.<br>She knows it is either Rolling Springs or Misty Meadows Public Library.",
-	pragmatic: "Claire's uncle returns home from the library. He says to her, 'The library's wifi was working today.'",
-	literal: "Claire's uncle returns home from the library. She notices an online forum that her uncle printed out. The library's wifi was working today.",
+	pragmatic: "Claire's uncle returns home from the library. He says to her, 'The library's wifi worked today.'",
+	literal: "Claire's uncle returns home from the library. She notices an online forum that her uncle printed out. The library's wifi worked today.",
 	question: "Which library does Claire's uncle always go to?",
 	frequency: {
 		high: "<strong>Misty Meadows/strong>, she knows, always has wifi working."
@@ -267,14 +267,14 @@ var stimuli = [
 	foil: "<strong>Rolling Springs</strong>, she knows, only occasionally has wifi working.",
 	likely: "Misty Meadows",
 	unlikely: "Rolling Springs",
-	speakermanipulation: "Claire's uncle returns home from the library. As her uncle is making a snack, Claire helps him fill out a survey from the American Academy of Public Libraries. Claire reads out loud, 'Was the library's wifi working today?' Her uncle replies, 'Yes. The library's wifi was working today.'"
+	speakermanipulation: "Claire's uncle returns home from the library. Claire helps him fill out a survey from the American Academy of Public Libraries, while he makes a snack. Claire reads out loud, 'Did the library's wifi work today?' Her uncle replies, 'Yes. The library's wifi worked today.'"
 },
 {
 	// EC
 	item: "artstore_carries",
 	prompt: "Mark is having a hard time remembering which art supplies store his roommates always go to.<br>He knows it is either Kraft Arts or the Expression Studio.",
-	pragmatic: "His rooomates went out to buy new paints yesterday. When they get back, one of them says to him, 'The store had oil paints in stock today.'",
-	literal: "His rooomates went out to buy new paints yesterday. When they get back, they leave the receipt on the table.  Mark looks at the receipt.<br> The store had oil paints in stock today.",
+	pragmatic: "His rooomates go out to buy new paints in the afternoon. When they get back, one of them says to him, 'The store had oil paints in stock today.'",
+	literal: "His rooomates go out to buy new paints in the afternoon. When they get back, they leave the receipt on the table.  Mark looks at the receipt.<br> The store had oil paints in stock today.",
 	question: "Which art supplies store do Mark's friends always go to?",
 	frequency: {
 		high: "<strong>Kraft Arts</strong>, he knows, always has oil paints in stock."
@@ -282,7 +282,7 @@ var stimuli = [
 	foil: "<strong>Expression Studio</strong>, he knows, only occasionally has oil paints in stock.",
 	likely: "Kraft Arts",
 	unlikely: "Expression Studio",
-	speakermanipulation: "His rooomates went out to buy new paints yesterday. When they get back, Mark helps them fill out a questionnaire from the National Society of Artist Materials, while they put their purchases away. Mark reads out loud, 'Did the store have oil paints in stock today?'  One roommate replies, 'Yes. The store had oil paints in stock today.'",
+	speakermanipulation: "His rooomates go out to buy new paints in the afternoon. When they get back, Mark helps them fill out a questionnaire from the National Society of Artist Materials, while they put their purchases away. Mark reads out loud, 'Did the store have oil paints in stock today?'  One roommate replies, 'Yes. The store had oil paints in stock today.'",
 	speakermanipulation2: "When his rooomates come back from dinner, Lucas asks one of them: 'How was dinner? Did they give out fortune cookies?' <br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
 }
 ]
