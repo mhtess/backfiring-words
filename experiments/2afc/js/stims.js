@@ -81,7 +81,7 @@ var stimuli = [
 {
 	item: "boyfriend_bike",
 	prompt: "Laura is having a hard time remembering which one of her guy-friends her friend Monica is dating.<br>She knows it is either Eric or Cameron.",
-	pragmatic: "Monica went for a bike ride with her boyfriend that morning.  She and Laura meet for lunch afterwards.<br>Monica says to Laura, 'My boyfriend wore a helmet today.'",
+	pragmatic: "Monica goes for a bike ride with her boyfriend in the morning.  After the bike ride, she and Laura meet for lunch.<br>Monica says to Laura, 'My boyfriend wore a helmet today.'",
 	literal: "Laura and Monica meet for lunch. After lunch, Monica points out a bike: 'Oh look. There's my boyfriend's bike.'<br>Laura sees a helmet sitting on the bike. Monica's boyfriend wore a helmet today.",
 	question: "Who is Monica's boyfriend?",
 	frequency: {
@@ -91,7 +91,7 @@ var stimuli = [
 	foil: "<strong>Cameron</strong>, she knows, only occasionally wears a helmet.",
 	likely: "Eric",
 	unlikely: "Cameron",
-	speakermanipulation: "Laura and Monica are having lunch at Sophia's apartment. Laura is helping Monica fill out a bike safety survey for their city, while Monica chops some vegetables.  Laura reads out loud, 'Did your boyfriend wear a helmet today?'  Monica replies, 'Yes, my boyfriend wore a helmet today.'",
+	speakermanipulation: "Laura and Monica are having lunch at Monica's apartment. Laura is helping Monica fill out a bike safety survey for their city, while Monica chops some vegetables.  Laura reads out loud, 'Did your boyfriend wear a helmet today?'  Monica replies, 'Yes, my boyfriend wore a helmet today.'",
 	speakermanipulation2: "Laura and Monica are having lunch after Monica had gone for a bike ride that morning.<br>Laura asks Monica, 'How was the bike ride? Were your boyfriend's tires well inflated?'<br>Monica says, 'Oh good, and yes. My boyfriend's bike tires were well inflated.'"
 },
 {
@@ -107,7 +107,7 @@ var stimuli = [
 	foil: "<strong>Jim</strong>, she knows, only occasionally turns in his homework on time.",
 	likely: "Tom",
 	unlikely: "Jim",
-	speakermanipulation: "In their office, Molly helps Jenna fill out a daily report card for her student while Jenna files away some papers.  Molly reads out loud, 'Did your student turn in their homework on time today?'  Jenna replies, 'Yes, my student turned in his homework on time today.'",
+	speakermanipulation: "In their office, Molly helps Jenna fill out a daily report card for her student, while Jenna files away some papers.  Molly reads out loud, 'Did your student turn in his homework on time today?'  Jenna replies, 'Yes, my student turned in his homework on time today.'",
 	speakermanipulation2: "In their office, Molly asks Jenna: 'How is tutoring going? Did your student turn in their homework on time today?' <br>Jenna replies, 'Oh good, and yes. My student turned in his homework on time today.'"
 },
 {
@@ -124,7 +124,7 @@ var stimuli = [
 	likely: "Maid By Me",
 	unlikely: "Sunflowers Maid Service",
 	// speakermanipulation: "Henry visits Phil at his apartment.  Phil asks Henry if he can help him fill out an evaluation of his maid who just cleaned his apartment while he prepares some food.  Henry reads out loud the first question on the form, which is, 'Did your maid dust the windows today?'  Phil replies, 'Yes. My maid dusted the windows today.'",
-	speakermanipulation: "Henry visits Phil at his apartment.  Henry is helping Phil fill out a survey for the city's union of maid services, while Phil makes a snack. Henry reads out loud, 'Did your maid dust the windows this week?'<br> Phil replies, 'Yes. My maid dusted the windows this week.'"
+	speakermanipulation: "Henry visits Phil at his apartment.  Henry helps Phil fill out a survey for the city's union of maid services, while Phil makes a snack. Henry reads out loud, 'Did your maid dust the windows this week?'<br> Phil replies, 'Yes. My maid dusted the windows this week.'"
 	// speakermanipulation: "X and Y meet up at Y's apartment to play basketball. <br>X is helping Y fill out a survey for the city union of c census, while X gets ready.  Y reads out loud, 'Did your tenant pay his rent on time this month?'  X replies, 'Yes, my tenant paid his rent on time this month.'",
 },
 {
