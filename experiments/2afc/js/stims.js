@@ -226,18 +226,17 @@ var stimuli = [
 {
 //MHT
 	item: "carwash_wheels",
-	prompt: "Lucas is having a hard time remembering where his roommates always go for Chinese food.<br>He knows it is either Beijing Cafe or Peking Garden.",
-	pragmatic: "His rooomates went out for Chinese that night. When they get back, one of them says to him, 'The restaurant gave us fortune cookies today.'",
-	literal: "His rooomates went out for Chinese that night. When they get back, they leave the receipt on the table.  Lucas looks at the receipt.<br> The restaurant gave them fortune cookies today.",
-	question: "Where did Lucas's roommates always go for Chinese food?",
+	prompt: "Gerard is having a hard time remembering where his friend goes for a car wash every Friday morning.<br>He knows it is either Final Touch Car Wash or Magic Hands Car Wash.",
+	pragmatic: "Gerard runs into his friend at the supermarket on Friday. His friend says, 'The car wash washed my tires this week.'",
+	literal: "Gerard sees his friend's car Friday afternoon. The car wash washed his tires that week.",
+	question: "Where does Gerard's friend go for a wash car every Friday morning?",
 	frequency: {
-		high: "<strong>Beijing Cafe</strong>, he knows, always gives out fortune cookies."
+		high: "<strong>Final Touch</strong>, he knows, always washes the tires."
 	},
-	foil: "<strong>Peking Garden</strong>, he knows, only occasionally gives out fortune cookies.",
-	likely: "Beijing Cafe",
-	unlikely: "Italian Garden",
-	speakermanipulation: "His rooomates went out for Chinese that night. When they get back, Lucas helps them fill out a survey from the Society of Chinese Restaurants. Lucas reads out loud, 'Did the restaurant give you fortune cookies today?'  The roommate replies, 'Yes. The restaurant gave us fortune cookies today.'",
-	speakermanipulation2: "When his rooomates come back from dinner, Lucas asks one of them: 'How was dinner? Did they give out fortune cookies?' <br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
+	foil: "<strong>Magic Hands</strong>, he knows, only occasionally washes the tires.",
+	likely: "Final Touch",
+	unlikely: "Magic Hands",
+	speakermanipulation: "Gerard runs into his friend at the supermarket on Friday. As his friend is bagging groceries, Gerard helps his friend fill out a survey from the National Union of Car Washers. Gerards reads out loud, 'Did the car wash wash your tires this week?'  The friend replies, 'Yes. The car wash washed my tires this week.'",
 },
 {
 	// EC
@@ -258,18 +257,17 @@ var stimuli = [
 {
 //MHT
 	item: "library_wifi",
-	prompt: "Lucas is having a hard time remembering where his roommates always go for Chinese food.<br>He knows it is either Beijing Cafe or Peking Garden.",
-	pragmatic: "His rooomates went out for Chinese that night. When they get back, one of them says to him, 'The restaurant gave us fortune cookies today.'",
-	literal: "His rooomates went out for Chinese that night. When they get back, they leave the receipt on the table.  Lucas looks at the receipt.<br> The restaurant gave them fortune cookies today.",
-	question: "Where did Lucas's roommates always go for Chinese food?",
+	prompt: "Claire is having a hard time remembering which library her uncle always goes to.<br>She knows it is either Rolling Springs or Misty Meadows Public Library.",
+	pragmatic: "Claire's uncle returns home from the library. He says to her, 'The library's wifi was working today.'",
+	literal: "Claire's uncle returns home from the library. She notices an online forum that her uncle printed out. The library's wifi was working today.",
+	question: "Which library does Claire's uncle always go to?",
 	frequency: {
-		high: "<strong>Beijing Cafe</strong>, he knows, always gives out fortune cookies."
+		high: "<strong>Misty Meadows/strong>, she knows, always has wifi working."
 	},
-	foil: "<strong>Peking Garden</strong>, he knows, only occasionally gives out fortune cookies.",
-	likely: "Beijing Cafe",
-	unlikely: "Italian Garden",
-	speakermanipulation: "His rooomates went out for Chinese that night. When they get back, Lucas helps them fill out a survey from the Society of Chinese Restaurants. Lucas reads out loud, 'Did the restaurant give you fortune cookies today?'  The roommate replies, 'Yes. The restaurant gave us fortune cookies today.'",
-	speakermanipulation2: "When his rooomates come back from dinner, Lucas asks one of them: 'How was dinner? Did they give out fortune cookies?' <br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
+	foil: "<strong>Rolling Springs</strong>, she knows, only occasionally has wifi working.",
+	likely: "Misty Meadows",
+	unlikely: "Rolling Springs",
+	speakermanipulation: "Claire's uncle returns home from the library. As her uncle is making a snack, Claire helps him fill out a survey from the American Academy of Public Libraries. Claire reads out loud, 'Was the library's wifi working today?' Her uncle replies, 'Yes. The library's wifi was working today.'"
 },
 {
 	// EC
