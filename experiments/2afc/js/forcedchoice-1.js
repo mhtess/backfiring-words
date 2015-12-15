@@ -264,7 +264,7 @@ function init() {
   };
 
   //blocks of the experiment:
-   exp.structure=["i0", "instructions","truthJudge","check",'subj_info', 'thanks'];
+   exp.structure=["i0", "instructions","truthJudge",'subj_info', 'thanks'];
  
   exp.data_trials = [];
   //make corresponding slides:
