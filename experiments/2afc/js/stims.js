@@ -30,19 +30,19 @@ var stimuli = [
 },
 {
 	item: "teacher_music",
-	prompt: "Sally is having a hard time remembering who her nephew Billy -- her sister Bethany's son --- has for his elementary school teacher.<br>She knows it is either Ms. Smith or Ms. Johnson.",
-	pragmatic: "Sally and Bethany meet for tea after Bethany is done dropping off her son at home.<br>Bethany enters the tea shop and says to Sally: ''Sally, the teacher taught music today.''",
+	prompt: "Sally is having a hard time remembering who her nephew Billy -- her sister Bethany's son --- has for his elementary school teacher.<br>She knows it is either Ms. Clancy or Ms. Johnson.",
+	pragmatic: "Sally and Bethany meet for tea after Bethany is done dropping off her son at home.<br>Bethany says to Sally: 'The teacher taught music today.'",
 	pragmatic2: "Sally and Bethany meet for tea after Bethany is done dropping off her son at home.<br>Sally asks Bethany, 'How was Billy's day at school?' Bethany says, 'Oh good. The teacher taught music today.''",
-	literal: "Sally picks her nephew up from school today.<br>She enters his classroom and sees the day's schedule; it read that the teacher taught music today.",
+	literal: "Sally picks her nephew up from school today.<br>She enters his classroom and sees the day's schedule.  The teacher taught music today.",
 	question: "Who is Billy's teacher?",
 	frequency: {
-		high: "<strong>Ms. Smith</strong>, she knows, has a musical lesson every day.",
-		medium: "<strong>Ms. Smith</strong>, she knows, has a musical lesson 4 out of 5 days."	
+		high: "<strong>Ms. Clancy</strong>, she knows, has a musical lesson every day.",
+		medium: "<strong>Ms. Clancy</strong>, she knows, has a musical lesson 4 out of 5 days."	
 	},
 	foil: "<strong>Ms. Johnson</strong>, she knows, has a musical lesson only occasionally.",
-	likely: "Ms. Smith",
+	likely: "Ms. Clancy",
 	unlikely: "Ms. Johnson",
-	speakermanipulation2: "Sally and Bethany meet for tea after Bethany is done dropping off her son at home.<br>Sally asks Bethany, 'How was Billy's day at school? Did his teacher teach music today?' Bethany says, 'Oh good, and yes. The teacher taught music today.''",
+	speakermanipulation2: "Sally and Bethany meet for tea at Bethany's house. Sally is helping Bethany fill out a survey for the school district, while Bethany cleans the house.  Sally reads out loud, 'Did the teacher teach music today?'  Sophia replies, 'Yes, the teacher taught music today.'",
 },
 {
  	item: "professor_attendance",
@@ -81,23 +81,23 @@ var stimuli = [
 {
 	item: "boyfriend_bike",
 	prompt: "Laura is having a hard time remembering which one of her guy-friends her friend Monica is dating.<br>She knows it is either Eric or Cameron.",
-	pragmatic2: "Laura and Monica are having lunch after Monica had gone for a bike ride that morning.<br>Laura asks Monica, 'How was the bike ride?'<br>Monica says, 'Oh good. My boyfriend's bike tires were well inflated.'",
-	literal: "Laura and Monica are having lunch after Monica had gone for a bike ride that morning. After lunch, Monica points out a bike: 'Oh look. There's my boyfriend's bike.'<br>Laura says, 'Cool bike.', and pushes down on the tires. The tires were well inflated.",
+	pragmatic2: "Monica went for a bike ride with her boyfriend that morning.  She and Laura meet for lunch afterwards.<br>Monica says to Laura, 'My boyfriend wore a helmet today.'",
+	literal: "Laura and Monica meet for lunch. After lunch, Monica points out a bike: 'Oh look. There's my boyfriend's bike.'<br>Laura sees a helmet sitting on the bike. Monica's boyfriend wore a helmet today.",
 	question: "Who is Monica's boyfriend?",
 	frequency: {
-		high: "<strong>Eric</strong>, she knows, always has his bike tires well inflated.",
-		medium: "<strong>Eric</strong>, she knows, almost always has his bike tires well inflated."	
+		high: "<strong>Eric</strong>, she knows, always wears a helmet.",
+		medium: "<strong>Eric</strong>, she knows, ."	
 	},
-	foil: "<strong>Cameron</strong>, she knows, only occasionally has his bike tires well inflated.",
+	foil: "<strong>Cameron</strong>, she knows, only occasionally wears a helmet.",
 	likely: "Eric",
 	unlikely: "Cameron",
-	speakermanipulation: "Laura and Monica are having lunch one day. Monica has a survey to fill out for the apartment, so she asks Laura if she can write down her answers while she prepares some food.  Laura reads out loud items from the survey. One of them asks about bike locking habits. She asks, 'Did your boyfriend lock up his bike today?'  Laura replies, 'Yes. My boyfriend locked up his bike today.'",
+	speakermanipulation: "Laura and Monica are having lunch at Sophia's apartment. Laura is helping Monica fill out a bike safety survey for their city, while Monica chops some vegetables.  Laura reads out loud, 'Did your boyfriend wear a helmet today?'  Monica replies, 'Yes, my boyfriend wore a helmet today.'",
 	speakermanipulation2: "Laura and Monica are having lunch after Monica had gone for a bike ride that morning.<br>Laura asks Monica, 'How was the bike ride? Were your boyfriend's tires well inflated?'<br>Monica says, 'Oh good, and yes. My boyfriend's bike tires were well inflated.'"
 },
 {
 	item: "tutor_homework",
 	prompt: "Molly is having a hard time remembering which student her officemate, Jenna, is tutoring.<br>She knows it is either Tom or Jim.",
-	pragmatic2: "In their office, Molly asks Jenna, 'How is tutoring going?'.<br>Jenna says to Molly, 'Oh good. My student turned in his homework on time today.'",
+	pragmatic2: "In their office, Jenna says to Molly, 'My student turned in his homework on time today.'",
 	literal: "In their office, Molly notices some papers on Jenna's desk.<br>Jenna's student turned in his homework on time today.",
 	question: "Who is Jenna's student?",
 	frequency: {
@@ -107,7 +107,7 @@ var stimuli = [
 	foil: "<strong>Jim</strong>, she knows, only occasionally turns in his homework on time.",
 	likely: "Tom",
 	unlikely: "Jim",
-	speakermanipulation: "In their office, Jenna asks Molly if she can help her fill out a daily report card for her student while she files away some papers.  Molly reads out loud the first question on the form, which is, 'Did your student turn in their homework on time today?'  Jenna replies, 'Yes, my student turned in his homework on time today.'",
+	speakermanipulation: "In their office, Molly helps Jenna fill out a daily report card for her student while Jenna files away some papers.  Molly reads out loud, 'Did your student turn in their homework on time today?'  Jenna replies, 'Yes, my student turned in his homework on time today.'",
 	speakermanipulation2: "In their office, Molly asks Jenna: 'How is tutoring going? Did your student turn in their homework on time today?' <br>Jenna replies, 'Oh good, and yes. My student turned in his homework on time today.'"
 },
 {
@@ -140,24 +140,24 @@ var stimuli = [
 	foil: "<strong>Erica</strong>, she knows, only occasionally keeps a call log.",
 	likely: "Danielle",
 	unlikely: "Erica",
-	speakermanipulation: "Suzanne meets Michael at Michael's office at the end of the day to get dinner.  Before they eat, they decide to fill out a form from the company about the secretaries' performance.  Michael has his hands full, so Suzanne asks the questions out loud.  He asks, 'Did your secretary keep a call log today?'  Michael replies, 'Yes, my secretary kept a call log today.'",
+	speakermanipulation: "Suzanne and Michael meet up at Michael's office to hang out. Suzanne is helping Michael fill out a survey for the Union of Secretarial Labor, while he packs up his bags.  Suzanne reads out loud, 'Did your secretary keep a call log today?'  Michael replies, 'Yes, my secretary kept a call log today.'",
 	speakermanipulation2: "Suzanne meets Michael at Michael's office at the end of the day to get dinner. Suzanne asks Michael: 'How was your day today? Did your secretary keep a call log for you?' <br>Michael replies, 'Oh good, and yes. My secretary kept a call log for me today.'"
 },
 {
 	item: "mechanic_inspection",
-	prompt: "Barbara is having a hard time remembering who her husband's mechanic is.<br>She knows it is either Joe or Bob.",
-	pragmatic2: "When Barbara's husband comes home from his errands, she asks him, 'How were your errands?'<br>He says, 'Oh good. The mechanic did the oil change in under fifteen minutes today.'",
+	prompt: "Barbara is having a hard time remembering which mechanic her husband goes to every month.<br>She knows it is either Joe or Bob.",
+	pragmatic2: "When Barbara's husband comes home from his errands, he says to her, 'The mechanic did the annual inspection in under a half hour this year.'",
 	// literal: "When Barbara's husband comes home from his errands, she sees the receipt from his mechanic.<br>The mechanic did the oil change in under fifteen minutes today.",
-	literal: "Barbara picks up her husband's car from the mechanic this afternoon. The mechanic did the oil change in under fifteen minutes today.",
+	literal: "Barbara drops off her husband's car at the mechanic for the annual inspection in the afternoon. She gets a phone call 25 minutes later to come pick it up.  The mechanic did the annual inspection in under a half hour this year.",
 	question: "Who is Barbara's husband's mechanic?",
 	frequency: {
-		high: "<strong>Joe</strong>, she knows, always does oil changes in under fifteen minutes.",
+		high: "<strong>Joe</strong>, she knows, always does the annual inspection in under a half hour.",
 	//	medium: "<strong>Bob</strong>, she knows, almost always turns in his homework on time."	
 	},
-	foil: "<strong>Bob</strong>, she knows, only occasionally does oil changes in under fifteen minutes.",
+	foil: "<strong>Bob</strong>, she knows, only occasionally does the annual inspection in under a half hour.",
 	likely: "Joe",
 	unlikely: "Bob",
-	speakermanipulation: "When Barbara's husband comes home from his errands, he asks her if she can help him fill out an evaluation form for the mechanic since his hands are dirty.  Barbara begins to ask the questions.  She asks, 'Did the mechanic do the oil change in under fifteen minutes today?'  Her husband replies, 'Yes, the mechanic did the oil change in under fifteen minutes today.'",
+	speakermanipulation: "Barbara and her husband are in their living room. Barbara is helping her husband fill out a survey for the United Auto Workers, while her husband fixes a lamp.  Barbara reads out loud, 'Did your mechanic do the annual inspection in under a half hour this year?'  Her husband replies, 'Yes, my mechanic did the inspection in under a half hour this year.'",
 	speakermanipulation2: "When Barbara's husband comes home from his errands, she asks him: 'How were your errands? Did the mechanic do the oil change in under fifteen minutes?' <br>Her husband replies, 'Oh good, and yes. The mechanic did the oil change in under fifteen minutes today.'"
 //THE QUESTION ON THIS FORM ACTUALLY IMPLIES THAT THE MECHANIC SHOULD HAVE DONE THIS... NOT SURE IF THAT'S OK
 // possible solution: Make the questionnaire be from a third-party organization of mechanics (so, an interested party, but not necessarily expected)
