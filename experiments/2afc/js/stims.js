@@ -42,7 +42,7 @@ var stimuli = [
 	foil: "<strong>Ms. Johnson</strong>, she knows, has a musical lesson only occasionally.",
 	likely: "Ms. Clancy",
 	unlikely: "Ms. Johnson",
-	speakermanipulation: "Sally and her sister meet for tea at her sister's house. Sally helps her sister fill out a survey for the school district, while Bethany cleans the house.  Sally reads out loud, 'Did the teacher teach music today?'  Her sister replies, 'Yes, the teacher taught music today.'",
+	speakermanipulation: "Sally and her sister meet for tea at her sister's house. Sally helps her sister fill out a survey for the school district, while her sister cleans the house.  Sally reads out loud, 'Did the teacher teach music today?'  Her sister replies, 'Yes, the teacher taught music today.'",
 },
 {
  	item: "professor_attendance",
