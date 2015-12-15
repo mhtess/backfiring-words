@@ -66,7 +66,7 @@ var stimuli = [
 	prompt: "Matt is having a hard time remembering who his friend Sophia's roommate is.<br>He knows it is either Alicia or Maya.",
 	pragmatic: "Sophia and Matt are having lunch at Sophia's apartment.<br>Sophia says to Matt, 'My roommate washed her dishes today.'",
 	pragmatic2: "Sophia and Matt are having lunch at Sophia's apartment.<br> Matt asks Sophia, 'How are things going with your roommmate?' <br> Sophia says, 'Oh good. My roommate washed her dishes today.'",
-	literal: "Sophia and Matt are having lunch at Sophia's apartment. Matt looks around the kitchen area.<br>Sophia's roommate had washed her dishes today.",
+	literal: "Sophia and Matt are having lunch at Sophia's apartment. Matt looks around the kitchen area and sees dishes on the drying rack.<br>Sophia's roommate washed her dishes today.",
 	question: "Who is Sophia's roommate?",
 	frequency: {
 		high: "<strong>Alicia</strong>, he knows, always washes her dishes.",
