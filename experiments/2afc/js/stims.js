@@ -46,11 +46,11 @@ var stimuli = [
 },
 {
  	item: "professor_attendance",
- 	prompt: "Ed is having a hard time remembering which professor is teaching his daughter's philosophy class. He knows it is either Professor Burke or Professor Fought.",
- 	pragmatic: "When his daughter comes home after class, she says to him, 'My professor took attendance today.'",
- 	pragmatic2: "When his daughter comes home after class, Ed asks her: 'How was your philosophy class?'.<br> She says, 'Oh good. The professor took attendance today.'",
- 	literal:"Ed had to return a book to the Philosophy department today. He walked by a classroom where he saw his daughter in her philosophy class. He heard the professor reading off names. The professor took attendance today.",
- 	question: "Who is Ed's daughter's professor?",
+ 	prompt: "Ed is having a hard time remembering which professor is teaching his sister's philosophy class. He knows it is either Professor Burke or Professor Fought.",
+ 	pragmatic: "When his sister comes home after class, she says to him, 'My professor took attendance today.'",
+ 	pragmatic2: "When his sister comes home after class, Ed asks her: 'How was your philosophy class?'.<br> She says, 'Oh good. The professor took attendance today.'",
+ 	literal:"Ed had to return a book to the Philosophy department today. He walked by a classroom where he saw his sister in her philosophy class. He heard the professor reading off names. The professor took attendance today.",
+ 	question: "Who is Ed's sister's professor?",
  	frequency: {
  		high: "Professor Burke, he knows, always takes attendance.",
  		medium:	"Professor Burke, he knows, almost always takes attendance."
@@ -58,8 +58,8 @@ var stimuli = [
  	foil: "Professor Carr, he knows, only occasionally takes attendance.",
  	likely: "Professor Burke",
  	unlikely: "Professor Carr",
- 	speakermanipulation: "His daughter comes home after class. Ed helps her fill out a university survey, while she puts her book away. Ed reads out loud, 'Did your professor take attendance today?'  His daughter replies, 'Yes. My professor took attendance today.'",
- 	speakermanipulation2: "When his daughter comes home after class, Ed asks her: 'How was your philosophy class? Did the professor take attendance today?'.<br> She says, 'Oh good, and yes. The professor took attendance today.'",
+ 	speakermanipulation: "His sister comes home after class. Ed helps her fill out a university survey, while she puts her book away. Ed reads out loud, 'Did your professor take attendance today?'  His sister replies, 'Yes. My professor took attendance today.'",
+ 	speakermanipulation2: "When his sister comes home after class, Ed asks her: 'How was your philosophy class? Did the professor take attendance today?'.<br> She says, 'Oh good, and yes. The professor took attendance today.'",
 },
 {
 	item: "roommate_dishes",
