@@ -196,16 +196,16 @@ var stimuli = [
 {
 	item: "italian_bread",
 	prompt: "Kim is having a hard time remembering where her roommates always go for Italian food.<br>She knows it is either Italian Garden or Viva Roma.",
-	pragmatic: "Her rooomates went out for Italian that night. When they get back, one of them says to her: 'The restaurant served bread with dinner tonight.'",
-	literal: "Her rooomates went out for Italian that night. When they get back, they leave the receipt on the table.  Rebecca looks at the receipt.<br> The restaurant served bread with dinner tonight.",
-	question: "Where did Kim's roommates always go for Italian food?",
+	pragmatic: "Her rooomates go out for Italian food for dinner. When they get back, one of them says to her: 'The restaurant served bread with dinner tonight.'",
+	literal: "Her rooomates go out for Italian food for dinner. When they get back, they leave the receipt on the table.  Rebecca looks at the receipt.<br> The restaurant served bread with dinner tonight.",
+	question: "Where do Kim's roommates always go for Italian food?",
 	frequency: {
 		high: "<strong>Viva Roma</strong>, she knows, always serves bread with dinner."
 	},
 	foil: "<strong>Italian Garden</strong>, she knows, only occasionally serves bread with dinner.",
 	likely: "Viva Roma",
 	unlikely: "Italian Garden",
-	speakermanipulation: "Her rooomates went out for Italian that night. When they get back, Kim helps them fill out a survey from the Union of Italian Restaurants. Kim reads out loud, 'Did the restaurant serve bread with dinner tonight?'  The roommate replies, 'Yes. The restaurant served bread with dinner tonight.'",
+	speakermanipulation: "Her rooomates go out for Italian food for dinner. When they get back, Kim helps them fill out a survey from the Union of Italian Restaurants, while they pick a movie to watch. Kim reads out loud, 'Did the restaurant serve bread with dinner tonight?'  One roommate replies, 'Yes. The restaurant served bread with dinner tonight.'",
 	speakermanipulation2: "When her rooomates come back from dinner, Kim asks one of them: 'How was dinner? Did they serve bread with dinner?'<br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
 },
 {
