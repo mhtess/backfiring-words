@@ -211,16 +211,16 @@ var stimuli = [
 {
 	item: "chinese_fortune",
 	prompt: "Lucas is having a hard time remembering where his roommates always go for Chinese food.<br>He knows it is either Beijing Cafe or Peking Garden.",
-	pragmatic: "His rooomates went out for Chinese that night. When they get back, one of them says to him, 'The restaurant gave us fortune cookies today.'",
-	literal: "His rooomates went out for Chinese that night. When they get back, they leave the receipt on the table.  Lucas looks at the receipt.<br> The restaurant gave them fortune cookies today.",
-	question: "Where did Lucas's roommates always go for Chinese food?",
+	pragmatic: "His rooomates go out for Chinese food for lunch. When they get back, one of them says to him, 'The restaurant gave us fortune cookies today.'",
+	literal: "His rooomates go out for Chinese food for lunch. When they get back, they leave the receipt on the table.  Lucas looks at the receipt.<br> The restaurant gave them fortune cookies today.",
+	question: "Where do Lucas's roommates always go for Chinese food?",
 	frequency: {
 		high: "<strong>Beijing Cafe</strong>, he knows, always gives out fortune cookies."
 	},
 	foil: "<strong>Peking Garden</strong>, he knows, only occasionally gives out fortune cookies.",
 	likely: "Beijing Cafe",
-	unlikely: "Italian Garden",
-	speakermanipulation: "His rooomates went out for Chinese that night. When they get back, Lucas helps them fill out a survey from the Society of Chinese Restaurants. Lucas reads out loud, 'Did the restaurant give you fortune cookies today?'  The roommate replies, 'Yes. The restaurant gave us fortune cookies today.'",
+	unlikely: "Peking Garden",
+	speakermanipulation: "His rooomates go out for Chinese food for lunch. When they get back, Lucas helps them fill out a survey from the Society of Chinese Restaurants. Lucas reads out loud, 'Did the restaurant give you fortune cookies today?'  One roommate replies, 'Yes. The restaurant gave us fortune cookies today.'",
 	speakermanipulation2: "When his rooomates come back from dinner, Lucas asks one of them: 'How was dinner? Did they give out fortune cookies?' <br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
 },
 {
