@@ -40,13 +40,14 @@ function make_slides(f) {
     name: "truthJudge",
     present : exp.stims,
     //this gets run only at the beginning of the block
-    present_handle : function(stim1) {
+    present_handle : function(stim) {
       // debugger;
        $(".err").hide();
        $('input[name="response"]').attr("checked", false);//val()
-      var stim = stim1[0]
+      // var stim = stim1[0]
+      // stim["condition"] = stim1[1]
+
       // debugger;
-      stim["condition"] = stim1[1]
       this.startTime = Date.now();
 
       this.stim = stim 
@@ -220,32 +221,34 @@ function init() {
   exp.trials = [];
   exp.catch_trials = [];
 
+  // debugger;
   exp.buttonCodes = {80:"P", 81:"Q"};
   exp.judgeButtons = _.object(_.zip(["likely-key","unlikely-key"],
                             _.shuffle(["P","Q"])));
 
   var allConditions = ["pragmatic","literal","prior","speakermanipulation"]
 
-  // var conditions = _.shuffle(_.flatten(_.map(allConditions, function(c){
-  //   return utils.fillArray(c, stimuli.length/allConditions.length)
-  // })))
+  var conditions = _.shuffle(_.flatten(_.map(allConditions, function(c){
+    return utils.fillArray(c, Math.floor(stimuli.length/allConditions.length))
+  })))
 
   // var conditions = _.flatten(_.map(allConditions, function(c){
   //   return utils.fillArray(c, stimuli.length)
   // }))
 
-  var testSims = _.flatten(_.map(_.shuffle(stimuli), function(s){
-    return _.zip(utils.fillArray(s, 4), allConditions)
-  }), true)
+  // for testing all the stimuli
+  // var testSims = _.flatten(_.map(_.shuffle(stimuli), function(s){
+  //   return _.zip(utils.fillArray(s, 4), allConditions)
+  // }), true)
+  // exp.stims = _.map(testSims, function(s){return [s[0], s[1]]})
 
   // debugger;
   // var conditions =  _.shuffle(_.flatten([utils.fillArray("pragmatic", stimuli.length/2), utils.fillArray("literal", stimuli.length/2)]))
 
   // debugger;
   // exp.stims = _.map(testSims, function(s){return _.extend(s[0], {"condition": s[1]})})
-  exp.stims = _.map(testSims, function(s){return [s[0], s[1]]})
 
-  // exp.stims = _.shuffle(_.map(_.zip(stimuli,conditions), function(s){return _.extend(s[0], {"condition": s[1]})}))
+  exp.stims = _.shuffle(_.map(_.zip(stimuli.slice(0,16),conditions), function(s){return _.extend(s[0], {"condition": s[1]})}))
 
   // debugger;
   exp.numTrials = exp.stims.length;
@@ -261,7 +264,7 @@ function init() {
   };
 
   //blocks of the experiment:
-   exp.structure=["truthJudge","i0", "instructions","check",'subj_info', 'thanks'];
+   exp.structure=["i0", "instructions","truthJudge","check",'subj_info', 'thanks'];
  
   exp.data_trials = [];
   //make corresponding slides:
