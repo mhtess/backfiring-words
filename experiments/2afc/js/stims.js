@@ -241,17 +241,17 @@ var stimuli = [
 {
 	// EC
 	item: "gym_towels",
-	prompt: "Lucas is having a hard time remembering where his roommates always go for Chinese food.<br>He knows it is either Beijing Cafe or Peking Garden.",
-	pragmatic: "His rooomates went out for Chinese that night. When they get back, one of them says to him, 'The restaurant gave us fortune cookies today.'",
-	literal: "His rooomates went out for Chinese that night. When they get back, they leave the receipt on the table.  Lucas looks at the receipt.<br> The restaurant gave them fortune cookies today.",
-	question: "Where did Lucas's roommates always go for Chinese food?",
+	prompt: "Katie is having a hard time remembering which gym her friend Vanessa always goes to.<br>She knows it is either Pump Gym or Core Fitness.",
+	pragmatic: "Vanessa went to the gym yesterday morning. When she gets back, she says to Katie, 'The gym had clean towels today.'",
+	literal: "Vanessa went to the gym yesterday morning. When she gets back, she leaves her gym bag on the table.  Katie looks inside the bag and sees a white towel.<br> The gym had clean towels today.",
+	question: "Which gym does Vanessa always go to?",
 	frequency: {
-		high: "<strong>Beijing Cafe</strong>, he knows, always gives out fortune cookies."
+		high: "<strong>Pump Gym</strong>, she knows, always has clean towels."
 	},
-	foil: "<strong>Peking Garden</strong>, he knows, only occasionally gives out fortune cookies.",
-	likely: "Beijing Cafe",
-	unlikely: "Italian Garden",
-	speakermanipulation: "His rooomates went out for Chinese that night. When they get back, Lucas helps them fill out a survey from the Society of Chinese Restaurants. Lucas reads out loud, 'Did the restaurant give you fortune cookies today?'  The roommate replies, 'Yes. The restaurant gave us fortune cookies today.'",
+	foil: "<strong>Core Fitness</strong>, she knows, only occasionally has clean towels.",
+	likely: "Pump Gym",
+	unlikely: "Core Fitness",
+	speakermanipulation: "Vanessa went to the gym yesterday morning. When Vanessa gets back, Katie helps her fill out a questionnaire from Fitness Centers of America, while she puts her gym things away. Katie reads out loud, 'Did the gym have clean towels today?'  Vanessa replies, 'Yes. The gym had clean towels today.'",
 	speakermanipulation2: "When his rooomates come back from dinner, Lucas asks one of them: 'How was dinner? Did they give out fortune cookies?' <br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
 },
 {
@@ -272,17 +272,17 @@ var stimuli = [
 {
 	// EC
 	item: "artstore_carries",
-	prompt: "Lucas is having a hard time remembering where his roommates always go for Chinese food.<br>He knows it is either Beijing Cafe or Peking Garden.",
-	pragmatic: "His rooomates went out for Chinese that night. When they get back, one of them says to him, 'The restaurant gave us fortune cookies today.'",
-	literal: "His rooomates went out for Chinese that night. When they get back, they leave the receipt on the table.  Lucas looks at the receipt.<br> The restaurant gave them fortune cookies today.",
-	question: "Where did Lucas's roommates always go for Chinese food?",
+	prompt: "Mark is having a hard time remembering which art supplies store his roommates always go to.<br>He knows it is either Kraft Arts or the Expression Studio.",
+	pragmatic: "His rooomates went out to buy new paints yesterday. When they get back, one of them says to him, 'The store had oil paints in stock today.'",
+	literal: "His rooomates went out to buy new paints yesterday. When they get back, they leave the receipt on the table.  Mark looks at the receipt.<br> The store had oil paints in stock today.",
+	question: "Which art supplies store do Mark's friends always go to?",
 	frequency: {
-		high: "<strong>Beijing Cafe</strong>, he knows, always gives out fortune cookies."
+		high: "<strong>Kraft Arts</strong>, he knows, always has oil paints in stock."
 	},
-	foil: "<strong>Peking Garden</strong>, he knows, only occasionally gives out fortune cookies.",
-	likely: "Beijing Cafe",
-	unlikely: "Italian Garden",
-	speakermanipulation: "His rooomates went out for Chinese that night. When they get back, Lucas helps them fill out a survey from the Society of Chinese Restaurants. Lucas reads out loud, 'Did the restaurant give you fortune cookies today?'  The roommate replies, 'Yes. The restaurant gave us fortune cookies today.'",
+	foil: "<strong>Expression Studio</strong>, he knows, only occasionally has oil paints in stock.",
+	likely: "Kraft Arts",
+	unlikely: "Expression Studio",
+	speakermanipulation: "His rooomates went out to buy new paints yesterday. When they get back, Mark helps them fill out a questionnaire from the National Society of Artist Materials, while they put their purchases away. Mark reads out loud, 'Did the store have oil paints in stock today?'  One roommate replies, 'Yes. The store had oil paints in stock today.'",
 	speakermanipulation2: "When his rooomates come back from dinner, Lucas asks one of them: 'How was dinner? Did they give out fortune cookies?' <br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
 }
 ]
