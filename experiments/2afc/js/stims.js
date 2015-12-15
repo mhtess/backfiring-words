@@ -180,33 +180,107 @@ var stimuli = [
 	speakermanipulation2: "Rebecca is over at Jennifer's apartment. Rebecca is helping Jennifer fill out a survey for the city's union of medical services, while Jennifer makes a snack. Rebecca asks her: 'Did your doctor write legibly today?'<br>Rebecca replies, 'Yes. My doctor wrote legibly today.'"
 },
 {
-	item: "italian_bread",
-	prompt: "Kim is having a hard time remembering where her roommates were going for dinner tonight.<br>She knows they were going out for Italian, so it is either Italian Garden or Viva Roma, as those are the only Italian restaurants in their town.",
-	pragmatic2: "When her rooomates come back from dinner, Kim asks them, 'How was dinner?'<br>One of roommates says to Kim, 'Oh good. The restaurant served bread with dinner today.'",
-	literal: "When her rooomates come back from dinner, they leave the receipt on the table.  Rebecca looks at the receipt.<br> The restaurant served bread with dinner today.",
+	item: "latte_art",
+	prompt: "X is having a hard time remembering where her brother goes for coffee.<br>She knows it is either Cafe Vita or Eppie Coffee.",
+	pragmatic: "Her brother comes back from his daily coffee run. He says to her, <br>'My drink had latte art today.'",
+	literal: "Her brother comes back from his daily coffee run, and leaves his drink on the table. She sees his drink. His drink had latte art today.",
 	question: "Where did Kim's roommates go for dinner?",
+	frequency: {
+		high: "<strong>Eppie Coffee</strong>, she knows, always does latte art."
+	},
+	foil: "<strong>Cafe Vita</strong>, she knows, only occasionally does latte art.",
+	likely: "Eppie Coffee",
+	unlikely: "Cafe Vita",
+	speakermanipulation: "Her brother comes back from his daily coffee run. X helps her brother fill out a survey from the United Baristas Union, while he cleans the counter. X reads out loud, 'Did your drink have latte art today?'. Her brother replies, 'Yes. My drink had latte art today.'"
+},
+{
+	item: "italian_bread",
+	prompt: "Kim is having a hard time remembering where her roommates always go for Italian food.<br>She knows it is either Italian Garden or Viva Roma.",
+	pragmatic: "Her rooomates went out for Italian that night. When they get back, one of them says to her: 'The restaurant served bread with dinner tonight.'",
+	literal: "Her rooomates went out for Italian that night. When they get back, they leave the receipt on the table.  Rebecca looks at the receipt.<br> The restaurant served bread with dinner tonight.",
+	question: "Where did Kim's roommates always go for Italian food?",
 	frequency: {
 		high: "<strong>Viva Roma</strong>, she knows, always serves bread with dinner."
 	},
 	foil: "<strong>Italian Garden</strong>, she knows, only occasionally serves bread with dinner.",
 	likely: "Viva Roma",
 	unlikely: "Italian Garden",
-	speakermanipulation: "When her rooomates come back from dinner, one of them asks Kim if she can help her fill out a survey of the retaurant since the roommate's hand is in a bandage.  Kim reads the questions out loud to her roommate.  She asks, 'Did the restaurant serve bread with dinner?'  The roommate replies, 'Yes. The restaurant served bread with dinner today.'",
+	speakermanipulation: "Her rooomates went out for Italian that night. When they get back, Kim helps them fill out a survey from the Union of Italian Restaurants. Kim reads out loud, 'Did the restaurant serve bread with dinner tonight?'  The roommate replies, 'Yes. The restaurant served bread with dinner tonight.'",
 	speakermanipulation2: "When her rooomates come back from dinner, Kim asks one of them: 'How was dinner? Did they serve bread with dinner?'<br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
 },
 {
 	item: "chinese_fortune",
-	prompt: "Lucas is having a hard time remembering where his roommates were going for dinner tonight.<br>He knows they were going out for Chinese, so it is either Beijing Cafe or Peking Garden, as those are the only Chinese restaurants in their town.",
-	pragmatic2: "When his rooomates come back from dinner, Lucas asks them, 'How was dinner?'<br>One of roommates says to Kim, 'Oh good. The restaurant gave us fortune cookies today.'",
-	literal: "When his rooomates come back from dinner, they leave the receipt on the table.  Lucas looks at the receipt.<br> The restaurant gave them fortune cookies today.",
-	question: "Where did Lucas's roommates go for dinner?",
+	prompt: "Lucas is having a hard time remembering where his roommates always go for Chinese food.<br>He knows it is either Beijing Cafe or Peking Garden.",
+	pragmatic2: "His rooomates went out for Chinese that night. When they get back, one of them says to him, 'The restaurant gave us fortune cookies today.'",
+	literal: "His rooomates went out for Chinese that night. When they get back, they leave the receipt on the table.  Lucas looks at the receipt.<br> The restaurant gave them fortune cookies today.",
+	question: "Where did Lucas's roommates always go for Chinese food?",
 	frequency: {
 		high: "<strong>Beijing Cafe</strong>, he knows, always gives out fortune cookies."
 	},
 	foil: "<strong>Peking Garden</strong>, he knows, only occasionally gives out fortune cookies.",
 	likely: "Beijing Cafe",
 	unlikely: "Italian Garden",
-	speakermanipulation: "When his rooomates come back from dinner, one of them asks Lucas if he can help her fill out a survey of the retaurant since the roommate's hand is in a bandage.  Lucas reads the questions out loud to her roommate.  He asks, 'Did the restaurant serve fortune cookies?'  The roommate replies, 'Yes. The restaurant served fortune cookies today.'",
+	speakermanipulation: "His rooomates went out for Chinese that night. When they get back, Lucas helps them fill out a survey from the Society of Chinese Restaurants. Lucas reads out loud, 'Did the restaurant give you fortune cookies today?'  The roommate replies, 'Yes. The restaurant gave us fortune cookies today.'",
+	speakermanipulation2: "When his rooomates come back from dinner, Lucas asks one of them: 'How was dinner? Did they give out fortune cookies?' <br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
+},
+{
+	item: "carwash_wheels",
+	prompt: "Lucas is having a hard time remembering where his roommates always go for Chinese food.<br>He knows it is either Beijing Cafe or Peking Garden.",
+	pragmatic2: "His rooomates went out for Chinese that night. When they get back, one of them says to him, 'The restaurant gave us fortune cookies today.'",
+	literal: "His rooomates went out for Chinese that night. When they get back, they leave the receipt on the table.  Lucas looks at the receipt.<br> The restaurant gave them fortune cookies today.",
+	question: "Where did Lucas's roommates always go for Chinese food?",
+	frequency: {
+		high: "<strong>Beijing Cafe</strong>, he knows, always gives out fortune cookies."
+	},
+	foil: "<strong>Peking Garden</strong>, he knows, only occasionally gives out fortune cookies.",
+	likely: "Beijing Cafe",
+	unlikely: "Italian Garden",
+	speakermanipulation: "His rooomates went out for Chinese that night. When they get back, Lucas helps them fill out a survey from the Society of Chinese Restaurants. Lucas reads out loud, 'Did the restaurant give you fortune cookies today?'  The roommate replies, 'Yes. The restaurant gave us fortune cookies today.'",
+	speakermanipulation2: "When his rooomates come back from dinner, Lucas asks one of them: 'How was dinner? Did they give out fortune cookies?' <br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
+},
+{
+	item: "gym_towels",
+	prompt: "Lucas is having a hard time remembering where his roommates always go for Chinese food.<br>He knows it is either Beijing Cafe or Peking Garden.",
+	pragmatic2: "His rooomates went out for Chinese that night. When they get back, one of them says to him, 'The restaurant gave us fortune cookies today.'",
+	literal: "His rooomates went out for Chinese that night. When they get back, they leave the receipt on the table.  Lucas looks at the receipt.<br> The restaurant gave them fortune cookies today.",
+	question: "Where did Lucas's roommates always go for Chinese food?",
+	frequency: {
+		high: "<strong>Beijing Cafe</strong>, he knows, always gives out fortune cookies."
+	},
+	foil: "<strong>Peking Garden</strong>, he knows, only occasionally gives out fortune cookies.",
+	likely: "Beijing Cafe",
+	unlikely: "Italian Garden",
+	speakermanipulation: "His rooomates went out for Chinese that night. When they get back, Lucas helps them fill out a survey from the Society of Chinese Restaurants. Lucas reads out loud, 'Did the restaurant give you fortune cookies today?'  The roommate replies, 'Yes. The restaurant gave us fortune cookies today.'",
+	speakermanipulation2: "When his rooomates come back from dinner, Lucas asks one of them: 'How was dinner? Did they give out fortune cookies?' <br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
+},
+{
+	item: "library_wifi",
+	prompt: "Lucas is having a hard time remembering where his roommates always go for Chinese food.<br>He knows it is either Beijing Cafe or Peking Garden.",
+	pragmatic2: "His rooomates went out for Chinese that night. When they get back, one of them says to him, 'The restaurant gave us fortune cookies today.'",
+	literal: "His rooomates went out for Chinese that night. When they get back, they leave the receipt on the table.  Lucas looks at the receipt.<br> The restaurant gave them fortune cookies today.",
+	question: "Where did Lucas's roommates always go for Chinese food?",
+	frequency: {
+		high: "<strong>Beijing Cafe</strong>, he knows, always gives out fortune cookies."
+	},
+	foil: "<strong>Peking Garden</strong>, he knows, only occasionally gives out fortune cookies.",
+	likely: "Beijing Cafe",
+	unlikely: "Italian Garden",
+	speakermanipulation: "His rooomates went out for Chinese that night. When they get back, Lucas helps them fill out a survey from the Society of Chinese Restaurants. Lucas reads out loud, 'Did the restaurant give you fortune cookies today?'  The roommate replies, 'Yes. The restaurant gave us fortune cookies today.'",
+	speakermanipulation2: "When his rooomates come back from dinner, Lucas asks one of them: 'How was dinner? Did they give out fortune cookies?' <br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
+},
+{
+	item: "artstore_carries",
+	prompt: "Lucas is having a hard time remembering where his roommates always go for Chinese food.<br>He knows it is either Beijing Cafe or Peking Garden.",
+	pragmatic2: "His rooomates went out for Chinese that night. When they get back, one of them says to him, 'The restaurant gave us fortune cookies today.'",
+	literal: "His rooomates went out for Chinese that night. When they get back, they leave the receipt on the table.  Lucas looks at the receipt.<br> The restaurant gave them fortune cookies today.",
+	question: "Where did Lucas's roommates always go for Chinese food?",
+	frequency: {
+		high: "<strong>Beijing Cafe</strong>, he knows, always gives out fortune cookies."
+	},
+	foil: "<strong>Peking Garden</strong>, he knows, only occasionally gives out fortune cookies.",
+	likely: "Beijing Cafe",
+	unlikely: "Italian Garden",
+	speakermanipulation: "His rooomates went out for Chinese that night. When they get back, Lucas helps them fill out a survey from the Society of Chinese Restaurants. Lucas reads out loud, 'Did the restaurant give you fortune cookies today?'  The roommate replies, 'Yes. The restaurant gave us fortune cookies today.'",
 	speakermanipulation2: "When his rooomates come back from dinner, Lucas asks one of them: 'How was dinner? Did they give out fortune cookies?' <br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
 }
 ]
