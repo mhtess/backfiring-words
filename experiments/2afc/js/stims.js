@@ -143,31 +143,31 @@ var stimuli = [
 	speakermanipulation: "Suzanne meets Michael at Michael's office at the end of the day to get dinner. Suzanne helps Michael fill out a survey for the Union of Secretarial Labor, while he packs up his bags.  Suzanne reads out loud, 'Did your secretary keep a call log today?'  Michael replies, 'Yes, my secretary kept a call log today.'",
 	speakermanipulation2: "Suzanne meets Michael at Michael's office at the end of the day to get dinner. Suzanne asks Michael: 'How was your day today? Did your secretary keep a call log for you?' <br>Michael replies, 'Oh good, and yes. My secretary kept a call log for me today.'"
 },
-{
-	item: "mechanic_inspection",
-	prompt: "Barbara is having a hard time remembering which mechanic her husband goes to every month.<br>She knows it is either Joe or Bob.",
-	pragmatic2: "When Barbara's husband comes home from his errands, he says to her, 'The mechanic did the annual inspection in under a half hour this year.'",
-	// literal: "When Barbara's husband comes home from his errands, she sees the receipt from his mechanic.<br>The mechanic did the oil change in under fifteen minutes today.",
-	literal: "Barbara drops off her husband's car at the mechanic for the annual inspection in the afternoon. She gets a phone call 25 minutes later to come pick it up.  The mechanic did the annual inspection in under a half hour this year.",
-	question: "Who is Barbara's husband's mechanic?",
-	frequency: {
-		high: "<strong>Joe</strong>, she knows, always does the annual inspection in under a half hour.",
-	//	medium: "<strong>Bob</strong>, she knows, almost always turns in his homework on time."	
-	},
-	foil: "<strong>Bob</strong>, she knows, only occasionally does the annual inspection in under a half hour.",
-	likely: "Joe",
-	unlikely: "Bob",
-	speakermanipulation: "Barbara and her husband are in their living room. Barbara is helping her husband fill out a survey for the United Auto Workers, while her husband fixes a lamp.  Barbara reads out loud, 'Did your mechanic do the annual inspection in under a half hour this year?'  Her husband replies, 'Yes, my mechanic did the inspection in under a half hour this year.'",
-	speakermanipulation2: "When Barbara's husband comes home from his errands, she asks him: 'How were your errands? Did the mechanic do the oil change in under fifteen minutes?' <br>Her husband replies, 'Oh good, and yes. The mechanic did the oil change in under fifteen minutes today.'"
+//{
+//	item: "mechanic_inspection",
+//	prompt: "Barbara is having a hard time remembering which mechanic her husband goes to every month.<br>She knows it is either Joe or Bob.",
+//	pragmatic2: "When Barbara's husband comes home from his errands, he says to her, 'The mechanic did the annual inspection in under a half hour this year.'",
+//	// literal: "When Barbara's husband comes home from his errands, she sees the receipt from his mechanic.<br>The mechanic did the oil change in under fifteen minutes today.",
+//	literal: "Barbara drops off her husband's car at the mechanic for the annual inspection in the afternoon. She gets a phone call 25 minutes later to come pick it up.  The mechanic did the annual inspection in under a half hour this year.",
+//	question: "Who is Barbara's husband's mechanic?",
+//	frequency: {
+//		high: "<strong>Joe</strong>, she knows, always does the annual inspection in under a half hour.",
+//	//	medium: "<strong>Bob</strong>, she knows, almost always turns in his homework on time."	
+//	},
+//	foil: "<strong>Bob</strong>, she knows, only occasionally does the annual inspection in under a half hour.",
+//	likely: "Joe",
+//	unlikely: "Bob",
+//	speakermanipulation: "Barbara and her husband are in their living room. Barbara is helping her husband fill out a survey for the United Auto Workers, while her husband fixes a lamp.  Barbara reads out loud, 'Did your mechanic do the annual inspection in under a half hour this year?'  Her husband replies, 'Yes, my mechanic did the inspection in under a half hour this year.'",
+//	speakermanipulation2: "When Barbara's husband comes home from his errands, she asks him: 'How were your errands? Did the mechanic do the oil change in under fifteen minutes?' <br>Her husband replies, 'Oh good, and yes. The mechanic did the oil change in under fifteen minutes today.'"
 //THE QUESTION ON THIS FORM ACTUALLY IMPLIES THAT THE MECHANIC SHOULD HAVE DONE THIS... NOT SURE IF THAT'S OK
 // possible solution: Make the questionnaire be from a third-party organization of mechanics (so, an interested party, but not necessarily expected)
-},
+//},
 {
 	item: "doctor_writing",
 	prompt: "Rebecca is having a hard time remembering who her friend Jennifer's doctor is.<br>She knows it is either Dr. Smith or Dr. Jones.",
-	pragmatic: "When Jennifer comes back from getting a prescription from her doctor, Jennifer tells Rebecca, 'My doctor wrote legibly today.'",
+	pragmatic: "When Jennifer comes back from getting a prescription from her doctor, she tells Rebecca, 'My doctor wrote legibly today.'",
 	// pragmatic2: "When Jennifer comes back from her doctor's appointment, Rebecca asks her: 'How was the appointment?' Jennifer says, 'It went well. My doctor wrote legibly today.'",
-	literal: "When Jennifer comes back from her doctor's appointment, she takes out her prescription and leaves it on the table.  Rebecca looks at the prescription.<br>Jennifer's doctor wrote legibly today.",
+	literal: "When Jennifer comes back from getting a prescription from her doctor, she takes out her prescription and leaves it on the table.  Rebecca looks at the prescription.<br>Jennifer's doctor wrote legibly today.",
 	question: "Who is Jennifer's doctor?",
 	frequency: {
 		high: "<strong>Dr. Smith</strong>, she knows, always writes legibly.",
@@ -177,7 +177,7 @@ var stimuli = [
 	likely: "Dr. Smith",
 	unlikely: "Dr. Jones",
 	// speakermanipulation: "When Jennifer comes back from her doctor's appointment, she asks Rebecca if she can help her fill out an on-line review of the doctor since her hand is in a bandage.  Rebecca reads the questions out loud to Jennifer.  She asks, 'Did the doctor write legibly?'  Rebecca replies, 'Yes, my doctor wrote legibly today.'",
-	speakermanipulation: "Rebecca is over at Jennifer's apartment. Rebecca is helping Jennifer fill out a survey for the city's union of medical services, while Jennifer makes a snack. Rebecca asks her: 'Did your doctor write legibly today?'<br>Rebecca replies, 'Yes. My doctor wrote legibly today.'"
+	speakermanipulation: "Rebecca is over at Jennifer's apartment. Rebecca is helping Jennifer fill out a survey for the city's union of medical services, while Jennifer makes a snack. Rebecca reads out loud, 'Did your doctor write legibly today?'<br>Rebecca replies, 'Yes. My doctor wrote legibly today.'"
 },
 {
 	item: "latte_art",
