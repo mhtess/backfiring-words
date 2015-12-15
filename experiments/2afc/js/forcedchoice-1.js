@@ -53,7 +53,12 @@ function make_slides(f) {
       this.stim = stim 
       console.log(stim.condition)
       $(".prompt").html(stim.prompt)
-      $(".alternatives").html(stim.frequency.high + " <br> " + stim.foil)
+
+      var peopleEvidence = exp.personOrder == "likely-unlikely" ? 
+            stim.frequency.high + " <br> " + stim.foil :
+            stim.foil + " <br> " + stim.frequency.high 
+
+      $(".alternatives").html(peopleEvidence)
       stim.condition !="prior" ?  $(".evidence").html(stim[stim.condition]) : $(".evidence").html("")
       $(".question").html(stim.question)
 
@@ -131,6 +136,7 @@ function make_slides(f) {
         "likely_info":this.stim.frequency.high,
         "unlikely_info":this.stim.foil,
         "rt":this.rt,
+        "personOrder":exp.personOrder
       });
     }
   });
@@ -232,6 +238,7 @@ function init() {
   exp.catch_trials = [];
 
   // debugger;
+  exp.personOrder = _.sample(["likely-unlikely","unlikely-likely"])
   exp.buttonCodes = {80:"P", 81:"Q"};
   exp.judgeButtons = _.object(_.zip(["likely-key","unlikely-key"],
                             _.shuffle(["P","Q"])));
