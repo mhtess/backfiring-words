@@ -129,10 +129,10 @@ var stimuli = [
 },
 {
 	item: "secretary_report",
-	prompt: "Suzanne manages secretaries and is having a hard time remembering who her friend Michael's new secretary is.<br>She knows it is either Danielle or Erica.",
-	pragmatic: "Suzanne meets Michael at Michael's office at the end of the day to get dinner. Suzanne asks Michael, 'How was your day today?'<br>Michael says, 'Oh good. My secretary kept a call log for me today.'",
+	prompt: "Suzanne is having a hard time remembering who her friend Michael's new secretary is.<br>She knows it is either Danielle or Erica.",
+	pragmatic: "Suzanne meets Michael at Michael's office at the end of the day to get dinner. Michael says to Suzanne, 'My secretary kept a call log for me today.'",
 	literal: "Suzanne meets Michael at Michael's office at the end of the day to get dinner.  Suzanne looks over at Michael's desk and sees a report left on it.<br>His secretary kept a call log for him today.",
-	question: "Who is Michael's new secretary?",
+	question: "Who is Michael's secretary?",
 	frequency: {
 		high: "<strong>Danielle</strong>, she knows, keeps a call log every day.",
 	//	medium: "<strong>Tom</strong>, she knows, almost always turns in his homework on time."	
@@ -140,7 +140,7 @@ var stimuli = [
 	foil: "<strong>Erica</strong>, she knows, only occasionally keeps a call log.",
 	likely: "Danielle",
 	unlikely: "Erica",
-	speakermanipulation: "Suzanne and Michael meet up at Michael's office to hang out. Suzanne is helping Michael fill out a survey for the Union of Secretarial Labor, while he packs up his bags.  Suzanne reads out loud, 'Did your secretary keep a call log today?'  Michael replies, 'Yes, my secretary kept a call log today.'",
+	speakermanipulation: "Suzanne meets Michael at Michael's office at the end of the day to get dinner. Suzanne helps Michael fill out a survey for the Union of Secretarial Labor, while he packs up his bags.  Suzanne reads out loud, 'Did your secretary keep a call log today?'  Michael replies, 'Yes, my secretary kept a call log today.'",
 	speakermanipulation2: "Suzanne meets Michael at Michael's office at the end of the day to get dinner. Suzanne asks Michael: 'How was your day today? Did your secretary keep a call log for you?' <br>Michael replies, 'Oh good, and yes. My secretary kept a call log for me today.'"
 },
 {
