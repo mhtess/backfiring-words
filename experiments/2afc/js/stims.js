@@ -224,6 +224,7 @@ var stimuli = [
 	speakermanipulation2: "When his rooomates come back from dinner, Lucas asks one of them: 'How was dinner? Did they give out fortune cookies?' <br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
 },
 {
+//MHT
 	item: "carwash_wheels",
 	prompt: "Lucas is having a hard time remembering where his roommates always go for Chinese food.<br>He knows it is either Beijing Cafe or Peking Garden.",
 	pragmatic2: "His rooomates went out for Chinese that night. When they get back, one of them says to him, 'The restaurant gave us fortune cookies today.'",
@@ -239,6 +240,7 @@ var stimuli = [
 	speakermanipulation2: "When his rooomates come back from dinner, Lucas asks one of them: 'How was dinner? Did they give out fortune cookies?' <br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
 },
 {
+	// EC
 	item: "gym_towels",
 	prompt: "Lucas is having a hard time remembering where his roommates always go for Chinese food.<br>He knows it is either Beijing Cafe or Peking Garden.",
 	pragmatic2: "His rooomates went out for Chinese that night. When they get back, one of them says to him, 'The restaurant gave us fortune cookies today.'",
@@ -254,6 +256,7 @@ var stimuli = [
 	speakermanipulation2: "When his rooomates come back from dinner, Lucas asks one of them: 'How was dinner? Did they give out fortune cookies?' <br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
 },
 {
+//MHT
 	item: "library_wifi",
 	prompt: "Lucas is having a hard time remembering where his roommates always go for Chinese food.<br>He knows it is either Beijing Cafe or Peking Garden.",
 	pragmatic2: "His rooomates went out for Chinese that night. When they get back, one of them says to him, 'The restaurant gave us fortune cookies today.'",
@@ -269,6 +272,7 @@ var stimuli = [
 	speakermanipulation2: "When his rooomates come back from dinner, Lucas asks one of them: 'How was dinner? Did they give out fortune cookies?' <br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
 },
 {
+	// EC
 	item: "artstore_carries",
 	prompt: "Lucas is having a hard time remembering where his roommates always go for Chinese food.<br>He knows it is either Beijing Cafe or Peking Garden.",
 	pragmatic2: "His rooomates went out for Chinese that night. When they get back, one of them says to him, 'The restaurant gave us fortune cookies today.'",
