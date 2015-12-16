@@ -26,7 +26,7 @@ var stimuli = [
 	question: "Who is his friend's tenant?",
 	likely: "Ilana",
 	unlikely: "Nora",
-	speakermanipulation: "Don and his friend meet up at his friend's apartment to play basketball. <br>Don is helping his friend fill out a survey for the city census, while his friend gets ready.  Don reads out loud from the census, 'Did your tenant pay her rent on time this month?'  His friend replies, 'Yes, my tenant paid her rent on time this month.'",
+	speakermanipulation: "Don and his friend meet up at his friend's apartment to play basketball. <br>Don is helping his friend fill out a survey for the city census, while his friend gets ready.  Don reads out loud from the survey, 'Did your tenant pay her rent on time this month?'  His friend replies, 'Yes, my tenant paid her rent on time this month.'",
 },
 {
 	item: "teacher_music",
@@ -42,7 +42,7 @@ var stimuli = [
 	foil: "<strong>Ms. Johnson</strong>, she knows, has a musical lesson only occasionally.",
 	likely: "Ms. Clancy",
 	unlikely: "Ms. Johnson",
-	speakermanipulation: "Sally and her sister meet for tea at her sister's house. Sally helps her sister fill out a survey for the school district, while her sister cleans the house.  Sally reads out loud, 'Did the teacher teach music today?'  Her sister replies, 'Yes, the teacher taught music today.'",
+	speakermanipulation: "Sally and her sister meet for tea at her sister's house. Sally helps her sister fill out a survey for the school district, while her sister cleans the house.  Sally reads out loud from the survey, 'Did the teacher teach music today?'  Her sister replies, 'Yes, the teacher taught music today.'",
 },
 {
  	item: "professor_attendance",
@@ -58,7 +58,7 @@ var stimuli = [
  	foil: "Professor Carr, he knows, only occasionally takes attendance.",
  	likely: "Professor Burke",
  	unlikely: "Professor Carr",
- 	speakermanipulation: "His sister comes home after class. Ed helps her fill out a university survey, while she puts her books away. Ed reads out loud, 'Did your professor take attendance today?'  His sister replies, 'Yes. My professor took attendance today.'",
+ 	speakermanipulation: "His sister comes home after class. Ed helps her fill out a university survey, while she puts her books away. Ed reads out loud from the survey, 'Did your professor take attendance today?'  His sister replies, 'Yes. My professor took attendance today.'",
  	speakermanipulation2: "When his sister comes home after class, Ed asks her: 'How was your philosophy class? Did the professor take attendance today?'.<br> She says, 'Oh good, and yes. The professor took attendance today.'",
 },
 {
@@ -75,7 +75,7 @@ var stimuli = [
 	foil: "<strong>Maya</strong>, he knows, only occasionally washes her dishes.",
 	likely: "Alicia",
 	unlikely: "Maya",
-	speakermanipulation: "Matt and his friend are having lunch at his friend's apartment. Matt is helping his friend fill out a chore chart for the apartment, while she prepares food.  Matt reads out loud, 'Did your roommate wash her dishes today?'  His friend replies, 'Yes, my roommate washed her dishes today.'",
+	speakermanipulation: "Matt and his friend are having lunch at his friend's apartment. Matt is helping his friend fill out a chore chart for the apartment, while she prepares food.  Matt reads out loud from the chart, 'Did your roommate wash her dishes today?'  His friend replies, 'Yes, my roommate washed her dishes today.'",
 	speakermanipulation2: "Sophia and Matt are having lunch at Sophia's apartment.<br> Matt asks Sophia, 'How are things going with your roommmate? Did she wash her dishes today?' <br> Sophia says, 'Oh good, and yes. My roommate washed her dishes today.'",
 },
 {
@@ -91,7 +91,7 @@ var stimuli = [
 	foil: "<strong>Cameron</strong>, she knows, only occasionally wears a helmet.",
 	likely: "Eric",
 	unlikely: "Cameron",
-	speakermanipulation: "Laura and Monica meet for lunch at Monica's apartment. Laura helps Monica fill out a bike safety survey for their city, while Monica chops some vegetables.  Laura reads out loud, 'Did your boyfriend wear a helmet today?'  Monica replies, 'Yes, my boyfriend wore a helmet today.'",
+	speakermanipulation: "Laura and Monica meet for lunch at Monica's apartment. Laura helps Monica fill out a bike safety survey for their city, while Monica chops some vegetables.  Laura reads out loud from the survey, 'Did your boyfriend wear a helmet today?'  Monica replies, 'Yes, my boyfriend wore a helmet today.'",
 	speakermanipulation2: "Laura and Monica are having lunch after Monica had gone for a bike ride that morning.<br>Laura asks Monica, 'How was the bike ride? Were your boyfriend's tires well inflated?'<br>Monica says, 'Oh good, and yes. My boyfriend's bike tires were well inflated.'"
 },
 {
@@ -107,7 +107,7 @@ var stimuli = [
 	foil: "<strong>Jim</strong>, she knows, only occasionally turns in his homework on time.",
 	likely: "Tom",
 	unlikely: "Jim",
-	speakermanipulation: "In their office, Molly helps her officemate fill out a daily report card for her student, while her officemate files away some papers.  Molly reads out loud, 'Did your student turn in his homework on time today?'  Her officemate replies, 'Yes, my student turned in his homework on time today.'",
+	speakermanipulation: "In their office, Molly helps her officemate fill out a daily report card for her student, while her officemate files away some papers.  Molly reads out loud from the report card, 'Did your student turn in his homework on time today?'  Her officemate replies, 'Yes, my student turned in his homework on time today.'",
 	speakermanipulation2: "In their office, Molly asks Jenna: 'How is tutoring going? Did your student turn in their homework on time today?' <br>Jenna replies, 'Oh good, and yes. My student turned in his homework on time today.'"
 },
 {
@@ -124,7 +124,7 @@ var stimuli = [
 	likely: "Maid By Me",
 	unlikely: "Sunflowers Maid Service",
 	// speakermanipulation: "Henry visits Phil at his apartment.  Phil asks Henry if he can help him fill out an evaluation of his maid who just cleaned his apartment while he prepares some food.  Henry reads out loud the first question on the form, which is, 'Did your maid dust the windows today?'  Phil replies, 'Yes. My maid dusted the windows today.'",
-	speakermanipulation: "Henry visits his friend at her apartment.  Henry helps her fill out a survey for the city's union of maid services, while she makes a snack. Henry reads out loud, 'Did your maid dust the windows this week?'<br> She replies, 'Yes. My maid dusted the windows this week.'"
+	speakermanipulation: "Henry visits his friend at her apartment.  Henry helps her fill out a survey for the city's union of maid services, while she makes a snack. Henry reads out loud from the survey, 'Did your maid dust the windows this week?'<br> She replies, 'Yes. My maid dusted the windows this week.'"
 	// speakermanipulation: "X and Y meet up at Y's apartment to play basketball. <br>X is helping Y fill out a survey for the city union of c census, while X gets ready.  Y reads out loud, 'Did your tenant pay his rent on time this month?'  X replies, 'Yes, my tenant paid his rent on time this month.'",
 },
 {
@@ -140,7 +140,7 @@ var stimuli = [
 	foil: "<strong>Erica</strong>, she knows, only occasionally keeps a call log.",
 	likely: "Danielle",
 	unlikely: "Erica",
-	speakermanipulation: "Suzanne meets her friend at his office at the end of the day to get dinner. Suzanne helps him fill out a survey for the Union of Secretarial Labor, while he packs up his bags.  Suzanne reads out loud, 'Did your secretary keep a call log today?'  He replies, 'Yes, my secretary kept a call log today.'",
+	speakermanipulation: "Suzanne meets her friend at his office at the end of the day to get dinner. Suzanne helps him fill out a survey for the Union of Secretarial Labor, while he packs up his bags.  Suzanne reads out loud from the survey, 'Did your secretary keep a call log today?'  He replies, 'Yes, my secretary kept a call log today.'",
 	speakermanipulation2: "Suzanne meets Michael at Michael's office at the end of the day to get dinner. Suzanne asks Michael: 'How was your day today? Did your secretary keep a call log for you?' <br>Michael replies, 'Oh good, and yes. My secretary kept a call log for me today.'"
 },
 //{
@@ -177,7 +177,7 @@ var stimuli = [
 	likely: "Dr. Smith",
 	unlikely: "Dr. Jones",
 	// speakermanipulation: "When Jennifer comes back from her doctor's appointment, she asks Rebecca if she can help her fill out an on-line review of the doctor since her hand is in a bandage.  Rebecca reads the questions out loud to Jennifer.  She asks, 'Did the doctor write legibly?'  Rebecca replies, 'Yes, my doctor wrote legibly today.'",
-	speakermanipulation: "When her brother comes back from getting a prescription from his doctor, Rebecca goes over to his place to hang out. Rebecca helps her brother fill out a survey for the city's union of medical services, while her brother makes a snack. Rebecca reads out loud, 'Did your doctor write legibly today?'<br>Her brother replies, 'Yes. My doctor wrote legibly today.'"
+	speakermanipulation: "When her brother comes back from getting a prescription from his doctor, Rebecca goes over to his place to hang out. Rebecca helps her brother fill out a survey for the city's union of medical services, while her brother makes a snack. Rebecca reads out loud from the survey, 'Did your doctor write legibly today?'<br>Her brother replies, 'Yes. My doctor wrote legibly today.'"
 },
 {
 	item: "latte_art",
@@ -191,7 +191,7 @@ var stimuli = [
 	foil: "<strong>The baristas at Cafe Vita</strong>, she knows, only occasionally do latte art.",
 	likely: "Epi Coffee",
 	unlikely: "Cafe Vita",
-	speakermanipulation: "Her brother comes back from his daily coffee run. Julia helps him fill out a survey from the United Baristas Union, while he cleans the counter. Julia reads out loud, 'Did the barista do latte art today?'. Her brother replies, 'Yes. The barista did latte art today.'"
+	speakermanipulation: "Her brother comes back from his daily coffee run. Julia helps him fill out a survey from the United Baristas Union, while he cleans the counter. Julia reads out loud from the survey, 'Did the barista do latte art today?'. Her brother replies, 'Yes. The barista did latte art today.'"
 },
 {
 	item: "italian_bread",
@@ -205,7 +205,7 @@ var stimuli = [
 	foil: "<strong>Italian Garden</strong>, she knows, only occasionally serves bread with dinner.",
 	likely: "Viva Roma",
 	unlikely: "Italian Garden",
-	speakermanipulation: "Her rooomates go out for Italian food for dinner. When they get back, Kim helps them fill out a survey from the Union of Italian Restaurants, while they pick a movie to watch. Kim reads out loud, 'Did the restaurant serve bread with dinner tonight?'  One roommate replies, 'Yes. The restaurant served bread with dinner tonight.'",
+	speakermanipulation: "Her rooomates go out for Italian food for dinner. When they get back, Kim helps them fill out a survey from the Union of Italian Restaurants, while they pick a movie to watch. Kim reads out loud from the survey, 'Did the restaurant serve bread with dinner tonight?'  One roommate replies, 'Yes. The restaurant served bread with dinner tonight.'",
 	speakermanipulation2: "When her rooomates come back from dinner, Kim asks one of them: 'How was dinner? Did they serve bread with dinner?'<br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
 },
 {
@@ -220,7 +220,7 @@ var stimuli = [
 	foil: "<strong>Peking Garden</strong>, he knows, only occasionally gives out fortune cookies.",
 	likely: "Beijing Cafe",
 	unlikely: "Peking Garden",
-	speakermanipulation: "His rooomates go out for Chinese food for lunch. When they get back, Lucas helps them fill out a survey from the Society of Chinese Restaurants. Lucas reads out loud, 'Did the restaurant give you fortune cookies today?'  One roommate replies, 'Yes. The restaurant gave us fortune cookies today.'",
+	speakermanipulation: "His rooomates go out for Chinese food for lunch. When they get back, Lucas helps them fill out a survey from the Society of Chinese Restaurants. Lucas reads out loud from the survey, 'Did the restaurant give you fortune cookies today?'  One roommate replies, 'Yes. The restaurant gave us fortune cookies today.'",
 	speakermanipulation2: "When his rooomates come back from dinner, Lucas asks one of them: 'How was dinner? Did they give out fortune cookies?' <br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
 },
 {
@@ -236,7 +236,7 @@ var stimuli = [
 	foil: "<strong>Magic Hands</strong>, he knows, only occasionally washes the tires.",
 	likely: "Final Touch",
 	unlikely: "Magic Hands",
-	speakermanipulation: "Gerard runs into his friend at the supermarket on Friday. As his friend is bagging groceries, Gerard helps his friend fill out a survey from the National Union of Car Washers. Gerards reads out loud, 'Did the car wash wash your tires this week?'  The friend replies, 'Yes. The car wash washed my tires this week.'",
+	speakermanipulation: "Gerard runs into his friend at the supermarket on Friday. As his friend is bagging groceries, Gerard helps his friend fill out a survey from the National Union of Car Washers. Gerards reads out loud from the survey, 'Did the car wash wash your tires this week?'  The friend replies, 'Yes. The car wash washed my tires this week.'",
 },
 {
 	// EC
@@ -251,7 +251,7 @@ var stimuli = [
 	foil: "<strong>Core Fitness</strong>, she knows, only occasionally has clean towels.",
 	likely: "Pump Gym",
 	unlikely: "Core Fitness",
-	speakermanipulation: "Her friend goes to the gym in the morning. When he gets back, Katie helps him fill out a questionnaire from Fitness Centers of America, while he puts his gym clothes away. Katie reads out loud, 'Did the gym have clean towels today?'  Her friend replies, 'Yes. The gym had clean towels today.'",
+	speakermanipulation: "Her friend goes to the gym in the morning. When he gets back, Katie helps him fill out a questionnaire from Fitness Centers of America, while he puts his gym clothes away. Katie reads out loud from the questionnaire, 'Did the gym have clean towels today?'  Her friend replies, 'Yes. The gym had clean towels today.'",
 	speakermanipulation2: "When his rooomates come back from dinner, Lucas asks one of them: 'How was dinner? Did they give out fortune cookies?' <br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
 },
 {
@@ -267,7 +267,7 @@ var stimuli = [
 	foil: "<strong>Rolling Springs</strong>, she knows, only occasionally has wifi working.",
 	likely: "Misty Meadows",
 	unlikely: "Rolling Springs",
-	speakermanipulation: "Claire's uncle returns home from the library. Claire helps him fill out a survey from the American Academy of Public Libraries, while he makes a snack. Claire reads out loud, 'Did the library's wifi work today?' Her uncle replies, 'Yes. The library's wifi worked today.'"
+	speakermanipulation: "Claire's uncle returns home from the library. Claire helps him fill out a survey from the American Academy of Public Libraries, while he makes a snack. Claire reads out loud from the survey, 'Did the library's wifi work today?' Her uncle replies, 'Yes. The library's wifi worked today.'"
 },
 {
 	// EC
@@ -282,7 +282,7 @@ var stimuli = [
 	foil: "<strong>Expression Studio</strong>, he knows, only occasionally has oil paints in stock.",
 	likely: "Kraft Arts",
 	unlikely: "Expression Studio",
-	speakermanipulation: "His rooomates go out to buy new paints in the afternoon. When they get back, Mark helps them fill out a questionnaire from the National Society of Artist Materials, while they put their purchases away. Mark reads out loud, 'Did the store have oil paints in stock today?'  One roommate replies, 'Yes. The store had oil paints in stock today.'",
+	speakermanipulation: "His rooomates go out to buy new paints in the afternoon. When they get back, Mark helps them fill out a questionnaire from the National Society of Artist Materials, while they put their purchases away. Mark reads out loud from the questionnaire, 'Did the store have oil paints in stock today?'  One roommate replies, 'Yes. The store had oil paints in stock today.'",
 	speakermanipulation2: "When his rooomates come back from dinner, Lucas asks one of them: 'How was dinner? Did they give out fortune cookies?' <br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
 }
 ]
