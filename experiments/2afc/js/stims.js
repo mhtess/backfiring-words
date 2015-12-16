@@ -26,7 +26,7 @@ var stimuli = [
 	question: "Who is his friend's tenant?",
 	likely: "Ilana",
 	unlikely: "Nora",
-	speakermanipulation: "Don and his friend meet up at his friend's apartment to play basketball. <br>Don is helping his friend fill out a survey for the city census, while his friend gets ready.  Don reads out loud from the survey, 'Did your tenant pay her rent on time this month?'  His friend replies, 'Yes, my tenant paid her rent on time this month.'",
+	speakermanipulation: "Don and his friend meet up at his friend's apartment to play basketball. <br>Don is helping his friend fill out a questionnaire for the city census, while his friend gets ready.  Don reads out loud from the questionnaire, 'Did your tenant pay her rent on time this month?'  His friend replies, 'Yes, my tenant paid her rent on time this month.'",
 },
 {
 	item: "teacher_music",
@@ -124,7 +124,7 @@ var stimuli = [
 	likely: "Maid By Me",
 	unlikely: "Sunflowers Maid Service",
 	// speakermanipulation: "Henry visits Phil at his apartment.  Phil asks Henry if he can help him fill out an evaluation of his maid who just cleaned his apartment while he prepares some food.  Henry reads out loud the first question on the form, which is, 'Did your maid dust the windows today?'  Phil replies, 'Yes. My maid dusted the windows today.'",
-	speakermanipulation: "Henry visits his friend at her apartment.  Henry helps her fill out a survey for the city's union of maid services, while she makes a snack. Henry reads out loud from the survey, 'Did your maid dust the windows this week?'<br> She replies, 'Yes. My maid dusted the windows this week.'"
+	speakermanipulation: "Henry visits his friend at her apartment.  Henry helps her fill out a questionnaire for the city's union of maid services, while she makes a snack. Henry reads out loud from the questionnaire, 'Did your maid dust the windows this week?'<br> She replies, 'Yes. My maid dusted the windows this week.'"
 	// speakermanipulation: "X and Y meet up at Y's apartment to play basketball. <br>X is helping Y fill out a survey for the city union of c census, while X gets ready.  Y reads out loud, 'Did your tenant pay his rent on time this month?'  X replies, 'Yes, my tenant paid his rent on time this month.'",
 },
 {
