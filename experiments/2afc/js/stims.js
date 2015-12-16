@@ -63,11 +63,11 @@ var stimuli = [
 },
 {
 	item: "roommate_dishes",
-	prompt: "Matt is having a hard time remembering who his friend Sophia's roommate is.<br>He knows it is either Alicia or Maya.",
-	pragmatic: "Sophia and Matt are having lunch at Sophia's apartment.<br>Sophia says to Matt, 'My roommate washed her dishes today.'",
+	prompt: "Matt is having a hard time remembering who his friend's roommate is.<br>He knows it is either Alicia or Maya.",
+	pragmatic: "Matt and his friend are having lunch at his friend's apartment.<br>His friend says, 'My roommate washed her dishes today.'",
 	pragmatic2: "Sophia and Matt are having lunch at Sophia's apartment.<br> Matt asks Sophia, 'How are things going with your roommmate?' <br> Sophia says, 'Oh good. My roommate washed her dishes today.'",
-	literal: "Sophia and Matt are having lunch at Sophia's apartment. Matt looks around the kitchen area and sees dishes on the drying rack.<br>Sophia's roommate washed her dishes today.",
-	question: "Who is Sophia's roommate?",
+	literal: "Matt and his friend are having lunch at his friend's apartment. Matt looks around the kitchen area and sees dishes on the drying rack.<br>His friend's roommate washed her dishes today.",
+	question: "Who is his friend's roommate?",
 	frequency: {
 		high: "<strong>Alicia</strong>, he knows, always washes her dishes.",
 		medium: "<strong>Alicia</strong>, he knows, almost always washes her dishes."	
@@ -75,7 +75,7 @@ var stimuli = [
 	foil: "<strong>Maya</strong>, he knows, only occasionally washes her dishes.",
 	likely: "Alicia",
 	unlikely: "Maya",
-	speakermanipulation: "Sophia and Matt are having lunch at Sophia's apartment. Matt is helping Sophia fill out a chore chart for the apartment, while she prepares food.  Matt reads out loud, 'Did your roommate wash her dishes today?'  Sophia replies, 'Yes, my roommate washed her dishes today.'",
+	speakermanipulation: "Matt and his friend are having lunch at his friend's apartment. Matt is helping his friend fill out a chore chart for the apartment, while she prepares food.  Matt reads out loud, 'Did your roommate wash her dishes today?'  His friend replies, 'Yes, my roommate washed her dishes today.'",
 	speakermanipulation2: "Sophia and Matt are having lunch at Sophia's apartment.<br> Matt asks Sophia, 'How are things going with your roommmate? Did she wash her dishes today?' <br> Sophia says, 'Oh good, and yes. My roommate washed her dishes today.'",
 },
 {
@@ -96,10 +96,10 @@ var stimuli = [
 },
 {
 	item: "tutor_homework",
-	prompt: "Molly is having a hard time remembering which student her officemate, Jenna, is tutoring.<br>She knows it is either Tom or Jim.",
-	pragmatic: "In their office, Jenna says to Molly, 'My student turned in his homework on time today.'",
-	literal: "In their office, Molly notices some papers on Jenna's desk.<br>Jenna's student turned in his homework on time today.",
-	question: "Who is Jenna's student?",
+	prompt: "Molly is having a hard time remembering which student her officemate is tutoring.<br>She knows it is either Tom or Jim.",
+	pragmatic: "In their office, her officemate says, 'My student turned in his homework on time today.'",
+	literal: "In their office, Molly notices some papers on her officemate's desk.<br>Her officemate's student turned in his homework on time today.",
+	question: "Who is her officemate's student?",
 	frequency: {
 		high: "<strong>Tom</strong>, she knows, always turns in his homework on time.",
 		medium: "<strong>Tom</strong>, she knows, almost always turns in his homework on time."	
@@ -107,15 +107,15 @@ var stimuli = [
 	foil: "<strong>Jim</strong>, she knows, only occasionally turns in his homework on time.",
 	likely: "Tom",
 	unlikely: "Jim",
-	speakermanipulation: "In their office, Molly helps Jenna fill out a daily report card for her student, while Jenna files away some papers.  Molly reads out loud, 'Did your student turn in his homework on time today?'  Jenna replies, 'Yes, my student turned in his homework on time today.'",
+	speakermanipulation: "In their office, Molly helps her officemate fill out a daily report card for her student, while her officemate files away some papers.  Molly reads out loud, 'Did your student turn in his homework on time today?'  Her officemate replies, 'Yes, my student turned in his homework on time today.'",
 	speakermanipulation2: "In their office, Molly asks Jenna: 'How is tutoring going? Did your student turn in their homework on time today?' <br>Jenna replies, 'Oh good, and yes. My student turned in his homework on time today.'"
 },
 {
 	item: "maid_dusting",
-	prompt: "Henry is having a hard time remembering which weekly cleaning service his friend Phil's maid works for.<br>He knows it is either Maid By Me or Sunflowers Maid Service.",
-	pragmatic: "Henry visits Phil at his apartment. <br>Phil says, 'My maid dusted the windows this week.'",
-	literal: "Henry visits Phil at his apartment. He inspects the windows. <br>The maid dusted the windows this week.",
-	question: "What cleaning service does Phil's maid work for?",
+	prompt: "Henry is having a hard time remembering which weekly cleaning service his friend's maid works for.<br>He knows it is either Maid By Me or Sunflowers Maid Service.",
+	pragmatic: "Henry visits his friend at her apartment. <br>His friend says, 'My maid dusted the windows this week.'",
+	literal: "Henry visits his friend at her apartment. He inspects the windows. <br>The maid dusted the windows this week.",
+	question: "What cleaning service does his friend's maid work for?",
 	frequency: {
 		high: "<strong>Maid By Me</strong>, he knows, always dusts the windows.",
 	//	medium: "<strong>Sunflowers Maid Service</strong>, he knows, almost always turns in his homework on time."	
@@ -124,15 +124,15 @@ var stimuli = [
 	likely: "Maid By Me",
 	unlikely: "Sunflowers Maid Service",
 	// speakermanipulation: "Henry visits Phil at his apartment.  Phil asks Henry if he can help him fill out an evaluation of his maid who just cleaned his apartment while he prepares some food.  Henry reads out loud the first question on the form, which is, 'Did your maid dust the windows today?'  Phil replies, 'Yes. My maid dusted the windows today.'",
-	speakermanipulation: "Henry visits Phil at his apartment.  Henry helps Phil fill out a survey for the city's union of maid services, while Phil makes a snack. Henry reads out loud, 'Did your maid dust the windows this week?'<br> Phil replies, 'Yes. My maid dusted the windows this week.'"
+	speakermanipulation: "Henry visits his friend at her apartment.  Henry helps her fill out a survey for the city's union of maid services, while she makes a snack. Henry reads out loud, 'Did your maid dust the windows this week?'<br> She replies, 'Yes. My maid dusted the windows this week.'"
 	// speakermanipulation: "X and Y meet up at Y's apartment to play basketball. <br>X is helping Y fill out a survey for the city union of c census, while X gets ready.  Y reads out loud, 'Did your tenant pay his rent on time this month?'  X replies, 'Yes, my tenant paid his rent on time this month.'",
 },
 {
 	item: "secretary_report",
-	prompt: "Suzanne is having a hard time remembering who her friend Michael's new secretary is.<br>She knows it is either Danielle or Erica.",
-	pragmatic: "Suzanne meets Michael at Michael's office at the end of the day to get dinner. Michael says to Suzanne, 'My secretary kept a call log for me today.'",
-	literal: "Suzanne meets Michael at Michael's office at the end of the day to get dinner.  Suzanne looks over at Michael's desk and sees a report left on it.<br>His secretary kept a call log for him today.",
-	question: "Who is Michael's secretary?",
+	prompt: "Suzanne is having a hard time remembering who her friend's new secretary is.<br>She knows it is either Danielle or Erica.",
+	pragmatic: "Suzanne meets her friend at his office at the end of the day to get dinner. He says to Suzanne, 'My secretary kept a call log for me today.'",
+	literal: "Suzanne meets her friend at his office at the end of the day to get dinner.  Suzanne looks over at his desk and sees a report left on it.<br>His secretary kept a call log for him today.",
+	question: "Who is her friend's secretary?",
 	frequency: {
 		high: "<strong>Danielle</strong>, she knows, keeps a call log every day.",
 	//	medium: "<strong>Tom</strong>, she knows, almost always turns in his homework on time."	
@@ -140,7 +140,7 @@ var stimuli = [
 	foil: "<strong>Erica</strong>, she knows, only occasionally keeps a call log.",
 	likely: "Danielle",
 	unlikely: "Erica",
-	speakermanipulation: "Suzanne meets Michael at Michael's office at the end of the day to get dinner. Suzanne helps Michael fill out a survey for the Union of Secretarial Labor, while he packs up his bags.  Suzanne reads out loud, 'Did your secretary keep a call log today?'  Michael replies, 'Yes, my secretary kept a call log today.'",
+	speakermanipulation: "Suzanne meets her friend at his office at the end of the day to get dinner. Suzanne helps him fill out a survey for the Union of Secretarial Labor, while he packs up his bags.  Suzanne reads out loud, 'Did your secretary keep a call log today?'  He replies, 'Yes, my secretary kept a call log today.'",
 	speakermanipulation2: "Suzanne meets Michael at Michael's office at the end of the day to get dinner. Suzanne asks Michael: 'How was your day today? Did your secretary keep a call log for you?' <br>Michael replies, 'Oh good, and yes. My secretary kept a call log for me today.'"
 },
 //{
