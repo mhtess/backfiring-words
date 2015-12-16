@@ -191,7 +191,7 @@ var stimuli = [
 	foil: "<strong>The baristas at Cafe Vita</strong>, she knows, only occasionally do latte art.",
 	likely: "Epi Coffee",
 	unlikely: "Cafe Vita",
-	speakermanipulation: "Her brother comes back from his daily coffee run. Julia helps him fill out a survey from the United Baristas Union, while he cleans the counter. Julia reads out loud from the survey, 'Did the barista do latte art today?'. Her brother replies, 'Yes. The barista did latte art today.'"
+	speakermanipulation: "Her brother comes back from his daily coffee run. Julia helps him fill out a questionnaire from the United Baristas Union, while he cleans the counter. Julia reads out loud from the questionnaire, 'Did the barista do latte art today?'. Her brother replies, 'Yes. The barista did latte art today.'"
 },
 {
 	item: "italian_bread",
@@ -220,7 +220,7 @@ var stimuli = [
 	foil: "<strong>Peking Garden</strong>, he knows, only occasionally gives out fortune cookies.",
 	likely: "Beijing Cafe",
 	unlikely: "Peking Garden",
-	speakermanipulation: "His rooomates go out for Chinese food for lunch. When they get back, Lucas helps them fill out a survey from the Society of Chinese Restaurants. Lucas reads out loud from the survey, 'Did the restaurant give you fortune cookies today?'  One roommate replies, 'Yes. The restaurant gave us fortune cookies today.'",
+	speakermanipulation: "His rooomates go out for Chinese food for lunch. When they get back, Lucas helps them fill out a questionnaire from the Society of Chinese Restaurants. Lucas reads out loud from the questionnaire, 'Did the restaurant give you fortune cookies today?'  One roommate replies, 'Yes. The restaurant gave us fortune cookies today.'",
 	speakermanipulation2: "When his rooomates come back from dinner, Lucas asks one of them: 'How was dinner? Did they give out fortune cookies?' <br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
 },
 {
