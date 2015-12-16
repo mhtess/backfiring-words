@@ -97,7 +97,7 @@ var stimuli = [
 {
 	item: "tutor_homework",
 	prompt: "Molly is having a hard time remembering which student her officemate is tutoring. She knows it is either Tom or Jim.",
-	pragmatic: "In their office, her officemate says, '<strong>My student turned in his homework on time today.</strong>'",
+	pragmatic: "In their office, her officemate says to her, '<strong>My student turned in his homework on time today.</strong>'",
 	literal: "In their office, Molly notices some papers on her officemate's desk. <strong>Her officemate's student turned in his homework on time today.</strong>",
 	question: "Who is her officemate's student?",
 	frequency: {
