@@ -164,11 +164,11 @@ var stimuli = [
 //},
 {
 	item: "doctor_writing",
-	prompt: "Rebecca is having a hard time remembering who her sister's doctor is.<br>She knows it is either Dr. Smith or Dr. Jones.",
-	pragmatic: "When her sister comes back from getting a prescription from her doctor, she tells Rebecca, 'My doctor wrote legibly today.'",
+	prompt: "Rebecca is having a hard time remembering who her brother's doctor is.<br>She knows it is either Dr. Smith or Dr. Jones.",
+	pragmatic: "When her brother comes back from getting a prescription from his doctor, he tells Rebecca, 'My doctor wrote legibly today.'",
 	// pragmatic2: "When Jennifer comes back from her doctor's appointment, Rebecca asks her: 'How was the appointment?' Jennifer says, 'It went well. My doctor wrote legibly today.'",
-	literal: "When her sister comes back from getting a prescription from her doctor, she takes out her prescription and leaves it on the table.  Rebecca looks at the prescription.<br>Her doctor wrote legibly today.",
-	question: "Who is her sister's doctor?",
+	literal: "When her brother comes back from getting a prescription from his doctor, he takes out his prescription and leaves it on the table.  Rebecca looks at the prescription.<br>His doctor wrote legibly today.",
+	question: "Who is her brother's doctor?",
 	frequency: {
 		high: "<strong>Dr. Smith</strong>, she knows, always writes legibly.",
 	//	medium: "<strong>Tom</strong>, she knows, almost always turns in his homework on time."	
@@ -177,7 +177,7 @@ var stimuli = [
 	likely: "Dr. Smith",
 	unlikely: "Dr. Jones",
 	// speakermanipulation: "When Jennifer comes back from her doctor's appointment, she asks Rebecca if she can help her fill out an on-line review of the doctor since her hand is in a bandage.  Rebecca reads the questions out loud to Jennifer.  She asks, 'Did the doctor write legibly?'  Rebecca replies, 'Yes, my doctor wrote legibly today.'",
-	speakermanipulation: "When her sister comes back from getting a prescription from her doctor, Rebecca goes over to her place to hang out. Rebecca helps her sister fill out a survey for the city's union of medical services, while her sister makes a snack. Rebecca reads out loud, 'Did your doctor write legibly today?'<br>Her sister replies, 'Yes. My doctor wrote legibly today.'"
+	speakermanipulation: "When her brother comes back from getting a prescription from his doctor, Rebecca goes over to his place to hang out. Rebecca helps her brother fill out a survey for the city's union of medical services, while her brother makes a snack. Rebecca reads out loud, 'Did your doctor write legibly today?'<br>Her brother replies, 'Yes. My doctor wrote legibly today.'"
 },
 {
 	item: "latte_art",
