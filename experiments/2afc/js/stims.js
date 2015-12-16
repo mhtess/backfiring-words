@@ -16,17 +16,17 @@ var stimuli = [
 // },
 {
 	item: "tenant_rentcheck",
-	prompt: "Don is having a hard time remembering who his friend Asher has been subletting to for the past year.<br>He knows it is either Ilana or Nora.",
+	prompt: "Don is having a hard time remembering who his friend has been subletting to for the past year.<br>He knows it is either Ilana or Nora.",
 	frequency: {
 		high: "<strong>Ilana</strong>, he knows, turns in her rent on time every month.",
 	},
 	foil: "<strong>Nora</strong>, he knows, only occasionally turns in her rent on time.",
-	pragmatic: "Don and Asher meet up at Asher's apartment to play basketball.<br>Asher says, 'My tenant turned in her rent on time this month.'",
-	literal: "Don and Asher meet up at Asher's apartment to play basketball. Don notices a rent check on Asher's doorstep. His tenant paid her rent on time this month.<br>",
-	question: "Who is Asher's tenant?",
+	pragmatic: "Don and his friend meet up at his friend's apartment to play basketball.<br>His friend says, 'My tenant turned in her rent on time this month.'",
+	literal: "Don and his friend meet up at his friend's apartment to play basketball. Don notices a rent check on his friend's doorstep. His tenant paid her rent on time this month.<br>",
+	question: "Who is his friend's tenant?",
 	likely: "Ilana",
 	unlikely: "Nora",
-	speakermanipulation: "Don and Asher meet up at Asher's apartment to play basketball. <br>Don is helping Asher fill out a survey for the city census, while Asher gets ready.  Don reads out loud, 'Did your tenant pay her rent on time this month?'  Asher replies, 'Yes, my tenant paid her rent on time this month.'",
+	speakermanipulation: "Don and his friend meet up at his friend's apartment to play basketball. <br>Don is helping his friend fill out a survey for the city census, while his friend gets ready.  Don reads out loud, 'Did your tenant pay her rent on time this month?'  His friend replies, 'Yes, my tenant paid her rent on time this month.'",
 },
 {
 	item: "teacher_music",
