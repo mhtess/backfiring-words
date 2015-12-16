@@ -21,7 +21,7 @@ var stimuli = [
 		high: "<strong>Ilana</strong>, he knows, turns in her rent on time every month.",
 	},
 	foil: "<strong>Nora</strong>, he knows, only occasionally turns in her rent on time.",
-	pragmatic: "Don and Asher are playing basketball.<br>Asher says, 'My tenant turned in her rent on time this month.'",
+	pragmatic: "Don and Asher meet up at Asher's apartment to play basketball.<br>Asher says, 'My tenant turned in her rent on time this month.'",
 	literal: "Don and Asher meet up at Asher's apartment to play basketball. Don notices a rent check on Asher's doorstep. His tenant paid her rent on time this month.<br>",
 	question: "Who is Asher's tenant?",
 	likely: "Ilana",
@@ -47,8 +47,8 @@ var stimuli = [
 {
  	item: "professor_attendance",
  	prompt: "Ed is having a hard time remembering which professor is teaching his sister's philosophy class. He knows it is either Professor Burke or Professor Carr.",
- 	pragmatic: "When his sister comes home after class, she says to him, 'My professor took attendance today.'",
- 	pragmatic2: "When his sister comes home after class, Ed asks her: 'How was your philosophy class?'.<br> She says, 'Oh good. The professor took attendance today.'",
+ 	pragmatic: "His sister comes home after class.  When she's inside, she says to him, 'My professor took attendance today.'",
+ 	pragmatic2: "His sister comes home after class. When she's in Ed asks her: 'How was your philosophy class?'.<br> She says, 'Oh good. The professor took attendance today.'",
  	literal:"Ed has to return a book to the Philosophy department today. He walks by a classroom where he sees his sister in her philosophy class. He hears the professor finish reading off names. The professor took attendance today.",
  	question: "Who is Ed's sister's professor?",
  	frequency: {
@@ -91,7 +91,7 @@ var stimuli = [
 	foil: "<strong>Cameron</strong>, she knows, only occasionally wears a helmet.",
 	likely: "Eric",
 	unlikely: "Cameron",
-	speakermanipulation: "Laura and Monica are having lunch at Monica's apartment. Laura is helping Monica fill out a bike safety survey for their city, while Monica chops some vegetables.  Laura reads out loud, 'Did your boyfriend wear a helmet today?'  Monica replies, 'Yes, my boyfriend wore a helmet today.'",
+	speakermanipulation: "Laura and Monica meet for lunch at Monica's apartment. Laura helps Monica fill out a bike safety survey for their city, while Monica chops some vegetables.  Laura reads out loud, 'Did your boyfriend wear a helmet today?'  Monica replies, 'Yes, my boyfriend wore a helmet today.'",
 	speakermanipulation2: "Laura and Monica are having lunch after Monica had gone for a bike ride that morning.<br>Laura asks Monica, 'How was the bike ride? Were your boyfriend's tires well inflated?'<br>Monica says, 'Oh good, and yes. My boyfriend's bike tires were well inflated.'"
 },
 {
