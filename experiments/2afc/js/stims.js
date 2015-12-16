@@ -267,7 +267,7 @@ var stimuli = [
 	foil: "<strong>Rolling Springs</strong>, she knows, only occasionally has wifi working.",
 	likely: "Misty Meadows",
 	unlikely: "Rolling Springs",
-	speakermanipulation: "Claire's uncle returns home from the library. Claire helps him fill out a survey from the American Academy of Public Libraries, while he makes a snack. Claire reads out loud from the survey, 'Did the library's wifi work today?' Her uncle replies, 'Yes. The library's wifi worked today.'"
+	speakermanipulation: "Claire's uncle returns home from the library. Claire helps him fill out a questionnaire from the American Academy of Public Libraries, while he makes a snack. Claire reads out loud from the questionnaire, 'Did the library's wifi work today?' Her uncle replies, 'Yes. The library's wifi worked today.'"
 },
 {
 	// EC
