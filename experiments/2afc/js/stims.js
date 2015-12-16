@@ -236,7 +236,7 @@ var stimuli = [
 	foil: "<strong>Magic Hands</strong>, he knows, only occasionally washes the tires.",
 	likely: "Final Touch",
 	unlikely: "Magic Hands",
-	speakermanipulation: "Gerard runs into his friend at the supermarket on Friday. As his friend is bagging groceries, Gerard helps him fill out a survey from the National Union of Car Washers. Gerards reads out loud from the survey, 'Did the car wash wash your tires this week?'  The friend replies, 'Yes. <strong>The car wash washed my tires this week.</strong>'",
+	speakermanipulation: "Gerard runs into his friend at the supermarket on Friday. As his friend is bagging groceries, Gerard helps him fill out a survey from the National Union of Car Washers. Gerards reads out loud from the survey, 'Did the car wash wash your tires this week?'  His friend replies, 'Yes. <strong>The car wash washed my tires this week.</strong>'",
 },
 {
 	// EC
