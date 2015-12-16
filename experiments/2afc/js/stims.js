@@ -164,11 +164,11 @@ var stimuli = [
 //},
 {
 	item: "doctor_writing",
-	prompt: "Rebecca is having a hard time remembering who her friend Jennifer's doctor is.<br>She knows it is either Dr. Smith or Dr. Jones.",
-	pragmatic: "When Jennifer comes back from getting a prescription from her doctor, she tells Rebecca, 'My doctor wrote legibly today.'",
+	prompt: "Rebecca is having a hard time remembering who her sister's doctor is.<br>She knows it is either Dr. Smith or Dr. Jones.",
+	pragmatic: "When her sister comes back from getting a prescription from her doctor, she tells Rebecca, 'My doctor wrote legibly today.'",
 	// pragmatic2: "When Jennifer comes back from her doctor's appointment, Rebecca asks her: 'How was the appointment?' Jennifer says, 'It went well. My doctor wrote legibly today.'",
-	literal: "When Jennifer comes back from getting a prescription from her doctor, she takes out her prescription and leaves it on the table.  Rebecca looks at the prescription.<br>Jennifer's doctor wrote legibly today.",
-	question: "Who is Jennifer's doctor?",
+	literal: "When her sister comes back from getting a prescription from her doctor, she takes out her prescription and leaves it on the table.  Rebecca looks at the prescription.<br>Her doctor wrote legibly today.",
+	question: "Who is her sister's doctor?",
 	frequency: {
 		high: "<strong>Dr. Smith</strong>, she knows, always writes legibly.",
 	//	medium: "<strong>Tom</strong>, she knows, almost always turns in his homework on time."	
@@ -177,7 +177,7 @@ var stimuli = [
 	likely: "Dr. Smith",
 	unlikely: "Dr. Jones",
 	// speakermanipulation: "When Jennifer comes back from her doctor's appointment, she asks Rebecca if she can help her fill out an on-line review of the doctor since her hand is in a bandage.  Rebecca reads the questions out loud to Jennifer.  She asks, 'Did the doctor write legibly?'  Rebecca replies, 'Yes, my doctor wrote legibly today.'",
-	speakermanipulation: "When Jennifer comes back from getting a prescription from her doctor, Rebecca goes over to her place to hang out. Rebecca helps Jennifer fill out a survey for the city's union of medical services, while Jennifer makes a snack. Rebecca reads out loud, 'Did your doctor write legibly today?'<br>Rebecca replies, 'Yes. My doctor wrote legibly today.'"
+	speakermanipulation: "When her sister comes back from getting a prescription from her doctor, Rebecca goes over to her place to hang out. Rebecca helps her sister fill out a survey for the city's union of medical services, while her sister makes a snack. Rebecca reads out loud, 'Did your doctor write legibly today?'<br>Her sister replies, 'Yes. My doctor wrote legibly today.'"
 },
 {
 	item: "latte_art",
@@ -241,17 +241,17 @@ var stimuli = [
 {
 	// EC
 	item: "gym_towels",
-	prompt: "Katie is having a hard time remembering which gym her friend Vanessa always goes to.<br>She knows it is either Pump Gym or Core Fitness.",
-	pragmatic: "Vanessa goes to the gym in the morning. When she gets back, she says to Katie, 'The gym had clean towels today.'",
-	literal: "Vanessa goes to the gym in the morning. When she gets back, she leaves her gym bag on the table.  Katie looks inside the bag and sees a white towel.<br> The gym had clean towels today.",
-	question: "Which gym does Vanessa always go to?",
+	prompt: "Katie is having a hard time remembering which gym her friend always goes to.<br>She knows it is either Pump Gym or Core Fitness.",
+	pragmatic: "Her friend goes to the gym in the morning. When he gets back, he says to Katie, 'The gym had clean towels today.'",
+	literal: "Her friend goes to the gym in the morning. When he gets back, he leaves her gym bag on the table.  Katie looks inside the bag and sees a white towel.<br> The gym had clean towels today.",
+	question: "Which gym does her friend always go to?",
 	frequency: {
 		high: "<strong>Pump Gym</strong>, she knows, always has clean towels."
 	},
 	foil: "<strong>Core Fitness</strong>, she knows, only occasionally has clean towels.",
 	likely: "Pump Gym",
 	unlikely: "Core Fitness",
-	speakermanipulation: "Vanessa goes to the gym in the morning. When she gets back, Katie helps her fill out a questionnaire from Fitness Centers of America, while Vanessa puts her gym clothes away. Katie reads out loud, 'Did the gym have clean towels today?'  Vanessa replies, 'Yes. The gym had clean towels today.'",
+	speakermanipulation: "Her friend goes to the gym in the morning. When he gets back, Katie helps him fill out a questionnaire from Fitness Centers of America, while he puts his gym clothes away. Katie reads out loud, 'Did the gym have clean towels today?'  Her friend replies, 'Yes. The gym had clean towels today.'",
 	speakermanipulation2: "When his rooomates come back from dinner, Lucas asks one of them: 'How was dinner? Did they give out fortune cookies?' <br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
 },
 {
