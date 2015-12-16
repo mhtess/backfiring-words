@@ -177,7 +177,7 @@ var stimuli = [
 	likely: "Dr. Smith",
 	unlikely: "Dr. Jones",
 	// speakermanipulation: "When Jennifer comes back from her doctor's appointment, she asks Rebecca if she can help her fill out an on-line review of the doctor since her hand is in a bandage.  Rebecca reads the questions out loud to Jennifer.  She asks, 'Did the doctor write legibly?'  Rebecca replies, 'Yes, my doctor wrote legibly today.'",
-	speakermanipulation: "Rebecca is over at Jennifer's apartment. Rebecca is helping Jennifer fill out a survey for the city's union of medical services, while Jennifer makes a snack. Rebecca reads out loud, 'Did your doctor write legibly today?'<br>Rebecca replies, 'Yes. My doctor wrote legibly today.'"
+	speakermanipulation: "When Jennifer comes back from getting a prescription from her doctor, Rebecca goes over to her place to hang out. Rebecca helps Jennifer fill out a survey for the city's union of medical services, while Jennifer makes a snack. Rebecca reads out loud, 'Did your doctor write legibly today?'<br>Rebecca replies, 'Yes. My doctor wrote legibly today.'"
 },
 {
 	item: "latte_art",
@@ -228,7 +228,7 @@ var stimuli = [
 	item: "carwash_wheels",
 	prompt: "Gerard is having a hard time remembering where his friend goes for a car wash every Friday morning.<br>He knows it is either Final Touch Car Wash or Magic Hands Car Wash.",
 	pragmatic: "Gerard runs into his friend at the supermarket on Friday. His friend says, 'The car wash washed my tires this week.'",
-	literal: "Gerard sees his friend's car Friday afternoon. The car wash washed his tires this week.",
+	literal: "Gerard runs into his friend at the supermarket on Friday.  He sees his friend's car in the parking lot. The car wash washed his tires this week.",
 	question: "Where does Gerard's friend go for a wash car every Friday morning?",
 	frequency: {
 		high: "<strong>Final Touch</strong>, he knows, always washes the tires."
