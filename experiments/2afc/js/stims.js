@@ -26,7 +26,7 @@ var stimuli = [
 	question: "Who is his friend's tenant?",
 	likely: "Ilana",
 	unlikely: "Nora",
-	speakermanipulation: "Don and his friend meet up at his friend's apartment to play basketball. <br>Don is helping his friend fill out a survey for the city census, while his friend gets ready.  Don reads out loud, 'Did your tenant pay her rent on time this month?'  His friend replies, 'Yes, my tenant paid her rent on time this month.'",
+	speakermanipulation: "Don and his friend meet up at his friend's apartment to play basketball. <br>Don is helping his friend fill out a survey for the city census, while his friend gets ready.  Don reads out loud from the census, 'Did your tenant pay her rent on time this month?'  His friend replies, 'Yes, my tenant paid her rent on time this month.'",
 },
 {
 	item: "teacher_music",
@@ -262,7 +262,7 @@ var stimuli = [
 	literal: "Claire's uncle returns home from the library. She notices an online forum that her uncle printed out. The library's wifi worked today.",
 	question: "Which library does Claire's uncle always go to?",
 	frequency: {
-		high: "<strong>Misty Meadows/strong>, she knows, always has wifi working."
+		high: "<strong>Misty Meadows</strong>, she knows, always has wifi working."
 	},
 	foil: "<strong>Rolling Springs</strong>, she knows, only occasionally has wifi working.",
 	likely: "Misty Meadows",

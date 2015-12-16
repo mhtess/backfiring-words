@@ -40,14 +40,15 @@ function make_slides(f) {
     name: "truthJudge",
     present : exp.stims,
     //this gets run only at the beginning of the block
-    present_handle : function(stim) {
+    present_handle : function(stim1) {
       // debugger;
        $(".err").hide();
        $('input[name="response"]').attr("checked", false);//val()
-      // var stim = stim1[0]
-      // stim["condition"] = stim1[1]
+      var stim = stim1[0]
+      stim["condition"] = stim1[1]
 
-    this.judgeButtons = _.object(_.zip(["likely-key","unlikely-key"],
+      this.judgeButtons = _.object(
+                        _.zip(["likely-key","unlikely-key"],
                               _.shuffle(["P","Q"])));
 
       // debugger;
@@ -91,16 +92,16 @@ function make_slides(f) {
 
     button : function() {
      var response = $('input[name="response"]:checked').val()
-    if ( (typeof response == 'undefined') ||  (exp.sliderPost == null)  ){
-        $(".err").show();
-        // console.log("err")
-      } else {
+    // if ( (typeof response == 'undefined') ||  (exp.sliderPost == null)  ){
+    //     $(".err").show();
+    //     // console.log("err")
+    //   } else {
         this.rt = Date.now() - this.startTime;
         this.log_responses();
         // exp.go();
         _stream.apply(this);
 
-      }
+      // }
     },
 
     // keyPressHandler : function(event) {
@@ -257,10 +258,10 @@ function init() {
   // }))
 
   // for testing all the stimuli
-  // var testSims = _.flatten(_.map(_.shuffle(stimuli), function(s){
-  //   return _.zip(utils.fillArray(s, 4), allConditions)
-  // }), true)
-  // exp.stims = _.map(testSims, function(s){return [s[0], s[1]]})
+  var testSims = _.flatten(_.map(_.shuffle(stimuli), function(s){
+    return _.zip(utils.fillArray(s, 4), allConditions)
+  }), true)
+  exp.stims = _.map(testSims, function(s){return [s[0], s[1]]})
 
   // debugger;
   // var conditions =  _.shuffle(_.flatten([utils.fillArray("pragmatic", stimuli.length/2), utils.fillArray("literal", stimuli.length/2)]))
@@ -268,7 +269,7 @@ function init() {
   // debugger;
   // exp.stims = _.map(testSims, function(s){return _.extend(s[0], {"condition": s[1]})})
 
-  exp.stims = _.shuffle(_.map(_.zip(stimuli.slice(0,16),conditions), function(s){return _.extend(s[0], {"condition": s[1]})}))
+  // exp.stims = _.shuffle(_.map(_.zip(stimuli.slice(0,16),conditions), function(s){return _.extend(s[0], {"condition": s[1]})}))
 
   // debugger;
   exp.numTrials = exp.stims.length;
