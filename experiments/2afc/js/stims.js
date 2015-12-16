@@ -243,7 +243,7 @@ var stimuli = [
 	item: "gym_towels",
 	prompt: "Katie is having a hard time remembering which gym her friend always goes to. She knows it is either Pump Gym or Core Fitness.",
 	pragmatic: "Her friend goes to the gym in the morning. When he gets back, he says to Katie, '<strong>The gym had clean towels today.</strong>'",
-	literal: "Her friend goes to the gym in the morning. When he gets back, he leaves her gym bag on the table.  Katie looks inside the bag and sees a white towel. <strong>The gym had clean towels today.</strong>",
+	literal: "Her friend goes to the gym in the morning. When he gets back, he leaves his gym bag on the table.  Katie looks inside the bag and sees a white towel. <strong>The gym had clean towels today.</strong>",
 	question: "Which gym does her friend always go to?",
 	frequency: {
 		high: "<strong>Pump Gym</strong>, she knows, always has clean towels."
