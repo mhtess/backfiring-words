@@ -226,15 +226,15 @@ function make_slides(f) {
 /// init ///
 function init() {
 
-  // repeatWorker = false;
-  // (function(){
-  //     var ut_id = "55a36636ba36e3e3adc35f01487d58b3";
-  //     if (UTWorkerLimitReached(ut_id)) {
-  //       $('.slide').empty();
-  //       repeatWorker = true;
-  //       alert("You have already completed the maximum number of HITs allowed by this requester. Please click 'Return HIT' to avoid any impact on your approval rating.");
-  //     }
-  // })();
+  repeatWorker = false;
+  (function(){
+      var ut_id = "mht-backfire-test-20151217";
+      if (UTWorkerLimitReached(ut_id)) {
+        $('.slide').empty();
+        repeatWorker = true;
+        alert("You have already completed the maximum number of HITs allowed by this requester. Please click 'Return HIT' to avoid any impact on your approval rating.");
+      }
+  })();
 
   exp.trials = [];
   exp.catch_trials = [];
