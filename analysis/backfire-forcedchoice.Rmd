@@ -7,7 +7,8 @@ output: html_document
 
 
 ```{r}
-
+library(grid)
+library(gridExtra)
 d<-read.csv("~/Documents/research/backfiring-words/mturk/forcedchoice-1/forcedchoice-1-trials.csv")
 
 catch<-read.csv("~/Documents/research/backfiring-words/mturk/forcedchoice-1/forcedchoice-1-catch_trials.csv")
@@ -19,5 +20,53 @@ d0 <- left_join(d,
   mutate(likelyPerson = response=="likely-key")
 
 
+d.item <- d0 %>%
+  group_by(item, condition) %>%
+  multi_boot_standard(column="likelyPerson")
 
+ggplot(d.item, aes(x=item, y=mean, fill=condition))+
+  geom_bar(stat='identity', width = 0.7, position=position_dodge(0.7))+
+  geom_errorbar(aes(ymin=ci_lower, ymax=ci_upper),
+                width=0.5, position=position_dodge(0.7))+
+  theme_paper()+
+  scale_fill_solarized()+
+  ylab("proportion who choose 'likely' person")
+
+#ggsave("~/Documents/research/backfiring-words/analysis/figures/fc1-byItem.pdf", width=10, height =5)
+
+```
+
+```{r}
+d.stat <- d0 %>%
+  group_by(condition) %>%
+  multi_boot_standard(column="likelyPerson")
+
+ggplot(d.stat, aes(x=condition, y=mean, fill=condition))+
+  geom_bar(stat='identity', width = 0.4, position=position_dodge(0.4))+
+  geom_errorbar(aes(ymin=ci_lower, ymax=ci_upper),
+                width=0.3, position=position_dodge(0.4))+
+  theme_paper()+
+  scale_fill_solarized()+
+  guides(fill=F)+
+  ylab("proportion who choose 'likely' person")
+
+ggsave("~/Documents/research/backfiring-words/analysis/figures/fc1.pdf", width=6, height =5)
+
+```
+
+```{r}
+
+head(d0)
+rs<-glmer(data=d0, likelyPerson ~ condition + (1  | workerid) + (1 + condition | item), family='binomial')
+summary(rs)
+```
+
+
+## Power analysis
+
+```{r}
+
+
+bootstrap.sd <- max((d.stat$mean-d.stat$ci_lower)/2)
+coh.d <- (d.stat$mean[1]-d.stat$mean[2])/ bootstrap.sd
 ```
