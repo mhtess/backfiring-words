@@ -196,23 +196,23 @@ var stimuli = [
 {
 	item: "italian_bread",
 	prompt: "Kim is having a hard time remembering where her roommates always go for Italian food. She knows it is either Italian Garden or Viva Roma.",
-	pragmatic: "Kim's rooomates go out for Italian food for dinner. When they get back, one of them says to her, '<strong>The restaurant served bread with dinner tonight.</strong>'",
-	literal: "Kim's rooomates go out for Italian food for dinner. When they get back, they leave their receipt on the table.  Rebecca looks at the receipt. <strong>The restaurant served bread with dinner tonight.</strong>",
+	pragmatic: "Kim's rooomates go out for Italian food for dinner. When they get back, one of them says to her, '<strong>The restaurant served breadsticks with dinner tonight.</strong>'",
+	literal: "Kim's rooomates go out for Italian food for dinner. When they get back, they leave their leftovers on the table.  Rebecca sees breadsticks amid the leftovers. <strong>The restaurant served breadsticks with dinner tonight.</strong>",
 	question: "Where do Kim's roommates always go for Italian food?",
 	frequency: {
-		high: "<strong>Viva Roma</strong>, she knows, always serves bread with dinner."
+		high: "<strong>Viva Roma</strong>, she knows, always serves breadsticks with dinner."
 	},
-	foil: "<strong>Italian Garden</strong>, she knows, only occasionally serves bread with dinner.",
+	foil: "<strong>Italian Garden</strong>, she knows, only occasionally serves breadsticks with dinner.",
 	likely: "Viva Roma",
 	unlikely: "Italian Garden",
-	speakermanipulation: "Kim's rooomates go out for Italian food for dinner. When they get back, Kim helps them fill out a survey for the Union of Italian Restaurants, while they pick a movie to watch. Kim reads out loud from the survey, 'Did the restaurant serve bread with dinner tonight?'  One roommate replies, 'Yes. <strong>The restaurant served bread with dinner tonight.</strong>'",
-	speakermanipulation2: "When her rooomates come back from dinner, Kim asks one of them: 'How was dinner? Did they serve bread with dinner?'<br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
+	speakermanipulation: "Kim's rooomates go out for Italian food for dinner. When they get back, Kim helps them fill out a survey for the Union of Italian Restaurants, while they pick a movie to watch. Kim reads out loud from the survey, 'Did the restaurant serve bread with dinnersticks tonight?'  One roommate replies, 'Yes. <strong>The restaurant served breadsticks with dinner tonight.</strong>'",
+	speakermanipulation2: "When her rooomates come back from dinner, Kim asks one of them: 'How was dinner? Did they serve breadsticks with dinner?'<br>The roommate replies, 'Oh good, and yes. The restaurant served breadsticks with dinner today.'"
 },
 {
 	item: "chinese_fortune",
 	prompt: "Lucas is having a hard time remembering where his roommates always go for Chinese food. He knows it is either Beijing Cafe or Peking Garden.",
 	pragmatic: "Lucas' rooomates go out for Chinese food for lunch. When they get back, one of them says to him, '<strong>The restaurant gave us fortune cookies today.</strong>'",
-	literal: "Lucas' rooomates go out for Chinese food for lunch. When they get back, they leave their receipt on the table.  Lucas looks at the receipt. <strong>The restaurant gave them fortune cookies today.</strong>",
+	literal: "Lucas' rooomates go out for Chinese food for lunch. When they get back, they leave their leftovers on the table.  Lucas sees fortune cookie fortunes amid the leftovers. <strong>The restaurant gave them fortune cookies today.</strong>",
 	question: "Where do Lucas's roommates always go for Chinese food?",
 	frequency: {
 		high: "<strong>Beijing Cafe</strong>, he knows, always gives out fortune cookies."
