@@ -49,7 +49,7 @@ var stimuli = [
  	prompt: "Ed is having a hard time remembering which professor is teaching his sister's philosophy class. He knows it is either Professor Burke or Professor Carr.",
  	pragmatic: "Ed's sister comes home after class.  When she's inside, she says to him, <strong>'My professor took attendance today.'</strong>",
  	pragmatic2: "Ed's sister comes home after class. When she's in Ed asks her: 'How was your philosophy class?'.<br> She says, 'Oh good. The professor took attendance today.'",
- 	literal:"Ed has to return a book to the Philosophy department today. He walks by a classroom where he sees his sister in her philosophy class. He hears the professor finish reading off names. <strong>The professor took attendance today.</strong>",
+ 	literal:"Ed has to return a book to the Philosophy department. He walks by a classroom where he sees his sister in her philosophy class. He hears the professor finish reading off names. <strong>The professor took attendance today.</strong>",
  	question: "Who is Ed's sister's professor?",
  	frequency: {
  		high: "Professor Burke, he knows, always takes attendance.",
