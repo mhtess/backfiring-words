@@ -181,7 +181,7 @@ var stimuli = [
 },
 {
 	item: "latte_art",
-	prompt: "Julia is having a hard time remembering where her brother goes for coffee. She knows it is either Cafe Vita or Epi Coffee.",
+	prompt: "Julia is having a hard time remembering where her brother always goes for coffee. She knows it is either Cafe Vita or Epi Coffee.",
 	pragmatic: "Her brother comes back from his daily coffee run. He says to her, '<strong>The barista did latte art today.</strong>'",
 	literal: "Her brother comes back from his daily coffee run, and leaves his drink on the table. She looks at his drink. <strong>The barista did latte art today.</strong>",
 	question: "Where does Julia's brother go for coffee?",
