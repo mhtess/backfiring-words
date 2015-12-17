@@ -33,7 +33,7 @@ var stimuli = [
 	prompt: "Sally is having a hard time remembering who her nephew Billy -- her sister's son -- has for his elementary school teacher. She knows it is either Ms. Clancy or Ms. Johnson.",
 	pragmatic: "Sally and her sister meet for tea after her sister is done dropping off Billy at home. Her sister says, <strong>'The teacher taught music today.'</strong>",
 	pragmatic2: "Sally and her sister meet for tea after her sister is done dropping off Billy at home. Sally asks her sister, 'How was Billy's day at school?' Bethany says, 'Oh good. The teacher taught music today.''",
-	literal: "Sally goes to pick Billy up from school.<br>She enters his classroom and sees the day's schedule.  <strong>The teacher taught music today.</strong>",
+	literal: "Sally goes to pick Billy up from school. She enters his classroom and sees the day's schedule.  <strong>The teacher taught music today.</strong>",
 	question: "Who is Billy's teacher?",
 	frequency: {
 		high: "<strong>Ms. Clancy</strong>, she knows, has a musical lesson every day.",
