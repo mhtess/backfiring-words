@@ -197,7 +197,7 @@ var stimuli = [
 	item: "italian_bread",
 	prompt: "Kim is having a hard time remembering where her roommates always go for Italian food. She knows it is either Italian Garden or Viva Roma.",
 	pragmatic: "Her rooomates go out for Italian food for dinner. When they get back, one of them says to her, '<strong>The restaurant served bread with dinner tonight.</strong>'",
-	literal: "Her rooomates go out for Italian food for dinner. When they get back, they leave the receipt on the table.  Rebecca looks at the receipt. <strong>The restaurant served bread with dinner tonight.</strong>",
+	literal: "Her rooomates go out for Italian food for dinner. When they get back, they leave their receipt on the table.  Rebecca looks at the receipt. <strong>The restaurant served bread with dinner tonight.</strong>",
 	question: "Where do Kim's roommates always go for Italian food?",
 	frequency: {
 		high: "<strong>Viva Roma</strong>, she knows, always serves bread with dinner."
@@ -212,7 +212,7 @@ var stimuli = [
 	item: "chinese_fortune",
 	prompt: "Lucas is having a hard time remembering where his roommates always go for Chinese food. He knows it is either Beijing Cafe or Peking Garden.",
 	pragmatic: "His rooomates go out for Chinese food for lunch. When they get back, one of them says to him, '<strong>The restaurant gave us fortune cookies today.</strong>'",
-	literal: "His rooomates go out for Chinese food for lunch. When they get back, they leave the receipt on the table.  Lucas looks at the receipt. <strong>The restaurant gave them fortune cookies today.</strong>",
+	literal: "His rooomates go out for Chinese food for lunch. When they get back, they leave their receipt on the table.  Lucas looks at the receipt. <strong>The restaurant gave them fortune cookies today.</strong>",
 	question: "Where do Lucas's roommates always go for Chinese food?",
 	frequency: {
 		high: "<strong>Beijing Cafe</strong>, he knows, always gives out fortune cookies."
@@ -274,7 +274,7 @@ var stimuli = [
 	item: "artstore_carries",
 	prompt: "Mark is having a hard time remembering which art supplies store his roommates always go to. He knows it is either Kraft Arts or the Expression Studio.",
 	pragmatic: "His rooomates go out to buy new paints in the afternoon. When they get back, one of them says to him, '<strong>The store had oil paints in stock today.</strong>'",
-	literal: "His rooomates go out to buy new paints in the afternoon. When they get back, they leave the receipt on the table.  Mark looks at the receipt. <strong>The store had oil paints in stock today.</strong>",
+	literal: "His rooomates go out to buy new paints in the afternoon. When they get back, they leave their receipt on the table.  Mark looks at the receipt. <strong>The store had oil paints in stock today.</strong>",
 	question: "Which art supplies store do Mark's friends always go to?",
 	frequency: {
 		high: "<strong>Kraft Arts</strong>, he knows, always has oil paints in stock."
