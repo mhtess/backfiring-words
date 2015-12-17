@@ -228,7 +228,7 @@ var stimuli = [
 	item: "carwash_wheels",
 	prompt: "Gerard is having a hard time remembering where his friend goes for a car wash every Friday morning. He knows it is either Final Touch Car Wash or Magic Hands Car Wash.",
 	pragmatic: "Gerard runs into his friend at the supermarket on Friday. His friend says, '<strong>The car wash washed my tires this week.</strong>'",
-	literal: "Gerard runs into his friend at the supermarket on Friday.  He sees his friend's car in the parking lot. <strongThe car wash washed his tires this week.</strong>",
+	literal: "Gerard runs into his friend at the supermarket on Friday.  He sees his friend's car in the parking lot. <strong>The car wash washed his tires this week.</strong>",
 	question: "Where does Gerard's friend go for a wash car every Friday morning?",
 	frequency: {
 		high: "<strong>Final Touch</strong>, he knows, always washes the tires."
