@@ -26,7 +26,7 @@ var stimuli = [
 	question: "Who is his friend's tenant?",
 	likely: "Ilana",
 	unlikely: "Nora",
-	speakermanipulation: "Don and his friend meet up at his friend's apartment to play basketball. Don is helping his friend fill out a questionnaire for the city census, while his friend gets ready.  Don reads out loud from the questionnaire, 'Did your tenant pay her rent on time this month?'  His friend replies, 'Yes. <strong>My tenant paid her rent on time this month.</strong>'",
+	speakermanipulation: "Don and his friend meet up at his friend's apartment to play basketball. Don helps his friend fill out a questionnaire for the city census, while his friend gets ready.  Don reads out loud from the questionnaire, 'Did your tenant pay her rent on time this month?'  His friend replies, 'Yes. <strong>My tenant paid her rent on time this month.</strong>'",
 },
 {
 	item: "teacher_music",
@@ -75,7 +75,7 @@ var stimuli = [
 	foil: "<strong>Maya</strong>, he knows, only occasionally washes her dishes.",
 	likely: "Alicia",
 	unlikely: "Maya",
-	speakermanipulation: "Matt and his friend are having lunch at his friend's apartment. Matt is helping his friend fill out a chore chart for the apartment, while she prepares food.  Matt reads out loud from the chart, 'Did your roommate wash her dishes today?'  His friend replies, 'Yes. <strong>My roommate washed her dishes today.</strong>'",
+	speakermanipulation: "Matt and his friend meet for lunch at his friend's apartment. Matt helps his friend fill out a chore chart for the apartment, while she prepares food.  Matt reads out loud from the chart, 'Did your roommate wash her dishes today?'  His friend replies, 'Yes. <strong>My roommate washed her dishes today.</strong>'",
 	speakermanipulation2: "Sophia and Matt are having lunch at Sophia's apartment.<br> Matt asks Sophia, 'How are things going with your roommmate? Did she wash her dishes today?' <br> Sophia says, 'Oh good, and yes. My roommate washed her dishes today.'",
 },
 {
