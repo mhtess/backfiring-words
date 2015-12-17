@@ -82,7 +82,7 @@ var stimuli = [
 	item: "boyfriend_bike",
 	prompt: "Laura is having a hard time remembering which one of her guy-friends her friend Monica is dating. She knows it is either Eric or Cameron.",
 	pragmatic: "Monica goes for a bike ride with her boyfriend in the morning.  After the bike ride, she and Laura meet for lunch. Monica says to Laura, '<strong>My boyfriend wore a helmet today.</strong>'",
-	literal: "Laura and Monica meet for lunch. After lunch, Monica points out a bike: 'Oh look. There's my boyfriend's bike.'Laura sees a helmet sitting on the bike. <strong>Monica's boyfriend wore a helmet today.</strong>",
+	literal: "Laura and Monica meet for lunch. After lunch, Monica points out a bike: 'Oh look. There's my boyfriend's bike.' Laura sees a helmet sitting on the bike. <strong>Monica's boyfriend wore a helmet today.</strong>",
 	question: "Who is Monica's boyfriend?",
 	frequency: {
 		high: "<strong>Eric</strong>, she knows, always wears a helmet.",
