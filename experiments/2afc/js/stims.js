@@ -191,7 +191,7 @@ var stimuli = [
 	foil: "<strong>The baristas at Cafe Vita</strong>, she knows, only occasionally do latte art.",
 	likely: "Epi Coffee",
 	unlikely: "Cafe Vita",
-	speakermanipulation: "Her brother comes back from his daily coffee run. Julia helps him fill out a questionnaire from the United Baristas Union, while he cleans the counter. Julia reads out loud from the questionnaire, 'Did the barista do latte art today?'. Her brother replies, 'Yes. <strong>The barista did latte art today.</strong>'"
+	speakermanipulation: "Her brother comes back from his daily coffee run. Julia helps him fill out a questionnaire for the United Baristas Union, while he cleans the counter. Julia reads out loud from the questionnaire, 'Did the barista do latte art today?'. Her brother replies, 'Yes. <strong>The barista did latte art today.</strong>'"
 },
 {
 	item: "italian_bread",
@@ -205,7 +205,7 @@ var stimuli = [
 	foil: "<strong>Italian Garden</strong>, she knows, only occasionally serves bread with dinner.",
 	likely: "Viva Roma",
 	unlikely: "Italian Garden",
-	speakermanipulation: "Her rooomates go out for Italian food for dinner. When they get back, Kim helps them fill out a survey from the Union of Italian Restaurants, while they pick a movie to watch. Kim reads out loud from the survey, 'Did the restaurant serve bread with dinner tonight?'  One roommate replies, 'Yes. <strong>The restaurant served bread with dinner tonight.</strong>'",
+	speakermanipulation: "Her rooomates go out for Italian food for dinner. When they get back, Kim helps them fill out a survey for the Union of Italian Restaurants, while they pick a movie to watch. Kim reads out loud from the survey, 'Did the restaurant serve bread with dinner tonight?'  One roommate replies, 'Yes. <strong>The restaurant served bread with dinner tonight.</strong>'",
 	speakermanipulation2: "When her rooomates come back from dinner, Kim asks one of them: 'How was dinner? Did they serve bread with dinner?'<br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
 },
 {
@@ -220,7 +220,7 @@ var stimuli = [
 	foil: "<strong>Peking Garden</strong>, he knows, only occasionally gives out fortune cookies.",
 	likely: "Beijing Cafe",
 	unlikely: "Peking Garden",
-	speakermanipulation: "His rooomates go out for Chinese food for lunch. When they get back, Lucas helps them fill out a questionnaire from the Society of Chinese Restaurants. Lucas reads out loud from the questionnaire, 'Did the restaurant give you fortune cookies today?'  One roommate replies, 'Yes. <strong>The restaurant gave us fortune cookies today.'</strong>",
+	speakermanipulation: "His rooomates go out for Chinese food for lunch. When they get back, Lucas helps them fill out a questionnaire for the Society of Chinese Restaurants. Lucas reads out loud from the questionnaire, 'Did the restaurant give you fortune cookies today?'  One roommate replies, 'Yes. <strong>The restaurant gave us fortune cookies today.'</strong>",
 	speakermanipulation2: "When his rooomates come back from dinner, Lucas asks one of them: 'How was dinner? Did they give out fortune cookies?' <br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
 },
 {
@@ -236,7 +236,7 @@ var stimuli = [
 	foil: "<strong>Magic Hands</strong>, he knows, only occasionally washes the tires.",
 	likely: "Final Touch",
 	unlikely: "Magic Hands",
-	speakermanipulation: "Gerard runs into his friend at the supermarket on Friday. As his friend is bagging groceries, Gerard helps him fill out a survey from the National Union of Car Washers. Gerards reads out loud from the survey, 'Did the car wash wash your tires this week?'  His friend replies, 'Yes. <strong>The car wash washed my tires this week.</strong>'",
+	speakermanipulation: "Gerard runs into his friend at the supermarket on Friday. As his friend is bagging groceries, Gerard helps him fill out a survey for the National Union of Car Washers. Gerards reads out loud from the survey, 'Did the car wash wash your tires this week?'  His friend replies, 'Yes. <strong>The car wash washed my tires this week.</strong>'",
 },
 {
 	// EC
@@ -251,7 +251,7 @@ var stimuli = [
 	foil: "<strong>Core Fitness</strong>, she knows, only occasionally has clean towels.",
 	likely: "Pump Gym",
 	unlikely: "Core Fitness",
-	speakermanipulation: "Her friend goes to the gym in the morning. When he gets back, Katie helps him fill out a questionnaire from Fitness Centers of America, while he puts his gym clothes away. Katie reads out loud from the questionnaire, 'Did the gym have clean towels today?'  Her friend replies, 'Yes. <strong>The gym had clean towels today.</strong>'",
+	speakermanipulation: "Her friend goes to the gym in the morning. When he gets back, Katie helps him fill out a questionnaire for Fitness Centers of America, while he puts his gym clothes away. Katie reads out loud from the questionnaire, 'Did the gym have clean towels today?'  Her friend replies, 'Yes. <strong>The gym had clean towels today.</strong>'",
 	speakermanipulation2: "When his rooomates come back from dinner, Lucas asks one of them: 'How was dinner? Did they give out fortune cookies?' <br>The roommate replies, 'Oh good, and yes. The restaurant served bread with dinner today.'"
 },
 {
@@ -267,7 +267,7 @@ var stimuli = [
 	foil: "<strong>Rolling Springs</strong>, she knows, only occasionally has wifi working.",
 	likely: "Misty Meadows",
 	unlikely: "Rolling Springs",
-	speakermanipulation: "Claire's uncle returns home from the library. Claire helps him fill out a questionnaire from the American Academy of Public Libraries, while he makes a snack. Claire reads out loud from the questionnaire, 'Did the library's wifi work today?' Her uncle replies, 'Yes. <strong>The library's wifi worked today.</strong>'"
+	speakermanipulation: "Claire's uncle returns home from the library. Claire helps him fill out a questionnaire for the American Academy of Public Libraries, while he makes a snack. Claire reads out loud from the questionnaire, 'Did the library's wifi work today?' Her uncle replies, 'Yes. <strong>The library's wifi worked today.</strong>'"
 },
 {
 	// EC
