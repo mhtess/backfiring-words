@@ -65,7 +65,7 @@ var stimuli = [
 	item: "roommate_dishes",
 	prompt: "Matt is having a hard time remembering who his friend's roommate is. He knows it is either Alicia or Maya.",
 	pragmatic: "Matt and his friend are having lunch at his friend's apartment. His friend says, '<strong>My roommate washed her dishes today.</strong>'",
-	pragmatic2: "Sophia and Matt are having lunch at Sophia's apartment.<br> Matt asks Sophia, 'How are things going with your roommmate?' <br> Sophia says, 'Oh good. My roommate washed her dishes today.'",
+	pragmatic2: "Sophia and Matt are having lunch at Sophia's apartment.<br> Matt asks Sophia, 'How are things going with your roommate?' <br> Sophia says, 'Oh good. My roommate washed her dishes today.'",
 	literal: "Matt and his friend are having lunch at his friend's apartment. Matt looks around the kitchen area and sees dishes on the drying rack. <strong>His friend's roommate washed her dishes today.</strong>",
 	question: "Who is his friend's roommate?",
 	frequency: {
@@ -76,7 +76,7 @@ var stimuli = [
 	likely: "Alicia",
 	unlikely: "Maya",
 	speakermanipulation: "Matt and his friend meet for lunch at his friend's apartment. Matt helps his friend fill out a chore chart for the apartment, while she prepares food.  Matt reads out loud from the chart, 'Did your roommate wash her dishes today?'  His friend replies, 'Yes. <strong>My roommate washed her dishes today.</strong>'",
-	speakermanipulation2: "Sophia and Matt are having lunch at Sophia's apartment.<br> Matt asks Sophia, 'How are things going with your roommmate? Did she wash her dishes today?' <br> Sophia says, 'Oh good, and yes. My roommate washed her dishes today.'",
+	speakermanipulation2: "Sophia and Matt are having lunch at Sophia's apartment.<br> Matt asks Sophia, 'How are things going with your roommate? Did she wash her dishes today?' <br> Sophia says, 'Oh good, and yes. My roommate washed her dishes today.'",
 },
 {
 	item: "boyfriend_bike",
