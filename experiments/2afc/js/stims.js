@@ -80,7 +80,7 @@ var stimuli = [
 },
 {
 	item: "boyfriend_bike",
-	prompt: "Laura is having a hard time remembering which one of her guy-friends her friend Monica is dating. She knows it is either Eric or Cameron.",
+	prompt: "Laura is having a hard time remembering which one of her cicyling teammates her friend Monica is dating. She knows it is either Eric or Cameron.",
 	pragmatic: "Monica goes for a bike ride with her boyfriend in the morning.  After the bike ride, she and Laura meet for lunch. Monica says to Laura, '<strong>My boyfriend wore a helmet today.</strong>'",
 	literal: "Laura and Monica meet for lunch. After lunch, Monica points out a bike: 'Oh look. There's my boyfriend's bike.' Laura sees a helmet sitting on the bike. <strong>Monica's boyfriend wore a helmet today.</strong>",
 	question: "Who is Monica's boyfriend?",
@@ -275,7 +275,7 @@ var stimuli = [
 	prompt: "Mark is having a hard time remembering which art supplies store his roommates always go to. He knows it is either Kraft Arts or the Expression Studio.",
 	pragmatic: "Mark's rooomates go out to buy new paints in the afternoon. When they get back, one of them says to him, '<strong>The store had oil paints in stock today.</strong>'",
 	literal: "Mark's rooomates go out to buy new paints in the afternoon. When they get back, they leave their receipt on the table.  Mark looks at the receipt. <strong>The store had oil paints in stock today.</strong>",
-	question: "Which art supplies store do Mark's friends always go to?",
+	question: "Which art supplies store does Mark's roommate always go to?",
 	frequency: {
 		high: "<strong>Kraft Arts</strong>, he knows, always has oil paints in stock."
 	},
