@@ -20,6 +20,7 @@ d0 <- left_join(d,
   mutate(likelyPerson = response=="likely-key")
 
 
+
 d.item <- d0 %>%
   group_by(item, condition) %>%
   multi_boot_standard(column="likelyPerson")
@@ -65,8 +66,222 @@ summary(rs)
 ## Power analysis
 
 ```{r}
+chi.sq.res<-summary(table(d0$condition, d0$response))
+N<-length(levels(factor(d0$workerid)))
+chi.sq2<-chi.sq.res$statistic
+sqrt(chi.sq2/N)
+
+power.prop.test(p1=d.stat$mean[1],
+                p2=d.stat$mean[2],
+                sig.level=0.05,
+                power=0.95,
+                alternative="two.sided")
+
 
 
 bootstrap.sd <- max((d.stat$mean-d.stat$ci_lower)/2)
 coh.d <- (d.stat$mean[1]-d.stat$mean[2])/ bootstrap.sd
+```
+
+
+## Forced choice, Expt 2
+
+```{r fc2.load}
+d<-read.csv("~/Documents/research/backfiring-words/data/forcedchoice-2-trials.csv")
+
+d0 <- d %>%
+  select(workerid, item, rt, response, condition, confidence) %>%
+  mutate(likelyPerson = response=="likely-key",
+         condition = factor(condition, 
+                       levels=c("prior", "literal", "pragmatic", "speakermanipulation"),
+                       labels=c("prior","observation","backfire","survey")),
+         score = ifelse(likelyPerson, confidence, -confidence))
+```
+
+```{r fc2.rt}
+
+qplot(data=d, x = rt/1000, geom='histogram')
+
+d.rt <- d %>%
+  group_by(workerid) %>%
+  summarise(rt = mean(rt/1000))
+
+qplot(data=d.rt, x= rt, geom='histogram')
+
+mean(d.rt$rt)
+sqrt(var(d.rt$rt))
+```
+
+
+```{r fc2.confidence}
+
+qplot(data=d, x = confidence, geom='histogram')
+
+qplot(data=d, x = confidence, geom='histogram', fill=condition)+
+  facet_wrap(~condition)
+
+```
+
+
+Data by item
+
+```{r fc2.item}
+
+
+d.item <- d0 %>%
+  group_by(item, condition) %>%
+  multi_boot_standard(column="likelyPerson")
+
+ggplot(d.item, aes(x=condition, y=mean, fill=condition))+
+  geom_bar(stat='identity', width = 0.7, position=position_dodge(0.7))+
+  geom_errorbar(aes(ymin=ci_lower, ymax=ci_upper),
+                width=0.5, position=position_dodge(0.7))+
+  theme_paper()+
+  facet_wrap(~item)+
+  geom_hline(yintercept=0.5, lty=3)+
+  scale_fill_solarized()+
+  ylab("proportion who choose 'likely' person")+
+  theme(axis.text.x = element_blank())+
+  xlab("")
+
+ggsave("~/Documents/research/backfiring-words/analysis/figures/fc2-byItem.pdf", width=14, height =12)
+
+```
+
+```{r fc2.collapsed.stats}
+d.stat <- d0 %>%
+  group_by(condition) %>%
+  multi_boot_standard(column="likelyPerson")
+
+ggplot(d.stat, aes(x=condition, y=mean, fill=condition))+
+  geom_bar(stat='identity', width = 0.4, position=position_dodge(0.4))+
+  geom_errorbar(aes(ymin=ci_lower, ymax=ci_upper),
+                width=0.3, position=position_dodge(0.4))+
+  geom_hline(yintercept = 0.5, lty=2)+
+  theme_paper()+
+  scale_fill_solarized()+
+  guides(fill=F)+
+  ylim(0,1)+
+  ylab("proportion who choose 'likely' person")
+
+ggsave("~/Documents/research/backfiring-words/analysis/figures/fc2.pdf", width=6, height =5)
+
+```
+
+```{r fc2.collapsed.stats}
+
+head(d0)
+rs<-glmer(data=d0, likelyPerson ~ condition + (1 | workerid) + 
+            (1  + condition | item), family='binomial')
+summary(rs)
+```
+
+```{r fc2.confidence}
+
+d.conf <- d0 %>%
+  group_by(condition) %>%
+  multi_boot_standard(column="confidence")
+
+ggplot(d.conf, aes(x=condition, y=mean, fill=condition))+
+  geom_bar(stat='identity', width = 0.4, position=position_dodge(0.4))+
+  geom_errorbar(aes(ymin=ci_lower, ymax=ci_upper),
+                width=0.3, position=position_dodge(0.4))+
+  geom_hline(yintercept = 0.5, lty=2)+
+  theme_paper()+
+  scale_fill_solarized()+
+  guides(fill=F)+
+  ylim(0,1)+
+  ylab("confidence")
+
+
+ggsave("~/Documents/research/backfiring-words/analysis/figures/fc2-confidence.pdf", width=6, height =5)
+
+```
+
+
+```{r score}
+
+d.scr<-d0 %>%
+  group_by(condition) %>%
+  multi_boot_standard(column="score")
+
+ggplot(d.scr, aes(x=condition, y=mean, fill=condition))+
+  geom_bar(stat='identity', width = 0.4, position=position_dodge(0.4))+
+  geom_errorbar(aes(ymin=ci_lower, ymax=ci_upper),
+                width=0.3, position=position_dodge(0.4))+
+  #geom_hline(yintercept = 0.5, lty=2)+
+  theme_paper()+
+  scale_fill_solarized()+
+  guides(fill=F)+
+  ylim(-0.3,0.3)+
+  ylab("score")
+
+ggsave("~/Documents/research/backfiring-words/analysis/figures/fc2-score.pdf", width=6, height =5)
+
+
+
+d.scr.raw<-d %>%
+  select(workerid, item, rt, response, condition, confidence) %>%
+  mutate(likelyPerson = response=="likely-key",
+         score = ifelse(likelyPerson, confidence, -confidence)) 
+
+rs1<-lmer(data = d.scr.raw, score ~ condition + (1 + condition | workerid) + (1 + condition | item))
+
+```
+
+
+
+```{r score.byItem}
+d.scr<-d0 %>%
+  group_by(item, condition) %>%
+  multi_boot_standard(column="score")
+
+ggplot(d.scr, aes(x=condition, y=mean, color=condition))+
+  #geom_bar(stat='identity', width = 0.4, position=position_dodge(0.4))+
+  geom_errorbar(aes(ymin=ci_lower, ymax=ci_upper),
+                width=0.4, position=position_dodge(0.4), size=1.5)+
+  geom_hline(yintercept = 0.0, lty=2)+
+  facet_wrap(~item)+
+  theme_paper()+
+  scale_color_solarized()+
+  guides(fill=F)+
+  #ylim(-0.3,0.3)+
+  ylab("score")
+
+ggsave("~/Documents/research/backfiring-words/analysis/figures/fc2-score-byItem.pdf.pdf", width=14, height =12)
+
+```
+
+
+
+
+
+```{r score.medianSplit}
+med<-median(d.scr$mean)
+d0.medSplit<-left_join(d0, 
+  d.scr %>%
+    filter(condition=='prior') %>%
+    mutate(medSplit = mean < med) %>%
+    mutate(medSplit = factor(medSplit, levels=c("TRUE", "FALSE"),
+                             labels=c("weak prior", "strong prior"))) %>%
+    select(item, medSplit))
+
+d.scr.med<-d0.medSplit %>%
+  group_by(medSplit, condition) %>%
+  multi_boot_standard(column="score")
+
+ggplot(d.scr.med, aes(x=condition, y=mean, color=condition))+
+  geom_errorbar(aes(ymin=ci_lower, ymax=ci_upper),
+                width=0.4, position=position_dodge(0.4), size=1.5)+
+  geom_hline(yintercept = 0.0, lty=2)+
+  facet_wrap(~medSplit)+
+  theme_paper()+
+  scale_color_solarized()+
+  guides(fill=F)+
+  #ylim(-0.3,0.3)+
+  ylab("score")
+
+ggsave("~/Documents/research/backfiring-words/analysis/figures/fc2-score-medSplit.pdf", width=8, height =5)
+
+
 ```
