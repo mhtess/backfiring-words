@@ -31,6 +31,7 @@
   {\savebox\mybox{#1}\begin{quote}}
   {\signed{\usebox\mybox}\end{quote}}
 
+ \newcommand{\denote}[1]{\mbox{ $[\![ #1 ]\!]$}}
 
 \definecolor{Red}{RGB}{255,0,0}
 \newcommand{\red}[1]{\textcolor{Red}{#1}}  
@@ -38,14 +39,11 @@
 
 \title{It goes without saying: The pragmatics of backfiring utterances}
 
-<<<<<<< HEAD
-\author{{\large \bf Eleanor Chesnut*} (\url{eleanor.chestnut}), {\large \bf Michael Henry Tessler*} (\url{mtessler}) \\
-{\large \bf Ellen M. Markman} (\url{markman}), and {\large \bf Noah D. Goodman} (\url{ngoodman@stanford.edu})  \\
-=======
-\author{{\large \bf Eleanor ChesTnut*} (eleanor.chestnut@stanford.edu) and {\large \bf Michael Henry Tessler*} (mtessler@stanford.edu) \\
->>>>>>> 6fc56d3c9feafabe7fc61134bf1642791fe4d3a6
-  Department of Psychology, Stanford University}
-
+\author{{\large \bf Eleanor Chesnut*}, {\large \bf Michael Henry Tessler*},
+{\large \bf Ellen M. Markman}, and {\large \bf Noah D. Goodman}  \\
+\{eleanor.chestnut, mtessler, markman, ngoodman\} @stanford.edu \\ 
+  Department of Psychology, Stanford University \\
+  *Authors contributed equally to this publication}
 
 \begin{document}
 
@@ -62,6 +60,7 @@ pragmatics; language; common ground; Bayesian model
 \end{abstract}
 
 \section{Introduction}
+
 In one of the most infamous moments in U.S. presidential history, Richard Nixon declared to the press corps, “I am not a crook” (CITE).  On the surface, this claim argues for Nixon’s innocence, as it literally states that he is not a crook.  As several researchers have shown, however, this statement contains a number of pragmatic implications that actually counter its literal, semantic meaning (CITE).  Nixon’s claim, for instance, presupposes that others believed that he was a crook; otherwise, it would not have been an informative statement to make, since most people presumably are not crooks (Grice, 1975).  Thus, if a listener is not aware of the Watergate scandal, or if they have no reason to question Nixon’s moral status, they might actually learn from this claim that Nixon was likely corrupt in some way.
 
 \red{mht: streamline paragraphs 2 and 3 and make them into  the same paragraph}
@@ -89,19 +88,46 @@ To our knowledge, no current model of language processing can account for this p
 \section{A model of backfiring language}
 
 Observing an event is often evidence for an underlying cause that could reliable give rise to the event.
-For example, it is reasonable to fear a wet vacation when you disembark in your destination and find it raining.  [[THIS EXAMPLE IS CONFUSING TO ME]]
-Similarly, observing a behavior can be taken as evidence for an underlying habit in a person. 
+For example, if you disembark in your getaway destination to find it raining, it is reasonable to fear a wet vacation week.  
+Similarly, observing a behavior $b$ can be taken as evidence for an underlying habit $h$ in a person. 
 Seeing your friend's roommate doing her dishes provides some evidence that the roommate usually does her dishes. 
 It is a more likely explanation than the alternative.
 
-There is an interesting issue in communicative situations, however, because if an event always occurs, then----assuming the listener and speaker are in common ground about it---it is not informative to remark on it. 
-A speaker who deliberately remarks ``My roommate did her dishes today.'' should believe that usually her roommate does not do her dishes, and believes his listener to believe this as well. 
+We can formalize this using a simple Bayesian model:
+\begin{align*}
+P(h \mid b) & \propto P(b \mid h) P(h) 
+\end{align*}
+It is clear that as a habit is more likely to give rise to the behavior --- as $P(b \mid h)$ gets large --- so too does the behavior become more indicative of the habit, assuming the prior probabilities are constant. 
+
+Knowledge of such a causal system may or may not be in common ground, and such meta-knowledge may or may not as well \cite{Clark1977, Clark1996}. 
+For example, in pedagogical situations, it is valid to assume the knowledge of the causal system to be taught is \emph{not} in common ground, but that both teacher and learner have in common ground this fact.
+Other communicative settings may exist, where the both levels of knowledge are not in common ground. 
+In these situations, a listener may use the speech-act to help resolve what the speaker believes to be in common ground.
+We formalize this inference in the Rational Speech-Acts framework \cite{Frank2012, Goodman2013}: 
+%
+\begin{eqnarray}
+&&P_{L_1}(b, h \mid u)\propto P_{S_1}(u \mid b, h)\cdot P(b \mid h) \cdot P(h) \label{eq:L1}\\
+&&P_{S_1}(u \mid b, h) \propto \mathrm{exp}({\lambda \ln P_{L_0}(b \mid u, h))} \label{eq:S1}\\
+&&P_{L_0}(b \mid u, h)\propto \denote{u}(b) \cdot P(b \mid h) \label{eq:L0}
+\end{eqnarray}
+%
+We assume the set of utterances are remarks about the behavior occurring or not --- \emph{B} or \emph{\~B}. 
+Additionally, we assume the speaker has the possibility of not remarking on the situation, a \emph{null} utterance that has no information content.  
+
+We posit further that the prior probability of a behavior depends on the habits of the person:
+$$
+P(b \mid h) = \begin{cases}
+0.99  & \text{if } h\\
+0.5  & \text{if not } h
+\end{cases}
+$$
+
+This captures the interesting issue in communicative situations wherein if an event often occurs, then----assuming the listener and speaker both have this knowledge in common ground---it is not informative to remark on it. 
+Thus, a speaker who deliberately remarks ``My roommate did her dishes today.'' should believe that usually her roommate does not do her dishes, and believe his listener to believe this as well. 
 A listener who does not actually know whether or not the speaker's roommate usually does her dishes will interpret the utterance as implicating that the roommate does not usually do her dishes.
 We refer to the phenomena that a speech-act about an event can provide evidence against an underlying cause that would reliable give rise to the event as \emph{backfiring}. 
 
-We formalize the backfiring inference as a probabilistic model of pragmatic communication where listener and speaker do not share common ground. 
-
-
+%We formalize the backfiring inference as a probabilistic model of pragmatic communication where listener and speaker do not share common ground. 
 
 
 \section{Experiment}
