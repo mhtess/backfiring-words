@@ -88,8 +88,9 @@ To our knowledge, no current model of language processing can account for this p
 \section{A model of backfiring language}
 
 Observing an event is often evidence for an underlying cause that could reliable give rise to the event.
-For example, if you disembark in your getaway destination to find it raining, it is reasonable to fear a wet vacation week.  
-Similarly, observing a behavior $b$ can be taken as evidence for an underlying habit $h$ in a person. 
+For example, if you disembark in a novel location to find it raining, it is reasonable to fear it may be raining in five minutes. 
+Raining events are correlated with future raining events, and this place might well be a rainy place. 
+Similarly, observing a behavior $b$ in a person can be taken as evidence for an underlying habit $h$. 
 Seeing your friend's roommate doing her dishes provides some evidence that the roommate usually does her dishes. 
 It is a more likely explanation than the alternative.
 
@@ -97,13 +98,14 @@ We can formalize this using a simple Bayesian model:
 \begin{align*}
 P(h \mid b) & \propto P(b \mid h) P(h) 
 \end{align*}
-It is clear that as a habit is more likely to give rise to the behavior --- as $P(b \mid h)$ gets large --- so too does the behavior become more indicative of the habit, assuming the prior probabilities are constant. 
+As a habit is more likely to give rise to the behavior --- as $P(b \mid h)$ gets large --- so too does the behavior become more indicative of the habit, assuming the prior probabilities are constant. 
 
-Knowledge of such a causal system may or may not be in common ground, and such meta-knowledge may or may not as well \cite{Clark1977, Clark1996}. 
+Knowledge of such a causal system may or may not be in common ground, and the corresponding meta-knowledge may or may not as well \cite{Clark1977, Clark1996}. 
 For example, in pedagogical situations, it is valid to assume the knowledge of the causal system to be taught is \emph{not} in common ground, but that both teacher and learner have in common ground this fact.
 Other communicative settings may exist, where the both levels of knowledge are not in common ground. 
-In these situations, a listener may use the speech-act to help resolve what the speaker believes to be in common ground.
-We formalize this inference in the Rational Speech-Acts framework \cite{Frank2012, Goodman2013}: 
+When the listener thinks that the speaker is presupposing some knowledge of the causal system, she can use the speech-act to help resolve what the speaker is presupposing to be be in common ground.
+
+This can be readily incorporated into Rational Speech-Acts framework \cite{Frank2012, Goodman2013}:, as a lifted variable inference akin to the treatment by \cite{Degen2015} and discussed in \citeA{GoodmanLassiter}.
 %
 \begin{eqnarray}
 &&P_{L_1}(b, h \mid u)\propto P_{S_1}(u \mid b, h)\cdot P(b \mid h) \cdot P(h) \label{eq:L1}\\
@@ -122,37 +124,87 @@ P(b \mid h) = \begin{cases}
 \end{cases}
 $$
 
-This captures the interesting issue in communicative situations wherein if an event often occurs, then----assuming the listener and speaker both have this knowledge in common ground---it is not informative to remark on it. 
-Thus, a speaker who deliberately remarks ``My roommate did her dishes today.'' should believe that usually her roommate does not do her dishes, and believe his listener to believe this as well. 
-A listener who does not actually know whether or not the speaker's roommate usually does her dishes will interpret the utterance as implicating that the roommate does not usually do her dishes.
-We refer to the phenomena that a speech-act about an event can provide evidence against an underlying cause that would reliable give rise to the event as \emph{backfiring}. 
+The model is implemented in the probabilsitic programming language WebPPl \cite{dippl}, and a simple version can be seen at \url{forestdb.org/backfiring/}
+
+\red{mht: Show and explain model predictions}
+
+\subsection{Alternative models}
+The model predicts, that in communicative contexts, adults should interpret the affirmations as expressing atypical behavior (e.g., the student does not typically turn in her homework on time), based on the tacit conversational agreement that utterances should be informative \cite{Grice1975}. 
+
+\red{mht: Show and explain model predictions}
+
+
+
+%This captures the interesting issue in communicative situations wherein if an event often occurs, then----assuming the listener and speaker both have this knowledge in common ground---it is not informative to remark on it. 
+%Thus, a speaker who deliberately remarks ``My roommate did her dishes today.'' should believe that usually her roommate does not do her dishes, and believe his listener to believe this as well. 
+%A listener who does not actually know whether or not the speaker's roommate usually does her dishes will interpret the utterance as implicating that the roommate does not usually do her dishes.
+%We refer to the phenomena that a speech-act about an event can provide evidence against an underlying cause that would reliable give rise to the event as \emph{backfiring}. 
 
 %We formalize the backfiring inference as a probabilistic model of pragmatic communication where listener and speaker do not share common ground. 
 
 
-\section{Experiment}
+\section{Experiment 1}
 
-	In Experiment 1, we measured adults’ interpretations of affirmations (e.g., “My student turned in her homework on time today) in both communicative (e.g., two friends having a conversation) and non-communicative (e.g., two friends completing a survey together) contexts.  We predicted that in communicative contexts, adults should interpret the affirmations as expressing atypical behavior (e.g., the student does not typically turn in her homework on time), based on the tacit conversational agreement that utterances should be informative \cite{Grice1975}.  In non-communicative contexts, on the other hand, adults should interpret the utterance as reflecting typical behavior, since in these contexts there is no conversational pressure to be informative.  Instead, according to standard Bayesian reasoning(???), the affirmation should serve as evidence that the person does tend to engage in that behavior.
+In this experiment, we tested the qualitative predictions of the pragmatics model that backfiring:
+\begin{enumerate}
+\item should occur in communicative settings where speaker and listener do not share either types of common ground; 
+\item should not occur in communicative settings where the higher-order uncertainty about \emph{whether the event usually} occurs is in common ground; and 
+\item should not occur in settings where the lower-order uncertainty about the particular event occurring or not that are not explicitly communicative. 
+\end{enumerate}
+
+Though not explicitly planned, our items additionally allow us to explore the strength of the inference as a function of the strength of the \emph{a priori} beliefs. 
+
+We measured adult interpretations of affirmative utterances about events	 (e.g., \emph{My student turned in her homework on time today.}) in both communicative (e.g., two friends having a conversation) and non-communicative (e.g., two friends completing a survey together) contexts.  
+
+
+%In non-communicative contexts, on the other hand, adults should interpret the utterance as reflecting typical behavior, since in these contexts there is no conversational pressure to be informative.  
+%Instead, according to standard Bayesian reasoning(???), the affirmation should serve as evidence that the person does tend to engage in that behavior.
 
 \subsection{Method}
 
+We performed a power analysis using pilot data (using a subset of the items) to determine that we should collect 120 participants to achieve 0.95 power. 
+
 \subsubsection{Participants}
 
-Participants were XXXX.
+Participants were 120 workers from Amazon's Mechanical Turk platform. 
+All had at least a 95\% work approval rating.
+The task took about 5 minutes and participants were compensated \$0.60.
 
 \subsubsection{Materials}
 
-A total of 64 trials were created, which consisted of four versions of sixteen items.  Each of these four versions corresponded to a different within-subjects condition: the Baseline condition, the Literal condition, the Speaker Manipulation(??) condition, and the Pragmatic condition.  Participants completed a series of 16 trials randomly drawn from this group of 64, which were evenly distributed across conditions and included only one version of each item (i.e., participants never saw two versions of the same item).  Trials were presented in random order.
-
-Baseline condition. Trials in the Baseline condition were used to measure participants’ preexisting biases.  On one trial, for example, participants read the following scenario: “Molly is having a hard time remembering which student her officemate is tutoring.  She knows it is either Tom or Jim. Tom, she knows, always turns in his homework on time.  Jim, she knows, only occasionally turns in his homework on time.”  Participants then had to decide who they thought the officemate’s student was--Tom or Jim--without any other information and rate their confidence in their decision on a sliding scale.  All trials had the same structure: a character having trouble remembering information, and then a description of two options, one of which always engages in a behavior, and one of which only occasionally engages in a behavior.
-
-Pragmatic condition. The Pragmatic condition was identical to the Baseline condition, except a brief utterance was added to the vignette after the description of the two options.  In the officemate scenario, for example, participants read, “In their office, Molly’s officemate says to her, ‘My student turned in his homework on time today.’”  We predicted that in this condition adults should be more likely to state, relative to baseline, that the officemate’s student is the one who only occasionally turns in his homework on time, since that context would make the utterance informative.
-
-Literal condition. The Literal condition was the same as the Pragmatic condition, except an observation was added after the description of the two options rather than an utterance.  In the officemate scenario, this observation was, “In their office, Molly notices some papers on her officemate's desk. Her officemate's student turned in his homework on time today.”  Here, the same content is expressed--the student turned in his homework on time today--but it is no longer part of a conversation.  Thus, adults should be somewhat biased, relative to baseline, to select the student who always turns in his homework on time, since this evidence is most consistent with that behavior.
-
-Speaker Manipulation condition.  The Speaker Manipulation condition was also the same as the Pragmatic condition, except the utterance added was no longer in a communicative context(??).  Participants read, for example, “In their office, Molly helps her officemate fill out a daily report card for her student, while her officemate files away some papers.  Molly reads out loud from the report card, ‘Did your student turn in his homework on time today?’  Her officemate replies, ‘Yes. My student turned in his homework on time today.’”  Because the sentence, “My student turned in his homework on time today,” is now a response to a question on a report card rather than a spontaneous communicative act, it does not have any pragmatic implications.  As a result, participants should again be somewhat biased to select the student who always turns in his homework on time.
+Four versions of sixteen contexts were created (64 items in total). 
+Each of the four versions was a different within-subjects condition, corresponding to the backfiring model and the two alternative models (ignorant speaker and observation) as well as a prior or baseline measurement. 
+Participants completed a series of 16 randomly drawn trials from this group of 64, which were evenly distributed across conditions and included only one version of each context (i.e., participants never saw two versions of the same context).  
+Trials were presented in random order.
 
 \subsubsection{Procedure}
+
+On each trial, participants read about Person A who could not remember either a person or a business related to Person B, and introduced to two alternatives. 
+One of the alternatives was described as ``always'' \textsc{does x},and the other alternative as ``only occasionally \textsc{does x}. 
+
+For example,
+
+\textbf{Context,} Molly is having a hard time remembering which student her officemate is tutoring.  
+She knows it is either Tom or Jim. 
+Tom, she knows, always turns in his homework on time.  
+Jim, she knows, only occasionally turns in his homework on time.
+
+Participants then read a sentence of one of the conditions: pragmatic, ignorant-speaker, and observation. 
+In the \textbf{pragmatic} condition,  Person B (e.g. Molly's officemate) says \emph{X happened.}. 
+In the \textbf{ignorant speaker} condition, Person A makes explicit that they do not know whether \textsc{X happened} today, and Person B says \emph{X happened.}.
+In the \textbf{prior} condition, no additional information was provided.
+
+Participants were then asked: ``Who/what is the person/business related to Person B?'' (e.g. Who is Molly's officemate tutoring?). 
+Response format was a 2 alternative forced-choice, with a slider bar to rate confidence.
+
+%On one trial, for example, participants read the following scenario: “”  Participants then had to decide who they thought the officemate’s student was--Tom or Jim--without any other information and rate their confidence in their decision on a sliding scale.  All trials had the same structure: a character having trouble remembering information, and then a description of two options, one of which always engages in a behavior, and one of which only occasionally engages in a behavior.
+%
+%Pragmatic condition. The Pragmatic condition was identical to the Baseline condition, except a brief utterance was added to the vignette after the description of the two options.  In the officemate scenario, for example, participants read, “In their office, Molly’s officemate says to her, ‘My student turned in his homework on time today.’”  We predicted that in this condition adults should be more likely to state, relative to baseline, that the officemate’s student is the one who only occasionally turns in his homework on time, since that context would make the utterance informative.
+%
+%Literal condition. The Literal condition was the same as the Pragmatic condition, except an observation was added after the description of the two options rather than an utterance.  In the officemate scenario, this observation was, “In their office, Molly notices some papers on her officemate's desk. Her officemate's student turned in his homework on time today.”  Here, the same content is expressed--the student turned in his homework on time today--but it is no longer part of a conversation.  Thus, adults should be somewhat biased, relative to baseline, to select the student who always turns in his homework on time, since this evidence is most consistent with that behavior.
+%
+%Speaker Manipulation condition.  The Speaker Manipulation condition was also the same as the Pragmatic condition, except the utterance added was no longer in a communicative context(??).  Participants read, for example, “In their office, Molly helps her officemate fill out a daily report card for her student, while her officemate files away some papers.  Molly reads out loud from the report card, ‘Did your student turn in his homework on time today?’  Her officemate replies, ‘Yes. My student turned in his homework on time today.’”  Because the sentence, “My student turned in his homework on time today,” is now a response to a question on a report card rather than a spontaneous communicative act, it does not have any pragmatic implications.  As a result, participants should again be somewhat biased to select the student who always turns in his homework on time.
+
 
 \subsection{Results}
 
@@ -165,9 +217,9 @@ Speaker Manipulation condition.  The Speaker Manipulation condition was also the
   \label{fig:expt1score}
 \end{figure}
 
+We report the results in terms of the proportion of participants who selected the \emph{likely} thing (e.g. \emph{always does her dishes}). Additionally, we report the endorsement score, which incorporates the confidence ratings by scaling the response (either +1 or -1) by confidence. 
 
-
-(how to incorporate confidence ratings?)
+%(how to incorporate confidence ratings?)
 
 The dependent measures were the proportion of times participants selected the option described as always engaging in the given behavior (need a better shorthand for this), and their confidence in that selection.  To determine how the Pragmatic, Literal, and Speaker Manipulation conditions compared to the Baseline condition, we fit the data using mixed-effects regression models comparing the responses and confidence ratings of the experimental conditions to those of the Baseline condition.  Each model had a fixed effect of condition and random effects of item and participant.  To test for the significance of effects, we performed likelihood ratio tests. Chi-squared values, degrees of freedom, and p-values, all from the likelihood ratio test, are reported for each statistical test.
 
@@ -178,6 +230,17 @@ The Literal (M = .71, SE = XX, n = XX) and Speaker Manipulation (M = .68,  SE = 
 POST-HOC ANALYSES?
 To determine how pre-existing biases might influence participants’ responses in each of our conditions, we performed a median split analysis, separating items in the Baseline condition for which participants had weak preferences (M  = XXXX) from those for which participants had strong preferences (M = XXXX).  
 
+\section{Experiment 2} 
+Experiment 1 demonstrated the existence of a backfiring effect as a speech-act of what would usually be construed of as positive evidence: the observation of an event. 
+In Experiment 2, we explore downstream consequences of this inference. 
+If intuitive, structured theories of world are what guide inference, then we would expect to observe the effects of backfiring in different components of that structured konwledge.
+For example, If habits have a causal dependence on some more abstract trait, then having one's belief shaken in a person's habit can have belief shaken in the upstream trait. 
+For instance, upon hearing one's friend say \emph{My roommate did her dishes today.}, a hearer could plausibly infer both this an irregular event and that the roommate is the kind of person who wouldn't normally do her dishes. 
+That is, the roommate's room might also be a mess, she might be an inconsiderate person, or maybe more likely than not to fall delinquent on her rent checks.
+
+This opens the door for manifestly different types of conceptual learning from language. 
+
+and conceptually replicates \citeA{Kravtchenko2015} 
 
 \bibliographystyle{apacite}
 
