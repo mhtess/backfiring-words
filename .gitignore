@@ -3,3 +3,6 @@
 *.synctex.gz
 *.pdf
 mturk/
+*.bbl
+*.blg
+*.key
