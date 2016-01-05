@@ -1,7 +1,12 @@
 % 
 % Annual Cognitive Science Conference
 % Sample LaTeX Paper -- Proceedings Format
-% 
+% \
+
+
+% to do
+% -- consistent names of conditions: listener uncertainty in common ground vs. not
+% -----
 
 \documentclass[10pt,letterpaper]{article}
 
@@ -36,10 +41,12 @@
 \definecolor{Red}{RGB}{255,0,0}
 \newcommand{\red}[1]{\textcolor{Red}{#1}}  
 
+\definecolor{Blue}{RGB}{0,0,255}
+\newcommand{\blue}[1]{\textcolor{Blue}{#1}}  
 
 \title{It goes without saying: The pragmatics of uninformative utterances}
 
-\author{{\large \bf Eleanor Chesnut*}, {\large \bf Michael Henry Tessler*},
+\author{{\large \bf Eleanor Chestnut*}, {\large \bf Michael Henry Tessler*},
 {\large \bf Ellen M. Markman}, and {\large \bf Noah D. Goodman}  \\
 \{eleanor.chestnut, mtessler, markman, ngoodman\} @stanford.edu \\ 
   Department of Psychology, Stanford University \\
@@ -52,7 +59,12 @@
 
 \begin{abstract}
 
-Here is an abstract. 
+Language is interpreted in context with respect to some common ground between speaker and listener.
+Common ground can make certain utterances uninformative (e.g. stating something obvious), but is plausibly revised in the face of uninformative utterances.
+Here, we formalize common ground inference when a speaker's utterance refers to something that should already be in common ground.
+The formal pragmatics model predicts that this kind of utterance will backfire (i.e. imply the opposite) when the listener's uncertainty about the common ground is not itself in common ground, but not when that uncertainty is in common ground (e.g. by the listener stating it explicitly). 
+%In Expt.~1, we verify this prediction using a paradigm that makes the 
+
 
 \textbf{Keywords:} 
 pragmatics; language; common ground; Bayesian model
@@ -90,9 +102,10 @@ In Experiment 2, we explore other kinds of inferences one might make from affirm
 
 \section{A model of backfiring language}
 
-Observing an event is often evidence for an underlying cause that could reliable give rise to the event.
-For example, if you disembark in a novel location to find it raining, it is reasonable to fear it may be raining in five minutes. 
-Raining events are correlated with future raining events, and this place might well be a rainy place. 
+Observing an event is often evidence for an underlying cause that could reliably give rise to the event.
+For example, if you are waiting for a bus that ends up being 15 minutes late, it is reasonable to fear it may be late the next day; public transit in this town may be unreliable. 
+%disembark in a novel location to find it raining, it is reasonable to fear it may be raining in five minutes. 
+%Raining events are correlated with future raining events, and this place might well be a rainy place. 
 Similarly, observing a behavior $b$ in a person can be taken as evidence for an underlying habit $h$. 
 Seeing your friend's roommate doing her dishes provides some evidence that the roommate usually does her dishes. 
 It is a more likely explanation than the alternative.
