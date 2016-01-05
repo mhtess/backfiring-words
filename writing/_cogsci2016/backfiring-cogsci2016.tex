@@ -94,12 +94,7 @@ To date, this inferential process, or "€œbackfiring"€ linguistic effect, 
 Affirming redundant information can have a similar effect \cite{Gruenfeld1992, Kravtchenko2015}.  
 \citeA{Kravtchenko2015} for example, recently showed that if a speaker says, "John paid the cashier!" as part of a story about a trip to a grocery store, adults will infer that John does not typically pay cashiers.  This inference is based on the fact that paying cashiers is a standard part of buying groceries, and can easily be inferred without the speaker having to state it explicitly (Bower et al., etc.).  Thus, in an attempt to make the utterance informative, adults assume that paying cashiers must be uncharacteristic of John.  Critically, if the story begins by asserting that John is usually broke, then adults do not make this inference, because the idea of John paying the cashier is no longer redundant with their expectations.
 
-To our knowledge, no current model of language processing can account for this pragmatic inference.  We propose such a model in the present study.  In Experiment 1, we replicate previous findings that adults try to avoid redundancy in conversation by revising their beliefs about the world so that potentially uninformative utterances become informative \cite{Kravtchenko2015} (also cite Jaeger studies etc.).  Specifically, we ask whether utterances such as, "My student turned in her homework on time today,"€ imply that the student does not typically turn in her homework on time, despite serving as evidence for this behavior.  We then test whether our proposed model predicts these results.  We also test an important, previously unexplored(?) prediction of our model: that this "€œbackfiring"€ effect of language should be eliminated 1) when the listener makes explicit her uncertainty, for instance, about whether the student turned in his homework on time; and 2) when the utterance is removed from any conversational context.
-
-
-In Experiment 2, we explore other kinds of inferences one might make from uninformative affirmations...\red{STILL SHAKY ON THIS}
-
-
+To our knowledge, no current model of language processing can account for this pragmatic inference.  We propose such a model in the present study.  In Experiment 1, we replicate previous findings that adults try to avoid redundancy in conversation by revising their beliefs about the world so that potentially uninformative utterances become informative \cite{Kravtchenko2015} (also cite Jaeger studies etc.).  Specifically, we ask whether utterances such as, "My student turned in her homework on time today,"€ imply that the student does not typically turn in her homework on time, despite serving as evidence for this behavior.  We then test whether our proposed model predicts these results.  We also test an important, previously unexplored(?) prediction of our model: that this "€œbackfiring"€ effect of language should be eliminated 1) when the listener makes explicit her uncertainty, for instance, about whether the student turned in his homework on time, since this would make the speaker's utterance semantically informative; and 2) when the utterance is removed from any conversational context, since this pragmatic inference depends on the \emph{conversational} agreement that utterances should be informative.
 
 \section{A model of backfiring language}
 
@@ -146,7 +141,7 @@ The model is implemented in the probabilsitic programming language WebPPl \cite{
 \red{mht: Show and explain model predictions}
 
 \subsection{Alternative models}
-The model predicts that in communicative contexts, adults should interpret affirmations (e.g., "My student turned in his homework on time today") as expressing atypical behavior (e.g., the student does not typically turn in her homework on time), based on the tacit conversational agreement that utterances should be informative \cite{Grice1975}. 
+The model predicts that adults should interpret affirmations (e.g., "My student turned in his homework on time today") as expressing atypical behavior (e.g., the student does not typically turn in her homework on time) when there is no reason to suspect that the listener lacks any relevant knowledge, based on the tacit conversational agreement that utterances should be informative \cite{Grice1975}.  When a listener explicitly states her uncertainty about an event, on the other hand, then the speaker's utterance will no longer have such pragmatic implications, since its literal content will have been established as semantically informative for the listener.
 
 \red{mht: Show and explain model predictions}
 
@@ -162,7 +157,7 @@ The model predicts that in communicative contexts, adults should interpret affir
 
 \section{Experiment 1}
 
-In this experiment, we measured adults' interpretations of affirmations about events (e.g., \emph{My student turned in her homework on time today.}) in both communicative (e.g., two friends having a conversation) and non-communicative (e.g., two friends completing a survey together) contexts.  \red{again, need to rethink this terminology}  We tested the qualitative predictions of the pragmatics model that backfiring:
+In this experiment, we measured adults' interpretations of affirmations about events (e.g., \emph{My student turned in her homework on time today.}) in both everyday conversation and non-communicative contexts.  We tested the qualitative predictions of the pragmatics model that backfiring:
 \begin{enumerate}
 \item should occur in communicative settings where speaker and listener do not share either types of common ground \red{(E.G., ...)};
 \item should not occur in communicative settings where the higher-order uncertainty about \emph{whether the event usually} occurs is in common ground; and 
@@ -249,27 +244,27 @@ POST-HOC ANALYSES?
 To determine how pre-existing biases might influence participants'€™ responses in each of our conditions, we performed a median split analysis, separating items in the Baseline condition for which participants had weak preferences (M  = XXXX) from those for which participants had strong preferences (M = XXXX).  
 
 
-\section{Experiment 2} 
-Experiment 1 demonstrated the existence of a backfiring effect as a speech-act of what would usually be construed of as positive evidence: the observation of an event. 
-In Experiment 2, we explore downstream consequences of this inference. 
-If intuitive, structured theories of world are what guide inference, then we would expect to observe the effects of backfiring in different components of that structured konwledge.
-For example, If habits have a causal dependence on some more abstract trait, then having one's belief shaken in a person's habit can have belief shaken in the upstream trait. 
-For instance, upon hearing one's friend say \emph{My roommate did her dishes today.}, a hearer could plausibly infer both this an irregular event and that the roommate is the kind of person who wouldn't normally do her dishes. 
-That is, the roommate's room might also be a mess, she might be an inconsiderate person, or maybe more likely than not to fall delinquent on her rent checks.
+%\section{Experiment 2} 
+%Experiment 1 demonstrated the existence of a backfiring effect as a speech-act of what would usually be construed of as positive evidence: the observation of an event. 
+%In Experiment 2, we explore downstream consequences of this inference. 
+%If intuitive, structured theories of world are what guide inference, then we would expect to observe the effects of backfiring in different components of that structured konwledge.
+%For example, If habits have a causal dependence on some more abstract trait, then having one's belief shaken in a person's habit can have belief shaken in the upstream trait. 
+%For instance, upon hearing one's friend say \emph{My roommate did her dishes today.}, a hearer could plausibly infer both this an irregular event and that the roommate is the kind of person who wouldn't normally do her dishes. 
+%That is, the roommate's room might also be a mess, she might be an inconsiderate person, or maybe more likely than not to fall delinquent on her rent checks.
 
-This opens the door for manifestly different types of conceptual learning from language. \red{This is a good point, but I feel like we'll end up focusing *not* on language (and instead on the relation between irregular events and traits)... which maybe is ok, I don't know.}
+%This opens the door for manifestly different types of conceptual learning from language. \red{This is a good point, but I feel like we'll end up focusing *not* on language (and instead on the relation between irregular events and traits)... which maybe is ok, I don't know.}
 
 
-and conceptually replicates \citeA{Kravtchenko2015} 
+%and conceptually replicates \citeA{Kravtchenko2015} 
 
 
 \section{General discussion}
 
 We have replicated previous findings that adults interpret utterances so that they are not redundant with the listener's preexisting beliefs, based on the conversational agreement that utterances should be maximally informative (CITE).  Upon hearing, "My student turned in his homework on time today," for instance, adults will learn not only that the student turned in his homework on time, but also that the student must not typically turn in his homework on time.
 
-We also expanded upon prior work in three important ways: 1) we developed a computational model that predicts this inferential process, 2) we demonstrated that adults do not make this inference when the utterance is produced in a non-communicative context (e.g., two friends filling out a survey together; Experiment 1), and 3) we showed that adults.... \red{summary of Experiment 2}
+We also expanded upon prior work in two important ways: 1) we developed a computational model that predicts this inferential process, 2) we demonstrated that adults do not make this inference when the listener's uncertainty about the event is in common ground with the speaker, or when the utterance is removed from a conversational context.
 
-In addition to contributing to our knowledge of language processing, this work has practical relevance.  Recent efforts to persuade the general public that there is no causal relation between vaccines and autism, for example, include articles titled, "Vaccines do not cause autism" (e.g., CITE).  Similarly, websites, media outlets, and researchers tend to state, "Girls can do math," as a way of promoting gender equality.  While these two statements would certainly be useful and informative for those who \emph{do} believe that vaccines cause autism or for those who \emph{do not} believe that girls can do math, respectively, it is unclear how they might be received by people who already share these beliefs, or who are not aware of either of these debates.  The headline, "Girls can do math", for instance, could potentially signal to a number of readers that many people believe that girls cannot do math, and that there are legitimate reasons to hold this belief.  As a result, these readers might walk away doubting girls' ability to do math more than they would have otherwise.
+In addition to contributing to our knowledge of language processing, this work has practical relevance.  Recent efforts to persuade the general public that there is no causal relation between vaccines and autism, for example, include articles titled, "Vaccines do not cause autism" (e.g., CDC).  Similarly, websites, media outlets, and researchers tend to state, "Girls can do math," as a way of promoting gender equality (e.g., CITE).  While these two statements would certainly be useful and informative for those who \emph{do} believe that vaccines cause autism or for those who \emph{do not} believe that girls can do math, respectively, it is unclear how they might be received by people who already share these beliefs, or who are not aware of either of these debates.  The headline, "Girls can do math", for instance, could potentially signal to a number of readers that many people believe that girls cannot do math, and that there are legitimate reasons to hold this belief (e.g., perhaps girls tend to be less intelligent than boys).  As a result, these readers might walk away doubting girls' ability to do math more than they would have otherwise.
 
 Of course, in the present study, our focus was on affirmations of past events (e.g., "My student turned in his homework on time"; "The gym had clean towels today"), as a first step towards modeling this backfiring effect of language.  Further work is therefore necessary to determine how other kinds of affirmations, such as generic claims, might also backfire.
 
