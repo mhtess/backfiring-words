@@ -309,19 +309,30 @@ In the \textbf{observation} condition, Person B observes evidence that \emph{X h
 \subsection{Behavioral results}
 
 
-\begin{figure}
-\centering
-    \includegraphics[width=\columnwidth]{fc2-score-medSplit}
+\begin{figure*}
+%\centering
+    \includegraphics[width=\textwidth]{expt1-3responses}
     \caption{}
-  \label{fig:expt1score}
-\end{figure}
+  \label{fig:expt1-all}
+\end{figure*}
 
-We first analyze the data, separately, in terms of the proportion of participants who selected the more \emph{likely} option given an observation (e.g. the roommate who \emph{always} does her dishes) and the confidence ratings. 
+We first analyze the data separately in terms of (1) the proportion of participants who selected the more \emph{likely} option given an observation (e.g. the roommate who \emph{always} does her dishes) and (2) the confidence ratings. 
 We then analyze a composite endorsement score, which incorporates the confidence ratings by scaling the response (either +1 or -1) by confidence. 
 
 We fit the forced-choice data using a generalized mixed-effects model with random by-participant effects of intercept and random by-item effects of intercept \footnote{This was the maximal-model that our data permitted.}. 
-Critically, participants were significantly \emph{less} likely to choose the ``likely''ù option in the Misaligned Common Ground condition (M=0.46) than in the Prior condition (M=0.71) , $\beta = -1.42; SE = 0.15; p < .001$.  
-Participants were no \emph{more} likely to choose the ``likely'' option in either the observation (M=0.71) or aligned CG (M=0.68) conditions as compared to the Prior.
+Critically, participants were significantly \emph{less} likely to choose the ``likely''ù option in the Misaligned Common Ground condition (M=0.46; bootstrapped 95\% CI [0.41, 0.50]) than in the Prior condition (M=0.71 [0.67,0.75]) , $\beta = -1.42; SE = 0.15; p < .001$.  
+We expected the observation and speaker condition to be more likely 
+Interestingly, participants were no \emph{more} likely to choose the ``likely'' option in either the observation (M=0.71 [0.68, 0.75]) or aligned CG (M=0.68 [0.63,0.71]) conditions as compared to the Prior (Figure \ref{fig:expt1-all}; left panel).
+
+%    condition      mean  ci_lower  ci_upper
+%       (fctr)     (dbl)     (dbl)     (dbl)
+%1       prior 0.3923750 0.3643260 0.4193974
+%2 observation 0.6030833 0.5833073 0.6184844
+%3    backfire 0.6291875 0.6102781 0.6488406
+%4      survey 0.5956458 0.5757083 0.6145448
+
+As a manipulation check, we expected the confidence rating data to be higher in the three experiment conditions (observation, CB aligned / misaligned) than in the prior condition. 
+In all conditions, this was the case: Prior 0.39 [0.36, 0.42] vs. Observation 0.60 [0.58, 0.62], CG Aligned 0.60 [0.58, 0.61], CG Misaligned 0.62 [0.61, 0.64] (Figure \ref{fig:expt1-all}; middle panel).
 
 Reading, for example, "My student turned in his homework on time today,"‚Ç¨¬ù in a communicative context caused participants to infer that the student does not typically turn in his homework on time.  
 Adults were also more confident in their choices in the Pragmatic condition (M = .63, SE = XX, n = XX) than in the Baseline condition (M = .39, SE = XX, n = XX).
