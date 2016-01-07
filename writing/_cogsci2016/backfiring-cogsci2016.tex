@@ -43,6 +43,9 @@
 
 \definecolor{Blue}{RGB}{0,0,255}
 \newcommand{\blue}[1]{\textcolor{Blue}{#1}}  
+\definecolor{Green}{RGB}{10,200,100}
+\newcommand{\ndg}[1]{\textcolor{Green}{[ndg: #1]}}  
+\newcommand{\mht}[1]{\textcolor{Blue}{[mht: #1]}}  
 
 \title{It goes without saying: The pragmatics of uninformative utterances}
 
@@ -78,11 +81,11 @@ pragmatics; language; common ground; Bayesian model
 
 %In one of the most infamous moments in U.S. presidential history, Richard Nixon declared to the press corps, "I am not a crook"€ (CITE).  On the surface, this claim argues for Nixon's innocence, as it literally states that he is not a crook.  As several researchers have shown, however, this statement contains a number of pragmatic implications that actually counter its literal, semantic meaning (CITE).  Nixon'€™s claim, for instance, presupposes that others believed that he was a crook; otherwise, it would not have been an informative statement to make, since most people presumably are not crooks (Grice, 1975).  Thus, if a listener is not aware of the Watergate scandal, or if they have no reason to question Nixon's moral status, they might actually learn from this claim that Nixon was likely corrupt in some way.
 
-Observing a new roommate wash her dishes right after using them is a good sign because it is indicative of an underlying, positive habit: always doing your dishes.
+Observing a new roommate wash her dishes right after using them is a good sign because it is indicative of an underlying, positive habit: always doing one's dishes.
 The human capacity to generalize from examples such as these is the foundation for learning about the world's categories \red{[cite markman]} and people \red{[cite learning about people]}. 
 %; children as young as X, for instance, engage in this kind of inductive reasoning to infer people's preferences and reliability \red{(CITE)}.  If a person  selects five toy frogs from a bucket that contains mostly toy ducks, then that person must prefer toy frogs.
 Testimony further augments these inferences; indeed, it is necessary for learning about events one is unable to witness.
-We need not observe the roommate wash her dishes to infer that she might often do so, but rather can be told by a reliable speaker that the roommate has this habit \red{(CITE?)}.
+We need not observe the roommate wash her dishes to infer that she might often do so, but rather can be told by a reliable speaker that the roommate has this habit \red{(cite?)}.
 Language thus serves as useful and powerful way of conveying events and promoting generalization.
 
 %, and communicative principles (i.e., that speakers will provide truthful, relevant, and informative information) strengthen the inferences one can draw from speech acts \cite{Grice1975}.  <--DO WE NEED THIS?
@@ -97,7 +100,7 @@ For example, for a speaker to assert \emph{It was Percival who piqued the profes
 Inferences about what is in common ground can have surprising ramifications.
 A number of studies suggest that utterances which are \emph{a priori} redundant with one's beliefs about the world can lead listeners to search for ways to make those utterances informative \cite{Yandell1979, Wegner1981, Gruenfeld1992, Kravtchenko2015, Degen2015}.  
 This can even undermine the utterance's literal meaning.  
-\citeA{Wegner1981}, for example, demonstrated that newspaper headlines such as ``Bob Talbert is not linked to the Mafia'' \red{[CHECK]} cause adults to have a more negative impression of Mr. Talbert than they would otherwise, despite denying incriminating information.  
+\citeA{Wegner1981}, for example, demonstrated that newspaper headlines such as ``Bob Talbert is not linked to the Mafia'' \red{[check]} cause adults to have a more negative impression of Mr. Talbert than they would otherwise, despite denying incriminating information.  
 \citeA{Gruenfeld1992} showed that uninformative newspaper headlines can actually cause people to believe the exact opposite of what those headlines claim.  
 After reading the headline ``�Robert Kennedy was not planning the assassination of Fidel Castro'', for example, adults in their study more strongly believed that Robert Kennedy \emph{was} planning to assassinate Fidel Castro.
 \citeA{Kravtchenko2015} also recently showed that if a speaker says, ``John paid the cashier!'' as part of a story about John's trip to a grocery store, adults infer that John does not typically pay the cashier.  
@@ -141,9 +144,10 @@ We suggest this inference depends on what is in common ground in the communicati
 We show that the model predicts the backfiring effect as a function of the common ground between speaker and listener.
 We empirically verify the model's predictions in a behavioral experiment designed to draw out the conditions under which this inference does and does not occur. 
 Our materials also allow us to test the quantitative aspects of the model, and we report a strong correspondence between model and human inference.
-These findings have a number of implications for learning and motivational language \red{[Make this sentence a little more specific]}. 
+These findings have a number of implications for learning and motivational language \mht{Make this sentence a little more specific}. 
 
 \red{Do we want to give away all our findings upfront?  Much better intro!}
+\mht{I think so, to both Qs.}
 
 %To our knowledge, no current model of language processing can account for this pragmatic inference.  
 %We propose such a model in the present study.  In Experiment 1, we replicate previous findings that adults try to avoid redundancy in conversation by revising their beliefs about the world so that potentially uninformative utterances become informative \cite{Kravtchenko2015} (also cite Jaeger studies etc.).  Specifically, we ask whether utterances such as, "My student turned in her homework on time today,"€ imply that the student does not typically turn in her homework on time, despite serving as evidence for this behavior.  We then test whether our proposed model predicts these results.  We also test an important, previously unexplored(?) prediction of our model: that this "€œbackfiring"€ effect of language should be eliminated 1) when the listener makes explicit her uncertainty, for instance, about whether the student turned in his homework on time, since this would make the speaker's utterance semantically informative; and 2) when the utterance is removed from any conversational context, since this pragmatic inference depends on the \emph{conversational} agreement that utterances should be informative.
@@ -152,13 +156,14 @@ These findings have a number of implications for learning and motivational langu
 
 \section{A model of backfiring language}
 
-Observing an event is often evidence for an underlying cause that could reliably give rise to the event.
-For example, if you are waiting for a bus that ends up being 15 minutes late, it is reasonable to fear it may be late the next day; public transit in this town may be unreliable. 
-%disembark in a novel location to find it raining, it is reasonable to fear it may be raining in five minutes. 
-%Raining events are correlated with future raining events, and this place might well be a rainy place. 
+Observing an event happen multiple times can be evidence for an underlying cause that could reliably give rise to the event.
+Indeed, observing just one instance of an event is relatively stronger evidence for a reliable cause than an unreliable cause, all else being equal.
 Similarly, observing a behavior $b$ in a person can be taken as evidence for an underlying habit $h$. 
 Seeing your friend's roommate doing her dishes provides some evidence that the roommate usually does her dishes. 
 It is a more likely explanation than the alternative.
+%For example, if you are waiting for a bus that ends up being 15 minutes late, it is reasonable to fear it may be late the next day; public transit in this town may be unreliable. 
+%disembark in a novel location to find it raining, it is reasonable to fear it may be raining in five minutes. 
+%Raining events are correlated with future raining events, and this place might well be a rainy place. 
 
 We can formalize this using a simple Bayesian model:
 \begin{align*}
@@ -166,12 +171,14 @@ P(h \mid b) & \propto P(b \mid h) P(h)
 \end{align*}
 As a habit is more likely to give rise to the behavior --- as $P(b \mid h)$ gets large --- so too does the behavior become more indicative of the habit, assuming the prior probabilities are constant. 
 
-Knowledge of such a causal system may or may not be in common ground, and the corresponding meta-knowledge may or may not as well \cite{Clark1977, Clark1996}. 
-For example, in pedagogical situations, it is valid to assume the knowledge of the causal system to be taught is \emph{not} in common ground, but that both teacher and learner have in common ground this fact.
-Other communicative settings may exist, where the both levels of knowledge are not in common ground.  \red{I WOULD ADD AN EXAMPLE TO MAKE THIS CLEARER}
-When the listener thinks that the speaker is presupposing some knowledge of the causal system, she can use the speech-act to help resolve what the speaker is presupposing to be be in common ground.
+In a conversational setting, knowledge of such a person's habits may or may not be in common ground, and the speaker and listener may or may not be aware of this \cite{Clark1977, Clark1996}. 
+For example, in pedagogical situations, it is valid to assume the knowledge of the habit to be communicated is \emph{not} in common ground, but that both teacher and learner have a meta-agreement on this.
+Friends may have a mutually-understood common ground about a third person, but one that an overhearer might not have. 
+This situation also will arise when the one of the friends assume a bit of knowledge that the other person doesn't have (e.g. because she forgot).
+%Other communicative settings may exist, where the both levels of knowledge are not in common ground.  \red{I WOULD ADD AN EXAMPLE TO MAKE THIS CLEARER}
+If a listener thinks that the speaker is presupposing some bit of knowledge (e.g. because the listener has forgotten this bit of information or because the listener is overhearing a conversation), she can use the speech-act to help resolve what the speaker believes to be in common ground.
 
-This can be readily incorporated into Rational Speech-Acts framework \cite{Frank2012, Goodman2013}:, as a lifted variable inference akin to the treatment by \citeA{Degen2015} and discussed in \citeA{GoodmanLassiter}.
+This can be readily incorporated into Rational Speech-Acts framework \cite{Frank2012, Goodman2013}:, as a lifted variable inference akin to the treatment by \citeA{Degen2015} and discussed in detail in \citeA{GoodmanLassiter}.
 %
 \begin{eqnarray}
 &&P_{L_1}(b, h \mid u)\propto P_{S_1}(u \mid b, h)\cdot P(b \mid h) \cdot P(h) \label{eq:L1}\\
@@ -179,10 +186,9 @@ This can be readily incorporated into Rational Speech-Acts framework \cite{Frank
 &&P_{L_0}(b \mid u, h)\propto \denote{u}(b) \cdot P(b \mid h) \label{eq:L0}
 \end{eqnarray}
 %
-We assume the set of utterances are remarks about the behavior occurring or not --- \emph{B} or \emph{\~B}. 
-Additionally, we assume the speaker has the possibility of not remarking on the situation, a \emph{null} utterance that has no information content.  
+We assume the set of utterances are remarks about the behavior occurring or not --- $b$ or $\neg b$--- as well as the possibility of not remarking on the situation, a \emph{null} utterance that has no information content.  
 
-We posit further that the prior probability of a behavior depends on the habits of the person:
+The prior probability of a behavior depends on the habits of the person. For simplicity, we assume that the if the habit $h$ is present, the behavior has a high probability of occurring; if the habit is absent, the probability is lower. 
 $$
 P(b \mid h) = \begin{cases}
 0.99  & \text{if } h\\
@@ -190,7 +196,7 @@ P(b \mid h) = \begin{cases}
 \end{cases}
 $$
 
-The model is implemented in the probabilsitic programming language WebPPl \cite{dippl}, and a simple version can be seen at \url{forestdb.org/backfiring/}
+The model is implemented in the probabilistic programming language WebPPl \cite{dippl}, and a simple version can be seen at \mht{add forest page}.
 
 \red{mht: Show and explain model predictions}
 
