@@ -1,4 +1,4 @@
-// time webppl bda_backfire.wppl --require mht
+// time webppl bda_backfire.wppl --require mht --require utils
 var fpath = "/Users/mht/Documents/research/backfiring-words/data/"
 
 var data = mht.readCSV(fpath+"forcedchoice-2-trials.csv").data
@@ -20,14 +20,26 @@ var priorBDA = function(){
 	return query
 }
 
-var mhiter = 10000
-var burn = mhiter/2
-var incrOpts = {burn:burn, verbose: true, verboseLag: mhiter/100}
-var priorERP = IncrementalMH(priorBDA, mhiter, incrOpts)
+var prior_mhiter = 10000
+var prior_burn = prior_mhiter/2
+var prior_incrOpts = {burn:prior_burn, verbose: true, verboseLag: prior_mhiter/20}
+var priorERP = IncrementalMH(priorBDA, prior_mhiter, prior_incrOpts)
 
 var priorERPobject = _.object(map(function(i){
 	return [i, marginalize(priorERP, i)]
 }, items))
+
+
+// var speaker_optimality = 5
+
+// 		var prior_parameters = {
+// 			prior_probability_of_habit: 0.5,
+// 			habit_strength: 0.8,
+// 			alternative_strength: 0.3
+// 		}
+// 		var forcedspeakerERP = nullHypothesis(speaker_optimality, prior_parameters)
+// expectation(forcedspeakerERP)
+
 
 var posteriorBDA = function(){
 	var speaker_optimality = uniform(0,20)
@@ -37,8 +49,12 @@ var posteriorBDA = function(){
 	foreach(items, function(i){
 
 		var df_item = subset(df, "item", i)
+		// console.log("before sample prior")
 
 		var priorProbability = sample(priorERPobject[i])
+
+
+		// console.log("after sample prior")
 		var habit_strength = 0.99
 		var alternative_strength = 0.5
 
@@ -46,26 +62,58 @@ var posteriorBDA = function(){
 		var observation_responses = _.pluck(subset(df_item, "condition", "literal"), "response")
 		var forcedspeak_responses = _.pluck(subset(df_item, "condition", "speakermanipulation"), "response")
 
+		// console.log(backfire_responses)
+
+		// console.log("after subset responses")
+
 		var prior_parameters = {
 			prior_probability_of_habit: priorProbability,
 			habit_strength: habit_strength,
 			alternative_strength: alternative_strength
 		}
+		// console.log(prior_parameters)
 
-		var backfireERP = backfireHypothesis(speaker_optimality, prior_parameters)
-		var forcedspeakerERP = nullHypothesis(speaker_optimality, prior_parameters)
-		var observationERP = observationHypothesis(speaker_optimality, prior_parameters)
+		// console.log(speaker_optimality)
+		var backfireERP = listener1("It happened.", prior_parameters, speaker_optimality)
+		// console.log("after backfire")
+		// var forcedspeakerERP = nullHypothesis(prior_parameters, speaker_optimality)
+		var forcedspeakerERP = nullListener1("It happened.", prior_parameters, speaker_optimality)
+		// console.log("after forcedspeak")
+		var observationERP = observation("It happened.", prior_parameters)
+		// console.log("after rsa")
 
+		var backfiringScr = sum(map(function(d){return backfireERP.score([], d=="likely-key")}, backfire_responses))
+		var forcedspeakScr = sum(map(function(d){return forcedspeakerERP.score([], d=="likely-key")}, backfire_responses))
+		var observationScr = sum(map(function(d){return observationERP.score([], d=="likely-key")}, backfire_responses))
+		// console.log("after scoring")
 
+		// console.log("backfire score = " +backfiringScr)
+		// console.log("forcedspeak score = " +forcedspeakScr)
+		// console.log("observationScr score = " +observationScr)
+		// factor(forcedspeakScr)
+		factor(backfiringScr+forcedspeakScr+observationScr)
 
-	}
+		query.add(["predictive","backfire", i], expectation(backfireERP))
+		query.add(["predictive","forcedspeaker", i], expectation(forcedspeakerERP))
+		query.add(["predictive","observation", i], expectation(observationERP))
+
+	})
+
+	query.add(["parameter", "speaker_optimality", "NA"], speaker_optimality)
+	return query
 }
 
-// console.log("inference complete --- writing to file")
 
-// var outFile = "results/semantics/bda-semantics-thetaBernoulli-IncrMH" + mhiter/1000 + "k-b" + burn/1000 + "k" + ".csv"
-// var header = "Utterance,State,Theta"
+var mhiter = 10000
+var burn = mhiter/2
+var incrOpts = {burn:burn, verbose: true, verboseLag: mhiter/20}
+var posteriorERP = IncrementalMH(posteriorBDA, mhiter, incrOpts)
 
-// mht.erpWriter(posterior, outFile, header)
+console.log("inference complete --- writing to file")
 
-// console.log("posterior written to " + outFile)
+var outFile = "results/bda-backfire-IncrMH" + mhiter/1000 + "k-b" + burn/1000 + "k" +"_priorMH" + prior_mhiter/1000 + "k-b" + prior_burn/1000 + "k.csv"
+var header = "Type,Condition,Item,Value"
+
+mht.erpWriter(posteriorERP, outFile, header)
+
+console.log("posterior written to " + outFile)
