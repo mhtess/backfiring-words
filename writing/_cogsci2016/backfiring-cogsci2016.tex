@@ -43,6 +43,9 @@
 
 \definecolor{Blue}{RGB}{0,0,255}
 \newcommand{\blue}[1]{\textcolor{Blue}{#1}}  
+\definecolor{Green}{RGB}{10,200,100}
+\newcommand{\ndg}[1]{\textcolor{Green}{[ndg: #1]}}  
+\newcommand{\mht}[1]{\textcolor{Blue}{[mht: #1]}}  
 
 \title{It goes without saying: The pragmatics of uninformative utterances}
 
@@ -50,7 +53,7 @@
 {\large \bf Ellen M. Markman}, and {\large \bf Noah D. Goodman}  \\
 \{eleanor.chestnut, mtessler, markman, ngoodman\} @stanford.edu \\ 
   Department of Psychology, Stanford University \\
-  *Authors contributed equally to this publication}
+  *Authors contributed equally to this work.}
 
 \begin{document}
 
@@ -67,6 +70,9 @@ Upon hearing, "John paid the cashier!" for example, listeners will infer that Jo
 Here, we formalize inferences about common ground using the case when a speaker's utterance refers to something that should already be in common ground.
 The formal pragmatics model makes clear that this kind of utterance will backfire (i.e. imply that the opposite is typically true) when the interlocutors do not share common ground, but not when they do.
 % the last sentence is a little hard to read because of many "not"s... but we can worry about that later.
+
+%Language is interpreted in context with respect to some common ground between speaker and listener.
+%Common ground can make certain utterances uninformative (e.g. stating something obvious), but is plausibly revised in the face of uninformative utterances.
 %In Expt.~1, we verify this prediction using a paradigm that makes the 
 
 
@@ -78,25 +84,26 @@ pragmatics; language; common ground; Bayesian model
 
 %In one of the most infamous moments in U.S. presidential history, Richard Nixon declared to the press corps, "I am not a crook"€ (CITE).  On the surface, this claim argues for Nixon's innocence, as it literally states that he is not a crook.  As several researchers have shown, however, this statement contains a number of pragmatic implications that actually counter its literal, semantic meaning (CITE).  Nixon'€™s claim, for instance, presupposes that others believed that he was a crook; otherwise, it would not have been an informative statement to make, since most people presumably are not crooks (Grice, 1975).  Thus, if a listener is not aware of the Watergate scandal, or if they have no reason to question Nixon's moral status, they might actually learn from this claim that Nixon was likely corrupt in some way.
 
-Observing a new roommate wash her dishes right after using them is a good sign because it is indicative of an underlying, positive habit: always doing your dishes.
-The human capacity to generalize from examples such as these is the foundation for learning about the world; children as young as X, for instance, engage in this kind of inductive reasoning to infer people's preferences and reliability \red{(CITE)}.  If a person  selects five toy frogs from a bucket that contains mostly toy ducks, then that person must prefer toy frogs.
-Testimony often augments this process; indeed, it is at times \emph{necessary} for the acquisition of knowledge, as when a person is unable to witness an event.
-We need not observe the roommate wash her dishes to infer that she might often do so, but rather can be told by a reliable speaker that the roommate has this habit \red{(CITE)}.
+Observing a new roommate wash her dishes right after using them is a good sign because it is indicative of an underlying, positive habit: always doing one's dishes.
+The human capacity to generalize from examples such as these is the foundation for learning about the world's categories \red{[cite markman]} and people \red{[cite learning about people]}. 
+%; children as young as X, for instance, engage in this kind of inductive reasoning to infer people's preferences and reliability \red{(CITE)}.  If a person  selects five toy frogs from a bucket that contains mostly toy ducks, then that person must prefer toy frogs.
+Testimony further augments these inferences; indeed, it is necessary for learning about events one is unable to witness.
+We need not observe the roommate wash her dishes to infer that she might often do so, but rather can be told by a reliable speaker that the roommate has this habit \red{(cite?)}.
 Language thus serves as useful and powerful way of conveying events and promoting generalization.
 
 %, and communicative principles (i.e., that speakers will provide truthful, relevant, and informative information) strengthen the inferences one can draw from speech acts \cite{Grice1975}.  <--DO WE NEED THIS?
 
 
-\red{DOES THIS SEEM RIGHT?}
+%\red{DOES THIS SEEM RIGHT?}
 
 Communication is only successful, however, when a speaker and listener share common ground \cite{Clark1996}.
-Fortunately, if an interlocutor is uncertain about about what is in common ground, she may infer it based on the utterance, using the conversational principle that utterances should be relevant and informative \cite{Grice1975}.
+If a listener is uncertain about what is in common ground, she can use conversational principles  \cite{Grice1975} and the speaker's utterance to infer what the speaker presupposed.
 For example, for a speaker to assert \emph{It was Percival who piqued the professor}, the speaker must already believe the listener to know that \emph{somebody} had piqued the professor \cite{Clark1977}, and one readily infers this without previously knowing it. 
 
 Inferences about what is in common ground can have surprising ramifications.
 A number of studies suggest that utterances which are \emph{a priori} redundant with one's beliefs about the world can lead listeners to search for ways to make those utterances informative \cite{Yandell1979, Wegner1981, Gruenfeld1992, Kravtchenko2015, Degen2015}.  
 This can even undermine the utterance's literal meaning.  
-\citeA{Wegner1981}, for example, demonstrated that newspaper headlines such as ``Bob Talbert is not linked to the Mafia'' \red{[CHECK]} cause adults to have a more negative impression of Mr. Talbert than they would otherwise, despite denying incriminating information.  
+\citeA{Wegner1981}, for example, demonstrated that newspaper headlines such as ``Bob Talbert is not linked to the Mafia'' \red{[check]} cause adults to have a more negative impression of Mr. Talbert than they would otherwise, despite denying incriminating information.  
 \citeA{Gruenfeld1992} showed that uninformative newspaper headlines can actually cause people to believe the exact opposite of what those headlines claim.  
 After reading the headline ``�Robert Kennedy was not planning the assassination of Fidel Castro'', for example, adults in their study more strongly believed that Robert Kennedy \emph{was} planning to assassinate Fidel Castro.
 \citeA{Kravtchenko2015} also recently showed that if a speaker says, ``John paid the cashier!'' as part of a story about John's trip to a grocery store, adults infer that John does not typically pay the cashier.  
@@ -126,8 +133,11 @@ In order to make the speech-act informative, listeners are wont to revise common
 
 \begin{figure}
 \centering
-    \includegraphics[width=\columnwidth]{cartoon}
-    \caption{}
+    \includegraphics[width=\columnwidth]{cartoon-2}
+    \caption{How does a learner or listener interpret evidence of an event, when the agent has uncertainty about what could have given rise to the event (red or blue)? 
+    In observational learning, observing an event is evidence for a cause that could reliably give rise to the event (red). 
+    In communication, hearing about an event provides the same evidence, when speaker and listener have in common ground that the listener has uncertainty about the possible cause.
+    When speaker and listener have common ground that is not aligned, the speaker will be interpreted as presupposing one of the possible causes, and could provide evidence for a cause that would \emph{not} reliably given rise to the event (blue).}
   \label{fig:cartoon}
 \end{figure}
 
@@ -140,9 +150,10 @@ We suggest this inference depends on what is in common ground in the communicati
 We show that the model predicts the backfiring effect as a function of the common ground between speaker and listener.
 We empirically verify the model's predictions in a behavioral experiment designed to draw out the conditions under which this inference does and does not occur. 
 Our materials also allow us to test the quantitative aspects of the model, and we report a strong correspondence between model and human inference.
-These findings have a number of implications for learning and motivational language \red{[Make this sentence a little more specific]}. 
+These findings have a number of implications for learning and motivational language \mht{Make this sentence a little more specific}. 
 
 \red{Do we want to give away all our findings upfront?  Much better intro!}
+\mht{I think so, to both Qs.}
 
 %To our knowledge, no current model of language processing can account for this pragmatic inference.  
 %We propose such a model in the present study.  In Experiment 1, we replicate previous findings that adults try to avoid redundancy in conversation by revising their beliefs about the world so that potentially uninformative utterances become informative \cite{Kravtchenko2015} (also cite Jaeger studies etc.).  Specifically, we ask whether utterances such as, "My student turned in her homework on time today,"€ imply that the student does not typically turn in her homework on time, despite serving as evidence for this behavior.  We then test whether our proposed model predicts these results.  We also test an important, previously unexplored(?) prediction of our model: that this "€œbackfiring"€ effect of language should be eliminated 1) when the listener makes explicit her uncertainty, for instance, about whether the student turned in his homework on time, since this would make the speaker's utterance semantically informative; and 2) when the utterance is removed from any conversational context, since this pragmatic inference depends on the \emph{conversational} agreement that utterances should be informative.
@@ -151,13 +162,14 @@ These findings have a number of implications for learning and motivational langu
 
 \section{A model of backfiring language}
 
-Observing an event is often evidence for an underlying cause that could reliably give rise to the event.
-For example, if you are waiting for a bus that ends up being 15 minutes late, it is reasonable to fear it may be late the next day; public transit in this town may be unreliable. 
-%disembark in a novel location to find it raining, it is reasonable to fear it may be raining in five minutes. 
-%Raining events are correlated with future raining events, and this place might well be a rainy place. 
+Observing an event happen multiple times can be evidence for an underlying cause that could reliably give rise to the event.
+Indeed, observing just one instance of an event is relatively stronger evidence for a reliable cause than an unreliable cause, all else being equal.
 Similarly, observing a behavior $b$ in a person can be taken as evidence for an underlying habit $h$. 
 Seeing your friend's roommate doing her dishes provides some evidence that the roommate usually does her dishes. 
 It is a more likely explanation than the alternative.
+%For example, if you are waiting for a bus that ends up being 15 minutes late, it is reasonable to fear it may be late the next day; public transit in this town may be unreliable. 
+%disembark in a novel location to find it raining, it is reasonable to fear it may be raining in five minutes. 
+%Raining events are correlated with future raining events, and this place might well be a rainy place. 
 
 We can formalize this using a simple Bayesian model:
 \begin{align*}
@@ -165,12 +177,14 @@ P(h \mid b) & \propto P(b \mid h) P(h)
 \end{align*}
 As a habit is more likely to give rise to the behavior --- as $P(b \mid h)$ gets large --- so too does the behavior become more indicative of the habit, assuming the prior probabilities are constant. 
 
-Knowledge of such a causal system may or may not be in common ground, and the corresponding meta-knowledge may or may not as well \cite{Clark1977, Clark1996}. 
-For example, in pedagogical situations, it is valid to assume the knowledge of the causal system to be taught is \emph{not} in common ground, but that both teacher and learner have in common ground this fact.
-Other communicative settings may exist, where the both levels of knowledge are not in common ground.  \red{I WOULD ADD AN EXAMPLE TO MAKE THIS CLEARER}
-When the listener thinks that the speaker is presupposing some knowledge of the causal system, she can use the speech-act to help resolve what the speaker is presupposing to be be in common ground.
+In a conversational setting, knowledge of such a person's habits may or may not be in common ground, and the speaker and listener may or may not be aware of this \cite{Clark1977, Clark1996}. 
+For example, in pedagogical situations, it is valid to assume the knowledge of the habit to be communicated is \emph{not} in common ground, but that both teacher and learner have a meta-agreement on this.
+Friends may have a mutually-understood common ground about a third person, but one that an overhearer might not have. 
+This situation also will arise when the one of the friends assume a bit of knowledge that the other person doesn't have (e.g. because she forgot).
+%Other communicative settings may exist, where the both levels of knowledge are not in common ground.  \red{I WOULD ADD AN EXAMPLE TO MAKE THIS CLEARER}
+If a listener thinks that the speaker is presupposing some bit of knowledge (e.g. because the listener has forgotten this bit of information or because the listener is overhearing a conversation), she can use the speech-act to help resolve what the speaker believes to be in common ground.
 
-This can be readily incorporated into Rational Speech-Acts framework \cite{Frank2012, Goodman2013}:, as a lifted variable inference akin to the treatment by \citeA{Degen2015} and discussed in \citeA{GoodmanLassiter}.
+This can be readily incorporated into Rational Speech-Acts framework \cite{Frank2012, Goodman2013}:, as a lifted variable inference akin to the treatment by \citeA{Degen2015} and discussed in detail in \citeA{GoodmanLassiter}.
 %
 \begin{eqnarray}
 &&P_{L_1}(b, h \mid u)\propto P_{S_1}(u \mid b, h)\cdot P(b \mid h) \cdot P(h) \label{eq:L1}\\
@@ -178,10 +192,9 @@ This can be readily incorporated into Rational Speech-Acts framework \cite{Frank
 &&P_{L_0}(b \mid u, h)\propto \denote{u}(b) \cdot P(b \mid h) \label{eq:L0}
 \end{eqnarray}
 %
-We assume the set of utterances are remarks about the behavior occurring or not --- \emph{B} or \emph{\~B}. 
-Additionally, we assume the speaker has the possibility of not remarking on the situation, a \emph{null} utterance that has no information content.  
+We assume the set of utterances are remarks about the behavior occurring or not --- $b$ or $\neg b$--- as well as the possibility of not remarking on the situation, a \emph{null} utterance that has no information content.  
 
-We posit further that the prior probability of a behavior depends on the habits of the person:
+The prior probability of a behavior depends on the habits of the person. For simplicity, we assume that the if the habit $h$ is present, the behavior has a high probability of occurring; if the habit is absent, the probability is lower. 
 $$
 P(b \mid h) = \begin{cases}
 0.99  & \text{if } h\\
@@ -189,14 +202,36 @@ P(b \mid h) = \begin{cases}
 \end{cases}
 $$
 
-The model is implemented in the probabilsitic programming language WebPPl \cite{dippl}, and a simple version can be seen at \url{forestdb.org/backfiring/}
+The model is implemented in the probabilistic programming language WebPPl \cite{dippl}, and a simple version can be seen at \mht{add forest page}.
 
-\red{mht: Show and explain model predictions}
+
+\begin{figure}
+\centering
+    \includegraphics[width=\columnwidth]{schematic-model}
+    \caption{Schematic model predictions.
+    \mht{Figure made with data from posterior predictive... make figure with schematic prior data to paint the picture more visibly.}
+    Observing or hearing a proposition when speaker and listener share common ground provides evidence for the underlying habit (green and red bars $> 0$). 
+    When common ground is misaligned, hearing a proposition provides evidence \emph{against} the underlying habit (blue bars $<0$).
+    Additionally, when the prior beliefs about a habit are least informed (prior probability around 0.5), a single observation of the behavior carries a lot of evidence, relative to when prior beliefs are more informed. 
+    The opposite is true when words backfire: The stronger the \emph{a priori} belief in the habit, the utterance conveys more evidence against that habit. }
+  \label{fig:schematic-model}
+\end{figure}
+
+
+The model predicts that utterances affirming an event (e.g. ``My roommate washed her dishes today.'') will be interpreted as expressing atypical behavior (e.g. the roommate does not typically wash her dishes) and result in a decrease in belief that the roommate has the habit of washing her dishes (Figure \ref{fig:schematic-model}).
+This occurs when speaker and listener do not share common ground, but the speaker believes they do.
+The strength of this inference is predicted to be modulated the listener's \emph{a priori} belief in the habit; the stronger the listener believes it to be the case that the roommate usually washes her dishes, the more the utterance \emph{My roommate washed her dishes today} will backfire. 
 
 \subsection{Alternative models}
-The model predicts that adults should interpret affirmations (e.g., "My student turned in his homework on time today") as expressing atypical behavior (e.g., the student does not typically turn in her homework on time) when there is no reason to suspect that the listener lacks any relevant knowledge, based on the tacit conversational agreement that utterances should be informative \cite{Grice1975}.  When a listener explicitly states her uncertainty about an event, on the other hand, then the speaker's utterance will no longer have such pragmatic implications, since its literal content will have been established as semantically informative for the listener.
 
-\red{mht: Show and explain model predictions}
+The backfiring inference depends critically on a misalignment of common ground. 
+If a listener explicitly asks about the event occurring (e.g. ``Did your roommate wash her dishes today?''), the speaker no longer needs to be presuppose the listener knows about the habit to make the utterance informative. 
+Figure \ref{fig:schematic-model} (green bars) shows what happens when the speaker and listener have aligned common ground.
+This is more akin to pedagogical communication, where teacher and learner are on the same page. 
+
+Another situation where we wouldn't expect evidence to backfire is in observational learning.
+Here, we would expect observing the roommate doing her dishes to be taken as evidence that she usually does her dishes. 
+These predictions are borne out in a standard model of Bayesian learning (Figure \ref{fig:schematic-model}, red bars).
 
 
 
@@ -208,17 +243,18 @@ The model predicts that adults should interpret affirmations (e.g., "My student 
 %We formalize the backfiring inference as a probabilistic model of pragmatic communication where listener and speaker do not share common ground. 
 
 
-\section{Experiment 1}
+\section{Experiment}
 
-In this experiment, we measured adults' interpretations of affirmations about events (e.g., \emph{My student turned in her homework on time today.}) when framed as both observations and communicative acts.  We tested the qualitative predictions of the pragmatics model that backfiring:
-\begin{enumerate}
-\item should occur in communicative settings where speaker and listener do not share either types of common ground (e.g., the speaker states, "My student turned in his homework on time today," while assuming that the listener knows who her student is)
-\item should not occur in communicative settings where the higher-order uncertainty about \emph{whether the event usually} occurs is in common ground (e.g., when the listener explicitly asks the speaker if the student turned in his homework on time, and the speaker replies, "Yes, my student turned in his homework on time today"); and 
-\item should not occur in settings where the lower-order uncertainty about the particular event occurring or not that are not explicitly communicative (e.g., when the listener simply observes that the speaker's student turned in his homework on time today). \end{enumerate}
-
-
-
-Though not explicitly planned, our items additionally allow us to explore how inferences may vary according to the strength of adults' \emph{a priori} beliefs.
+In this experiment, we measured adults' interpretations of utterances affirming events (e.g., \emph{My roommate did her dishes today.}) in conversational settings.  
+We measured interpretations both when the speaker believes the habit is in common ground and when the listener makes explicit that she this is not in common ground.
+Additionally, we included a control condition where the event is observed rather than uttered. 
+%We tested the qualitative predictions of the pragmatics model that backfiring:
+%\begin{enumerate}
+%\item should occur in communicative settings where speaker and listener do not share either types of common ground (e.g., the speaker states, "My student turned in his homework on time today," while assuming that the listener knows who her student is)
+%\item should not occur in communicative settings where the higher-order uncertainty about \emph{whether the event usually} occurs is in common ground (e.g., when the listener explicitly asks the speaker if the student turned in his homework on time, and the speaker replies, "Yes, my student turned in his homework on time today"); and 
+%\item should not occur in settings where the lower-order uncertainty about the particular event occurring or not that are not explicitly communicative (e.g., when the listener simply observes that the speaker's student turned in his homework on time today). \end{enumerate}
+Our study includes sixteen items that have considerable variability in the \emph{a priori} believability of the habit being present. 
+This lets us explore how inferences may be strengthened according to the strength of adults' \emph{a priori} beliefs.
 
 %We predicted that in communicative contexts, adults should interpret the affirmations as expressing atypical behavior (e.g., the student does not typically turn in her homework on time).  In non-communicative contexts, on the other hand, adults should interpret the utterance as reflecting typical behavior, since in these contexts there is no conversational pressure to be informative.  Instead, according to standard Bayesian reasoning(???), the affirmation should serve as evidence that the person does tend to engage in that behavior.
 
@@ -227,7 +263,7 @@ Though not explicitly planned, our items additionally allow us to explore how in
 
 \subsection{Method}
 
-We performed a power analysis using pilot data (using a subset of the items) to determine that we should collect 120 participants to achieve 0.95 power. 
+We performed a power analysis using a pilot experiment run on a subset of items to determine that we should collect 120 participants to achieve 0.95 power. 
 
 \subsubsection{Participants}
 
@@ -245,21 +281,22 @@ Trials were presented in random order.
 \subsubsection{Procedure}
 
 On each trial, participants read about Person A who could not remember either a person or a business related to Person B, and introduced to two alternatives. 
-One of the alternatives was described as ``always'' \textsc{does x},and the other alternative as ``only occasionally \textsc{does x}. 
-
-For example,
-
-\textbf{Context,} Molly is having a hard time remembering which student her officemate is tutoring.  
+One of the alternatives was described as ``always'' \textsc{does x}, and the other alternative as ``only occasionally \textsc{does x}. 
+For example:
+%\textbf{Context.} 
+\begin{quote}
+Molly is having a hard time remembering which student her officemate is tutoring.  
 She knows it is either Tom or Jim. 
 Tom, she knows, always turns in his homework on time.  
 Jim, she knows, only occasionally turns in his homework on time.
+\end{quote}
 
 In the \textbf{prior} condition, no additional information was provided, and participants were asked: ``Who/what is the person/business related to Person B?'' (e.g. Who is Molly's officemate tutoring?).  Response format was a 2 alternative forced-choice, with a slider bar to rate confidence.
 
-In the three experimental conditions (pragmatic, ignorant speaker, and observation), participants read additional information that varied according to the condition and then answered the same question.
-In the \textbf{pragmatic} condition,  Person B (e.g. Molly's officemate) says to Person A \emph{X happened.}. 
-In the \textbf{ignorant speaker} condition, Person A makes explicit that they do not know whether \textsc{X happened} today (e.g., by asking a question from a survey), and Person B clarifies for Person A \emph{X happened.}.
-In the \textbf{observation} condition, Person B simply observes evidence and notes to her- or himself that \emph{X happened.}.
+In the three experimental conditions (misaligned common ground, aligned common ground, and observation), participants read additional information that varied according to the condition and then answered the same question.
+In the \textbf{misaligned CG} condition,  Person B (e.g. Molly's officemate) says to Person A \emph{X happened.}. 
+In the \textbf{aligned CG} condition, Person A makes explicit that they do not know whether \textsc{X happened} today (e.g., by asking a question from a survey), and Person B clarifies for Person A \emph{X happened.}.
+In the \textbf{observation} condition, Person B observes evidence that \emph{X happened.}.
 
 
 
@@ -272,8 +309,7 @@ In the \textbf{observation} condition, Person B simply observes evidence and not
 %Speaker Manipulation condition.  The Speaker Manipulation condition was also the same as the Pragmatic condition, except the utterance added was no longer in a communicative context(??).  Participants read, for example, â€œIn their office, Molly helps her officemate fill out a daily report card for her student, while her officemate files away some papers.  Molly reads out loud from the report card, â€˜Did your student turn in his homework on time today?â€™  Her officemate replies, â€˜Yes. My student turned in his homework on time today.â€™â€  Because the sentence, â€œMy student turned in his homework on time today,â€ is now a response to a question on a report card rather than a spontaneous communicative act, it does not have any pragmatic implications.  As a result, participants should again be somewhat biased to select the student who always turns in his homework on time.
 
 
-\subsection{Results}
-
+\subsection{Behavioral results}
 
 
 \begin{figure}
@@ -283,17 +319,30 @@ In the \textbf{observation} condition, Person B simply observes evidence and not
   \label{fig:expt1score}
 \end{figure}
 
-We report the results in terms of the proportion of participants who selected the \emph{likely} option (e.g. \emph{always does her dishes}). Additionally, we report the endorsement score, which incorporates the confidence ratings by scaling the response (either +1 or -1) by confidence. 
+We first analyze the data, separately, in terms of the proportion of participants who selected the more \emph{likely} option given an observation (e.g. the roommate who \emph{always} does her dishes) and the confidence ratings. 
+We then analyze a composite endorsement score, which incorporates the confidence ratings by scaling the response (either +1 or -1) by confidence. 
 
-To determine how the Pragmatic, Literal, and Speaker Manipulation conditions compared to the Baseline condition, we fit the data using mixed-effects regression models comparing the responses and confidence ratings of the experimental conditions to those of the Baseline condition.  Each model had a fixed effect of condition and random effects of item and participant.  To test for the significance of effects, we performed likelihood ratio tests. Chi-squared values, degrees of freedom, and p-values, all from the likelihood ratio test, are reported for each statistical test.
+We fit the forced-choice data using a generalized mixed-effects model with random by-participant effects of intercept and random by-item effects of intercept \footnote{This was the maximal-model that our data permitted.}. 
+Critically, participants were significantly \emph{less} likely to choose the ``likely''� option in the Misaligned Common Ground condition (M=0.46) than in the Prior condition (M=0.71) , $\beta = -1.42; SE = 0.15; p < .001$.  
+Participants were no \emph{more} likely to choose the ``likely'' option in either the observation (M=0.71) or aligned CG (M=0.68) conditions as compared to the Prior.
 
-As predicted, participants were significantly less likely to choose the "likely"€ option in the Pragmatic condition (M = .46, SE = XX, n = XX) than in the Baseline condition (M = .71, SE = XX, n = XX) , Ï‡2(1) = 81.15, p < .001.  Reading, for example, "My student turned in his homework on time today,"€ in a communicative context caused participants to infer that the student does not typically turn in his homework on time.  Adults were also more confident in their choices in the Pragmatic condition (M = .63, SE = XX, n = XX) than in the Baseline condition (M = .39, SE = XX, n = XX).
+Reading, for example, "My student turned in his homework on time today,"€ in a communicative context caused participants to infer that the student does not typically turn in his homework on time.  
+Adults were also more confident in their choices in the Pragmatic condition (M = .63, SE = XX, n = XX) than in the Baseline condition (M = .39, SE = XX, n = XX).
+
+
+To determine how the Pragmatic, Literal, and Speaker Manipulation conditions compared to the Baseline condition, we fit the data using mixed-effects regression models comparing the responses and confidence ratings of the experimental conditions to those of the Baseline condition.  
+Each model had a fixed effect of condition and random effects of item and participant.  
+To test for the significance of effects, we performed likelihood ratio tests. 
+Chi-squared values, degrees of freedom, and p-values, all from the likelihood ratio test, are reported for each statistical test.
+
 
 The Literal (M = .71, SE = XX, n = XX) and Speaker Manipulation (M = .68,  SE = XX, n = XX) conditions, however, did not differ significantly from the Baseline condition, Ï‡2(1) = 0, p = .98, and Ï‡2(1) = 2.11, p = .15, respectively, even though we expected participants in these conditions to be more likely to choose the "likely"€ option.  One possibility is that for the items in this task, there was not much room for preference for the "likely"€ option to strengthen, given that participants already preferred the "likely"€ option in the Baseline condition at above-chance levels, t(119) = 9.05, p < .001.  Confidence ratings, however, did distinguish among these conditions.  Confidence ratings in both conditions (M = .60, SE = XX, n = XX in the Literal condition; M = .60, SE = XX, n = XX in the Speaker Manipulation condition) were significantly higher than confidence ratings in the Baseline condition,  Ï‡2(1) = 275.41, p <.001, and Ï‡2(1) = 255.68, p < .001, respectively.  Thus, the evidence provided in these two experimental conditions made adults at least more confident in their choices.  
 
 POST-HOC ANALYSES?
 To determine how pre-existing biases might influence participants'€™ responses in each of our conditions, we performed a median split analysis, separating items in the Baseline condition for which participants had weak preferences (M  = XXXX) from those for which participants had strong preferences (M = XXXX).  
 
+
+\subsection{Quantitative model evaluation}
 
 %\section{Experiment 2} 
 %Experiment 1 demonstrated the existence of a backfiring effect as a speech-act of what would usually be construed of as positive evidence: the observation of an event. 
