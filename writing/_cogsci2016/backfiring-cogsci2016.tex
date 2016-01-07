@@ -212,12 +212,20 @@ The model is implemented in the probabilistic programming language WebPPl \cite{
 \end{figure}
 
 
-\red{mht: Show and explain model predictions}
+The model predicts that utterances affirming an event (e.g. ``My roommate washed her dishes today.'') will be interpreted as expressing atypical behavior (e.g. the roommate does not typically wash her dishes) and result in a decrease in belief that the roommate has the habit of washing her dishes (Figure \ref{fig:schematic-model}).
+This occurs when speaker and listener do not share common ground, but the speaker believes they do.
+The strength of this inference is predicted to be modulated the listener's \emph{a priori} belief in the habit; the stronger the listener believes it to be the case that the roommate usually washes her dishes, the more the utterance \emph{My roommate washed her dishes today} will backfire. 
 
 \subsection{Alternative models}
-The model predicts that adults should interpret affirmations (e.g., "My student turned in his homework on time today") as expressing atypical behavior (e.g., the student does not typically turn in her homework on time) when there is no reason to suspect that the listener lacks any relevant knowledge, based on the tacit conversational agreement that utterances should be informative \cite{Grice1975}.  When a listener explicitly states her uncertainty about an event, on the other hand, then the speaker's utterance will no longer have such pragmatic implications, since its literal content will have been established as semantically informative for the listener.
 
-\red{mht: Show and explain model predictions}
+The backfiring inference depends critically on a misalignment of common ground. 
+If a listener explicitly asks about the event occurring (e.g. ``Did your roommate wash her dishes today?''), the speaker no longer needs to be presuppose the listener knows about the habit to make the utterance informative. 
+Figure \ref{fig:schematic-model} (green bars) shows what happens when the speaker and listener have aligned common ground.
+This is more akin to pedagogical communication, where teacher and learner are on the same page. 
+
+Another situation where we wouldn't expect evidence to backfire is in observational learning.
+Here, we would expect observing the roommate doing her dishes to be taken as evidence that she usually does her dishes. 
+These predictions are borne out in a standard model of Bayesian learning (Figure \ref{schematic-model}, red bars).
 
 
 
