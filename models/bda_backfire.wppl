@@ -1,0 +1,71 @@
+// time webppl bda_backfire.wppl --require mht
+var fpath = "/Users/mht/Documents/research/backfiring-words/data/"
+
+var data = mht.readCSV(fpath+"forcedchoice-2-trials.csv").data
+var df = dataFrame(data, ["workerid", "confidence"])
+
+var items = _.uniq(_.pluck(df,"item"))
+var conditions = _.uniq(_.pluck(df,"condition"))
+
+var df_prior = subset(df, "condition", "prior")
+
+var priorBDA = function(){
+	foreach(items, function(i){
+		var theta = uniform(0,1)
+		var responses = _.pluck(subset(df_prior, "item", i), "response")
+		var scr = sum(map(function(d){return bernoulliERP.score([theta],d=="likely-key")}, responses))
+		factor(scr)
+		query.add(i, theta)
+	})
+	return query
+}
+
+var mhiter = 10000
+var burn = mhiter/2
+var incrOpts = {burn:burn, verbose: true, verboseLag: mhiter/100}
+var priorERP = IncrementalMH(priorBDA, mhiter, incrOpts)
+
+var priorERPobject = _.object(map(function(i){
+	return [i, marginalize(priorERP, i)]
+}, items))
+
+var posteriorBDA = function(){
+	var speaker_optimality = uniform(0,20)
+	// var utterance_cost = uniform(0, 10)
+	var utterance_cost = 1
+
+	foreach(items, function(i){
+
+		var df_item = subset(df, "item", i)
+
+		var priorProbability = sample(priorERPobject[i])
+		var habit_strength = 0.99
+		var alternative_strength = 0.5
+
+		var backfire_responses = _.pluck(subset(df_item, "condition", "pragmatic"), "response")
+		var observation_responses = _.pluck(subset(df_item, "condition", "literal"), "response")
+		var forcedspeak_responses = _.pluck(subset(df_item, "condition", "speakermanipulation"), "response")
+
+		var prior_parameters = {
+			prior_probability_of_habit: priorProbability,
+			habit_strength: habit_strength,
+			alternative_strength: alternative_strength
+		}
+
+		var backfireERP = backfireHypothesis(speaker_optimality, prior_parameters)
+		var forcedspeakerERP = nullHypothesis(speaker_optimality, prior_parameters)
+		var observationERP = observationHypothesis(speaker_optimality, prior_parameters)
+
+
+
+	}
+}
+
+// console.log("inference complete --- writing to file")
+
+// var outFile = "results/semantics/bda-semantics-thetaBernoulli-IncrMH" + mhiter/1000 + "k-b" + burn/1000 + "k" + ".csv"
+// var header = "Utterance,State,Theta"
+
+// mht.erpWriter(posterior, outFile, header)
+
+// console.log("posterior written to " + outFile)
