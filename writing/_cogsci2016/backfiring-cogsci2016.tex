@@ -82,6 +82,8 @@ pragmatics; language; common ground; Bayesian model
 \end{abstract}
 
 
+
+
 %In one of the most infamous moments in U.S. presidential history, Richard Nixon declared to the press corps, "I am not a crook"€ (CITE).  On the surface, this claim argues for Nixon's innocence, as it literally states that he is not a crook.  As several researchers have shown, however, this statement contains a number of pragmatic implications that actually counter its literal, semantic meaning (CITE).  Nixon'€™s claim, for instance, presupposes that others believed that he was a crook; otherwise, it would not have been an informative statement to make, since most people presumably are not crooks (Grice, 1975).  Thus, if a listener is not aware of the Watergate scandal, or if they have no reason to question Nixon's moral status, they might actually learn from this claim that Nixon was likely corrupt in some way.
 
 Observing a new roommate wash her dishes right after using them is a good sign because it is indicative of an underlying, positive habit: always doing one's dishes.
@@ -90,12 +92,18 @@ The human capacity to generalize from examples such as these is the foundation f
 Testimony further augments these inferences; indeed, it is necessary for learning about events one is unable to witness.
 We need not observe the roommate wash her dishes to infer that she might often do so, but rather can be told by a reliable speaker that the roommate has this habit \red{(cite?)}.
 Language thus serves as useful and powerful way of conveying events and promoting generalization.
-
+\begin{figure}
+\centering
+    \includegraphics[width=\columnwidth]{cartoon-2}
+    \caption{How does a learner or listener interpret evidence of an event, when she is uncertain about what could have given rise to the event (red or blue)? 
+%   In observational learning, observing an event is evidence for a cause that could reliably give rise to the event (red). 
+%    In communication, hearing about an event provides the same evidence, when speaker and listener have in common ground that the listener has uncertainty about the possible cause.
+%    When speaker and listener have common ground that is not aligned, the speaker will be interpreted as presupposing one of the possible causes, and could provide evidence for a cause that would \emph{not} reliably given rise to the event (blue).
+    }
+  \label{fig:cartoon}
+\end{figure}
 %, and communicative principles (i.e., that speakers will provide truthful, relevant, and informative information) strengthen the inferences one can draw from speech acts \cite{Grice1975}.  <--DO WE NEED THIS?
-
-
 %\red{DOES THIS SEEM RIGHT?}
-
 Communication is only successful, however, when a speaker and listener share common ground \cite{Clark1996}.
 If a listener is uncertain about what is in common ground, she can use conversational principles  \cite{Grice1975} and the speaker's utterance to infer what the speaker presupposed.
 For example, for a speaker to assert \emph{It was Percival who piqued the professor}, the speaker must already believe the listener to know that \emph{somebody} had piqued the professor \cite{Clark1977}, and one readily infers this without previously knowing it. 
@@ -131,15 +139,7 @@ In order to make the speech-act informative, listeners are wont to revise common
 %\citeA{Gruenfeld1992} went even further to show that uninformative newspaper headlines can actually cause people to believe the exact opposite of what those headlines claim.  After reading the headline "€œRobert Kennedy was not planning the assassination of Fidel Castro"€, for example, which denies a proposition that adults \emph{a priori} should not believe, adults in their study more strongly believed that Robert Kennedy \emph{was} planning to assassinate Fidel Castro.
 
 
-\begin{figure}
-\centering
-    \includegraphics[width=\columnwidth]{cartoon-2}
-    \caption{How does a learner or listener interpret evidence of an event, when the agent has uncertainty about what could have given rise to the event (red or blue)? 
-    In observational learning, observing an event is evidence for a cause that could reliably give rise to the event (red). 
-    In communication, hearing about an event provides the same evidence, when speaker and listener have in common ground that the listener has uncertainty about the possible cause.
-    When speaker and listener have common ground that is not aligned, the speaker will be interpreted as presupposing one of the possible causes, and could provide evidence for a cause that would \emph{not} reliably given rise to the event (blue).}
-  \label{fig:cartoon}
-\end{figure}
+
 
 %\red{I WOULD MOVE THE FIGURE TO THE MODEL SECTION}
 
@@ -160,7 +160,7 @@ These findings have a number of implications for learning and motivational langu
 
 
 
-\section{A model of backfiring language}
+\section{Formalizing backfiring language}
 
 Observing an event happen multiple times can be evidence for an underlying cause that could reliably give rise to the event.
 Indeed, observing just one instance of an event is relatively stronger evidence for a reliable cause than an unreliable cause, all else being equal.
@@ -315,17 +315,55 @@ In the \textbf{observation} condition, Person B observes evidence that \emph{X h
 \begin{figure*}
 %\centering
     \includegraphics[width=\textwidth]{expt1-3responses}
-    \caption{}
+    \caption{Dotted lines denote chance levels.}
   \label{fig:expt1-all}
 \end{figure*}
 
-We first analyze the data separately in terms of (1) the proportion of participants who selected the more \emph{likely} option given an observation (e.g. the roommate who \emph{always} does her dishes) and (2) the confidence ratings. 
-We then analyze a composite endorsement score, which incorporates the confidence ratings by scaling the response (either +1 or -1) by confidence. 
 
-We fit the forced-choice data using a generalized mixed-effects model with random by-participant effects of intercept and random by-item effects of intercept \footnote{This was the maximal-model that our data permitted.}. 
-Critically, participants were significantly \emph{less} likely to choose the ``likely''� option in the Misaligned Common Ground condition (M=0.46; bootstrapped 95\% CI [0.41, 0.50]) than in the Prior condition (M=0.71 [0.67,0.75]) , $\beta = -1.42; SE = 0.15; p < .001$.  
-We expected the observation and speaker condition to be more likely 
+
+We computed an \emph{endorsement score} by scaling forced-choice responses by their associated confidence level. 
+We coded the selection of the more \emph{likely} response given an observation (e.g. the roommate who \emph{always} does her dishes) as a 1; the other option as -1.
+We fit the \emph{endorsement score} data using a generalized mixed-effects model with random by-participant effects of intercept and random by-item effects of intercept\footnote{This was the maximal-model that our data permitted.}. 
+Critically, participants endorsed the likely response \emph{less} is the Misaligned Common Ground condition (M=-0.09; bootstrapped 95\% CI [-0.15, -0.03]) than the in the Prior condition (M=0.18 [0.14,0.22]), $\beta = -0.24; SE = 0.03; t(1794) = -8.3; p<0.001$.
+There was a trend for participants to endorse the likely response \emph{slightly more} in the Observation condition (M=0.24 [0.18, 0.29]) than in the Prior condition ($\beta = 0.05; SE = 0.03; t(1794) = 1.73; p = 0.08$).
+
+
+%  condition       mean   ci_lower   ci_upper
+%       (fctr)      (dbl)      (dbl)      (dbl)
+%1       prior  0.1802500  0.1381531  0.2228339
+%2 observation  0.2382083  0.1821380  0.2905667
+%3    backfire -0.0935625 -0.1521505 -0.0345349
+%4      survey  0.1887708  0.1343135  0.2415599
+%Linear mixed model fit by REML 
+%t-tests use  Satterthwaite approximations to degrees of freedom ['lmerMod']
+%Formula: score ~ condition + (1 | workerid) + (1 | item)
+%   Data: d0
+%
+%REML criterion at convergence: 3099.8
+%
+%Scaled residuals: 
+%    Min      1Q  Median      3Q     Max 
+%-2.5099 -0.8025  0.1406  0.7323  2.9124 
+%
+%Random effects:
+% Groups   Name        Variance Std.Dev.
+% workerid (Intercept) 0.077443 0.27829 
+% item     (Intercept) 0.001255 0.03542 
+% Residual             0.260483 0.51038 
+%Number of obs: 1920, groups:  workerid, 120; item, 16
+%
+%Fixed effects:
+%                       Estimate Std. Error         df t value Pr(>|t|)    
+%(Intercept)           1.807e-01  3.561e-02  1.936e+02   5.075 9.04e-07 ***
+%conditionobservation  5.702e-02  3.300e-02  1.796e+03   1.728   0.0842 .  
+%conditionbackfire    -2.731e-01  3.299e-02  1.794e+03  -8.277 2.22e-16 ***
+%conditionsurvey       6.817e-03  3.302e-02  1.797e+03   0.206   0.8364    
+
+We further analyzed the data separately in terms of (1) the proportion of participants who selected the more \emph{likely} option given an observation (e.g. the roommate who \emph{always} does her dishes) and (2) the confidence ratings, to better understand the effect.
+Critically, participants were significantly \emph{less} likely to choose the ``likely''� option in the Misaligned Common Ground condition (M=0.46 [0.41, 0.50]) than in the Prior condition (M=0.71 [0.67,0.75]) , $\beta = -1.42; SE = 0.15; p < .001$.  
 Interestingly, participants were no \emph{more} likely to choose the ``likely'' option in either the observation (M=0.71 [0.68, 0.75]) or aligned CG (M=0.68 [0.63,0.71]) conditions as compared to the Prior (Figure \ref{fig:expt1-all}; left panel).
+
+
 
 %    condition      mean  ci_lower  ci_upper
 %       (fctr)     (dbl)     (dbl)     (dbl)
@@ -334,23 +372,46 @@ Interestingly, participants were no \emph{more} likely to choose the ``likely'' 
 %3    backfire 0.6291875 0.6102781 0.6488406
 %4      survey 0.5956458 0.5757083 0.6145448
 
-As a manipulation check, we expected the confidence rating data to be higher in the three experiment conditions (observation, CB aligned / misaligned) than in the prior condition. 
+We expected the confidence rating data to be higher in the three experiment conditions (observation, CB aligned / misaligned) than in the prior condition. 
 In all conditions, this was the case: Prior 0.39 [0.36, 0.42] vs. Observation 0.60 [0.58, 0.62], CG Aligned 0.60 [0.58, 0.61], CG Misaligned 0.62 [0.61, 0.64] (Figure \ref{fig:expt1-all}; middle panel).
 
-Reading, for example, "My student turned in his homework on time today,"€ in a communicative context caused participants to infer that the student does not typically turn in his homework on time.  
-Adults were also more confident in their choices in the Pragmatic condition (M = .63, SE = XX, n = XX) than in the Baseline condition (M = .39, SE = XX, n = XX).
+\begin{figure}
+%\centering
+    \includegraphics[width=\columnwidth]{fc2-score-medSplit}
+    \caption{Median split of the data based on endorsement score in the Prior condition. 
+    Dotted lines denote mean prior levels with 95\% CIs.}
+  \label{fig:expt1-medspilt}
+\end{figure}
+
+The fact that we observe an effect in the CG Misaligned condition but not in the other conditions might in fact be expected if the items for which the prior beliefs are the strongest show a relatively small effect of evidence compared to when prior beliefs are the weakest.
+The opposite pattern would be expected for the CG Misaligned condition, where it is predicted an utterance will backfire the most when the prior beliefs are the strongest (see Figure \ref{fig:schematic-model}) for model predictions).
+To this end, we performed a median split of the items based on their prior endorsement. 
+Figure \ref{fig:expt1-medspilt} shows mean endorsement score in each of the three conditions against the backdrop of the prior endorsement score, when the items are split based on prior endorsement. 
+We see a larger deviation from the prior for the Observation and Aligned CG conditions and a smaller deviation from prior for the Misaligned CG condition, when the prior is relatively weak. 
+The opposite pattern is observed when prior beliefs are relatively stronger, as predicted by the theory (Figure \ref{fig:schematic-model}). 
 
 
-To determine how the Pragmatic, Literal, and Speaker Manipulation conditions compared to the Baseline condition, we fit the data using mixed-effects regression models comparing the responses and confidence ratings of the experimental conditions to those of the Baseline condition.  
-Each model had a fixed effect of condition and random effects of item and participant.  
-To test for the significance of effects, we performed likelihood ratio tests. 
-Chi-squared values, degrees of freedom, and p-values, all from the likelihood ratio test, are reported for each statistical test.
 
 
-The Literal (M = .71, SE = XX, n = XX) and Speaker Manipulation (M = .68,  SE = XX, n = XX) conditions, however, did not differ significantly from the Baseline condition, Ï‡2(1) = 0, p = .98, and Ï‡2(1) = 2.11, p = .15, respectively, even though we expected participants in these conditions to be more likely to choose the "likely"€ option.  One possibility is that for the items in this task, there was not much room for preference for the "likely"€ option to strengthen, given that participants already preferred the "likely"€ option in the Baseline condition at above-chance levels, t(119) = 9.05, p < .001.  Confidence ratings, however, did distinguish among these conditions.  Confidence ratings in both conditions (M = .60, SE = XX, n = XX in the Literal condition; M = .60, SE = XX, n = XX in the Speaker Manipulation condition) were significantly higher than confidence ratings in the Baseline condition,  Ï‡2(1) = 275.41, p <.001, and Ï‡2(1) = 255.68, p < .001, respectively.  Thus, the evidence provided in these two experimental conditions made adults at least more confident in their choices.  
 
-POST-HOC ANALYSES?
-To determine how pre-existing biases might influence participants'€™ responses in each of our conditions, we performed a median split analysis, separating items in the Baseline condition for which participants had weak preferences (M  = XXXX) from those for which participants had strong preferences (M = XXXX).  
+% neither the observational data nor the utterance when common ground is aligned have an effect above and beyond the prior is not surprising \emph{if}  
+%
+%We were somewhat surprised to \emph{not} find an effect of the observational data or the utterance when common ground is aligned on the endorsement of the more likely response above and beyond the prior endorsement. 
+%
+%Reading, for example, "My student turned in his homework on time today,"€ in a communicative context caused participants to infer that the student does not typically turn in his homework on time.  
+%Adults were also more confident in their choices in the Pragmatic condition (M = .63, SE = XX, n = XX) than in the Baseline condition (M = .39, SE = XX, n = XX).
+%
+%
+%To determine how the Pragmatic, Literal, and Speaker Manipulation conditions compared to the Baseline condition, we fit the data using mixed-effects regression models comparing the responses and confidence ratings of the experimental conditions to those of the Baseline condition.  
+%Each model had a fixed effect of condition and random effects of item and participant.  
+%To test for the significance of effects, we performed likelihood ratio tests. 
+%Chi-squared values, degrees of freedom, and p-values, all from the likelihood ratio test, are reported for each statistical test.
+%
+%
+%The Literal (M = .71, SE = XX, n = XX) and Speaker Manipulation (M = .68,  SE = XX, n = XX) conditions, however, did not differ significantly from the Baseline condition, Ï‡2(1) = 0, p = .98, and Ï‡2(1) = 2.11, p = .15, respectively, even though we expected participants in these conditions to be more likely to choose the "likely"€ option.  One possibility is that for the items in this task, there was not much room for preference for the "likely"€ option to strengthen, given that participants already preferred the "likely"€ option in the Baseline condition at above-chance levels, t(119) = 9.05, p < .001.  Confidence ratings, however, did distinguish among these conditions.  Confidence ratings in both conditions (M = .60, SE = XX, n = XX in the Literal condition; M = .60, SE = XX, n = XX in the Speaker Manipulation condition) were significantly higher than confidence ratings in the Baseline condition,  Ï‡2(1) = 275.41, p <.001, and Ï‡2(1) = 255.68, p < .001, respectively.  Thus, the evidence provided in these two experimental conditions made adults at least more confident in their choices.  
+%
+%POST-HOC ANALYSES?
+%To determine how pre-existing biases might influence participants'€™ responses in each of our conditions, we performed a median split analysis, separating items in the Baseline condition for which participants had weak preferences (M  = XXXX) from those for which participants had strong preferences (M = XXXX).  
 
 
 \subsection{Quantitative model evaluation}
