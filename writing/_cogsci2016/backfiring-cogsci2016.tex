@@ -172,9 +172,9 @@ It is a more likely explanation than the alternative.
 %Raining events are correlated with future raining events, and this place might well be a rainy place. 
 
 We can formalize this using a simple Bayesian model:
-\begin{align*}
-P(h \mid b) & \propto P(b \mid h) P(h) 
-\end{align*}
+\begin{eqnarray}
+P(h \mid b) \propto P(b \mid h) P(h) \label{eq:bayes}
+\end{eqnarray}
 As a habit is more likely to give rise to the behavior --- as $P(b \mid h)$ gets large --- so too does the behavior become more indicative of the habit, assuming the prior probabilities are constant. 
 
 In a conversational setting, knowledge of such a person's habits may or may not be in common ground, and the speaker and listener may or may not be aware of this \cite{Clark1977, Clark1996}. 
@@ -195,12 +195,12 @@ This can be readily incorporated into Rational Speech-Acts framework \cite{Frank
 We assume the set of utterances are remarks about the behavior occurring or not --- $b$ or $\neg b$--- as well as the possibility of not remarking on the situation, a \emph{null} utterance that has no information content.  
 
 The prior probability of a behavior depends on the habits of the person. For simplicity, we assume that the if the habit $h$ is present, the behavior has a high probability of occurring; if the habit is absent, the probability is lower. 
-$$
+\begin{eqnarray}
 P(b \mid h) = \begin{cases}
 0.99  & \text{if } h\\
 0.5  & \text{if not } h
-\end{cases}
-$$
+\end{cases} \label{eq:hab}
+\end{eqnarray}
 
 The model is implemented in the probabilistic programming language WebPPl \cite{dippl}, and a simple version can be seen at \mht{add forest page}.
 
@@ -228,10 +228,17 @@ The backfiring inference depends critically on a misalignment of common ground.
 If a listener explicitly asks about the event occurring (e.g. ``Did your roommate wash her dishes today?''), the speaker no longer needs to be presuppose the listener knows about the habit to make the utterance informative. 
 Figure \ref{fig:schematic-model} (green bars) shows what happens when the speaker and listener have aligned common ground.
 This is more akin to pedagogical communication, where teacher and learner are on the same page. 
+The corresponding RSA model is:
+\begin{eqnarray}
+&&P_{L_1}(b, h \mid u)\propto P_{S_1}(u \mid b)\cdot P(b \mid h) \cdot P(h) \label{eq:L1mod}\\
+&&P_{S_1}(u \mid b) \propto \mathrm{exp}({\lambda \ln P_{L_0}(b, h \mid u))} \label{eq:S1mod}\\
+&&P_{L_0}(b, h \mid u)\propto \denote{u}(b) \cdot P(b \mid h) \label{eq:L0mod}
+\end{eqnarray}
+\mht{Is this right?}
 
 Another situation where we wouldn't expect evidence to backfire is in observational learning.
 Here, we would expect observing the roommate doing her dishes to be taken as evidence that she usually does her dishes. 
-These predictions are borne out in a standard model of Bayesian learning (Figure \ref{fig:schematic-model}, red bars).
+These predictions are borne out in a standard model of Bayesian learning (Eq.~\ref{eq:bayes}, Figure \ref{fig:schematic-model}, red bars).
 
 
 
@@ -415,6 +422,26 @@ The opposite pattern is observed when prior beliefs are relatively stronger, as 
 
 
 \subsection{Quantitative model evaluation}
+
+The formal pragmatics model in Eq.~\ref{eq:L1} describes how a listener is likely to interpret an utterance affirming an event, when she believes the speaker to have presupposed some part of the conversation. 
+Since there is appreciable variability in participants' ratings in the Prior condition, we can use those ratings as $P(h)$ and explore the quantitative predictive power of the model.
+We assume, for simplicity, that the various habits described in the experimental context give rise to their associated behaviors --- $P(b \mid h)$ --- as given in Eq.~\ref{eq:hab}.
+
+We model the Observation data using Eq.~\ref{eq:bayes}, the Misaligned CG data using Eq.~\ref{eq:L1} and the Aligned CG data using Eq.~\ref{eq:L1mod}.
+
+The model, thus, has one remaining parameter, the speaker optimality parameter in Eqs.~\ref{eq:S1} and \ref{eq:S1mod}. 
+We assume these two parameters are the same in this analysis, and infer it's credible value using Bayesian data analytic techniques \cite{LW2014}. 
+The posterior predictive distribution marginalizes over the likely parameter values to produce predictions about what the data should look like given the pragmatics model and the observed data. 
+This is akin to fitting the parameters and is an important step in model validation as it shows what data is actually predicted by the model.
+We compare the posterior predictive distribution over the probabilities of producing the \emph{likely} response to the empirical means for each item and condition (Figure \ref{fig:scatter}). 
+The model provides a strong quantitative fit to the empirical data ($r(48) = 0.82$).
+
+\begin{figure}
+    \includegraphics[width=\columnwidth]{scatter}
+    \caption{Model predictions and the associated human endorsements.}
+  \label{fig:scatter}
+\end{figure}
+
 
 %\section{Experiment 2} 
 %Experiment 1 demonstrated the existence of a backfiring effect as a speech-act of what would usually be construed of as positive evidence: the observation of an event. 
