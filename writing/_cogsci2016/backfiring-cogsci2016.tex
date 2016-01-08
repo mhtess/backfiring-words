@@ -63,9 +63,9 @@
 \begin{abstract}
 
 Successful communication requires a mutually understood set of beliefs between speaker and listener.
-When this common ground is not shared, a listener can use a speaker's utterance in conjunction with conversational principles to infer what was assumed by the speaker.
-This inference has been shown to have surprising ramifications, including decreasing the belief in the proposition that was asserted by the speaker.
-Upon hearing, "John paid the cashier!" for example, listeners will infer that John must not typically pay cashiers / that this is an anomalous event.
+When common ground is not shared, a listener can use a speaker's utterance in conjunction with conversational principles to infer what was assumed by the speaker.
+Previous work has shown that this inference can have surprising ramifications, including decreasing the belief in the proposition that was asserted by the speaker 
+(e.g. upon hearing, ``John paid the cashier!'', listeners infer that John does not typically pay for his groceries).
 % i just think we need an example somewhere in here
 Here, we formalize inferences about common ground using the case when a speaker's utterance refers to something that should already be in common ground.
 The formal pragmatics model makes clear that this kind of utterance will backfire (i.e. imply that the opposite is typically true) when the interlocutors do not share common ground, but not when they do.
@@ -87,17 +87,22 @@ pragmatics; language; common ground; Bayesian model
 %In one of the most infamous moments in U.S. presidential history, Richard Nixon declared to the press corps, "I am not a crook"â‚¬Â (CITE).  On the surface, this claim argues for Nixon's innocence, as it literally states that he is not a crook.  As several researchers have shown, however, this statement contains a number of pragmatic implications that actually counter its literal, semantic meaning (CITE).  Nixon'â‚¬â„¢s claim, for instance, presupposes that others believed that he was a crook; otherwise, it would not have been an informative statement to make, since most people presumably are not crooks (Grice, 1975).  Thus, if a listener is not aware of the Watergate scandal, or if they have no reason to question Nixon's moral status, they might actually learn from this claim that Nixon was likely corrupt in some way.
 
 Observing a new roommate wash her dishes right after using them is a good sign because it is indicative of an underlying, positive habit: always doing one's dishes.
-The human capacity to generalize from examples such as these is the foundation for learning about the world's categories \cite{Markman1989} and people \red{[cite learning about people]}. 
+The human capacity to generalize from examples such as these is the foundation for learning about the world's categories \cite{Markman1989} and people \cite<e.g.>{Seiver2013}. 
 %; children as young as X, for instance, engage in this kind of inductive reasoning to infer people's preferences and reliability \red{(CITE)}.  If a person  selects five toy frogs from a bucket that contains mostly toy ducks, then that person must prefer toy frogs.
 Testimony further augments these inferences; indeed, it is necessary for learning about events one is unable to witness.
-We need not observe the roommate wash her dishes to infer that she might often do so, but rather can be told by a reliable speaker that the roommate has this habit \red{(cite?)}.
+We need not observe the roommate wash her dishes to infer that she might often do so, but rather can be told by a reliable speaker that the roommate has this habit \cite<e.g.>{Gelman1999}.
 Language thus serves as useful and powerful way of conveying events and promoting generalization.
 \begin{figure}
 \centering
     \includegraphics[width=\columnwidth]{cartoon-2}
-    \caption{How does a learner or listener interpret evidence of an event, when she is uncertain about what could have given rise to the event (red or blue)? 
-%   In observational learning, observing an event is evidence for a cause that could reliably give rise to the event (red). 
-%    In communication, hearing about an event provides the same evidence, when speaker and listener have in common ground that the listener has uncertainty about the possible cause.
+    \caption{
+        \small
+How does a learner interpret evidence of an event, when she is uncertain about what could have given rise to the event (a reliable cause [red] or an unreliable cause [blue])? 
+%  If a listener has uncertainty about what has given rise to an event (a reliable cause [red] or an unreliable cause [blue]), observing the event is relatively more evidence for the reliable cause (red).
+%In a communicative context, a speaker who asserts that the event occurred will lead the speaker to believe the reliable cause (red) was responsible, if the listener believes the speaker is represented her uncertainty correctly (Aligned).
+   Observing the event occur is relatively more evidence for the reliable cause [red]. 
+    In communication, hearing about an event provides the same evidence when the listener believes the speaker represents her uncertainty accurately (Aligned common ground).
+   If, instead, the listener believes the speaker is presupposing some information, the listener will be led to believe the unreliable cause [blue] gave rise to the event, as that is a more informative utterance (Misaligned).
 %    When speaker and listener have common ground that is not aligned, the speaker will be interpreted as presupposing one of the possible causes, and could provide evidence for a cause that would \emph{not} reliably given rise to the event (blue).
     }
   \label{fig:cartoon}
@@ -135,10 +140,10 @@ In order to make the speech-act informative, listeners are wont to revise common
 %
 %\red{not shortening this yet because i think it's better to just write everything out, and then cut in the end of need be.}
 %
-%To date, this inferential process, or "â‚¬Å“backfiring"â‚¬Â linguistic effect, has received little attention in the literature.  In fact, most theories of language processing assert the opposite: if a person hears that Nixon is not a crook, then they should update their belief about Nixon to include this information... \red{EDIT}.  A few studies, however, provide preliminary evidence that utterances that are redundant with a listener'â‚¬â„¢s preexisting beliefs do cause listeners to search for ways to make those utterances informative \cite{Yandell1979, Wegner1981, Gruenfeld1992, Kravtchenko2015}.  This process ultimately undermines the utterances' literal meanings.  
-%\citeA{Wegner1981}, for example, demonstrated that newspaper headlines such as "â‚¬Å“Bob Talbert is not linked to the Mafia" [CHECK] cause adults to have a more negative impression of Bob than they would otherwise, despite not explicitly asserting any incriminating information--indeed, despite denying incriminating information.  Here, since the default assumption is that people are not typically linked to the mafia, this headline is not immediately informative.  As a result, adults construct a context that \emph{would} make the headline informative, namely, one in which Bob is known to be a bad person.  
-%\citeA{Gruenfeld1992} went even further to show that uninformative newspaper headlines can actually cause people to believe the exact opposite of what those headlines claim.  After reading the headline "â‚¬Å“Robert Kennedy was not planning the assassination of Fidel Castro"â‚¬Â, for example, which denies a proposition that adults \emph{a priori} should not believe, adults in their study more strongly believed that Robert Kennedy \emph{was} planning to assassinate Fidel Castro.
-
+%To date, this inferential process, or "â‚¬Å%“backfiring"â‚¬Â linguistic effect, has received little attention in the literature.  In fact, most theories of language processing assert the opposite: if a person hears that Nixon is not a crook, then they should update their belief about Nixon to include this information... \red{EDIT}.  A few studies, however, provide preliminary evidence that utterances that are redundant with a listener'â‚¬â„¢s preexisting beliefs do cause listeners to search for ways to make those utterances informative \cite{Yandell1979, Wegner1981, Gruenfeld1992, Kravtchenko2015}.  This process ultimately undermines the utterances' literal meanings.  
+%%\citeA{Wegner1981}, for example, demonstrated that newspaper headlines such as "â‚¬Å%“Bob Talbert is not linked to the Mafia" [CHECK] cause adults to have a more negative impression of Bob than they would otherwise, despite not explicitly asserting any incriminating information--indeed, despite denying incriminating information.  Here, since the default assumption is that people are not typically linked to the mafia, this headline is not immediately informative.  As a result, adults construct a context that \emph{would} make the headline informative, namely, one in which Bob is known to be a bad person.  
+%%\citeA{Gruenfeld1992} went even further to show that uninformative newspaper headlines can actually cause people to believe the exact opposite of what those headlines claim.  After reading the headline "â‚¬Å%“Robert Kennedy was not planning the assassination of Fidel Castro"â‚¬Â, for example, which denies a proposition that adults \emph{a priori} should not believe, adults in their study more strongly believed that Robert Kennedy \emph{was} planning to assassinate Fidel Castro.
+%
 
 
 
@@ -148,16 +153,17 @@ In order to make the speech-act informative, listeners are wont to revise common
 The phenomenon of ``backfiring utterances'' (i.e., utterances that decrease listeners' beliefs in a proposition by dint of asserting it) is vexing when paired alongside the incredible human capacity to learn from examples and testimony. 
 Why is it that a speaker asserting a claim can be taken both as evidence for that claim and against that claim, depending on the situation? 
 We suggest this inference depends on what is in common ground in the communicative context, and formalize the backfiring inference in a probabilistic model of language understanding.
-We show that the model predicts the backfiring effect as a function of the common ground between speaker and listener.
+%Figure \ref{fig:cartoon} is a sketch of the framework.
+We show that the same framework predicts the backfiring effect as a function of the common ground between speaker and listener.
 We empirically verify the model's predictions in a behavioral experiment designed to draw out the conditions under which this inference does and does not occur. 
-Our materials also allow us to test the quantitative aspects of the model, and we report a strong correspondence between model and human inference.
-These findings have a number of implications for learning and motivational language \mht{Make this sentence a little more specific}. 
+Our materials also allow us to verify some of the quantitative aspects of the model---how the \emph{a priori} belief strength relates to the inference strength.
+These findings have ramifications for how deliver public messages (e.g. for motivational purposes) when common ground with a reader is hard to be certain of. 
 
-\red{Do we want to give away all our findings upfront?  Much better intro!}
-\mht{I think so, to both Qs.}
+%\red{Do we want to give away all our findings upfront?  Much better intro!}
+%\mht{I think so, to both Qs.}
 
 %To our knowledge, no current model of language processing can account for this pragmatic inference.  
-%We propose such a model in the present study.  In Experiment 1, we replicate previous findings that adults try to avoid redundancy in conversation by revising their beliefs about the world so that potentially uninformative utterances become informative \cite{Kravtchenko2015} (also cite Jaeger studies etc.).  Specifically, we ask whether utterances such as, "My student turned in her homework on time today,"â‚¬Â imply that the student does not typically turn in her homework on time, despite serving as evidence for this behavior.  We then test whether our proposed model predicts these results.  We also test an important, previously unexplored(?) prediction of our model: that this "â‚¬Å“backfiring"â‚¬Â effect of language should be eliminated 1) when the listener makes explicit her uncertainty, for instance, about whether the student turned in his homework on time, since this would make the speaker's utterance semantically informative; and 2) when the utterance is removed from any conversational context, since this pragmatic inference depends on the \emph{conversational} agreement that utterances should be informative.
+%$%We propose such a model in the present study.  In Experiment 1, we replicate previous findings that adults try to avoid redundancy in conversation by revising their beliefs about the world so that potentially uninformative utterances become informative \cite{Kravtchenko2015} (also cite Jaeger studies etc.).  Specifically, we ask whether utterances such as, "My student turned in her homework on time today,"â‚¬Â imply that the student does not typically turn in her homework on time, despite serving as evidence for this behavior.  We then test whether our proposed model predicts these results.  We also test an important, previously unexplored(?) prediction of our model: that this "â‚¬Å“backfiring"â‚¬Â effect of language should be eliminated 1) when the listener makes explicit her uncertainty, for instance, about whether the student turned in his homework on time, since this would make the speaker's utterance semantically informative; and 2) when the utterance is removed from any conversational context, since this pragmatic inference depends on the \emph{conversational} agreement that utterances should be informative.
 
 
 
@@ -180,10 +186,11 @@ As a habit is more likely to give rise to the behavior --- as $P(b \mid h)$ gets
 
 In a conversational setting, knowledge of a person's habits may or may not be in common ground, and the speaker and listener may or may not be aware of this \cite{Clark1977, Clark1996}. 
 For example, in pedagogical situations, it is valid to assume the knowledge of the habit to be communicated is \emph{not} in common ground, but that both teacher and learner have a meta-agreement on this.
-Friends may also have a mutually-understood common ground about a third person, but one that an overhearer might not have. 
-This same situation occurs when one of the friends assumes a bit of knowledge that the other person doesn't have (e.g. because she forgot).
-%Other communicative settings may exist, where the both levels of knowledge are not in common ground.  \red{I WOULD ADD AN EXAMPLE TO MAKE THIS CLEARER}
-If a listener thinks that the speaker is presupposing some bit of knowledge (e.g., because the listener has forgotten this bit of information or because the listener is overhearing a conversation \red{a speaker wouldn't presuppose something because a listener forgot... maybe something like, because the speaker is talking in a certain way}), she can use the speech-act to help resolve what the speaker believes to be in common ground. \red{we might still want a concrete example here, but can add it later}
+Friends may also have a mutually-understood common ground about a third person; one that an overhearer might not have. 
+%This same situation occurs when one of the friends assumes a bit of knowledge that the other person doesn't have (e.g. because she forgot).
+%Other communicative settings may exist, where the both levels of knowledge are not in common ground. 
+If a listener believes that the speaker is not representing her uncertainty correctly (e.g., because the listener has forgotten this bit of information or because the listener is overhearing a conversation), she can use the speech-act to help resolve what the speaker believes to be in common ground. 
+\red{we might still want a concrete example here, but can add it later}
 
 This can be readily incorporated into Rational Speech-Acts framework \cite{Frank2012, Goodman2013}:, as a lifted variable inference akin to the treatment by \citeA{Degen2015} and discussed in detail in \citeA{GoodmanLassiter}.
 %
