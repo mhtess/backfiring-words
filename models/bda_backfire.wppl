@@ -20,7 +20,7 @@ var priorBDA = function(){
 	return query
 }
 
-var prior_mhiter = 10000
+var prior_mhiter = 50000
 var prior_burn = prior_mhiter/2
 var prior_incrOpts = {burn:prior_burn, verbose: true, verboseLag: prior_mhiter/20}
 var priorERP = IncrementalMH(priorBDA, prior_mhiter, prior_incrOpts)
@@ -43,7 +43,14 @@ var priorERPobject = _.object(map(function(i){
 
 var posteriorBDA = function(){
 	var speaker_optimality = uniform(0,20)
+	// var alternative_strength = uniform(0,1)
+	// var habit_strength = uniform(alternative_strength, 1)
 	// var utterance_cost = uniform(0, 10)
+
+		// console.log("after sample prior")
+		var habit_strength = 0.99
+		var alternative_strength = 0.5
+
 	var utterance_cost = 1
 
 	foreach(items, function(i){
@@ -54,9 +61,6 @@ var posteriorBDA = function(){
 		var priorProbability = sample(priorERPobject[i])
 
 
-		// console.log("after sample prior")
-		var habit_strength = 0.99
-		var alternative_strength = 0.5
 
 		var backfire_responses = _.pluck(subset(df_item, "condition", "pragmatic"), "response")
 		var observation_responses = _.pluck(subset(df_item, "condition", "literal"), "response")
@@ -83,8 +87,8 @@ var posteriorBDA = function(){
 		// console.log("after rsa")
 
 		var backfiringScr = sum(map(function(d){return backfireERP.score([], d=="likely-key")}, backfire_responses))
-		var forcedspeakScr = sum(map(function(d){return forcedspeakerERP.score([], d=="likely-key")}, backfire_responses))
-		var observationScr = sum(map(function(d){return observationERP.score([], d=="likely-key")}, backfire_responses))
+		var forcedspeakScr = sum(map(function(d){return forcedspeakerERP.score([], d=="likely-key")}, forcedspeak_responses))
+		var observationScr = sum(map(function(d){return observationERP.score([], d=="likely-key")}, observation_responses))
 		// console.log("after scoring")
 
 		// console.log("backfire score = " +backfiringScr)
@@ -93,6 +97,7 @@ var posteriorBDA = function(){
 		// factor(forcedspeakScr)
 		factor(backfiringScr+forcedspeakScr+observationScr)
 
+		query.add(["predictive","prior", i], priorProbability)
 		query.add(["predictive","backfire", i], expectation(backfireERP))
 		query.add(["predictive","forcedspeaker", i], expectation(forcedspeakerERP))
 		query.add(["predictive","observation", i], expectation(observationERP))
@@ -100,18 +105,20 @@ var posteriorBDA = function(){
 	})
 
 	query.add(["parameter", "speaker_optimality", "NA"], speaker_optimality)
+	query.add(["parameter", "habit_strength", "NA"], habit_strength)
+	query.add(["parameter", "alternative_strength", "NA"], alternative_strength)
 	return query
 }
 
 
-var mhiter = 10000
+var mhiter = 50000
 var burn = mhiter/2
 var incrOpts = {burn:burn, verbose: true, verboseLag: mhiter/20}
 var posteriorERP = IncrementalMH(posteriorBDA, mhiter, incrOpts)
 
 console.log("inference complete --- writing to file")
-
-var outFile = "results/bda-backfire-IncrMH" + mhiter/1000 + "k-b" + burn/1000 + "k" +"_priorMH" + prior_mhiter/1000 + "k-b" + prior_burn/1000 + "k.csv"
+var outFile = "results/bda-backfire-IncrMH" + mhiter/1000 + "k-b" + burn/1000 + "k" +"_priorMH" + prior_mhiter/1000 + "k-b" + prior_burn/1000 + "ka.csv"
+// var outFile = "results/bda-backfire-inferStrengths-IncrMH" + mhiter/1000 + "k-b" + burn/1000 + "k" +"_priorMH" + prior_mhiter/1000 + "k-b" + prior_burn/1000 + "k.csv"
 var header = "Type,Condition,Item,Value"
 
 mht.erpWriter(posteriorERP, outFile, header)
