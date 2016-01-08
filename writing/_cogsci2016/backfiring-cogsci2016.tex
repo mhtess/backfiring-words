@@ -203,7 +203,7 @@ P(b \mid h) = \begin{cases}
 \end{cases} \label{eq:hab}
 \end{eqnarray}
 
-The model is implemented in the probabilistic programming language WebPPl \cite{dippl}, and a simple version can be seen at \mht{add forest page}.
+The model is implemented in the probabilistic programming language WebPPL \cite{dippl}, and a simple version can be seen at \mht{add forest page}.
 
 
 \begin{figure}
@@ -429,15 +429,20 @@ The opposite pattern is observed when prior beliefs are relatively stronger, as 
 The formal pragmatics model in Eq.~\ref{eq:L1} describes how a listener is likely to interpret an utterance affirming an event, when she believes the speaker to have presupposed some part of the conversation. 
 Since there is appreciable variability in participants' ratings in the Prior condition, we can use those ratings as $P(h)$ and explore the quantitative predictive power of the model.
 We assume, for simplicity, that the various habits described in the experimental context give rise to their associated behaviors --- $P(b \mid h)$ --- as given in Eq.~\ref{eq:hab}.
-
 We model the Observation data using Eq.~\ref{eq:bayes}, the Misaligned CG data using Eq.~\ref{eq:L1} and the Aligned CG data using Eq.~\ref{eq:L1mod}.
 
-The model, thus, has one remaining parameter, the speaker optimality parameter in Eqs.~\ref{eq:S1} and \ref{eq:S1mod}. 
-We assume these two parameters are the same in this analysis, and infer it's credible value using Bayesian data analytic techniques \cite{LW2014}. 
+The model has one remaining parameter: the speaker optimality parameter in Eqs.~\ref{eq:S1} and \ref{eq:S1mod}. 
+We assume these two parameters are the same in this analysis, and infer its credible value using Bayesian data analytic techniques \cite{LW2014}. 
 The posterior predictive distribution marginalizes over the likely parameter values to produce predictions about what the data should look like given the pragmatics model and the observed data. 
 This is akin to fitting the parameters and is an important step in model validation as it shows what data is actually predicted by the model.
 We compare the posterior predictive distribution over the probabilities of producing the \emph{likely} response to the empirical means for each item and condition (Figure \ref{fig:scatter}). 
-The model provides a strong quantitative fit to the empirical data ($r(48) = 0.82$).
+The model provides a reasonable quantitative fit to the empirical data ($r(48) = 0.82$), though the fit is far from perfect.
+
+One issue may is that there is not an a lot of reliable variability in the human judgments within the different conditions, most notably in the Misaligned CG condition. 
+We also seem to be doing the worst job capturing the data from the Observation condition using Eq.~\ref{eq:bayes}. 
+This may be an artifact of the task: In order to present observational data to the participant, we used extended vignettes to explain how the protagonist was able to notice the event occur. 
+Such an elaborate cover story may have raised the question to the participants of why the experimenter to choosing to supply this information. 
+This may inadvertently have led to a \emph{backfiring} effect for some of the items.
 
 \begin{figure}
     \includegraphics[width=\columnwidth]{scatter}
@@ -462,13 +467,31 @@ The model provides a strong quantitative fit to the empirical data ($r(48) = 0.8
 
 \section{Discussion}
 
-We have replicated previous findings that adults revise their beliefs about information that is in common ground between interlocutors so that utterances are not redundant with the preexisting beliefs of the listener (CITE).  This revision of beliefs ultimately undermines the literal content of the utterance.  Upon hearing, "My student turned in his homework on time today," for instance, adults will learn that the student turned in his homework on time, but they will also infer that the student must not \emph{typically} turn in his homework on time.
+We have presented a formal model for Common Ground inference that uses communicative principles (\emph{be truthful}, \emph{be informative}) to infer what presuppositions the speaker must have brought to conversation. 
+The model predicts that an utterance that should ``go without saying'' given one Common Ground will lead a listener to infer a different Common Ground, and result in a backfiring effect decreasing a listener's belief in the proposition being affirmed.
+The quantitative model predicts that this effect should be strongest when the \emph{a priori} beliefs in the common ground that would make the utterance uninformative are the strongest.
+This is in contrast to typical Bayesian updating, where the most information is gained when \emph{a priori} beliefs are most uncertain. 
+We validate all of these predictions in our experiment.
 
-We also expanded upon prior work in three important ways: 1) we developed a computational model that predicts this behavior; 2) we demonstrated that adults do \emph{not} make this inference when the listener's uncertainty about the event is in common ground with the speaker, or when the utterance is removed from a conversational context (i.e., when it is framed as an observation); and 3) we provide evidence that the strength of the backfiring effect systematically varies according to the strength adults' preexisting beliefs. \red{add more explanation here}
+%We replicate previous findings that adults revise their beliefs about information that is in common ground between interlocutors so that utterances are not redundant with the preexisting beliefs of the listener (CITE).  This revision of beliefs ultimately undermines the literal content of the utterance.  Upon hearing, "My student turned in his homework on time today," for instance, adults will learn that the student turned in his homework on time, but they will also infer that the student must not \emph{typically} turn in his homework on time.
 
-In addition to contributing to our knowledge of language processing, this work has practical relevance.  Recent efforts to persuade the general public that there is no causal relation between vaccines and autism, for example, include articles titled, "Vaccines do not cause autism" (e.g., CDC).  Similarly, websites, media outlets, and researchers tend to state, "Girls can do math," as a way of promoting gender equality (e.g., Smithsonian Mag).  While these two statements would certainly be useful and informative for those who \emph{do} believe that vaccines cause autism or for those who \emph{do not} believe that girls can do math, respectively, it is unclear how they might be received by people who already share these beliefs, or who are not aware of either of these debates.  The headline, "Girls can do math", for instance, could potentially signal to a number of readers that many people believe that girls cannot do math, and that there are legitimate reasons to hold this belief (e.g., perhaps girls tend to be less intelligent than boys).  As a result, these readers might walk away doubting girls' ability to do math more than they would have otherwise.
+Our experiment serves as a conceptual replication of \citeA{Kravtchenko2015}.
+Our work expands upon theirs in the following ways: 
+(1) We include control conditions that show how the information is interpreted when it is an observation as well as when it is an utterance when common ground is aligned between speaker and listener; 
+(2) We show how the strength of the inference depends systematically on the strength of the prior;
+(3) We include a formal pragmatics model that predicts all of the above.
 
-Of course, in the present study, our focus was on affirmations of past events (e.g., "My student turned in his homework on time"; "The gym had clean towels today"), as a first step towards modeling this backfiring effect of language.  Further work is necessary to determine how other kinds of affirmations, such as generic claims, might also backfire.
+%we developed a computational model that predicts this behavior; 2) we demonstrated that adults do \emph{not} make this inference when the listener's uncertainty about the event is in common ground with the speaker, or when the utterance is removed from a conversational context (i.e., when it is framed as an observation); and 3) we provide evidence that the strength of the backfiring effect systematically varies according to the strength adults' preexisting beliefs. \red{add more explanation here}
+
+In addition to contributing to our knowledge of language understanding, this work has practical relevance.  
+Recent efforts to persuade the general public that there is no causal relation between vaccines and autism, for example, include articles titled, "Vaccines do not cause autism" \red{(cite e.g., CDC)}.  
+Similarly, websites, media outlets, and researchers tend to state, ``Girls can do math,'' as a way of promoting gender equality \red{(cite e.g., Smithsonian Mag}).  
+While these two statements would certainly be useful and informative for those who hold the belief that vaccines \emph{do} cause autism or that girls \emph{cannot} do math, it is unclear how they might be received by people who already share these beliefs, or who are not aware of either of these debates.  
+The headline, ``Girls can do math'', for instance, could potentially signal to a naive readers that many people believe that girls cannot do math, and that there are legitimate reasons to hold this belief (e.g., perhaps girls tend to be less intelligent than boys).  
+As a result, these readers might walk away doubting girls' ability to do math more than they would have otherwise.
+
+In the present study, our focus was on affirmations of past events (e.g., ``My student turned in his homework on time''; ``The gym had clean towels today''), as a first step towards modeling this backfiring effect of language.  
+Further work is necessary to determine how other kinds of affirmations, such as generic claims, might also backfire.
 
 
 
