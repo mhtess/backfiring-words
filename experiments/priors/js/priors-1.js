@@ -64,9 +64,9 @@ function make_slides(f) {
       $("#time_comparison_b").val('')
       $(".err").hide();
 
-      $(".question1").html("How many Americans do you think <strong>" + stim.present + "</strong> relatively often?<br>");
-      $(".question2").html("Think of a person who "+stim.habitual+" relatively often.<br>How often does he or she "+stim.present+"?");
-      $(".question3").html("Think of a person who <strong>does not</strong> "+stim.present+" relatively often.<br>How often does he or she "+stim.present+"?");
+      $(".question1").html("How many Americans do you think <strong>" + stim.verb + "</strong> relatively often?<br>");
+      $(".question2").html("Think of a person who "+stim.habitual+" relatively often.<br>How often does he or she "+stim.verb+"?");
+      $(".question3").html("Think of a person who <strong>does not</strong> "+stim.verb+" relatively often.<br>How often does he or she "+stim.verb+"?");
 
 
     },
