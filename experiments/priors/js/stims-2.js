@@ -157,6 +157,7 @@ var stimuli = [
 {
 	habitual: "wears socks",
 	past: "wore socks",
+	verb: "wear socks",
 	category: "clothing",
 	frequency: ["6 months","month","week"],
 	predict_test_freq: "week"
@@ -164,6 +165,7 @@ var stimuli = [
 {
 	habitual: "wears a hat",
 	past: "wore a hat",
+	verb: "wear a hat",
 	category: "clothing",
 	frequency: ["2 months","month","week"],
 	predict_test_freq: "week"
@@ -387,8 +389,8 @@ var stimuli = [
 },
 {
 	habitual: "watches space launches",
-	past: "watched space launches",
-	verb: "watch space launches",
+	past: "watched a space launch",
+	verb: "watch a space launch",
 	category: "entertainment",
 	frequency: ["2 years", "year","month"],
 	preventative: {
