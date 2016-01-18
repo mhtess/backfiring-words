@@ -74,8 +74,8 @@ function make_slides(f) {
       $(".question").html("Which do you think is most likely?")
 
       var keyDictionary = {
-        "likely-key": stim.character.name + " " + stim.habitual  + " relatively often.",
-        "unlikely-key": stim.character.name + " <strong>does not</strong> " + stim.verb  + " relatively often.",
+        "likely-key": "Relative to other people, " +stim.character.name + " " + stim.habitual  + " often.",
+        "unlikely-key": "Relative to other people, "+ stim.character.name + " <strong>does not</strong> " + stim.verb  + " often.",
         "zero-key":stim.character.name + " <strong>never</strong> " + stim.habitual  + ".",
       }
 
@@ -178,6 +178,64 @@ function make_slides(f) {
         "characterGender": this.stim.character.gender,
         "rt":this.rt
       });
+    }
+  });
+
+
+  slides.frequency_judgment = slide({
+    name: "frequency_judgment",
+    
+    present: exp.stimuli,
+
+    present_handle : function(stim) {
+
+
+      $(".err").hide();
+      $("#time_frequency").val('')
+      $("#time_comparison").val('')
+
+      this.startTime = Date.now();
+      this.stim = stim;
+      // this.trialNum = exp.stimscopy.indexOf(stim);
+
+      var observationSentence = stim.character.name + " " + stim.past + " today."
+
+      var possible_sentences = {
+        observation: observationSentence,
+        communication: 'You overhear two friends talking. <br>One of them says to the other, "' + observationSentence +'"',
+        baseline: stim.character.name + " is a person."
+      }
+      var targetSentence = possible_sentences[exp.condition]
+
+      $(".prompt").html(targetSentence)
+      $(".question").html("How often does "+stim.character.name + " " + stim.verb + "?")
+
+
+    },
+
+    button : function() {
+      responses = [$("#time_frequency").val(),
+                     $("#time_comparison").val()]
+      if (_.contains(responses, ""))  {
+        $(".err").show();
+      } else {
+        this.rt = Date.now() - this.startTime;
+        this.log_responses();
+        _stream.apply(this);
+      }
+    },
+
+    log_responses : function() {
+      // exp.data_trials.push({
+      //   "trial_type" : "twostep_elicitation",
+      //   "trial_num": this.trialNum,
+      //   "item": this.stim.item,
+      //   "category": this.stim.type,
+      //   "existence" : exp.sliderPost,
+      //   "nTimes" : response,
+      //   "timeWindow": freq,
+      //   "rt":this.rt
+      // });
     }
   });
 
@@ -315,7 +373,7 @@ function init() {
   };
 
   //blocks of the experiment:
-   exp.structure=["likelihood_judgment","i0", "instructions",'subj_info', 'thanks'];
+   exp.structure=["frequency_judgment","i0", "instructions",'subj_info', 'thanks'];
  
   exp.data_trials = [];
   //make corresponding slides:
