@@ -125,6 +125,63 @@ function make_slides(f) {
     }
   });
 
+  slides.likelihood_judgment = slide({
+    name: "likelihood_judgment",
+    present : exp.stimuli,
+    //this gets run only at the beginning of the block
+    present_handle : function(stim) {
+
+      $(".err").hide();
+
+      this.startTime = Date.now();
+      this.stim = stim;
+
+      var observationSentence = stim.character.name + " " + stim.past + " today."
+
+      var possible_sentences = {
+        observation: observationSentence,
+        communication: 'You overhear two friends talking. <br>One of them says to the other, "' + observationSentence +'"',
+        baseline: stim.character.name + " is a person."
+      }
+      var targetSentence = possible_sentences[exp.condition]
+
+      $(".prompt").html(targetSentence)
+      $(".question").html("How likely is it that "+stim.character.name +" will " + stim.verb + " in the next "+stim.predict_test_freq+"?")
+
+      this.init_sliders();
+      exp.sliderPost = null; //erase current slider value
+    },
+    init_sliders : function() {
+      utils.make_slider("#single_slider_2", function(event, ui) {
+        exp.sliderPost = ui.value;
+      });
+    },
+
+    button : function() {
+     var response = $('input[name="response"]:checked').val()
+    if ( (exp.sliderPost == null)  ){
+        $(".err").show();
+      } else {
+        this.rt = Date.now() - this.startTime;
+        this.log_responses();
+        _stream.apply(this);
+      }
+    },
+
+    log_responses : function() {
+
+      exp.data_trials.push({
+        "trial_type" : "likelihood_judge",
+        "item": this.stim.past,
+        "condition": exp.condition,
+        "response": exp.sliderPost,
+        "characterGender": this.stim.character.gender,
+        "rt":this.rt
+      });
+    }
+  });
+
+
   slides.check = slide({
      name : "check",
      start: function() {
@@ -258,7 +315,7 @@ function init() {
   };
 
   //blocks of the experiment:
-   exp.structure=["truthJudge","i0", "instructions",'subj_info', 'thanks'];
+   exp.structure=["likelihood_judgment","i0", "instructions",'subj_info', 'thanks'];
  
   exp.data_trials = [];
   //make corresponding slides:
