@@ -1,0 +1,158 @@
+// time webppl exploreBackfire_habits.wppl --require mht --require utils
+
+var prior_mhiter = 50000
+var prior_burn = prior_mhiter/2
+var prior_incrOpts = {burn:prior_burn, verbose: true, verboseLag: prior_mhiter/20}
+var priorERP = IncrementalMH(priorModel, prior_mhiter, prior_incrOpts)
+
+
+var priorERPobject = _.object(map(function(i){
+	return [i, _.object(map(function(q){
+			return [q, 	marginalize(priorERP, [i,q])]
+		},["habit_rate","habit_strength"]))]
+}, items))
+
+
+var prefix = "itemPriors-cost-alpha-backoffstrength_priorIncrMH" + prior_mhiter/1000 + "k_b" +prior_burn/1000+ "k"
+var filename1 = "results/exploration/backfireH-exploration-"+prefix+".csv"
+
+var header = "model,measure,item,habit_rate,habit_strength,action_baserate,cost,SpeakerOptimality,Value"
+
+
+var h1file = utils.openFile(filename1)
+utils.writeLine(h1file, header)
+
+foreach(items, function(i){
+	var t0 = utils.getTime()
+	repeat(1000, function(){
+		var habit_rate = sample(priorERPobject[i]["habit_rate"])
+		var habit_strength = sample(priorERPobject[i]["habit_strength"])
+		foreach([0.001,0.01,0.1,0.2], function(action_baserate){
+
+			var prior_expectation = habit_rate*habit_strength + (1-habit_rate) * action_baserate
+			utils.writeLine(h1file, ["backfire","prior_expectation", 
+						i,habit_rate,habit_strength,action_baserate,"NA","NA",
+						prior_expectation].join(','))
+			foreach([1], function(utterance_cost){
+				var prior_parameters = {
+					habit_rate: habit_rate,
+					habit_strength: habit_strength,
+					action_baserate: action_baserate,
+					cost:utterance_cost
+				}
+				foreach([1,3,5,10,15,20], function(speaker_optimality){
+					var backfireERP = backfireHypothesis(speaker_optimality, prior_parameters)
+					utils.writeLine(h1file, ["backfire","predictive_expectation", 
+						i,habit_rate,habit_strength,action_baserate,utterance_cost,speaker_optimality,
+						expectation(backfireERP)].join(','))
+				})
+			})
+		})
+	})
+	console.log(i + " complete... time " + (utils.getTime()-t0)/1000)
+})
+
+utils.closeFile(h1file)
+console.log("output 2 written to ... " + filename1)
+
+
+// 		// var df_item = subset(df, "item", i)
+// 		// console.log("before sample prior")
+
+// 		// var habit_rate = sample(priorERPobject[i]["habit_rate"])
+// 		// var habit_strength = sample(priorERPobject[i]["habit_strength"])
+
+
+
+
+
+// 		var prediction = expectation(backfireERP)
+
+		
+
+
+// var utterance_costs = [1, 2, 5, 10]
+// // var a_prior_weights = [0.999]
+// // var a_strengths = [0.99]
+
+// var alphas = [1,3,5,10,15,20]
+
+// // var bg_strengths = [0.01, 0.1, 0.3, 0.5, 0.7, 0.9, 0.99]
+// // var primary_baserates = [0.5,0.6,0.7,0.8,0.9,0.99]
+// var primary_baserate_prior_weights = [1]
+// var primary_baserates = [1]
+// var bg_strengths = [0.0001]
+
+
+
+
+
+// // Cause --> Effect
+// // a is the primary cause 
+// // b is the secondary cause: a is stronger than b
+// // also, the prior on a is likely higher than b
+
+// // var a_strength = 0.99
+// // var b_strength = 0.5
+// // var a_prior = 0.999
+
+// // var bg_strength = 0.001
+// // var primary_baserate = 0.99
+// var secondary_baserate = 0.0001
+// // var primary_baserate_prior = 1
+
+// var queries = ["causalPower"]
+
+// foreach(primary_baserate_prior_weights, function(primary_baserate_prior){
+// 	var t0 = utils.getTime()
+// 	foreach(primary_baserates, function(primary_baserate){
+// 		foreach(bg_strengths, function(bg_strength){
+// 			foreach(a_strengths, function(a_strength){
+// 				foreach(b_strengths, function(b_strength){
+// 					foreach(a_prior_weights, function(a_prior){
+// 						foreach(alphas, function(alpha){
+// 							foreach(utterance_costs, function(utterance_cost){
+
+// 								var modelParameters = {
+// 												a_strength: a_strength,
+// 												a_prior:a_prior,
+// 												b_strength: b_strength,
+// 												bg_strength: bg_strength,
+// 												primary_baserate: primary_baserate,
+// 												secondary_baserate: secondary_baserate,
+// 												primary_baserate_prior: primary_baserate_prior,
+// 												cost: utterance_cost
+// 								}
+// 								console.log(modelParameters)
+
+// 								var h0 = nullHypothesis(alpha, modelParameters)
+// 								var h1 = backfireHypothesis(alpha, modelParameters)
+// 								var h2 = literalBayesianHypothesis(alpha, modelParameters)
+
+// 								foreach(queries, function(query_return){
+
+// 									utils.writeLine(h0file, ["h0",query_return, a_prior,a_strength,b_strength,
+// 										utterance_cost, alpha, expectation(marginalize(h0, query_return))].join(','))
+
+// 									utils.writeLine(h1file, ["h1",query_return, a_prior,a_strength,b_strength,
+// 										utterance_cost, alpha, expectation(marginalize(h1, query_return))].join(','))
+
+// 									utils.writeLine(h2file, ["h_literal",query_return, a_prior,a_strength,b_strength,
+// 										utterance_cost, alpha, expectation(marginalize(h2, query_return))].join(','))
+
+// 								})
+// 							})
+// 						})
+// 					})
+// 				})
+// 			})
+// 		})
+// 	})
+// 	console.log((utils.getTime()-t0)/1000)
+// })
+// utils.closeFile(h0file)
+// console.log("output 1 written to ... " + filename0)
+// utils.closeFile(h1file)
+// console.log("output 2 written to ... " + filename1)
+// utils.closeFile(h2file)
+// console.log("output 3 written to ... " + filename2)

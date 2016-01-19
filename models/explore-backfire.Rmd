@@ -4,12 +4,27 @@ author: "mht"
 date: "December 4, 2015"
 output: html_document
 ---
+```{r}
+library(coda)
+estimate_mode <- function(s) {
+  d <- density(s)
+  return(d$x[which.max(d$y)])
+}
+HPDhi<- function(s){
+  m <- HPDinterval(mcmc(s))
+  return(m["var1","upper"])
+}
+HPDlo<- function(s){
+  m <- HPDinterval(mcmc(s))
+  return(m["var1","lower"])
+}
 
+```
 
 ```{r} 
   
 fpath<- "~/Documents/research/backfiring-words/models/results/exploration/"
-fileName = paste(fpath,"backfireHypothesis-exploration-free-cpWeight_fixed-cpStrength-bc0-br1-1a.csv", sep="")
+fileName = paste(fpath,"backfireHypothesis-exploration-priors-strengths-cost-alpha-1a.csv", sep="")
 fileName2 = paste(fpath, "nullHypothesis-exploration-free-cpWeight_fixed-cpStrength-bc0-br1-1a.csv", sep="")
 d<-read.csv(fileName)
 d1<-read.csv(fileName2)
@@ -17,13 +32,22 @@ d1<-read.csv(fileName2)
 ```
 
 ```{r}
-
+i = 10
+c = 1 
 for (i in levels(factor(d$speakerOpt))){
   
   d.world <- d %>% 
-  filter(measure=='world' & speakerOpt == i) %>%
-  mutate(exp.val = (mixture*primaryTheta + (1-mixture)*backoffTheta)*15)
+    filter(measure=='causalPower' & SpeakerOptimality == i & cost == c) %>%
+    mutate(prior.exp = (aPrior*aStrength + (1-aPrior)*bStrength)) %>%
+      gather(key, val, Value, prior.exp)
 
+  ggplot(d.world, aes(x=aStrength, y = val, color = key))+
+    geom_point(size = 3)+
+    facet_grid(bStrength~aPrior)
+  
+  
+  
+  
   d.world1 <- d1 %>% 
     filter(measure=='world' & speakerOpt == i) %>%
     mutate(exp.val = (mixture*primaryTheta + (1-mixture)*backoffTheta)*15)
@@ -91,6 +115,61 @@ for (i in levels(factor(d$speakerOpt))){
   print(i)
 }
 
+```
 
+
+```{r}
+
+d.tidy<-d %>% 
+  filter(aStrength == 0.99,
+         (aPrior != 0.01 & aPrior !=0.99),
+         SpeakerOptimality ==5)
+
+
+ggplot(d.tidy, aes(x=aPrior, y=Value / aPrior))+
+  geom_bar(stat='identity', position=position_dodge())+
+  theme_paper()+
+  ylab("Posterior / Prior")+
+  xlab("Prior probability of stronger cause")
+  
+ggsave(paste(fpath, "plots/literal.pdf", sep=""))
 
 ```
+
+
+## Exploration using items from habituals
+
+
+```{r hab.exploration}
+  
+fpath<- "~/Documents/research/backfiring-words/models/results/exploration/"
+fileName = paste(fpath,"backfireH-exploration-itemPriors-cost-alpha-backoffstrength_priorIncrMH50k_b25k.csv", sep="")
+d<-read.csv(fileName)
+```
+
+```{r}
+
+d2<-d %>%
+  mutate(prior_expectation = habit_rate*habit_strength + (1-habit_rate)*action_baserate) %>%
+  filter(measure=="predictive_expectation" & SpeakerOptimality==10) %>%
+  group_by(item, action_baserate, cost, SpeakerOptimality) %>%
+  summarize(posterior_MAPexpectation = estimate_mode(Value),
+            posterior_credHigh = HPDhi(Value),
+            posterior_credLow = HPDlo(Value),
+            prior_MAPexpectation = estimate_mode(prior_expectation),
+            prior_credHigh = HPDhi(prior_expectation),
+            prior_credLow = HPDlo(prior_expectation))
+
+
+
+ggplot(d2, aes(x=prior_MAPexpectation, y = posterior_MAPexpectation, color= factor(action_baserate)))+
+  geom_point(size = 4)+
+  geom_errorbar(aes(ymin=posterior_credLow, ymax=posterior_credHigh))+
+  geom_errorbarh(aes(xmin=prior_credLow, xmax=prior_credHigh))+
+  facet_wrap(~item)+
+  geom_abline(intercept=0,slope=1, lty=3)
+
+
+d1 %>% filter(item=='climbs mountains')
+```
+
