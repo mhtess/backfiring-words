@@ -143,21 +143,21 @@ In the present study, we directly test these predictions.  In Experiment 1, we c
 %\red{ekc: I actually think we should go back to a real-world example here.  I'm nervous this isn't exactly an exciting way to start the paper.}
 
 \ndg{this paragraph is good so far, but should end with an introduction to the theme of this paper. perhaps need to pivot to point out that the linguistic machinery that make it possible to convey generalization can also have unintended consequences?}
-\begin{figure}
-\centering
-    \includegraphics[width=\columnwidth]{cartoon-2}
-    \caption{
-        \small
-How does a learner interpret evidence of an event, when she is uncertain about what could have given rise to the event (a reliable cause [red] or an unreliable cause [blue])? 
+%\begin{figure}
+%\centering
+   % \includegraphics[width=\columnwidth]{cartoon-2}
+    %\caption{
+       % \small
+%How does a learner interpret evidence of an event, when she is uncertain about what could have given rise to the event (a reliable cause [red] or an unreliable cause [blue])? 
 %  If a listener has uncertainty about what has given rise to an event (a reliable cause [red] or an unreliable cause [blue]), observing the event is relatively more evidence for the reliable cause (red).
 %In a communicative context, a speaker who asserts that the event occurred will lead the speaker to believe the reliable cause (red) was responsible, if the listener believes the speaker is represented her uncertainty correctly (Aligned).
-   Observing the event occur is relatively more evidence for the reliable cause [red]. 
-    In communication, hearing about an event provides the same evidence when the listener believes the speaker represents her uncertainty accurately (Aligned common ground).
-   If, instead, the listener believes the speaker is presupposing some information, the listener will be led to believe the unreliable cause [blue] gave rise to the event, as that is a more informative utterance (Misaligned).
+   %Observing the event occur is relatively more evidence for the reliable cause [red]. 
+   % In communication, hearing about an event provides the same evidence when the listener believes the speaker represents her uncertainty accurately (Aligned common ground).
+ %  If, instead, the listener believes the speaker is presupposing some information, the listener will be led to believe the unreliable cause [blue] gave rise to the event, as that is a more informative utterance (Misaligned).
 %    When speaker and listener have common ground that is not aligned, the speaker will be interpreted as presupposing one of the possible causes, and could provide evidence for a cause that would \emph{not} reliably given rise to the event (blue).
-    }
-  \label{fig:cartoon}
-\end{figure}
+   % }
+%  \label{fig:cartoon}
+%\end{figure}
 %, and communicative principles (i.e., that speakers will provide truthful, relevant, and informative information) strengthen the inferences one can draw from speech acts \cite{Grice1975}.  <--DO WE NEED THIS?
 %\red{DOES THIS SEEM RIGHT?}
 
@@ -376,7 +376,7 @@ In the three experimental conditions (backfiring, ignorant speaker, and observat
 
 In the \textbf{backfiring} condition, a brief communicative utterance was added after the description of the two options.  In the officemate scenario, for example, participants read, ``In their office, Molly's officemate says to her, `My student turned in his homework on time today.'"
 
-In the \textbf{ignorant speaker} condition, one character explicitly stated that they did not know whether an event happened.  In the officemate scenario, this was: ``In their office, Molly helps her officemate fill out a daily report card for her student, while her officemate files away some papers.  Molly reads out loud from the report card,`�Did your student turn in his homework on time today?'  Her officemate replies, `Yes. My student turned in his homework on time today.'"
+In the \textbf{ignorant speaker} condition, Person A explicitly stated that they did not know whether an event happened.  In the officemate scenario, this was: ``In their office, Molly helps her officemate fill out a daily report card for her student, while her officemate files away some papers.  Molly reads out loud from the report card,`�Did your student turn in his homework on time today?'  Her officemate replies, `Yes. My student turned in his homework on time today.'"
 
 In the \textbf{observation} condition, an observation was added after the two options.  Participants read, for example, ``In their office, Molly notices some papers on her officemate's desk.  Her officemate's student turned in his homework on time today."
 
@@ -408,10 +408,10 @@ In the \textbf{observation} condition, an observation was added after the two op
 
 We computed an \emph{endorsement score} by scaling forced-choice responses by their associated confidence level. 
 We coded the selection of the more \emph{likely} response given an observation (e.g., the roommate who \emph{always} does her dishes) as a 1; the other option as -1.
-We fit the \emph{endorsement score} data using a generalized mixed-effects model with random by-participant effects of intercept and random by-item effects of intercept\footnote{This was the maximal-model that our data permitted.}. 
-As predicted, participants endorsed the likely response \emph{less} in the Misaligned Common Ground condition (M=-0.09; bootstrapped 95\% CI [-0.15, -0.03]) than the in the Prior condition (M=0.18 [0.14,0.22]), $\beta = -0.24; SE = 0.03; t(1794) = -8.3; p<0.001$.
+We fit the \emph{endorsement score} data using a generalized mixed-effects model with \red{fixed effects of X and random effects of X?} random by-participant effects of intercept and random by-item effects of intercept\footnote{This was the maximal-model that our data permitted.}. 
+As predicted, participants endorsed the likely response \emph{less} in the Backfiring condition (M=-0.09; bootstrapped 95\% CI [-0.15, -0.03]) than the in the Prior condition (M=0.18 [0.14,0.22]), $\beta = -0.24; SE = 0.03; t(1794) = -8.3; p<0.001$.
 There was a trend for participants to endorse the likely response \emph{slightly more} in the Observation condition (M=0.24 [0.18, 0.29]) than in the Prior condition ($\beta = 0.05; SE = 0.03; t(1794) = 1.73; p = 0.08$). 
-No such trend was observed for the Aligned Common Ground condition (M=0.18 [0.13, 0.24]). 
+No such trend was observed for the Ignorant Speaker condition (M=0.18 [0.13, 0.24]). 
 
 
 %  condition       mean   ci_lower   ci_upper
@@ -446,8 +446,22 @@ No such trend was observed for the Aligned Common Ground condition (M=0.18 [0.13
 %conditionsurvey       6.817e-03  3.302e-02  1.797e+03   0.206   0.8364    
 
 We further analyzed the data separately in terms of (1) the proportion of participants who selected the more \emph{likely} option given an observation (e.g. the roommate who \emph{always} does her dishes) and (2) the confidence ratings, to better understand the effect.
-Critically, participants were significantly \emph{less} likely to choose the ``likely'' option in the Misaligned Common Ground condition (M=0.46 [0.41, 0.50]) than in the Prior condition (M=0.71 [0.67,0.75]) , $\beta = -1.42; SE = 0.15; p < .001$.  
-Interestingly, participants were no \emph{more} likely to choose the ``likely'' option in either the observation (M=0.71 [0.68, 0.75]) or aligned CG (M=0.68 [0.63,0.71]) conditions as compared to the Prior (Figure \ref{fig:expt1-all}; middle panel).
+Critically, participants were significantly \emph{less} likely to choose the ``likely'' option in the Backfiring condition (M=0.46 [0.41, 0.50]) than in the Prior condition (M=0.71 [0.67,0.75]) , $\beta = -1.42; SE = 0.15; p < .001$.  
+Interestingly, however, participants were \emph{no more} likely to choose the ``likely'' option in either the Observation (M=0.71 [0.68, 0.75]) or Ignorant Speaker (M=0.68 [0.63,0.71]) conditions than in Prior (Figure \ref{fig:expt1-all}; middle panel).  There are two possible explanations for this lack of differences: 1) prior beliefs were already at ceiling, making it difficult for linguistic and observational evidence to influence responses and 2) participants might have needed more than one piece of evidence to make a strong generalization about behavior.
+
+Finally, since participants are not given any helpful information in the Prior condition, we expected the confidence rating data to be lower in the Prior condition than in the three experimental conditions.
+In all conditions, this was the case: Prior 0.39 [0.36, 0.42] vs. Observation 0.60 [0.58, 0.62], Ignorant Speaker 0.60 [0.58, 0.61], Backfiring 0.62 [0.61, 0.64] (Figure \ref{fig:expt1-all}; right panel).
+
+Overall, \red{as predicted, ...}
+
+\red{do we need the median split?  could it be enough to just say, yeah, the observation and ignorant speaker conditions were funky because overall, prior beliefs were pretty high?  and then focus on the most important / interesting topic, which is the backfiring} fact that we observe an effect in the Backfiring condition but not in the other conditions might in fact be expected if the items for which the prior beliefs are the strongest show a relatively small effect of evidence compared to when prior beliefs are the weakest.
+The opposite pattern would be expected for the Backfiring condition, where it is predicted an utterance will backfire the most when the prior beliefs are the strongest (see Figure \ref{fig:schematic-model}) for model predictions).
+To this end, we performed a median split of the items based on their prior endorsement. 
+Figure \ref{fig:expt1-medspilt} shows mean endorsement score in each of the three conditions against the backdrop of the prior endorsement score, when the items are split based on prior endorsement. 
+We see a larger deviation from the prior for the Observation and Ignorant Speaker conditions and a smaller deviation from prior for the Backfiring condition, when the prior is relatively weak. 
+The opposite pattern is observed when prior beliefs are relatively stronger, as predicted by the theory (Figure \ref{fig:schematic-model}). 
+
+\ndg{think through the best way to analyze / present the relation to prior....}
 
 
 
@@ -458,9 +472,7 @@ Interestingly, participants were no \emph{more} likely to choose the ``likely'' 
 %3    backfire 0.6291875 0.6102781 0.6488406
 %4      survey 0.5956458 0.5757083 0.6145448
 
-Participants are not given any helpful information in the Prior condition. 
-Thus, we expected the confidence rating data to be lower in the Prior condition than in the three experimental conditions (observation, CB aligned / misaligned).
-In all conditions, this was the case: Prior 0.39 [0.36, 0.42] vs. Observation 0.60 [0.58, 0.62], CG Aligned 0.60 [0.58, 0.61], CG Misaligned 0.62 [0.61, 0.64] (Figure \ref{fig:expt1-all}; right panel).
+
 
 \begin{figure}
 %\centering
@@ -470,14 +482,9 @@ In all conditions, this was the case: Prior 0.39 [0.36, 0.42] vs. Observation 0.
   \label{fig:expt1-medspilt}
 \end{figure}
 
-The fact that we observe an effect in the CG Misaligned condition but not in the other conditions might in fact be expected if the items for which the prior beliefs are the strongest show a relatively small effect of evidence compared to when prior beliefs are the weakest.
-The opposite pattern would be expected for the CG Misaligned condition, where it is predicted an utterance will backfire the most when the prior beliefs are the strongest (see Figure \ref{fig:schematic-model}) for model predictions).
-To this end, we performed a median split of the items based on their prior endorsement. 
-Figure \ref{fig:expt1-medspilt} shows mean endorsement score in each of the three conditions against the backdrop of the prior endorsement score, when the items are split based on prior endorsement. 
-We see a larger deviation from the prior for the Observation and Aligned CG conditions and a smaller deviation from prior for the Misaligned CG condition, when the prior is relatively weak. 
-The opposite pattern is observed when prior beliefs are relatively stronger, as predicted by the theory (Figure \ref{fig:schematic-model}). 
 
-\ndg{think through the best way to analyze / present the relation to prior....}
+
+
 
 
 
@@ -501,7 +508,7 @@ The opposite pattern is observed when prior beliefs are relatively stronger, as 
 %To determine how pre-existing biases might influence participants'â‚¬â„¢ responses in each of our conditions, we performed a median split analysis, separating items in the Baseline condition for which participants had weak preferences (M  = XXXX) from those for which participants had strong preferences (M = XXXX).  
 
 
-\subsection{Quantitative model evaluation}
+\subsection{Quantitative model evaluation and discussion?}
 
 The formal pragmatics model in Eq.~\ref{eq:L1} describes how a listener is likely to interpret an utterance affirming an event, when she believes the speaker to have presupposed some information. 
 Since there is appreciable variability in participants' ratings in the Prior condition, we can use those ratings as $P(h)$ and explore the quantitative predictive power of the model.
@@ -546,7 +553,9 @@ This may inadvertently have led to a \emph{backfiring} effect for some of the it
 
 \section{Discussion}
 
-We have presented a formal model for Common Ground inference that uses communicative principles (\emph{be truthful}, \emph{be informative}) to infer what presuppositions the speaker must have brought to conversation. 
+These two experiments serve as conceptual replications of...
+
+presented a formal model for Common Ground inference that uses communicative principles (\emph{be truthful}, \emph{be informative}) to infer what presuppositions the speaker must have brought to conversation. 
 The model predicts that an utterance that should ``go without saying'' given one Common Ground will lead a listener to infer a different Common Ground, and result in a backfiring effect decreasing the listener's belief in the proposition being affirmed.
 The quantitative model predicts that this effect should be strongest when the \emph{a priori} beliefs in the common ground that would make the utterance uninformative are the strongest.
 This is in contrast to typical Bayesian updating, where the most information is gained when \emph{a priori} beliefs are most uncertain. 
