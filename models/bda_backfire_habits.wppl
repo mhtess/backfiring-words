@@ -1,11 +1,11 @@
-// time webppl bda_backfire.wppl --require mht --require utils
+// time webppl bda_backfire_habits.wppl --require mht --require utils
 var fpath = "/Users/mht/Documents/research/backfiring-words/data/"
 
 var data = mht.readCSV(fpath+"forcedchoice-2-trials.csv").data
 var df = dataFrame(data, ["workerid", "confidence"])
 
 
-var prior_mhiter = 50000
+var prior_mhiter = 1000
 var prior_burn = prior_mhiter/2
 var prior_incrOpts = {burn:prior_burn, verbose: true, verboseLag: prior_mhiter/20}
 var priorERP = IncrementalMH(priorModel, prior_mhiter, prior_incrOpts)
@@ -13,9 +13,11 @@ var priorERP = IncrementalMH(priorModel, prior_mhiter, prior_incrOpts)
 
 var priorERPobject = _.object(map(function(i){
 	return [i, _.object(map(function(q){
-			return [q, 	marginalizeERP(priorERP, [i,q])]
+			return [q, 	marginalize(priorERP, [i,q]).MAP()]
 		},["habit_rate","habit_strength"]))]
 }, items))
+
+priorERPobject["runs"]["habit_strength"]
 
 var posteriorBDA = function(){
 	var speaker_optimality = uniform(0,20)
@@ -30,9 +32,10 @@ var posteriorBDA = function(){
 		// var df_item = subset(df, "item", i)
 		// console.log("before sample prior")
 
-		var habit_rate = sample(priorERPobject[i]["habit_rate"])
-		var habit_strength = sample(priorERPobject[i]["habit_strength"])
-
+		// var habit_rate = sample(priorERPobject[i]["habit_rate"])
+		// var habit_strength = sample(priorERPobject[i]["habit_strength"])
+		var habit_rate = priorERPobject[i]["habit_rate"].val
+		var habit_strength = priorERPobject[i]["habit_strength"].val
 
 		var prior_parameters = {
 			habit_rate: habit_rate,
@@ -41,6 +44,8 @@ var posteriorBDA = function(){
 		}
 
 		var backfireERP = listener1("It happened.", prior_parameters, speaker_optimality)
+
+		var prediction = expectation(backfireERP)
 
 
 		.. What does the data look like?
@@ -53,9 +58,9 @@ var posteriorBDA = function(){
 		// var observationERP = observation("It happened.", prior_parameters)
 		// // console.log("after rsa")
 
-		var backfiringScr = sum(map(function(d){return backfireERP.score([], d=="likely-key")}, backfire_responses))
-		var forcedspeakScr = sum(map(function(d){return forcedspeakerERP.score([], d=="likely-key")}, forcedspeak_responses))
-		var observationScr = sum(map(function(d){return observationERP.score([], d=="likely-key")}, observation_responses))
+		// var backfiringScr = sum(map(function(d){return backfireERP.score([], d=="likely-key")}, backfire_responses))
+		// var forcedspeakScr = sum(map(function(d){return forcedspeakerERP.score([], d=="likely-key")}, forcedspeak_responses))
+		// var observationScr = sum(map(function(d){return observationERP.score([], d=="likely-key")}, observation_responses))
 		// console.log("after scoring")
 
 		// console.log("backfire score = " +backfiringScr)

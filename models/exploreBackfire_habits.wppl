@@ -33,6 +33,7 @@ foreach(items, function(i){
 			utils.writeLine(h1file, ["backfire","prior_expectation", 
 						i,habit_rate,habit_strength,action_baserate,"NA","NA",
 						prior_expectation].join(','))
+
 			foreach([1], function(utterance_cost){
 				var prior_parameters = {
 					habit_rate: habit_rate,
@@ -40,6 +41,12 @@ foreach(items, function(i){
 					action_baserate: action_baserate,
 					cost:utterance_cost
 				}
+
+				var literalERP = literalBayesianHypothesis(prior_parameters)
+				utils.writeLine(h1file, ["literal","predictive_expectation", 
+					i,habit_rate,habit_strength,action_baserate,utterance_cost,"NA",
+					expectation(literalERP)].join(','))
+
 				foreach([1,3,5,10,15,20], function(speaker_optimality){
 					var backfireERP = backfireHypothesis(speaker_optimality, prior_parameters)
 					utils.writeLine(h1file, ["backfire","predictive_expectation", 
