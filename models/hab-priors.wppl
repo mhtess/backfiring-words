@@ -1,8 +1,9 @@
+// webppl hab-priors.wppl --require mht --require utils
+
 var fpath = "/Users/mht/Documents/research/backfiring-words/models/data/"
 
 var existData = mht.readCSV(fpath+"habprior2-existence.csv").data
 var waitData = mht.readCSV(fpath+"habprior2-logdayRate.csv").data
-
 
 var df_e = subset(dataFrame(existData, ["val"]), "gender", "female")
 var df_w = subset(dataFrame(waitData, ["val"]), "gender", "female")
@@ -11,7 +12,14 @@ var items = _.uniq(_.pluck(df_e, "item"))
 // var items = ["wears socks"]
 var genders = _.uniq(_.pluck(df_e, "gender"))
 
-// data is in terms of log ( N_times / 5 years )
+
+var header = "Item,Parameter,Value"
+var samples = 100000
+var burn = samples/2
+var incrOpts = {burn:burn, verbose:true, verboseLag: samples/10}
+// var mcmcOpts = {samples:samples/2, burn:burn, verbose:false}
+var outfile1 = "results/habpriors2-female-existence-logdayRate-incrMH" + samples/1000 + "k_burn" + burn/1000 + "ka.csv"
+// 
 
 var questions = ["Q1","Q2"]
 
@@ -28,7 +36,7 @@ var priorModel = function(){
 
 				if (q=="Q1") {
 
-					// var genderData_e = subset(df_e, "gender", g)
+					// var genderData_e = subset(df_e, "gender", "female")
 
 					// % of Americans question
 					var gamma = uniform(0,1)
@@ -36,7 +44,8 @@ var priorModel = function(){
 
 					var scr = sum(map(function(d){
 						return betaERP.score([shape_alpha(gamma,delta),
-											 shape_beta(gamma,delta)], avoidEnds(d))
+											 shape_beta(gamma,delta)], 
+											 avoidEnds(d))
 					}, _.pluck(itemData_e, "val")))
 
 					factor(scr)
@@ -44,10 +53,12 @@ var priorModel = function(){
 
 					var predictiveExistence = beta(shape_alpha(gamma,delta), shape_beta(gamma,delta))
 
+					query.add([i,"rate_gamma"], gamma)
+					query.add([i,"rate_delta"], delta)
 					query.add([i,"habit_rate"], predictiveExistence)
 
 				} else {
-				// 	var genderData_w = subset(df_w, "gender", g)
+					// var genderData_w = subset(df_w, "gender", "female")
 
 					var gamma_2 = uniform(0,1)
 					var delta_2 = uniform(0,50)
@@ -56,7 +67,8 @@ var priorModel = function(){
 					// var sigma = uniform(0,20)
 
 					var scr2 = sum(map(function(d){
-						return betaERP.score([shape_alpha(gamma_2,delta_2),
+						return betaERP.score([
+											 shape_alpha(gamma_2,delta_2),
 											 shape_beta(gamma_2,delta_2)
 											 ], 
 											 avoidEnds(d))
@@ -73,18 +85,29 @@ var priorModel = function(){
 
 					var predictiveStrength = beta(shape_alpha(gamma_2,delta_2), shape_beta(gamma_2,delta_2))
 
-
+					query.add([i,"strength_gamma"], gamma_2)
+					query.add([i,"strength_delta"], delta_2)
 					query.add([i,"habit_strength"], predictiveStrength)
 
 				}
 
-			})
+		// 	})
 
-		// })
+		})
 
 	})			
 	return query
 }
+
+var results = IncrementalMH(priorModel, samples, incrOpts)
+mht.erpWriter(results, outfile1, header)
+
+// mht.writeLine(h1file, header)
+// foreach(items, function(i){frequencyModel(i, h1file)})
+// mht.closeFile(h1file)
+// console.log("------Frequency inference complete------")
+console.log("__Written to " + outfile1)
+
 
 
 
