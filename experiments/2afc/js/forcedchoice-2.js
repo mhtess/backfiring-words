@@ -29,6 +29,12 @@ function make_slides(f) {
       // _.mapObject(exp.judgeButtons, function(val,key){
       //   $("#"+key).html(val);
       // });
+      var instructions = {
+        baseline: "On each trial, you will be asked how often a typical person does an action.",
+        observation: "On each trial, you will be given a random fact about a person doing an action and be asked to judge how often that person does the action.",
+        communication: "On each trial, you will read a short conversation between two friends and be asked a question about the person they are talking about."
+      }
+      $(".instructions").html(instructions[exp.condition]);  
       $(".total-num").html(exp.numTrials);  
     },
     button : function() {
@@ -203,12 +209,14 @@ function make_slides(f) {
       var possible_sentences = {
         observation: observationSentence,
         communication: 'You overhear two friends talking. <br>One of them says to the other, "' + observationSentence +'"',
-        baseline: stim.character.name + " is a person."
+        baseline: ""
       }
       var targetSentence = possible_sentences[exp.condition]
 
+
       $(".prompt").html(targetSentence)
-      $(".question").html("How often does "+stim.character.name + " " + stim.verb + "?")
+      var charName = exp.condition == "baseline" ? "a typical person" : stim.character.name
+      $(".question").html("How often does "+charName + " " + stim.verb + "?")
 
 
     },
@@ -373,7 +381,7 @@ function init() {
   };
 
   //blocks of the experiment:
-   exp.structure=["frequency_judgment","i0", "instructions",'subj_info', 'thanks'];
+   exp.structure=["i0", "instructions","frequency_judgment",'subj_info', 'thanks'];
  
   exp.data_trials = [];
   //make corresponding slides:
