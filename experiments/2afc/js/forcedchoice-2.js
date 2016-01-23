@@ -224,7 +224,8 @@ function make_slides(f) {
     button : function() {
       var responses = [$("#time_frequency").val(),
                      $("#time_comparison").val()]
-      if (_.contains(responses, ""))  {
+
+      if ($("#time_comparison").val()==null || !(parseFloat($("#time_frequency").val()) > -1))  {
         $(".err").show();
       } else {
         this.rt = Date.now() - this.startTime;
@@ -256,7 +257,7 @@ function make_slides(f) {
         "timeWindow": responses[1],
         "rt":this.rt,
         "freq_5years":timeTransform[responses[1]]*parseFloat(responses[0]),
-        "logfreq":Math.log(timeTransform[responses[1]]*parseFloat(responses[0]))
+        "logfreq": parseFloat(responses[0]) > 0 ? Math.log(timeTransform[responses[1]]*parseFloat(responses[0])) : 0
       });
     }
   });
