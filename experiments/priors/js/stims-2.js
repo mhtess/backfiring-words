@@ -179,8 +179,10 @@ var stimuli = [
 // {
 // 	habitual: "wears sweaters",
 // 	past: "wore a sweater",
+// 	verb: "wear sweaters",
 // 	category: "clothing",
-// 	frequency: ["month","week"]
+// 	frequency: ["month","week"],
+// 	predict_test_freq: "week"
 // },
 {
 	habitual: "wears a watch",
@@ -190,32 +192,32 @@ var stimuli = [
 	frequency: ["6 months","month","week"],
 	predict_test_freq: "week"
 },
-{
-	habitual: "writes novels",
-	past: "wrote a novel",
-	verb: "write a novel",
-	category: "employment",
-	frequency: ["5 years", "year"],
-	preventative:{
-		verb: "became fed up with the literary world and",
-		obj: "decided to never write anything again"
-	},
-	enabling: {
-		verb: "finished an MFA program and quit",
-		obj: "other job to focus on writing novels",
-		requires: "possessive"
-	},
-	filler: {
-		verb: "decided to never drive again in order to cut reduce",
-		obj: "carbon football",
-		requires: "possessive"
-	},
-	prevent_test_freq: ["5 years"],
-	predict_test_freq: "year"
-},
+// {
+// 	habitual: "writes novels",
+// 	past: "wrote a novel",
+// 	verb: "write a novel",
+// 	category: "employment",
+// 	frequency: ["5 years", "year"],
+// 	preventative:{
+// 		verb: "became fed up with the literary world and",
+// 		obj: "decided to never write anything again"
+// 	},
+// 	enabling: {
+// 		verb: "finished an MFA program and quit",
+// 		obj: "other job to focus on writing novels",
+// 		requires: "possessive"
+// 	},
+// 	filler: {
+// 		verb: "decided to never drive again in order to cut reduce",
+// 		obj: "carbon football",
+// 		requires: "possessive"
+// 	},
+// 	prevent_test_freq: ["5 years"],
+// 	predict_test_freq: "year"
+// },
 {
 	habitual: "writes poems",
-	verb:"write a poem",
+	verb:"write poems",
 	past: "wrote a poem",
 	category: "employment",
 	frequency: ["5 years", "year"],
@@ -265,7 +267,7 @@ var stimuli = [
 {
 	habitual: "steals cars",
 	past: "stole a car",
-	verb: "steal a car",
+	verb: "steal cars",
 	category: "employment",
 	frequency: ["5 years", "year", "month"],
 	preventative:{
@@ -329,7 +331,7 @@ var stimuli = [
 {
 	habitual: "volunteers for political campaigns",
 	past: "volunteered for a political campaign",
-	verb: "volunteer for a political campaign",
+	verb: "volunteer for political campaigns",
 	category: "employment",
 	frequency: ["5 years", "year"],
 	preventative:{
@@ -390,7 +392,7 @@ var stimuli = [
 {
 	habitual: "watches space launches",
 	past: "watched a space launch",
-	verb: "watch a space launch",
+	verb: "watch space launches",
 	category: "entertainment",
 	frequency: ["2 years", "year","month"],
 	preventative: {
@@ -485,13 +487,14 @@ var stimuli = [
 	prevent_test_freq: ["5 years"],
 	predict_test_freq: "month"
 },
-{
-	habitual: "eats cereal",
-	past: "ate cereal",
-	category: "food",
-	frequency: ["5 years", "year","month", "week"],
-	predict_test_freq: "week"
-},
+// {
+// 	habitual: "eats cereal",
+// 	verb: "eat cereal",
+// 	past: "ate cereal",
+// 	category: "food",
+// 	frequency: ["5 years", "year","month", "week"],
+// 	predict_test_freq: "week"
+// },
 {
 	habitual: "smokes cigarettes",
 	past: "smoked cigarettes",

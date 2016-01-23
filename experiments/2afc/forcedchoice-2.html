@@ -55,11 +55,31 @@
 
   <div class="slide" id="instructions">
     <h3>Instructions</h3>
+    <p>Read carefully. There will be a comprehension question on the next slide.</p>
     <p class="instructions"></p>
 
     <p>You will answer <span class="total-num">{{}}</span> questions in total. Press Continue to begin.</p>
     <button onclick="_s.button()">Continue</button>
   </div>
+
+  <div class="slide" id="catch_trial">
+    <br>
+    <p>What will you do in the experiment?</p>
+
+    <select id="catch">
+        <label><option value="-1"></option></label>
+        <label><option value="0">rate how often a typical person does an action</option></label>
+        <label><option value="1">read a fact about a person and judge how frequently they do something</option></label>
+        <label><option value="2">read a conversation between friends and answer a question about the person they are talking about</option></label>
+        <label><option value="4">rate the number of men and woman that have done an action before</option></label>
+     </select>
+
+<br>
+    <button onclick="_s.button()">Continue</button>
+    <p class="err" style="color:red">Please respond to the questions.</p>
+
+  </div>
+
 
   <div class="slide"  id="truthJudge">
     <br>
@@ -134,26 +154,6 @@
   </div>
 
  
-
-
-  <div class="slide" id="check">
-    <br>
-      <p>Check all of the stories that you read</p>
-      <div class="checkboxes">
-      <label><input type="checkbox"  name="veg" value="veg"/>girlfriend, vegetarian</label><br>
-      <label><input type="checkbox"  name="vacuums" value="vacuums"/>roommate, vacuums</label><br>
-      <label><input type="checkbox"  name="music" value="music"/>teacher, music lessons</label><br>
-      <label><input type="checkbox"  name="dishes" value="dishes"/>roommate, washes dishes</label><br>
-      <label><input type="checkbox"  name="twojobs" value="twojobs"/>boyfriend, works two jobs</label><br>
-      <label><input type="checkbox"  name="attendance" value="attendance"/>teacher, takes attendance</label><br>
-      <label><input type="checkbox"  name="homework" value="homework"/>student, turns in homework on time</label>
-      <br>
-    </div>
-    <br>
-      <button onclick="_s.button()">Continue</button>
-    <p class="err">Please select 4 and only 4 stories.</p>
-    </br>
-  </div>
 
   <div class="slide"  id="subj_info">
     <div class="long_form">
