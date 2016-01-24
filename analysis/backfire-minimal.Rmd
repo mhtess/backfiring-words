@@ -1,0 +1,369 @@
+---
+title: "backfire-minimal-1"
+author: "mht"
+date: "January 23, 2016"
+output: html_document
+---
+
+
+```{r}
+library(data.table)
+library(coda)
+estimate_mode <- function(s) {
+  d <- density(s)
+  return(d$x[which.max(d$y)])
+}
+HPDhi<- function(s){
+  m <- HPDinterval(mcmc(s))
+  return(m["var1","upper"])
+}
+HPDlo<- function(s){
+  m <- HPDinterval(mcmc(s))
+  return(m["var1","lower"])
+}
+options("scipen"=10)   
+```
+
+
+```{r}
+d1<-read.csv("/Users/mht/Documents/research/backfiring-words/mturk/minimal-1/round1/minimal-1-trials.csv")
+d2<-read.csv("/Users/mht/Documents/research/backfiring-words/mturk/minimal-1/round2/minimal-1-trials.csv")
+
+d<- bind_rows(d1, d2)
+
+roundToBin <- function(x){
+  y <- if (x < 0.05){
+    0.01
+  } else if (x > 0.95) {
+    0.99
+  } else {
+   round(x,1)
+  }
+  return(y)
+}
+
+
+d<-d %>% 
+  mutate(rounded_logfreq = round(logfreq*2)/2) %>% 
+  mutate(normed_logval = logfreq/log(365*5)) %>%
+  mutate(normed_logval = ifelse(normed_logval > 0.999, 0.999, normed_logval)) %>%
+  rowwise() %>%
+  mutate(rounded_normed_logfreq = roundToBin(normed_logval)) %>%
+  ungroup()
+
+
+#write.csv(d, "~/Documents/research/backfiring-words/models/data/minimal-1-pilot.csv", row.names = F)
+
+
+
+table(d$condition)/27
+```
+
+```{r}
+
+ggplot(d, aes(x = logfreq, fill=condition))+
+  geom_histogram(position=position_dodge())+
+  facet_wrap(~item)
+
+```
+
+```{r}
+d.cigs <- d %>% 
+  filter(item == "smokes cigarettes") %>%
+  select(condition, timeWindow,n_times, logfreq)
+
+d.socks <- d %>% 
+  filter(item == "wears socks") %>%
+  select(condition, timeWindow,n_times, logfreq)
+View(d.socks)
+```
+
+
+```{r}
+d.item.stat <- d %>% 
+  group_by(item, condition) %>%
+  multi_boot_standard(column="logfreq")
+
+
+
+ggplot(d.item.stat, aes(x = condition, y = mean, 
+                        ymin = ci_lower, ymax= ci_upper, 
+                        fill=condition))+
+  geom_bar(stat='identity', position=position_dodge(), color = 'black')+
+  geom_errorbar(position=position_dodge())+
+  facet_wrap(~item)+
+  ylab("Log frequency")+
+  theme(axis.text.x = element_blank())
+
+ggsave("~/Documents/research/backfiring-words/analysis/figures/minimal-1-n18.pdf", width = 18, height = 9)
+```
+
+
+```{r}
+d.obs.comm<- left_join(
+            left_join(d.item.stat  %>%
+                     filter(condition=='observation') %>%
+                     rename(obs_mean = mean,
+                            obs_ci_lower = ci_lower,
+                            obs_ci_upper = ci_upper) %>%
+                       ungroup() %>%
+                       select(-condition),
+                   d.item.stat %>%
+                     filter(condition=='communication') %>%
+                     rename(com_mean = mean,
+                            com_ci_lower = ci_lower,
+                            com_ci_upper = ci_upper) %>%
+                     ungroup() %>%
+                       select(-condition)),
+            d.item.stat  %>%
+                     filter(condition=='baseline') %>%
+                     rename(base_mean = mean,
+                            base_ci_lower = ci_lower,
+                            base_ci_upper = ci_upper) %>%
+                       ungroup() %>%
+                       select(-condition))
+            
+
+
+ggplot(d.obs.comm, aes(x=obs_mean, xmin = obs_ci_lower, xmax = obs_ci_upper,
+                       y = com_mean, ymin = com_ci_lower, ymax = com_ci_upper,
+                       color=base_mean))+
+  geom_point(size = 3)+
+  geom_errorbar()+
+  geom_errorbarh()+
+  geom_abline(intercept = 0, slope = 1, lty = 3)+
+  coord_fixed()+
+  xlim(0,9.5)+
+  ylim(0,9.5)
+
+ggsave("~/Documents/research/backfiring-words/analysis/figures/minimal-1-comVsObsn18.pdf")
+
+
+ggplot(d.obs.comm, aes(x=base_mean, xmin = base_ci_lower, xmax = base_ci_upper,
+                       y = com_mean, ymin = com_ci_lower, ymax = com_ci_upper))+
+  geom_point(size = 3)+
+  geom_errorbar()+
+  geom_errorbarh()+
+  geom_abline(intercept = 0, slope = 1, lty = 3)+
+  coord_fixed()+
+ xlim(-0.5,9.5)+
+  ylim(-0.5,9.5)
+
+ggsave("~/Documents/research/backfiring-words/analysis/figures/minimal-1-comVsbase-n18.pdf")
+
+
+
+ggplot(d.obs.comm, aes(x=base_mean, xmin = base_ci_lower, xmax = base_ci_upper,
+                       y = obs_mean, ymin = obs_ci_lower, ymax = obs_ci_upper))+
+  geom_point(size = 3)+
+  geom_errorbar()+
+  geom_errorbarh()+
+  geom_abline(intercept = 0, slope = 1, lty = 3)+
+  coord_fixed()+
+ xlim(-0.5,9.5)+
+  ylim(-0.5,9.5)
+
+ggsave("~/Documents/research/backfiring-words/analysis/figures/minimal-1-obsVsbase-n18.pdf")
+
+
+```
+
+
+### Using normed log frequency (max val = 1)
+
+```{r}
+d.item.day.stat <- d %>% 
+  group_by(item, condition) %>%
+  #multi_boot_standard(column="normed_logval") %>%
+  multi_boot_standard(column="rounded_normed_logfreq")
+
+
+
+ggplot(d.item.day.stat, aes(x = condition, y = mean, 
+                        ymin = ci_lower, ymax= ci_upper, 
+                        fill=condition))+
+  geom_bar(stat='identity', position=position_dodge(), color = 'black')+
+  geom_errorbar(position=position_dodge())+
+  facet_wrap(~item)+
+  ylab("Log frequency")+
+  theme(axis.text.x = element_blank())
+
+```
+
+
+
+```{r}
+d.obs.comm<- left_join(
+            left_join(d.item.day.stat  %>%
+                     filter(condition=='observation') %>%
+                     rename(obs_mean = mean,
+                            obs_ci_lower = ci_lower,
+                            obs_ci_upper = ci_upper) %>%
+                       ungroup() %>%
+                       select(-condition),
+                   d.item.day.stat %>%
+                     filter(condition=='communication') %>%
+                     rename(com_mean = mean,
+                            com_ci_lower = ci_lower,
+                            com_ci_upper = ci_upper) %>%
+                     ungroup() %>%
+                       select(-condition)),
+            d.item.day.stat  %>%
+                     filter(condition=='baseline') %>%
+                     rename(base_mean = mean,
+                            base_ci_lower = ci_lower,
+                            base_ci_upper = ci_upper) %>%
+                       ungroup() %>%
+                       select(-condition))
+            
+
+
+ggplot(d.obs.comm, aes(x=obs_mean, xmin = obs_ci_lower, xmax = obs_ci_upper,
+                       y = com_mean, ymin = com_ci_lower, ymax = com_ci_upper,
+                       color=base_mean))+
+  geom_point(size = 3)+
+  geom_errorbar()+
+  geom_errorbarh()+
+  geom_abline(intercept = 0, slope = 1, lty = 3)+
+  coord_fixed()+
+  xlim(-0.05,1.05)+
+  ylim(-0.05,1.05)
+
+ggsave("~/Documents/research/backfiring-words/analysis/figures/minimal-1-dayrate-comVsObsn18.pdf")
+
+
+ggplot(d.obs.comm, aes(x=base_mean, xmin = base_ci_lower, xmax = base_ci_upper,
+                       y = com_mean, ymin = com_ci_lower, ymax = com_ci_upper))+
+  geom_point(size = 3)+
+  geom_errorbar()+
+  geom_errorbarh()+
+  geom_abline(intercept = 0, slope = 1, lty = 3)+
+  coord_fixed()+
+  xlim(-0.05,1.05)+
+  ylim(-0.05,1.05)
+
+ggsave("~/Documents/research/backfiring-words/analysis/figures/minimal-1-dayrate-comVsbase-n18.pdf")
+
+
+
+ggplot(d.obs.comm, aes(x=base_mean, xmin = base_ci_lower, xmax = base_ci_upper,
+                       y = obs_mean, ymin = obs_ci_lower, ymax = obs_ci_upper))+
+  geom_point(size = 3)+
+  geom_errorbar()+
+  geom_errorbarh()+
+  geom_abline(intercept = 0, slope = 1, lty = 3)+
+  coord_fixed()+
+  xlim(-0.05,1.05)+
+  ylim(-0.05,1.05)
+
+ggsave("~/Documents/research/backfiring-words/analysis/figures/minimal-1-dayrate-obsVsbase-n18.pdf")
+```
+
+
+
+# Model
+
+```{r}
+
+filePath <- "~/Documents/research/backfiring-words/models/results/"
+prefix <-"bda-backfire-minimal-IncrMH"
+#bda-backfire-minimal-IncrMH1k-b0.5k_priorMH10k-b5ka.csv
+samples <- 50000
+burn <- samples / 2
+priorsamples <- 50000
+priorburn <- priorsamples / 2
+m.samples<- data.frame()
+i = "a"
+#for (i in c("a", "b")){
+  m<-read.csv(paste(filePath, prefix, 
+                     samples/1000, "k-b", 
+                     burn/1000, "k_priorMH",
+                     priorsamples/1000, "k-b",
+                     priorburn/1000,
+                     "k",i,".csv",sep=""))  
+  m.samp <- m[rep(row.names(m), m$Probability*(samples-burn)), 1:4]
+  m.samples<- bind_rows(m.samples, m.samp)
+  print(i)
+#}
+
+```
+
+
+```{r tj3.model.params}
+m.params <- m.samples %>% filter(Type =='parameter')
+qplot(data=m.params, x= Value, geom='histogram')+
+  facet_wrap(~Condition, scales='free')
+
+m.params %>%
+  group_by(Condition) %>%
+    summarise(MAP = estimate_mode(Value),
+            credHigh = HPDhi(Value),
+            credLow = HPDlo(Value)) 
+```
+
+
+
+```{r tj2.model.pred}
+m.pred <- m.samples %>% filter(Type == 'predictive')
+
+m.predStats <- m.pred %>%
+  group_by(Condition, Item) %>%
+  summarise(MAP = estimate_mode(Value),
+            credHigh = HPDhi(Value),
+            credLow = HPDlo(Value)) %>%
+  rename(item = Item,
+         condition = Condition) %>%
+  ungroup() %>%
+  mutate(condition = factor(condition, 
+                            levels=c("baseline", "observation", "backfire"),
+                            labels=c("baseline", "observation", "communication")))
+
+m.d<- left_join(d.item.day.stat,
+                m.predStats)
+
+plt2<-ggplot(m.d,aes(x=MAP, y = mean, fill=condition))+
+  geom_abline(intercept = 0, slope = 1, lty = 2)+
+  geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper))+
+  geom_errorbarh(aes(xmin=credLow, xmax = credHigh))+
+    geom_point(shape=21, size=4)+
+  xlim(-0.05,1.05)+
+  ylim(-0.05,1.05)+
+  theme_paper()+
+  coord_fixed()+
+  xlab("\n Model posterior predictive")+
+  ylab("Human \n")+
+  theme(legend.title = element_text(hjust=0),
+        legend.position="bottom",
+        legend.direction="horizontal")+
+  facet_wrap(~condition)
+
+# 
+# plt2
+# 
+# +
+#   guides(fill=F)
+# 
+# 
+# plt2
+# # 
+# with(m.d, cor(MAP, mean))^2
+# 
+# with(m.d, cor(MAP, mean, use="complete.obs"))^2
+
+# with(m.d %>% filter(logFreq >= 4.5),
+#      cor(MAP,mean))^2
+# 
+# 
+# plt4<-grid.arrange(plt1,plt3, plt2, nrow=1)
+# # plt3<-arrangeGrob(plt1,plt2,nrow=1)
+# # 
+#  ggsave(file="~/Documents/research/habituals/writing/_cogsci2016/figures/tj-expt3-scatters.pdf", 
+#         plot=plt3)#"talks/lab-mtg-120115/images/tj1-md-scatter-3colors.pdf")
+# # 
+# 
+#  m.d <- m.d %>%
+#    mutate(sqerr = (MAP-mean.x)^2)
+#  View(m.d)
+```
+
+```

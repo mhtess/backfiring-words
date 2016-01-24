@@ -1,11 +1,6 @@
 // time webppl bda_backfire_habits.wppl --require mht --require utils
-var fpath = "/Users/mht/Documents/research/backfiring-words/data/"
 
-var data = mht.readCSV(fpath+"forcedchoice-2-trials.csv").data
-var df = dataFrame(data, ["workerid", "confidence"])
-
-
-var prior_mhiter = 1000
+var prior_mhiter = 50000
 var prior_burn = prior_mhiter/2
 var prior_incrOpts = {burn:prior_burn, verbose: true, verboseLag: prior_mhiter/20}
 var priorERP = IncrementalMH(priorModel, prior_mhiter, prior_incrOpts)
@@ -13,72 +8,107 @@ var priorERP = IncrementalMH(priorModel, prior_mhiter, prior_incrOpts)
 
 var priorERPobject = _.object(map(function(i){
 	return [i, _.object(map(function(q){
-			return [q, 	marginalize(priorERP, [i,q]).MAP()]
+			return [q, 	marginalize(priorERP, [i,q])]
 		},["habit_rate","habit_strength"]))]
 }, items))
 
-priorERPobject["runs"]["habit_strength"]
+// var priorERPobject = _.object(map(function(i){
+// 	return [i, _.object(map(function(q){
+// 			return [q, 	_.object(map(function(p){
+// 				return [p, marginalize(priorERP, [i,q,p])]
+// 			}, ["gamma","delta"]))]
+// 		},["habit_rate","habit_strength"]))]
+// }, items))
+
+// console.log('after prior')
+
+// priorERPobject
+
+// // priorERPobject["runs"]["habit_strength"]
 
 var posteriorBDA = function(){
 	var speaker_optimality = uniform(0,20)
 
-	var action_baserate = 0.01
+	var action_baserate = uniformDraw([0.001,0.01,0.1,0.2])
 
 	// var utterance_cost = uniform(0, 10)
 	var utterance_cost = 1
 
+	var baserate_component = discretizeBeta(action_baserate, 50)
+
+
 	foreach(items, function(i){
 
-		// var df_item = subset(df, "item", i)
-		// console.log("before sample prior")
+		// console.log(i)
+		var df_item = subset(df, "item", i)
 
+		var backfire_responses = _.pluck(subset(df_item, "condition","communication"), "rounded_normed_logfreq")
+		var observation_responses = _.pluck(subset(df_item, "condition","observation"), "rounded_normed_logfreq")
+		var baseline_responses = _.pluck(subset(df_item, "condition","baseline"), "rounded_normed_logfreq")
+		// console.log(baseline_responses)
+
+		var habit_rate_params = sample(priorERPobject[i]["habit_rate"])
+		var habit_strength_params = sample(priorERPobject[i]["habit_strength"])
+		// console.log("before sample prior 0 ")
+
+		// console.log(habit_rate_params)
+
+		var habit_rate = beta(
+			shape_alpha(habit_rate_params.gamma,habit_rate_params.delta),
+			shape_beta(habit_rate_params.gamma,habit_rate_params.delta)
+			)
+		// console.log('after sample prior 1')
+
+		var habit_component = discretizeBeta(habit_strength_params.gamma, habit_strength_params.delta)
+		// console.log('after sample prior 2')
 		// var habit_rate = sample(priorERPobject[i]["habit_rate"])
 		// var habit_strength = sample(priorERPobject[i]["habit_strength"])
-		var habit_rate = priorERPobject[i]["habit_rate"].val
-		var habit_strength = priorERPobject[i]["habit_strength"].val
-
 		var prior_parameters = {
 			habit_rate: habit_rate,
-			habit_strength: habit_strength,
-			action_baserate: action_baserate
+			habit_component: habit_component,
+			baserate_component: baserate_component,
+			cost:utterance_cost
 		}
-
-		var backfireERP = listener1("It happened.", prior_parameters, speaker_optimality)
-
-		var prediction = expectation(backfireERP)
-
-
-		.. What does the data look like?
-
-
+		// console.log("before backfire")
+		// console.log(prior_parameters)
+		var backfireERP = listener1("It happened.", prior_parameters,speaker_optimality)
 		// console.log("after backfire")
+
+		var observationERP = literalBayesian("It happened.",prior_parameters, false)
+			// console.log("after observation")
+
+		var baselineERP = literalBayesian("It happened.",prior_parameters, true)
+		// console.log(map(function(s){return [s, Math.exp(baselineERP.score([], s))]}, baselineERP.support()))
+
+		var backfiringScr = sum(map(function(d){return backfireERP.score([], d)}, backfire_responses))
+		var observationScr = sum(map(function(d){return observationERP.score([], d)}, observation_responses))
+		var baselineScr = sum(map(function(d){return baselineERP.score([], d)}, baseline_responses))
+	
+
+
 		// var forcedspeakerERP = nullHypothesis(prior_parameters, speaker_optimality)
 		// var forcedspeakerERP = nullListener1("It happened.", prior_parameters, speaker_optimality)
 		// // console.log("after forcedspeak")
 		// var observationERP = observation("It happened.", prior_parameters)
 		// // console.log("after rsa")
 
-		// var backfiringScr = sum(map(function(d){return backfireERP.score([], d=="likely-key")}, backfire_responses))
-		// var forcedspeakScr = sum(map(function(d){return forcedspeakerERP.score([], d=="likely-key")}, forcedspeak_responses))
-		// var observationScr = sum(map(function(d){return observationERP.score([], d=="likely-key")}, observation_responses))
 		// console.log("after scoring")
 
 		// console.log("backfire score = " +backfiringScr)
-		// console.log("forcedspeak score = " +forcedspeakScr)
-		// console.log("observationScr score = " +observationScr)
+		// console.log("observation score = " +observationScr)
+		// console.log("baseline score = " +baselineScr)
 		// factor(forcedspeakScr)
-		factor(backfiringScr+forcedspeakScr+observationScr)
+		factor(backfiringScr+baselineScr+observationScr)
 
-		query.add(["predictive","prior", i], priorProbability)
-		query.add(["predictive","backfire", i], expectation(backfireERP))
-		query.add(["predictive","forcedspeaker", i], expectation(forcedspeakerERP))
+		query.add(["predictive","communication", i], expectation(backfireERP))
+		query.add(["predictive","baseline", i], expectation(baselineERP))
 		query.add(["predictive","observation", i], expectation(observationERP))
 
 	})
 
 	query.add(["parameter", "speaker_optimality", "NA"], speaker_optimality)
-	query.add(["parameter", "habit_strength", "NA"], habit_strength)
-	query.add(["parameter", "alternative_strength", "NA"], alternative_strength)
+	query.add(["parameter", "alternative_rate", "NA"], action_baserate)
+
 	return query
 }
 
@@ -89,7 +119,7 @@ var incrOpts = {burn:burn, verbose: true, verboseLag: mhiter/20}
 var posteriorERP = IncrementalMH(posteriorBDA, mhiter, incrOpts)
 
 console.log("inference complete --- writing to file")
-var outFile = "results/bda-backfire-IncrMH" + mhiter/1000 + "k-b" + burn/1000 + "k" +"_priorMH" + prior_mhiter/1000 + "k-b" + prior_burn/1000 + "ka.csv"
+var outFile = "results/bda-backfire-minimal-IncrMH" + mhiter/1000 + "k-b" + burn/1000 + "k" +"_priorMH" + prior_mhiter/1000 + "k-b" + prior_burn/1000 + "ka.csv"
 // var outFile = "results/bda-backfire-inferStrengths-IncrMH" + mhiter/1000 + "k-b" + burn/1000 + "k" +"_priorMH" + prior_mhiter/1000 + "k-b" + prior_burn/1000 + "k.csv"
 var header = "Type,Condition,Item,Value"
 

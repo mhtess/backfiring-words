@@ -29,6 +29,12 @@ function make_slides(f) {
       // _.mapObject(exp.judgeButtons, function(val,key){
       //   $("#"+key).html(val);
       // });
+      var instructions = {
+        baseline: "On each trial, you will be asked how often a typical person does an action.",
+        observation: "On each trial, you will be given a random fact about a person doing an action and be asked to judge how often that person does the action.",
+        communication: "On each trial, you will read a short conversation between two friends and be asked a question about the person they are talking about."
+      }
+      $(".instructions").html(instructions[exp.condition]);  
       $(".total-num").html(exp.numTrials);  
     },
     button : function() {
@@ -196,27 +202,30 @@ function make_slides(f) {
 
       this.startTime = Date.now();
       this.stim = stim;
-      // this.trialNum = exp.stimscopy.indexOf(stim);
+      this.trialNum = exp.stimscopy.indexOf(stim);
 
-      var observationSentence = stim.character.name + " " + stim.past + " today."
+      this.observationSentence = stim.character.name + " " + stim.past + " today."
 
       var possible_sentences = {
-        observation: observationSentence,
-        communication: 'You overhear two friends talking. <br>One of them says to the other, "' + observationSentence +'"',
-        baseline: stim.character.name + " is a person."
+        observation: this.observationSentence,
+        communication: 'You overhear two friends talking. <br>One of them says to the other, "' + this.observationSentence +'"',
+        baseline: ""
       }
-      var targetSentence = possible_sentences[exp.condition]
+      this.targetSentence = possible_sentences[exp.condition]
 
-      $(".prompt").html(targetSentence)
-      $(".question").html("How often does "+stim.character.name + " " + stim.verb + "?")
+
+      $(".prompt").html(this.targetSentence)
+      this.charName = exp.condition == "baseline" ? "a typical person" : stim.character.name
+      $(".question").html("How often does "+this.charName + " " + stim.verb + "?")
 
 
     },
 
     button : function() {
-      responses = [$("#time_frequency").val(),
+      var responses = [$("#time_frequency").val(),
                      $("#time_comparison").val()]
-      if (_.contains(responses, ""))  {
+
+      if ($("#time_comparison").val()==null || !(parseFloat($("#time_frequency").val()) > -1))  {
         $(".err").show();
       } else {
         this.rt = Date.now() - this.startTime;
@@ -226,33 +235,43 @@ function make_slides(f) {
     },
 
     log_responses : function() {
-      // exp.data_trials.push({
-      //   "trial_type" : "twostep_elicitation",
-      //   "trial_num": this.trialNum,
-      //   "item": this.stim.item,
-      //   "category": this.stim.type,
-      //   "existence" : exp.sliderPost,
-      //   "nTimes" : response,
-      //   "timeWindow": freq,
-      //   "rt":this.rt
-      // });
+      var timeTransform = {
+        "week":52*5,
+        "month":12*5,
+        "year":5,
+        "5 years":1,
+      }
+      var responses = [$("#time_frequency").val(),
+                   $("#time_comparison").val()]
+      exp.data_trials.push({
+        "trial_type" : "frequency_judgment",
+        "condition": exp.condition,
+        "trial_num": this.trialNum,
+        "past": this.stim.past,
+        "verb": this.stim.verb,
+        "item": this.stim.habitual,
+        "observationSentence": this.observationSentence,
+        "targetSentence": this.targetSentence,
+        "category": this.stim.category,
+        "n_times" : parseFloat(responses[0]),
+        "timeWindow": responses[1],
+        "rt":this.rt,
+        "freq_5years":timeTransform[responses[1]]*parseFloat(responses[0]),
+        "logfreq": parseFloat(responses[0]) > 0 ? Math.log(timeTransform[responses[1]]*parseFloat(responses[0])) : 0
+      });
     }
   });
 
 
-  slides.check = slide({
-     name : "check",
+  slides.catch_trial = slide({
+     name : "catch_trial",
      start: function() {
       this.startTime = Date.now();
             $(".err").hide();
-
      },
     button : function() {
-     var responses = ["veg","vacuums","music","dishes","twojobs","attendance","homework"].filter(
-        function(x){
-          return $("input:checkbox[name="+x+"]").is(":checked")
-      })
-      if (responses.length != 4) {
+      var response1 = $("#catch").val()
+      if (response1 == -1) {
         $(".err").show();
       } else {
         this.rt = Date.now() - this.startTime;
@@ -260,24 +279,23 @@ function make_slides(f) {
         exp.go();
       }
     },
-
     log_responses : function() {
-    
-     var responses = ["veg","vacuums","music","dishes","twojobs","attendance","homework"].filter(
-        function(x){
-          return $("input:checkbox[name="+x+"]").is(":checked")
-      })
-
+      var correctAnswer = {
+        "observation": 1,
+        "communication":2,
+        "baseline":0
+      }
+      var response1 = $("#catch").val()
+      var el = document.getElementById('catch');
+      var text = el.options[el.selectedIndex].innerHTML;
       exp.catch_trials.push({
         "trial_type" : "catch",
-        "response1":responses[0],
-        "response2":responses[1],
-        "response3":responses[2],
-        "response4":responses[3],
-        "pass": arraysEqual(responses, ["veg","music","dishes","homework"]) ? 1 : 0,
+        "condition" : exp.condition, 
+        "response" : response1,
+        "selection":text,
+        "pass": (response1 == correctAnswer[exp.condition])? 1 : 0,
         "rt":this.rt
       });
-
     }
   });
 
@@ -324,7 +342,7 @@ function init() {
 
   repeatWorker = false;
   (function(){
-      var ut_id = "mht-backfire-20151218a";
+      var ut_id = "mht-backfire-20160123";
       if (UTWorkerLimitReached(ut_id)) {
         $('.slide').empty();
         repeatWorker = true;
@@ -351,7 +369,7 @@ function init() {
   }), true))
 
   exp.stimuli = _.shuffle(stims_w_names);
-
+  exp.stimscopy = exp.stimuli.slice(0)
   // debugger;
   exp.personOrder = _.sample(["likely-unlikely","unlikely-likely"])
   exp.buttonCodes = {80:"P", 81:"Q"};
@@ -373,7 +391,7 @@ function init() {
   };
 
   //blocks of the experiment:
-   exp.structure=["frequency_judgment","i0", "instructions",'subj_info', 'thanks'];
+   exp.structure=["i0", "instructions","catch_trial","frequency_judgment",'subj_info', 'thanks'];
  
   exp.data_trials = [];
   //make corresponding slides:
