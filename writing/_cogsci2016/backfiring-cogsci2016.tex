@@ -63,8 +63,10 @@
 
 \begin{abstract}
 %\ndg{abstract is too technical. start with the puzzle of how asserting a proposition can sometimes decrease its plausibility. the use of common ground here is kind of hard to follow.}
-The statement, ``Jane went for a hike today," could likely serve as evidence that Jane likes to go on hikes.  However, this does not hold true for all statements.  Consider the statement, ``Jane wore shoes today."  In this case, a listener will likely make the inference that Jane does \emph{not} like to wear shoes (e.g., \cite{Kravtchenko2015}.  Why should some utterances serve as evidence for a given behavior, while others serve as evidence against it?  We suggest that when an utterance is redundant with the prior beliefs of the listener (here, that most people wear shoes), adults will revise information that is in common ground with the speaker (here, that Jane typically wears shoes) so that the utterance becomes informative.  In Experiment 1, we show that this inference does not occur when interlocutors are mutually aware of information in common ground, or when a statement is removed from a conversational context.  In Experiment 2, we show that the \emph{strength} of this inference depends on the strength of the listener's prior redundant beliefs.  Finally, we present a computational model that predicts these results.
-
+The utterance ``Jane went for a hike today" is plausibly evidence that Jane likes to go on hikes.  However, ``Jane wore shoes today.'' seems to imply the opposite.  In this case, listeners infer that Jane does \emph{not} like to wear shoes (e.g., \cite{Kravtchenko2015}.  Why should some utterances serve as evidence for a given behavior, while others serve as evidence against it?  We present a formal language understanding model has the capacity to revise information that is common ground when the utterance heard is uninformative with respect to prior beliefs.  The model predicts that this ``backfiring'' inference relies upon shared knowledge between speaker and listener, which we manipulate in Expt.~1, and \emph{a priori} beliefs about the event under discussion, which we manipulate and measure in Expt.~2. 
+%In Experiment 1, we show that this inference does not occur when interlocutors are mutually aware of information in common ground, or when a statement is removed from a conversational context.  In Experiment 2, we show that the \emph{existence} and \emph{strength} of this inference depends on the listener's prior  beliefs., which we measure empirically.
+% Finally, we present a computational model that predicts these results.
+% that when an utterance is redundant with the prior beliefs of the listener (most people wear shoes and shoe-wearing tends to happen everyday), adults will revise information that is in common ground with the speaker (here, that Jane typically wears shoes) so that the utterance becomes informative.  
 %Successful communication requires a mutually understood set of beliefs between speaker and listener.
 %When common ground is not shared, a listener can use a speaker's utterance in conjunction with conversational principles to infer what was assumed by the speaker.
 %Previous work has shown that this inference can have surprising ramifications, including decreasing the belief in the proposition that was asserted by the speaker 
@@ -73,32 +75,36 @@ The statement, ``Jane went for a hike today," could likely serve as evidence tha
 %Here, we formalize inferences about common ground using the case when a speaker's utterance refers to something that should already be in common ground.
 %The formal pragmatics model makes clear that this kind of utterance will backfire (i.e. imply that the opposite is typically true) when the interlocutors do not share common ground, but not when they do.
 % the last sentence is a little hard to read because of many "not"s... but we can worry about that later.
-
 %Language is interpreted in context with respect to some common ground between speaker and listener.
 %Common ground can make certain utterances uninformative (e.g. stating something obvious), but is plausibly revised in the face of uninformative utterances.
 %In Expt.~1, we verify this prediction using a paradigm that makes the 
-
-
 \textbf{Keywords:} 
 pragmatics; language; common ground; Bayesian model
-
 \end{abstract}
 
 
 %% This quote is very intuitive, though perhaps somewhat bleak for starting a paper...
 
-%\begin{quotation}
-%\small
+\begin{quotation}
+\small
+``I am not a crook.'' -- Richard Nixon
 %The day I knew incontrovertibly that my mother had some form of dementia was when my father handed me a birthday gift saying, ``Your mother picked this out all by herself.''
 %Since my mother had always picked out birthday gifts, his commenting on it made me realize he had helped her.
 %
 %-- Carol J. Adams (``Jane Austen's Guide to Alzheimer's.'' \emph{New York Times})
-%\end{quotation}
+\end{quotation}
 
 %In one of the most infamous moments in U.S. presidential history, Richard Nixon declared to the press corps, "I am not a crook"â‚¬Â (CITE).  On the surface, this claim argues for Nixon's innocence, as it literally states that he is not a crook.  As several researchers have shown, however, this statement contains a number of pragmatic implications that actually counter its literal, semantic meaning (CITE).  Nixon'â‚¬â„¢s claim, for instance, presupposes that others believed that he was a crook; otherwise, it would not have been an informative statement to make, since most people presumably are not crooks (Grice, 1975).  Thus, if a listener is not aware of the Watergate scandal, or if they have no reason to question Nixon's moral status, they might actually learn from this claim that Nixon was likely corrupt in some way.
 
-In one of the most infamous moments in U.S. presidential history, Richard Nixon declared to the press corps, ``I am not a crook" (CITE).  On the surface, this claim argues for Nixon's innocence, as it literally states that he is not a crook.  As some researchers have argued, however, this statement contains a number of pragmatic implications that actually counter its literal, semantic meaning (CITE).  Nixon's claim, for instance, presupposes that others believed that he \emph{was} a crook; otherwise, it would not have been an informative statement to make, since most people presumably are not crooks (Grice, 1975).  Thus, if a listener (e.g., a student in a history class) is not aware of the Watergate scandal, or if they have no reason to question Nixon's moral status, they might actually \emph{learn} from this claim that Nixon was likely corrupt in some way.
+Richard Nixon is a controversial figure.
+One need only read his infamous statement above to realize that.
+Why else would he declare he is not a crook, unless there is some question that he is?
 
+
+%In one of the most infamous moments in U.S. presidential history, Richard Nixon declared to the press corps, ``I am not a crook" (CITE).  
+%
+%On the surface, this claim argues for Nixon's innocence, as it literally states that he is not a crook.  As some researchers have argued, however, this statement contains a number of pragmatic implications that actually counter its literal, semantic meaning (CITE).  Nixon's claim, for instance, presupposes that others believed that he \emph{was} a crook; otherwise, it would not have been an informative statement to make, since most people presumably are not crooks (Grice, 1975).  Thus, if a listener (e.g., a student in a history class) is not aware of the Watergate scandal, or if they have no reason to question Nixon's moral status, they might actually \emph{learn} from this claim that Nixon was likely corrupt in some way.
+%
 
 
 	
@@ -107,7 +113,8 @@ In one of the most infamous moments in U.S. presidential history, Richard Nixon 
 %%\citeA{Wegner1981}, for example, demonstrated that newspaper headlines such as "â‚¬Å%“Bob Talbert is not linked to the Mafia" [CHECK] cause adults to have a more negative impression of Bob than they would otherwise, despite not explicitly asserting any incriminating information--indeed, despite denying incriminating information.  Here, since the default assumption is that people are not typically linked to the mafia, this headline is not immediately informative.  As a result, adults construct a context that \emph{would} make the headline informative, namely, one in which Bob is known to be a bad person.  
 %%\citeA{Gruenfeld1992} went even further to show that uninformative newspaper headlines can actually cause people to believe the exact opposite of what those headlines claim.  After reading the headline "â‚¬Å%“Robert Kennedy was not planning the assassination of Fidel Castro"â‚¬Â, for example, which denies a proposition that adults \emph{a priori} should not believe, adults in their study more strongly believed that Robert Kennedy \emph{was} planning to assassinate Fidel Castro.
 
-To date, this phenomenon--that utterances can ``backfire"--has received little attention in the field.  In fact, the broad literature on learning from testimony  suggests the opposite: that we update our beliefs about the world so that our beliefs are \emph{in accordance} with information expressed through language (CITE).  If a teacher says to a student, ``Nixon served as President of the United States," for instance, then that student will likely incorporate into their world knowledge that Nixon \emph{was}, in fact, President of the United States.  
+The phenomenon that utterances can ``backfire" (i.e. decrease a listener's belief in the content it is asserting) has received little attention in the field.  
+In fact, the broad literature on learning from testimony  suggests the opposite: that we update our beliefs about the world so that our beliefs are \emph{in accordance} with information expressed through language (CITE).  If a teacher says to a student, ``Nixon served as President of the United States," for instance, then that student will likely incorporate into their world knowledge that Nixon \emph{was}, in fact, President of the United States.  
 %A few studies, however, provide preliminary evidence that utterances that are redundant with a listener's prior beliefs can imply that the opposite of what is expressed is typically true, by forcing the listeners to search for ways to make the utterances informative (CITE).  
 A few studies, however, provide preliminary evidence that when utterances are redundant with a listener's prior beliefs, they can imply that the opposite of what is expressed is typically true.
 \citeA{Wegner1981}, for example, demonstrated that newspaper headlines such as ``Bob Talbert not linked with mafia'' cause adults to have a more negative impression of Mr. Talbert than they would otherwise, despite denying incriminating information.  Similarly, \citeA{Gruenfeld1992} showed that uninformative newspaper headlines can actually cause people to believe the exact opposite of what those headlines claim.  
