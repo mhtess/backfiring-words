@@ -65,9 +65,13 @@ d<-read.csv("/Users/mht/Documents/research/backfiring-words/data/minimal-1-trial
 
 c<-read.csv("/Users/mht/Documents/research/backfiring-words/data/minimal-1-catch_trials.csv")
 
+with(c %>% filter(pass==0), table(condition, response))
+  with(c %>% filter(pass==1), table(condition))
+
 d <- left_join(d,c %>% select(workerid, pass)) %>% 
   filter(pass==1) %>%
   mutate(daily_prob = freq_5years / (365*5))
+
 
 
 ggplot(d, aes(x = logfreq, fill=condition))+
@@ -95,19 +99,19 @@ adjustTo5Years = list(
 )
 
 
-adjustToPreferredWindow <- function(wind, pref_wind){
-  if (wind )
-}
-
 d0<-d %>% 
   rowwise() %>% 
   mutate(ntimes_prefwindow = ifelse(timeWindow == pref_window, 
                  n_times, 
                  n_times*adjustTo5Years[[as.character(timeWindow)]]/
-                   (adjustTo5Years[[as.character(pref_window)]])))
+                   (adjustTo5Years[[as.character(pref_window)]]))) %>%
+  mutate(rounded_ntimes_prefwindow = round(ntimes_prefwindow))
 
+d0<- d0[complete.cases(d0),]
 
-View(d0 %>% select(n_times, timeWindow, ntimes_prefwindow, pref_window))
+#write.csv(d0, "~/Documents/research/backfiring-words/models/data/minimal-1-prefwindow.csv", row.names = F)
+
+View(d0 %>% select(n_times, timeWindow, ntimes_prefwindow, pref_window,rounded_ntimes_prefwindow))
 ```
 
 ```{r}
@@ -141,10 +145,10 @@ ggplot(d.item.stat, aes(x = condition, y = mean,
   geom_bar(stat='identity', position=position_dodge(), color = 'black')+
   geom_errorbar(position=position_dodge())+
   facet_wrap(~item, scales='free')+
-  ylab("Log frequency")+
+  ylab("n times / day")+
   theme(axis.text.x = element_blank())
 
-ggsave("~/Documents/research/backfiring-words/analysis/figures/minimal-1-n18.pdf", width = 18, height = 9)
+ggsave("~/Documents/research/backfiring-words/analysis/figures/minimal-1.pdf", width = 18, height = 9)
 ```
 
 
@@ -185,7 +189,7 @@ ggplot(d.obs.comm, aes(x=obs_mean, xmin = obs_ci_lower, xmax = obs_ci_upper,
   xlim(0,9.5)+
   ylim(0,9.5)
 
-ggsave("~/Documents/research/backfiring-words/analysis/figures/minimal-1-comVsObsn18.pdf")
+ggsave("~/Documents/research/backfiring-words/analysis/figures/minimal-1-log-comVsObs.pdf")
 
 
 ggplot(d.obs.comm, aes(x=base_mean, xmin = base_ci_lower, xmax = base_ci_upper,
@@ -198,7 +202,7 @@ ggplot(d.obs.comm, aes(x=base_mean, xmin = base_ci_lower, xmax = base_ci_upper,
  xlim(-0.5,9.5)+
   ylim(-0.5,9.5)
 
-ggsave("~/Documents/research/backfiring-words/analysis/figures/minimal-1-comVsbase-n18.pdf")
+ggsave("~/Documents/research/backfiring-words/analysis/figures/minimal-1-log-comVsbase.pdf")
 
 
 
@@ -212,7 +216,7 @@ ggplot(d.obs.comm, aes(x=base_mean, xmin = base_ci_lower, xmax = base_ci_upper,
  xlim(-0.5,9.5)+
   ylim(-0.5,9.5)
 
-ggsave("~/Documents/research/backfiring-words/analysis/figures/minimal-1-obsVsbase-n18.pdf")
+ggsave("~/Documents/research/backfiring-words/analysis/figures/minimal-1-log-obsVsbase.pdf")
 
 
 ```
@@ -242,6 +246,7 @@ ggplot(d.item.day.stat, aes(x = condition, y = mean,
 
 
 ```{r}
+d.item.day.stat<-d.item.stat
 d.obs.comm<- left_join(
             left_join(d.item.day.stat  %>%
                      filter(condition=='observation') %>%
@@ -275,10 +280,10 @@ ggplot(d.obs.comm, aes(x=obs_mean, xmin = obs_ci_lower, xmax = obs_ci_upper,
   geom_errorbarh()+
   geom_abline(intercept = 0, slope = 1, lty = 3)+
   coord_fixed()+
-  xlim(-0.05,1.05)+
-  ylim(-0.05,1.05)
+  xlim(-0.05,2)+
+  ylim(-0.05,2)
 
-ggsave("~/Documents/research/backfiring-words/analysis/figures/minimal-1-dayrate-comVsObsn18.pdf")
+ggsave("~/Documents/research/backfiring-words/analysis/figures/minimal-1-dayrate-noSmoking-comVsObs.pdf")
 
 
 ggplot(d.obs.comm, aes(x=base_mean, xmin = base_ci_lower, xmax = base_ci_upper,
@@ -288,10 +293,11 @@ ggplot(d.obs.comm, aes(x=base_mean, xmin = base_ci_lower, xmax = base_ci_upper,
   geom_errorbarh()+
   geom_abline(intercept = 0, slope = 1, lty = 3)+
   coord_fixed()+
-  xlim(-0.05,1.05)+
-  ylim(-0.05,1.05)
+  xlim(-0.05,1.5)+
+  ylim(-0.05,1.5)
 
-ggsave("~/Documents/research/backfiring-words/analysis/figures/minimal-1-dayrate-comVsbase-n18.pdf")
+
+ggsave("~/Documents/research/backfiring-words/analysis/figures/minimal-1-dayrate-noSmoking-comVsbase.pdf")
 
 
 
@@ -302,10 +308,10 @@ ggplot(d.obs.comm, aes(x=base_mean, xmin = base_ci_lower, xmax = base_ci_upper,
   geom_errorbarh()+
   geom_abline(intercept = 0, slope = 1, lty = 3)+
   coord_fixed()+
-  xlim(-0.05,1.05)+
-  ylim(-0.05,1.05)
+  xlim(-0.05,2)+
+  ylim(-0.05,2)
 
-ggsave("~/Documents/research/backfiring-words/analysis/figures/minimal-1-dayrate-obsVsbase-n18.pdf")
+ggsave("~/Documents/research/backfiring-words/analysis/figures/minimal-1-dayrate-noSmoking-obsVsbase.pdf")
 ```
 
 
@@ -317,12 +323,12 @@ ggsave("~/Documents/research/backfiring-words/analysis/figures/minimal-1-dayrate
 filePath <- "~/Documents/research/backfiring-words/models/results/"
 prefix <-"bda-backfire-minimal-IncrMH"
 #bda-backfire-minimal-IncrMH1k-b0.5k_priorMH10k-b5ka.csv
-samples <- 10000
+samples <- 50000
 burn <- samples / 2
-priorsamples <- 10000
+priorsamples <- 50000
 priorburn <- priorsamples / 2
 m.samples<- data.frame()
-i = "a"
+i = "b"
 #for (i in c("a", "b")){
   m<-read.csv(paste(filePath, prefix, 
                      samples/1000, "k-b", 
@@ -334,12 +340,13 @@ i = "a"
   m.samples<- bind_rows(m.samples, m.samp)
   print(i)
 #}
+m.params <- m.samples %>% filter(Type =='parameter')
+m.pred <- m.samples %>% filter(Type == 'predictive_5yr')
 
 ```
 
 
 ```{r tj3.model.params}
-m.params <- m.samples %>% filter(Type =='parameter')
 qplot(data=m.params, x= Value, geom='histogram')+
   facet_wrap(~Condition, scales='free')
 
@@ -353,7 +360,6 @@ m.params %>%
 
 
 ```{r tj2.model.pred}
-m.pred <- m.samples %>% filter(Type == 'predictive')
 
 m.predStats <- m.pred %>%
   group_by(Condition, Item) %>%
@@ -362,15 +368,28 @@ m.predStats <- m.pred %>%
             credLow = HPDlo(Value)) %>%
   rename(item = Item,
          condition = Condition) %>%
-  ungroup()
+  ungroup() %>%
+  filter(condition == "communication_plusGuess") %>%
+  mutate(condition = factor(condition, labels=c("communication")))
+
+
+d.daily <- d0 %>% group_by(condition, item) %>%
+  multi_boot_standard(column = "daily_prob")
+d.5year <- d0 %>% group_by(condition, item) %>%
+  multi_boot_standard(column = "freq_5years")
+
 
 # %>%
 #   mutate(condition = factor(condition, 
 #                             levels=c("baseline", "observation", "backfire"),
 #                             labels=c("baseline", "observation", "communication")))
 
-m.d<- left_join(d.item.day.stat,
-                m.predStats)
+m.d<- left_join(m.predStats %>%
+                  mutate(MAP = MAP / (365*5),
+                         credLow = credLow / (365*5),
+                         credHigh = credHigh / (365*5))
+                  , d.daily)
+m.d<- left_join(m.predStats, d.5year)
 
 plt2<-ggplot(m.d,aes(x=MAP, y = mean, fill=condition))+
   geom_abline(intercept = 0, slope = 1, lty = 2)+
@@ -380,7 +399,7 @@ plt2<-ggplot(m.d,aes(x=MAP, y = mean, fill=condition))+
   xlim(-0.05,1.05)+
   ylim(-0.05,1.05)+
   theme_paper()+
-  coord_fixed()+
+ # coord_fixed()+
   xlab("\n Model posterior predictive")+
   ylab("Human \n")+
   theme(legend.title = element_text(hjust=0),
