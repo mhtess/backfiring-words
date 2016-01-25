@@ -214,7 +214,7 @@ These models make three predictions: first, backfiring should occur when common 
 Observing an event occur multiple times can be evidence for an underlying cause that could reliably give rise to the event.
 Indeed, observing just one instance of an event is relatively stronger evidence for a reliable cause than an unreliable cause, all else being equal.
 Similarly, observing a behavior $b$ in a person can be taken as evidence for an underlying habit $h$. 
-Seeing your friend's roommate doing her dishes, for example, provides some evidence that the roommate usually does her dishes. 
+Seeing your friend's student doing his homework, for example, provides some evidence that the student usually turn in his homework. 
 It is a more likely explanation than the alternative.
 %For example, if you are waiting for a bus that ends up being 15 minutes late, it is reasonable to fear it may be late the next day; public transit in this town may be unreliable. 
 %disembark in a novel location to find it raining, it is reasonable to fear it may be raining in five minutes. 
@@ -226,16 +226,24 @@ P(h \mid b) \propto P(b \mid h) P(h) \label{eq:bayes}
 \end{eqnarray}
 As a habit is more likely to give rise to the behavior --- as $P(b \mid h)$ gets large --- so too does the behavior become more indicative of the habit, assuming the prior probabilities are constant. 
 
-\ndg{this paragraph is kind of confusing and doesn't really lead into the formal treatment. revise to emphasize (and show) how to model the three situations in the experiment.}
-In a conversational setting, knowledge of a person's habits may or may not be in common ground, and the speaker and listener may or may not be aware of this \cite{Clark1977, Clark1996}. 
-For example, in pedagogical situations, it is valid to assume the knowledge of the habit to be communicated is \emph{not} in common ground, but that both teacher and learner have a meta-agreement on this.
-Friends may also have a mutually-understood common ground about a third person; one that an overhearer might not have. 
+Knowledge of an event may also be communicated from a helpful interlocutor.
+When a speaker accurately represents the listener's prior knowledge (e.g. the listener and speaker are close friends; or the listener makes explicit her prior knowledge to the speaker by asking ``Did your student turn in his homework today?''), communicating the event (e.g. ``My student turned in his homework today.'') can lead the listener to believe the underlying habit (e.g. the student \emph{typically} turns in his homework) more strongly. 
+When a speaker misrepresents the listener's knowledge (e.g. the listener has forgotten something the speaker believes her to know; the listener is overhearing a conversation between friends)	, communicating the event (e.g. ``My student turned in his homework today.'') might lead the listener to believe the habit is less likely because were it the case, the utterance would be uninformative.  
+
+
+
+% it is valid to assume the knowledge of the habit to be communicated is \emph{not} in common ground, but that both teacher and learner have a meta-agreement on this.
+%
+%\ndg{this paragraph is kind of confusing and doesn't really lead into the formal treatment. revise to emphasize (and show) how to model the three situations in the experiment.}
+%In a conversational setting, knowledge of a person's habits may or may not be in common ground, and the speaker and listener may or may not be aware of this \cite{Clark1977, Clark1996}. 
+
+%Friends may also have a mutually-understood common ground about a third person; one that an overhearer might not have. 
 %This same situation occurs when one of the friends assumes a bit of knowledge that the other person doesn't have (e.g. because she forgot).
 %Other communicative settings may exist, where the both levels of knowledge are not in common ground. 
-If a listener believes that the speaker is not representing her uncertainty correctly (e.g., because the listener has forgotten this bit of information or because the listener is overhearing a conversation), she can use the speech-act to help resolve what the speaker believes to be in common ground. 
-\red{we might still want a concrete example here, but can add it later}
+%If a listener believes that the speaker is not representing her uncertainty correctly (e.g., because the listener has forgotten this bit of information or because the listener is overhearing a conversation), she can use the speech-act to help resolve what the speaker believes to be in common ground. 
+%\red{we might still want a concrete example here, but can add it later}
 
-This can be readily incorporated into Rational Speech-Acts framework \cite{Frank2012, Goodman2013}:, as a lifted variable inference akin to the treatment by \citeA{Degen2015} and discussed in detail in \citeA{GoodmanLassiter}.
+These inferences can be readily incorporated into Rational Speech-Acts framework \cite{Frank2012, Goodman2013}:, as a lifted variable inference akin to the treatment by \citeA{Degen2015} and discussed in detail in \citeA{GoodmanLassiter}.
 %
 \begin{eqnarray}
 &&P_{L_1}(b, h \mid u)\propto P_{S_1}(u \mid b, h)\cdot P(b \mid h) \cdot P(h) \label{eq:L1}\\
@@ -243,9 +251,9 @@ This can be readily incorporated into Rational Speech-Acts framework \cite{Frank
 &&P_{L_0}(b \mid u, h)\propto \denote{u}(b) \cdot P(b \mid h) \label{eq:L0}
 \end{eqnarray}
 %
-We assume the set of utterances are remarks about the behavior occurring or not --- $b$ or $\neg b$--- as well as the possibility of not remarking on the situation, a \emph{null} utterance that has no information content.  
+We assume the set of utterances are remarks about the event or behavior occurring or not --- $b$ or $\neg b$--- as well as the possibility of not remarking on the situation, a \emph{null} utterance that has no information content.  
 
-The prior probability of a behavior depends on the habits of the person. For simplicity, we assume that the if the habit $h$ is present, the behavior has a high probability of occurring; if the habit is absent, the probability is lower. 
+The prior probability of a behavior depends on the habits of the person. For demonstrative purposes, we assume that the if the habit $h$ is present, the behavior has a high probability of occurring; if the habit is absent, the probability is lower. 
 \begin{eqnarray}
 P(b \mid h) = \begin{cases}
 0.99  & \text{if } h\\
@@ -268,9 +276,9 @@ The model is implemented in the probabilistic programming language WebPPL \cite{
 \end{figure}
 
 
-The model predicts that utterances affirming an event (e.g. ``My roommate washed her dishes today'') will be interpreted as expressing atypical behavior (e.g. the roommate does not typically wash her dishes) and result in a decrease in belief that the roommate has the habit of washing her dishes (Figure \ref{fig:schematic-model}).
-This occurs when speaker and listener do not share common ground, but the speaker believes they do.
-The strength of this inference is predicted to be modulated the listener's \emph{a priori} belief in the habit; the stronger the listener believes it to be the case that the roommate usually washes her dishes, the more the utterance \emph{My roommate washed her dishes today} will backfire. 
+The model predicts that utterances affirming an event (e.g. ``My student turn in his homework today.'') will be interpreted as expressing atypical behavior (e.g. the student does not typically turn in his homework) and result in a decrease in belief that the student usually turns in his homework (Figure \ref{fig:schematic-model}).
+This occurs when the speaker does not represent the listener's beliefs accurately.
+%The strength of this inference is predicted to be modulated the listener's \emph{a priori} belief in the habit; the stronger the listener believes it to be the case that the roommate usually washes her dishes, the more the utterance \emph{My roommate washed her dishes today} will backfire. 
 
 \subsection{Alternative models}
 
