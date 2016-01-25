@@ -61,10 +61,53 @@ table(d$condition)/27
 
 ```{r}
 
+d<-read.csv("/Users/mht/Documents/research/backfiring-words/data/minimal-1-trials.csv")
+
+c<-read.csv("/Users/mht/Documents/research/backfiring-words/data/minimal-1-catch_trials.csv")
+
+d <- left_join(d,c %>% select(workerid, pass)) %>% 
+  filter(pass==1) %>%
+  mutate(daily_prob = freq_5years / (365*5))
+
+
 ggplot(d, aes(x = logfreq, fill=condition))+
   geom_histogram(position=position_dodge())+
   facet_wrap(~item)
 
+```
+
+Most preferrred time window
+
+```{r}
+d.windows<-d %>% 
+  group_by(item) %>%
+  summarize(pref_window=names(table(timeWindow))[which.max(table(timeWindow))])
+  
+
+d<-left_join(d, d.windows)
+
+
+adjustTo5Years = list(
+  week = 5*52,
+  month = 5*12,
+  year = 5,
+  "5 years" = 1
+)
+
+
+adjustToPreferredWindow <- function(wind, pref_wind){
+  if (wind )
+}
+
+d0<-d %>% 
+  rowwise() %>% 
+  mutate(ntimes_prefwindow = ifelse(timeWindow == pref_window, 
+                 n_times, 
+                 n_times*adjustTo5Years[[as.character(timeWindow)]]/
+                   (adjustTo5Years[[as.character(pref_window)]])))
+
+
+View(d0 %>% select(n_times, timeWindow, ntimes_prefwindow, pref_window))
 ```
 
 ```{r}
@@ -80,9 +123,15 @@ View(d.socks)
 
 
 ```{r}
+
+d %>% group_by(condition) %>% summarize(n = length(logfreq)/27)
+
+
+
 d.item.stat <- d %>% 
   group_by(item, condition) %>%
-  multi_boot_standard(column="logfreq")
+  #multi_boot_standard(column="logfreq")
+  multi_boot_standard(column="daily_prob")
 
 
 
@@ -91,7 +140,7 @@ ggplot(d.item.stat, aes(x = condition, y = mean,
                         fill=condition))+
   geom_bar(stat='identity', position=position_dodge(), color = 'black')+
   geom_errorbar(position=position_dodge())+
-  facet_wrap(~item)+
+  facet_wrap(~item, scales='free')+
   ylab("Log frequency")+
   theme(axis.text.x = element_blank())
 
@@ -268,9 +317,9 @@ ggsave("~/Documents/research/backfiring-words/analysis/figures/minimal-1-dayrate
 filePath <- "~/Documents/research/backfiring-words/models/results/"
 prefix <-"bda-backfire-minimal-IncrMH"
 #bda-backfire-minimal-IncrMH1k-b0.5k_priorMH10k-b5ka.csv
-samples <- 50000
+samples <- 10000
 burn <- samples / 2
-priorsamples <- 50000
+priorsamples <- 10000
 priorburn <- priorsamples / 2
 m.samples<- data.frame()
 i = "a"
@@ -313,10 +362,12 @@ m.predStats <- m.pred %>%
             credLow = HPDlo(Value)) %>%
   rename(item = Item,
          condition = Condition) %>%
-  ungroup() %>%
-  mutate(condition = factor(condition, 
-                            levels=c("baseline", "observation", "backfire"),
-                            labels=c("baseline", "observation", "communication")))
+  ungroup()
+
+# %>%
+#   mutate(condition = factor(condition, 
+#                             levels=c("baseline", "observation", "backfire"),
+#                             labels=c("baseline", "observation", "communication")))
 
 m.d<- left_join(d.item.day.stat,
                 m.predStats)
@@ -336,6 +387,13 @@ plt2<-ggplot(m.d,aes(x=MAP, y = mean, fill=condition))+
         legend.position="bottom",
         legend.direction="horizontal")+
   facet_wrap(~condition)
+
+plt2
+
+ggplot(m.d, aes(x=condition, y=MAP, ymin = credLow, ymax=credHigh, fill=condition))+
+  geom_bar(stat='identity', position=position_dodge(), color = 'black')+
+  facet_wrap(~item)+
+  geom_errorbar(position=position_dodge())
 
 # 
 # plt2
@@ -365,5 +423,45 @@ plt2<-ggplot(m.d,aes(x=MAP, y = mean, fill=condition))+
 #    mutate(sqerr = (MAP-mean.x)^2)
 #  View(m.d)
 ```
+
+```{r}
+
+
+m.obs.comm<- left_join(
+            left_join(m.predStats  %>%
+                     filter(condition=='observation') %>%
+                     rename(obs_mean = MAP,
+                            obs_ci_lower = credLow,
+                            obs_ci_upper = credHigh) %>%
+                       ungroup() %>%
+                       select(-condition),
+                   m.predStats  %>%
+                     filter(condition=='communication') %>%
+                     rename(com_mean = MAP,
+                            com_ci_lower = credLow,
+                            com_ci_upper = credHigh) %>%
+                     ungroup() %>%
+                       select(-condition)),
+            m.predStats  %>%
+                     filter(condition=='baseline') %>%
+                     rename(base_mean = MAP,
+                            base_ci_lower = credLow,
+                            base_ci_upper = credHigh) %>%
+                       ungroup() %>%
+                       select(-condition))
+            
+
+ggplot(m.obs.comm, aes(x=obs_mean, xmin = obs_ci_lower, xmax = obs_ci_upper,
+                       y = com_mean, ymin = com_ci_lower, ymax = com_ci_upper,
+                       color=base_mean))+
+  geom_point(size = 3)+
+  geom_errorbar()+
+  geom_errorbarh()+
+  geom_abline(intercept = 0, slope = 1, lty = 3)+
+  coord_fixed()+
+  xlim(-0.05,1.05)+
+  ylim(-0.05,1.05)
+
+with(m.obs.comm, cor(obs_mean, com_mean))
 
 ```
