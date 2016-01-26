@@ -329,7 +329,7 @@ These predictions are borne out in a standard model of Bayesian learning (Eq.~\r
 %We formalize the backfiring inference as a probabilistic model of pragmatic communication where listener and speaker do not share common ground. 
 
 
-\section{Experiment 1}
+\section{Experiment 1: Conceptual replication and extension of \citeA{Kravtchenko2015}}
 
 %\ndg{motivate experiment more clearly in terms of the modeling, and in terms of advances over previous work...}
 
@@ -399,6 +399,7 @@ In the \textbf{observation} condition, Person A observes that the event occurred
 Participants read, for example, ``In their office, Molly notices some papers on her officemate's desk.  Her officemate's student turned in his homework on time today."
 
 Participants selected one of the two options (e.g., Tom or Jim) and then rated their confidence in their choice with a slider bar.
+The experiment in full can be viewed at \url{http://stanford.edu/~mtessler/backfiring-words/experiments/2afc/forcedchoice-1.html}.
 
 %Person A makes explicit that they do not know whether \textsc{X happened} today (e.g., by asking a question from a survey), and Person B clarifies for Person A \emph{X happened}.
 %In the \textbf{observation} condition, Person B simply observes evidence that \emph{X happened.}.
@@ -420,7 +421,7 @@ Participants selected one of the two options (e.g., Tom or Jim) and then rated t
 \begin{figure*}
 %\centering
     \includegraphics[width=\textwidth]{expt1-3responses}
-    \caption{Dotted lines denote chance levels.}
+    \caption{Endorsement scores, forced choice proportions and confidence ratings for each condition in Experiment 1. Dotted lines denote chance levels. Error bars denote bootstrapped 95\% confidence intervals. \mht{need to change condition names}}
   \label{fig:expt1-all}
 \end{figure*}
 
@@ -479,7 +480,7 @@ In all conditions, this was the case (Figure \ref{fig:expt1-all}; right panel).
 
 
 %: Prior 0.39 [0.36, 0.42] vs. Observation 0.60 [0.58, 0.62], Ignorant Speaker 0.60 [0.58, 0.61], Backfiring 0.62 [0.61, 0.64] 
-Overall, as predicted, participants in the \emph{Backfiring} condition interpreted utterances as expressing atypical events.  If an officemate states, ``My student turned in his homework today," then the student must not typically turn in his homework.  However, we also expected participants in the \emph{Observation} and \emph{Instructive} conditions to interpret the target statements as evidence that the relevant behavior \emph{does} typically occur more often than in the \emph{Baseline} condition, which we did not find. 
+Overall, participants in the \emph{Backfiring} condition interpreted utterances as expressing atypical events relative to the other 3 conditions as predicted by our models and conceptually replicating \citeA{Kravtchenko2015}.  If an officemate states, ``My student turned in his homework today," then the student must not typically turn in his homework.  However, we also expected participants in the \emph{Observation} and \emph{Instructive} conditions to interpret the target statements as evidence that the relevant behavior \emph{does} typically occur more often than in the \emph{Baseline} condition, which we did not find. 
 % Upon reading an observation that a student turned in his homework, for instance, we expected participants to be more likely to believe that the student usually turns in his homework, relative to baseline.  We also expected participants to interpret the statement, ``My student turned in his homework today," as evidence that the student usually turns in his homework when produced in response to a question about whether the student turned in his homework.  Instead, participants in these two conditions did not differ from those in the \emph{Baseline} condition.  
 This lack of a difference is plausibly due to participants have a strong prior belief that the option that was more likely given the evidence was also more likely \emph{a priori}. 
 We observed a baseline probability reliably greater than 50\% for 8 out of the 16 items.
@@ -582,27 +583,69 @@ We designed the next experiment to get around some of these issues.
 %This opens the door for manifestly different types of conceptual learning from language. \red{This is a good point, but I feel like we'll end up focusing *not* on language (and instead on the relation between irregular events and traits)... which maybe is ok, I don't know.}
 
 
-%and conceptually replicates \citeA{Kravtchenko2015} 
-\section{Experiment 2}
+%
+\section{Experiment 2: Degrees of backfiring}
 
-In our second experiment, we modified the stimuli used in Experiment 1 to include actions associated with a wider range of prior beliefs so that we could test the quantitative predictions of our models.  Specifically, we ask whether the strength and presence of backfiring varies systematically according to the strength of prior beliefs.  Our models predict that utterances that are strongly redundant with prior beliefs (e.g., ``John wore shoes today") should backfire more than utterances that are less redundant (e.g., ``John went for a hike today"), by virtue of being less semantically informative.
+\begin{figure*}
+%\centering
+    \includegraphics[width=\textwidth]{minimal-1-scatters}
+    \caption{Experiment 2 results. All results are on the scale of average number of times \emph{per day}. Each point represents one item (e.g. ``wears socks''). 
+    Left: Observed vs. Baseline. Observed never goes below baseline (y=x line).
+    Middle: Communicative vs. Baseline. Communicative goes below baseline when baseline is high. 
+    Right: Communicative vs. Observed. Communicative suggests lower frequency the more an observation suggests higher frequency.
+    Note: ``Smokes cigarettes'' has been removed from these plots because it messes up the scale (people smoke a lot of cigarettes per day).
+    }
+    
+  \label{fig:expt2}
+\end{figure*}
+
+
+The model of backfiring language (Eq. \ref{eq:L1}) predicts that the extent to which backfiring should occur depends upon the \emph{a priori} likelihood of the action occurring. 
+In our second experiment, we aimed to elicit reactions to utterances about human behaviors covering a wide range of likely frequencies of action, as well as to simplify and generalize the experimental paradigm. 
+%modified the stimuli used in Experiment 1 to include actions associated with a wider range of prior beliefs so that we could test the quantitative predictions of our models. 
+%Specifically, we ask whether the strength and presence of backfiring varies systematically according to the strength of prior beliefs. 
+Our model predicts a continuum of the degree of backfiring ranging from utterances about events that are \emph{a priori} very likely (e.g., ``John wore shoes today") to events that are very unlikely (e.g., ``John climbed a mountain today").
+
 
 \subsection{Method}
 
 \subsubsection{Participants}
-Participants were XXX
+Participants were 150 workers from Amazon's Mechanical Turk platform. 
+All had at least a 95\% work approval rating.
+The task took about 7 minutes and participants were compensated \$0.80.
 
 \subsubsection{Materials and procedure}
-Participants participated in one of three conditions: the \emph{Backfiring} condition, the \emph{Observation} condition, or the \emph{Baseline} condition.
+Participants were randomly assigned to one of three conditions: the \emph{Backfiring} condition, the \emph{Observation} condition, or the \emph{Baseline} condition.
 
-In the \emph{Backfiring} condition, participants were told that they would read a series of 27 brief excerpts from conversations.  Each excerpt consisted of a single utterance: one person describing an event to a friend (e.g., ``Kelly wore socks today").  After reading each utterance, participants indicated how frequently they believed the agent in the utterance engages in the activity (e.g.,``How often does Kelly wear socks?").  Participants responded by stating \emph{X} times per week, month, year, or five years, where \emph{X} could be any number.
+In the \textbf{Observation}, participants were told on each trial that they would be given a random fact about a person doing an action and be asked to judge how often that person does the action. On each trial, participants read ``\textsc{person} did X today'', where X was an action (e.g., ``Stephen went for a run today.''). Participants were asked, ``How often does \textsc{person} do X?''  (e.g., ``How often does Stephen go for runs?'') Participants responded ``M times per K,'' by entering a number for M and choosing K from a drop-down with options week, month, year, and 5 years. 
 
-The \emph{Observation} condition was identical to the \emph{Backfiring} condition, except participants were told that they would read a series of random facts about people rather than excerpts from conversations.
+In the \textbf{Backfiring} condition, participants were instead told that they would read excerpts from conversations between friends.  
+On each trial, participants read ``You overhear two friends talking. One of them says to the other, `\textsc{person} did X today'.''
 
-In the \emph{Baseline} condition, participants were simply asked to rate how often a typical person performs each of the actions used in the \emph{Backfiring} and \emph{Observation} conditions, without having read anything else beforehand.  We asked participants to assume that the typical person had performed the action at least once, so that the priors / to avoid the possibility that... \red{we should justify why we used the exact baseline we did}
+In the \textbf{Baseline} condition, participants were asked to rate how often a typical person performs the action, without any other information.
+%  We asked participants to assume that the typical person had performed the action at least once, so that the priors / to avoid the possibility that... \red{we should justify why we used the exact baseline we did}
+%
+%consisted of a single utterance: one person describing an event to a friend (e.g., ``Kelly wore socks today").  After reading each utterance, participants indicated how frequently they believed the agent in the utterance engages in the activity (e.g.,``How often does Kelly wear socks?").  Participants responded by stating \emph{X} times per week, month, year, or five years, where \emph{X} could be any number.
 
-\subsection{Behavioral results and discussion}
-We coded responses as...
+
+\subsection{Behavioral results}
+
+Sketch of this section
+
+We must decide on 1 (or more) definitions of backfiring
+\begin{enumerate}
+\item Less frequent than not knowing anything about the person (Backfire vs. Baseline)
+\item Less frequent than you would think had you \emph{observed} the event (Backfire vs. Observation)
+\item Less frequent than not knowing anything about the person except that they have done it at least one time in the past (Backfire vs. Prior elicitation)... this is potentially important for items like ``John smoked a cigarette today.'', wherein the typical person (Baseline) doesn't smoke at all.. This is probably only subtly different from (2)
+\item Less frequent that someone who ``Does X'' (habitually; e.g. ``John smokes'' vs. ``John smoked a cigarette today.'', not measured)
+\end{enumerate}
+
+
+3 possible scatter plots are in Figure \ref{fig:expt2}.
+
+\subsection{Model analysis}
+
+Forthcoming...
 
 \section{General Discussion}
 
