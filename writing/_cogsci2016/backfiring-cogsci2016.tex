@@ -109,11 +109,11 @@ cause adults to have a more negative impression of the target (i.e., Mr. Talbert
  \citeA{Gruenfeld1992}, for example, found that fake headlines such as ``Robert Kennedy was not planning the assassination of Fidel Castro" actually caused adults to more strongly believe that Kennedy \emph{had} been planning to assassinate Castro. 
  Backfiring can also occur in conversation: \citeA{Kravtchenko2015} recently demonstrated that if a speaker says, ``John paid the cashier!" as part of a story about John's trip to a grocery store, adults infer that John does not typically pay cashiers.
 
-Why do claims like these backfire, while others don't? We suggest that this effect depends on the common ground shared between interlocutors, and the conversational principle that utterances should be both relevant and informative (Grice, 1975).  We develop these ideas in the section below.  In short, when an utterance does not appear on the surface to be informative, interlocutors are able to adjust information that is in common ground to \emph{make} the utterance informative (CITE accommodation?).
+Why do claims like the ones above backfire, while others don't? We suggest that this effect depends on the common ground shared between interlocutors, and the conversational principle that utterances should be both relevant and informative (Grice, 1975).  We develop these ideas in the section below.  In short, when an utterance does not appear on the surface to be informative, interlocutors are able to adjust information that is in common ground to \emph{make} the utterance informative (CITE accommodation?).
 
-In this paper, we formalize pragmatic language models wherein speaker and listener either do or do not share common ground about a particular habit (e.g., a student's tendency to turn in her homework on time).
-These models make three predictions: (A) Backfiring should occur when common ground is \emph{not} shared between interlocutors; here, the speaker will be interpreted as presupposing information that the listener was not aware of, thereby causing the listener to infer that information; (B) When common ground \emph{is} shared, standard learning from testimony should occur, because the speaker's utterances will be understood as semantically informative for the listener; and (C) The existence and strength of backfiring should vary according to the strength of the prior beliefs that are redundant with the utterance, since greater redundancy would cause utterances to be less informative.  In Experiment 1, we use a two-alternative forced-choice paradigm to conceptually replicate \citeA{Kravtchenko2015}, who demonstrated the basic \emph{backfiring} effect for affirmations in conversation (e.g., ``John paid the cashier") and test the predictions (A) \& (B).  
-In Experiment 2, we harness participants' intuitive theories of event frequencies to construct a more minimal paradigm with a free response format to test the degree to which remarks about a wide range of events (e.g., ``Lewis went for a run today'', ``Lewis went for a hike today.') lead to backfiring (prediction C). 
+In this paper, we formalize pragmatic language models wherein speaker and listener either do or do not share common ground about a people's habits (e.g., a student's tendency to turn in her homework on time).
+These models make three predictions: (a) Backfiring should occur when common ground is \emph{not} shared between interlocutors; here, the speaker will be interpreted as presupposing information that the listener was not aware of, thereby causing the listener to infer that information; (b) When common ground \emph{is} shared, standard learning from testimony should occur, because the speaker's utterances will be understood as semantically informative for the listener; and (c) The existence and strength of backfiring should vary according to the strength of the prior beliefs that are redundant with the utterance, since greater redundancy would cause utterances to be less informative.  In Experiment 1, we use a two-alternative forced-choice paradigm to  test the predictions (a) \& (b) and conceptually replicate \citeA{Kravtchenko2015}, who demonstrated the basic \emph{backfiring} effect for affirmations in conversation (e.g., ``John paid the cashier").  
+In Experiment 2, we harness participants' intuitive theories of event frequencies to construct a more minimal paradigm with a free response format to test the degree to which remarks about a wide range of events (e.g., ``Lewis went for a run today'', ``Lewis went for a hike today.') lead to backfiring (prediction c). 
 
 %The model that displays the backfiring effect (common ground asymmetric) predicts the quantitative degree of backfiring contingent on the prior probability of the event occurring. 
 %We test the quantitative predictions of this model in Expt.~2. 
@@ -226,28 +226,28 @@ In Experiment 2, we harness participants' intuitive theories of event frequencie
 %One important prediction of this theory, then, is that this backfiring effect should disappear if the listener's uncertainty about what is in common ground is made explicit.  If, for instance, an official needed to know whether Nixon was a crook as part of a background check for serving as President, and Nixon replied, ``No, I am not a crook," then the utterance would be established as semantically informative for the listener.  As a result, it would no longer presuppose any accusation against Nixon.  Another important prediction is that the strength of the backfiring effect should vary according to the strength of the prior beliefs that are redundant with the utterance.  The more strongly one believes that people by default are not crooks, for example, the less informative the statement, ``I am not a crook," should be.
 
 
-Observing an individual participate in an event $e$ can be taken as evidence for that individual \emph{typically} participating in that event, or having the habit $h$ of doing $e$. 
+Observing an individual participate in an event can be taken as evidence for that individual \emph{typically} participating in that event, or having the habit $h$ of doing behavior $b$. 
 %event occur multiple times can be evidence for an underlying cause that could reliably give rise to the event.
 %\red{An event that occurs multiple times can suggest that there is an underlying cause that reliably gives rise to the event?  Do we want a concrete example here?  If a bus shows up late to a bus stop three days in a row, for example, then it is probably part of a poorly run public transportation system.}
 %Indeed, observing just one instance of an event is relatively stronger evidence for a reliable cause than an unreliable cause, all else being equal.
 %\red{Indeed, an event that occurs only once is relatively stronger evidence for a reliable cause than an unreliable cause, all else being equal?}
 %Similarly, observing a behavior $b$ in a person can be taken as evidence for an underlying habit $h$. 
-For example, Seeing a student turn in his homework, arguably provides some evidence that the student usually turns in his homework. 
+For example, seeing a student turn in her homework provides some evidence that the student usually turns in her homework. 
 It is a more likely explanation than the alternative.
 
 %For example, if you are waiting for a bus that ends up being 15 minutes late, it is reasonable to fear it may be late the next day; public transit in this town may be unreliable. 
 %disembark in a novel location to find it raining, it is reasonable to fear it may be raining in five minutes. 
 %Raining events are correlated with future raining events, and this place might well be a rainy place. 
 
-We can formalize this using a simple Bayesian model:
+We formalize this using a simple Bayesian model:
 \begin{eqnarray}
 P(h \mid b) \propto P(b \mid h) P(h) \label{eq:bayes}
 \end{eqnarray}
 As a habit is more likely to give rise to the behavior --- as $P(b \mid h)$ gets large --- so too does the behavior become more indicative of the habit, assuming the prior probabilities are constant. 
 
-A helpful interlocutor can also communicate knowledge about an event.
-When a speaker accurately represents the listener's prior knowledge (e.g., the listener and speaker are close friends; or the listener makes explicit her prior knowledge to the speaker by asking, ``Did your student turn in his homework today?''), communicating the event (e.g. ``My student turned in his homework today'') can lead the listener to believe the underlying habit (here, that the student \emph{typically} turns in his homework) more strongly. 
-However, when a speaker misrepresents the listener's knowledge (e.g., the listener has forgotten something the speaker believes her to know, or the listener is overhearing a conversation between friends), communicating the event might lead the listener to believe the habit is \emph{less} likely.  If the student did usually turn in his homework, then the utterance would be uninformative.  
+Knowledge about an event can also come from a helpful interlocutor.
+When a speaker accurately represents the listener's prior knowledge (e.g., the listener and speaker are close friends; or the listener makes explicit her prior knowledge to the speaker by asking ``Did $b$ happen?'', ``Did your student turn in his homework today?''), communicating the behavior (e.g. ``My student turned in his homework today'') can lead the listener to believe the underlying habit (here, that the student \emph{typically} turns in his homework) more strongly. 
+However, when a speaker misrepresents the listener's knowledge (e.g., the speaker believes the listener knows something that she has in fact forgotten, or the listener is overhearing a conversation between friends), communicating the behavior might lead the listener to believe the habit is \emph{less} likely.  If the student did usually turn in his homework, then the utterance---``My student turn in his homework today.'''---would be uninformative.  
 
 
 
@@ -262,11 +262,12 @@ However, when a speaker misrepresents the listener's knowledge (e.g., the listen
 %If a listener believes that the speaker is not representing her uncertainty correctly (e.g., because the listener has forgotten this bit of information or because the listener is overhearing a conversation), she can use the speech-act to help resolve what the speaker believes to be in common ground. 
 %\red{we might still want a concrete example here, but can add it later}
 
-These inferences can be readily incorporated into Rational Speech-Acts framework \cite{Frank2012, Goodman2013}:, as a lifted variable inference akin to the treatment by \citeA{Degen2015} and discussed in detail in \citeA{GoodmanLassiter}.
+We incorporate these inferences into Rational Speech-Acts framework \cite{Frank2012, Goodman2013}, as a lifted variable inference akin to the treatment by \citeA{Degen2015} and discussed in detail in \citeA{GoodmanLassiter}\footnote{Briefly, a ``lifted'' variable is a variable of uncertainty over which a pragmatic listener reasons. The inference incorporates general pragmatic principles of communication, by assuming the speaker intended a particular value of that random variable.}.
 %
+The \textbf{backfiring} RSA model is:  
 \begin{eqnarray}
 &&P_{L_1}(b, h \mid u)\propto P_{S_1}(u \mid b, h)\cdot P(b \mid h) \cdot P(h) \label{eq:L1}\\
-&&P_{S_1}(u \mid b, h) \propto \mathrm{exp}({\lambda \ln P_{L_0}(b \mid u, h))} \label{eq:S1}\\
+&&P_{S_1}(u \mid b, h) \propto \mathrm{exp}({\alpha \ln P_{L_0}(b \mid u, h))} \label{eq:S1}\\
 &&P_{L_0}(b \mid u, h)\propto \denote{u}(b) \cdot P(b \mid h) \label{eq:L0}
 \end{eqnarray}
 %
@@ -275,18 +276,18 @@ We assume the set of utterances are remarks about the event or behavior occurrin
 The prior probability of a behavior depends on the habits of the person. For demonstrative purposes, we assume that the if the habit $h$ is present, the behavior has a high probability of occurring; if the habit is absent, the probability is lower. 
 \begin{eqnarray}
 P(b \mid h) = \begin{cases}
-0.99  & \text{if } h\\
-0.5  & \text{if not } h
+\lambda_{h}  & \text{if } h\\
+\lambda_{\neg h}  & \text{if not } h
 \end{cases} \label{eq:hab}
 \end{eqnarray}
-
+where $\lambda_{h} > \lambda_{\neg h}$.
 The model is implemented in the probabilistic programming language WebPPL \cite{dippl}, and a simple version can be seen at \mht{add forest page}.
 
 \begin{figure}
 \centering
     \includegraphics[width=\columnwidth]{schematic-model}
     \caption{Schematic model predictions.
-    \mht{Figure made with data from posterior predictive... make figure with schematic prior data to paint the picture more visibly.}
+    \mht{Figure to be revised}
     Observing or hearing a proposition when speaker and listener share common ground provides evidence for the underlying habit (green and red bars $> 0$). 
     When common ground is misaligned, hearing a proposition provides evidence \emph{against} the underlying habit (blue bars $<0$).
     Additionally, when the prior beliefs about a habit are least informed (prior probability around 0.5), a single observation of the behavior carries a lot of evidence, relative to when prior beliefs are more informed. 
@@ -295,29 +296,30 @@ The model is implemented in the probabilistic programming language WebPPL \cite{
 \end{figure}
 
 
-The model predicts that when a speaker does not represent a listener's beliefs accurately, utterances affirming an event will be interpreted as expressing atypical behavior.  The statement, ``My student turned in his homework today,'' for instance, should suggest that the student does \emph{not} usually turn in his homework (Figure \ref{fig:schematic-model}).
+The model predicts that when a speaker does not represent a listener's beliefs accurately, utterances affirming an event will be interpreted as expressing atypical behavior by implicitly implying the habit is not present ($\neg h$).
+The statement, ``My student turned in his homework today,'' for instance, should suggest that the student does \emph{not} usually turn in his homework (Figure \ref{fig:schematic-model} \mht{figure to be revised}).
 %This occurs when the speaker does not represent the listener's beliefs accurately.
 %The strength of this inference is predicted to be modulated the listener's \emph{a priori} belief in the habit; the stronger the listener believes it to be the case that the roommate usually washes her dishes, the more the utterance \emph{My roommate washed her dishes today} will backfire. 
 
 \subsection{Alternative models}
 
 The backfiring inference depends critically on a misunderstanding of common ground. 
-If a listener explicitly asks, for example, ``Did your student turn in his homework today?'' then the speaker will learn that the listener is unsure of the student's habits.  As a result, the response, ``My student turned in his homework today,'' will become semantically informative, and will no longer presuppose that the listener knows about the student's habits.
+If a listener explicitly asks, for example, ``Did your student turn in his homework today?'' then the speaker will learn that the listener is unsure of the student's habits\footnote{It is also important that the question be asked for plausible reasons that do not imply that the listener believes the habit to be absent (i.e., that the student doesn't usually turn in his homework)}.  As a result, the response, ``My student turned in his homework today,'' will become semantically informative, no longer presupposing the listener knows about the student's habits.
 Figure \ref{fig:schematic-model} (green bars) shows what happens when the speaker and listener are both aware of the listener's knowledge.
 This is more akin to pedagogical communication, where teacher and learner are on the same page. 
-The corresponding RSA model is:
+The \textbf{instructive} RSA model is:
 \begin{eqnarray}
 &&P_{L_1}(b, h \mid u)\propto P_{S_1}(u \mid b)\cdot P(b \mid h) \cdot P(h) \label{eq:L1mod}\\
-&&P_{S_1}(u \mid b) \propto \mathrm{exp}({\lambda \ln P_{L_0}(b, h \mid u))} \label{eq:S1mod}\\
+&&P_{S_1}(u \mid b) \propto \mathrm{exp}({\alpha \ln P_{L_0}(b, h \mid u))} \label{eq:S1mod}\\
 &&P_{L_0}(b, h \mid u)\propto \denote{u}(b) \cdot P(b \mid h) \label{eq:L0mod}
 \end{eqnarray}
-\mht{Is this right?}
+\mht{double check}
 
-Another area in which we wouldn't expect evidence to backfire is observational learning.
+Another context in which we would not expect evidence to backfire is observational learning.
 Here, we would expect observing the student turning in his homework to be taken as evidence that he usually does his homework. 
 These predictions are borne out in a standard model of Bayesian learning (Eq.~\ref{eq:bayes}, Figure \ref{fig:schematic-model}, red bars).
-
 \ndg{does the model predict a differences between observation and pedagogy? (it should.) cite shafto, goodman, frank for this. indicate more clearly the difference between the istructive context and the misaligned CG one... indicate why and when the listener has to accommodate by adjusting prior beliefs in order to make a statement cooperative.}
+\mht{it does not; this may be because the utterances ("b", or "not b") are perfectly informative about the world...}
 
 %This captures the interesting issue in communicative situations wherein if an event often occurs, then----assuming the listener and speaker both have this knowledge in common ground---it is not informative to remark on it. 
 %Thus, a speaker who deliberately remarks ``My roommate did her dishes today.'' should believe that usually her roommate does not do her dishes, and believe his listener to believe this as well. 
@@ -327,18 +329,17 @@ These predictions are borne out in a standard model of Bayesian learning (Eq.~\r
 %We formalize the backfiring inference as a probabilistic model of pragmatic communication where listener and speaker do not share common ground. 
 
 
-\section{Experiment 1}
+\section{Experiment 1: Conceptual replication and extension of \citeA{Kravtchenko2015}}
 
 %\ndg{motivate experiment more clearly in terms of the modeling, and in terms of advances over previous work...}
 
-In our first experiment, we tested the qualitative predictions of our pragmatic models that:
+In our first experiment, we tested the qualitative predictions of the three models (backfiring, instructive, and observation)
 
-	1. Backfiring should occur in conversational contexts in which a speaker presupposes common ground that a listener actually lacks (e.g., when a speaker states, ``My student turned in his homework today," to a listener who is not aware of the student's typical habits);
-
-	2. Backfiring should \emph{not} occur in conversational contexts in which a listener makes it clear that she is uncertain about a habit (e.g., when the listener explicitly asks the speaker if the student turned in his homework); and
-
-	3. Backfiring should \emph{not} occur in non-conversational contexts (e.g., when the listener simply observes that the speaker's student turned in his homework).
-
+\begin{enumerate}
+\item Backfiring should occur in conversational contexts in which a speaker presupposes common ground that a listener actually lacks (e.g., when a speaker states, ``My student turned in his homework today," to a listener who is not aware of the student's typical habits; Eq~\ref{eq:L1});
+\item Backfiring should \emph{not} occur in conversational contexts in which a listener makes it clear that she is uncertain about a habit (e.g., when the listener explicitly asks the speaker if the student turned in his homework; Eq.~\ref{eq:L1mod}); and
+\item Backfiring should \emph{not} occur in non-conversational contexts (e.g., when the listener simply observes that the speaker's student turned in his homework; Eq.~\ref{eq:bayes}).
+\end{enumerate}
 %ask whether directly manipulating the common ground between interlocutors and the  influences adults' interpretations of affirmations (e.g., \emph{My roommate did her dishes today.}).
 %We measured interpretations both when the speaker believes the habit is in common ground and when the listener makes explicit that this is not in common ground.
 %Additionally, we included a control condition where the event is observed rather than uttered. 
@@ -368,14 +369,14 @@ The task took about 5 minutes and participants were compensated \$0.60.
 \subsubsection{Materials}
 
 Four versions of sixteen contexts were created (64 items in total). 
-Each of the four versions was a different within-subjects condition, corresponding to the backfiring model and the two alternative models (ignorant speaker and observation) as well as a prior or baseline measurement. 
+Each of the four versions was a different within-subjects condition, corresponding to the backfiring model and the two alternative models (instructive and observation) as well as a prior or baseline measurement. 
 Participants completed a series of 16 randomly drawn trials from this group of 64, which were evenly distributed across conditions and included only one version of each context (i.e., participants never saw two versions of the same context).  
 Trials were presented in random order.
 
 \subsubsection{Procedure}
 
-On each trial, participants read about Person A who could not remember either a person or a business related to Person B, and introduced to two alternatives. 
-One of the alternatives was described as ``always'' \textsc{does x}, and the other alternative as ``only occasionally \textsc{does x}. 
+On each trial, participants read about Person A who could not remember either a person or a business related to Person B, and was introduced to two alternatives. 
+One of the alternatives was described as ``always'' \textsc{does x}, and the other alternative as ``only occasionally'' \textsc{does x}. 
 For example:
 %\textbf{Context.} 
 \begin{quote}
@@ -385,15 +386,20 @@ Tom, she knows, always turns in his homework on time.
 Jim, she knows, only occasionally turns in his homework on time.
 \end{quote}
 
-In the \textbf{prior} condition, no additional information was provided, and participants were asked: ``Who/what is the person/business related to Person B?'' (e.g., Who is Molly's officemate tutoring?).  Participants selected one of the two options (e.g., Tom or Jim) and then rated their confidence in their choice with a slider bar.
+In the \textbf{baseline} condition, no additional information was provided, and participants were asked: ``Who/what is the person/business related to Person B?'' (e.g., Who is Molly's officemate tutoring?). 
 
-In the three experimental conditions (backfiring, ignorant speaker, and observation), participants read additional information that varied according to the condition and then answered the same question.
+In the three experimental conditions (backfiring, instructive, and observation), participants read additional information that varied according to the condition.
 
-In the \textbf{backfiring} condition, a brief communicative utterance was added after the description of the two options.  In the officemate scenario, for example, participants read, ``In their office, Molly's officemate says to her, `My student turned in his homework on time today.'"
+In the \textbf{backfiring} condition, Person B utters that the event occurred.
+In the officemate scenario, for example, participants read, ``In their office, Molly's officemate says to her, `My student turned in his homework on time today.'"
 
-In the \textbf{ignorant speaker} condition, Person A explicitly stated that they did not know whether an event happened.  In the officemate scenario, this was: ``In their office, Molly helps her officemate fill out a daily report card for her student, while her officemate files away some papers.  Molly reads out loud from the report card,`“Did your student turn in his homework on time today?'  Her officemate replies, `Yes. My student turned in his homework on time today.'"
+In the \textbf{instructive} condition, Person A is trying to accomplish some unrelated goal and explicitly asks whether an event happened, to which Person B responds that it occurred.  In the officemate scenario, this was: ``In their office, Molly helps her officemate fill out a daily report card for her student, while her officemate files away some papers.  Molly reads out loud from the report card,`“Did your student turn in his homework on time today?'  Her officemate replies, `Yes. My student turned in his homework on time today.'"
 
-In the \textbf{observation} condition, an observation was added after the two options.  Participants read, for example, ``In their office, Molly notices some papers on her officemate's desk.  Her officemate's student turned in his homework on time today."
+In the \textbf{observation} condition, Person A observes that the event occurred. 
+Participants read, for example, ``In their office, Molly notices some papers on her officemate's desk.  Her officemate's student turned in his homework on time today."
+
+Participants selected one of the two options (e.g., Tom or Jim) and then rated their confidence in their choice with a slider bar.
+The experiment in full can be viewed at \url{http://stanford.edu/~mtessler/backfiring-words/experiments/2afc/forcedchoice-1.html}.
 
 %Person A makes explicit that they do not know whether \textsc{X happened} today (e.g., by asking a question from a survey), and Person B clarifies for Person A \emph{X happened}.
 %In the \textbf{observation} condition, Person B simply observes evidence that \emph{X happened.}.
@@ -415,17 +421,18 @@ In the \textbf{observation} condition, an observation was added after the two op
 \begin{figure*}
 %\centering
     \includegraphics[width=\textwidth]{expt1-3responses}
-    \caption{Dotted lines denote chance levels.}
+    \caption{Endorsement scores, forced choice proportions and confidence ratings for each condition in Experiment 1. Dotted lines denote chance levels. Error bars denote bootstrapped 95\% confidence intervals. \mht{need to change condition names}}
   \label{fig:expt1-all}
 \end{figure*}
 
 
 
 We computed an \emph{endorsement score} by scaling forced-choice responses by their associated confidence level. 
-We coded the selection of the more \emph{likely} response given an observation (e.g., the roommate who \emph{always} does her dishes) as a 1; the other option as -1.
+We coded the selection of the more \emph{likely} response given an observation (e.g., the student who \emph{always} does turns in his homework on time) as a 1; the other option as -1.
 We fit the \emph{endorsement score} data using a generalized mixed-effects model with random by-participant effects of intercept and random by-item effects of intercept\footnote{This was the maximal-model that our data permitted.}. 
-As predicted, participants endorsed the likely response \emph{less} in the Backfiring condition (M=-0.09; bootstrapped 95\% CI [-0.15, -0.03]) than the in the Prior condition (M=0.18 [0.14,0.22]), $\beta = -0.24; SE = 0.03; t(1794) = -8.3; p<0.001$.
-There was a trend for participants to endorse the likely response \emph{slightly more} in the Observation condition (M=0.24 [0.18, 0.29]) than in the Prior condition ($\beta = 0.05; SE = 0.03; t(1794) = 1.73; p = 0.08$). 
+As predicted, participants endorsed the likely response \emph{less} in the Backfiring condition (M=-0.09; bootstrapped 95\% CI [-0.15, -0.03]) than the in the Prior condition (M=0.18 [0.14,0.22]), $\beta = -0.24; SE = 0.03; t = -8.3$.
+%$\beta = -0.24; SE = 0.03; t(1794) = -8.3; p<0.001$
+There was a trend for participants to endorse the likely response \emph{slightly more} in the Observation condition (M=0.24 [0.18, 0.29]) than in the Prior condition ($\beta = 0.05; SE = 0.03; t = 1.73$). 
 No such trend was observed for the Ignorant Speaker condition (M=0.18 [0.13, 0.24]). 
 
 
@@ -460,14 +467,27 @@ No such trend was observed for the Ignorant Speaker condition (M=0.18 [0.13, 0.2
 %conditionbackfire    -2.731e-01  3.299e-02  1.794e+03  -8.277 2.22e-16 ***
 %conditionsurvey       6.817e-03  3.302e-02  1.797e+03   0.206   0.8364    
 
-We further analyzed the data separately in terms of (1) the proportion of participants who selected the more \emph{likely} option given an observation (e.g. the roommate who \emph{always} does her dishes) and (2) the confidence ratings, to better understand the effect.
-Critically, participants were significantly \emph{less} likely to choose the ``likely'' option in the Backfiring condition (M=0.46 [0.41, 0.50]) than in the Prior condition (M=0.71 [0.67,0.75]) , $\beta = -1.42; SE = 0.15; p < .001$.  
-Interestingly, however, participants were \emph{no more} likely to choose the ``likely'' option in either the Observation (M=0.71 [0.68, 0.75]) or Ignorant Speaker (M=0.68 [0.63,0.71]) conditions than in Prior (Figure \ref{fig:expt1-all}; middle panel).
+To better understand the nature of the effect, 
+we further analyzed the data separately in terms of (1) the proportion of participants who selected the more \emph{likely} option given an observation (e.g. the roommate who \emph{always} does her dishes) and (2) the confidence ratings.
+Critically, participants were significantly \emph{less} likely to choose the ``likely'' option in the Backfiring condition than in the Baseline condition ($\beta = -1.42; SE = 0.15; z=-9.0;$).  % p < .001%
+Interestingly, however, participants were \emph{no more} likely to choose the ``likely'' option in either the Observation or Instructive conditions than in the Baseline (Figure \ref{fig:expt1-all}; middle panel).
+% backfiring (M=0.46 [0.41, 0.50]) 
+% baseline (M=0.71 [0.67,0.75])
+% observation (M=0.71 [0.68, 0.75]) 
+% instructive (M=0.68 [0.63,0.71]) conditions than in the Baseline (Figure \ref{fig:expt1-all}; middle panel).
+Finally, since participants are not given any helpful information in the Baseline condition, we expected the confidence rating data to be lower in the Baseline condition than in the three experimental conditions.
+In all conditions, this was the case (Figure \ref{fig:expt1-all}; right panel).
 
-Finally, since participants are not given any helpful information in the Prior condition, we expected the confidence rating data to be lower in the Prior condition than in the three experimental conditions.
-In all conditions, this was the case: Prior 0.39 [0.36, 0.42] vs. Observation 0.60 [0.58, 0.62], Ignorant Speaker 0.60 [0.58, 0.61], Backfiring 0.62 [0.61, 0.64] (Figure \ref{fig:expt1-all}; right panel).
 
-Overall, as predicted, participants in the \emph{Backfiring} condition interpreted utterances as expressing atypical events.  If an officemate states, ``My student turned in his homework today," then the student must not typically turn in his homework.  However, we also expected participants in the \emph{Observation} and \emph{Ignorant Speaker} conditions to interpret the target statements as evidence that the relevant behavior \emph{does} typically occur, which we did not find.  Upon reading an observation that a student turned in his homework, for instance, we expected participants to be more likely to believe that the student usually turns in his homework, relative to baseline.  We also expected participants to interpret the statement, ``My student turned in his homework today," as evidence that the student usually turns in his homework when produced in response to a question about whether the student turned in his homework.  Instead, participants in these two conditions did not differ from those in the \emph{Baseline} condition.  There are two possible explanations for this lack of differences: 1) prior beliefs could have already been relatively high, making it difficult for linguistic and observational evidence to influence responses, and 2) participants might have needed more than one piece of evidence to make a strong generalization about behavior.
+%: Prior 0.39 [0.36, 0.42] vs. Observation 0.60 [0.58, 0.62], Ignorant Speaker 0.60 [0.58, 0.61], Backfiring 0.62 [0.61, 0.64] 
+Overall, participants in the \emph{Backfiring} condition interpreted utterances as expressing atypical events relative to the other 3 conditions as predicted by our models and conceptually replicating \citeA{Kravtchenko2015}.  If an officemate states, ``My student turned in his homework today," then the student must not typically turn in his homework.  However, we also expected participants in the \emph{Observation} and \emph{Instructive} conditions to interpret the target statements as evidence that the relevant behavior \emph{does} typically occur more often than in the \emph{Baseline} condition, which we did not find. 
+% Upon reading an observation that a student turned in his homework, for instance, we expected participants to be more likely to believe that the student usually turns in his homework, relative to baseline.  We also expected participants to interpret the statement, ``My student turned in his homework today," as evidence that the student usually turns in his homework when produced in response to a question about whether the student turned in his homework.  Instead, participants in these two conditions did not differ from those in the \emph{Baseline} condition.  
+This lack of a difference is plausibly due to participants have a strong prior belief that the option that was more likely given the evidence was also more likely \emph{a priori}. 
+We observed a baseline probability reliably greater than 50\% for 8 out of the 16 items.
+In addition, participants may have believed the observation and instructive vignettes to be suggestions \emph{from the experimenter} that the habit was unlikely, and thus those conditions may have backfired as well (e.g., some participants may have asked themselves ``why is the experimenter going through all this trouble to tell me that the event occurred?'') \mht{cite ransom et al., experimenter effects in reasoning?}.
+We designed the next experiment to get around some of these issues.
+
+%Two possible explanations for this lack of differences are: 1) prior beliefs could have already been relatively high, making it difficult for linguistic and observational evidence to influence responses, and 2) participants might have needed more than one piece of evidence to make a strong generalization about behavior.
 
 %\red{do we need the median split?  could it be enough to just say, yeah, the observation and ignorant speaker conditions were funky because overall, prior beliefs were pretty high?  and then focus on the most important / interesting topic, which is the backfiring} fact that we observe an effect in the Backfiring condition but not in the other conditions might in fact be expected if the items for which the prior beliefs are the strongest show a relatively small effect of evidence compared to when prior beliefs are the weakest.
 %The opposite pattern would be expected for the Backfiring condition, where it is predicted an utterance will backfire the most when the prior beliefs are the strongest (see Figure \ref{fig:schematic-model}) for model predictions).
@@ -563,33 +583,83 @@ Overall, as predicted, participants in the \emph{Backfiring} condition interpret
 %This opens the door for manifestly different types of conceptual learning from language. \red{This is a good point, but I feel like we'll end up focusing *not* on language (and instead on the relation between irregular events and traits)... which maybe is ok, I don't know.}
 
 
-%and conceptually replicates \citeA{Kravtchenko2015} 
-\section{Experiment 2}
+%
+\section{Experiment 2: Degrees of backfiring}
 
+\begin{figure*}
+%\centering
+    \includegraphics[width=\textwidth]{minimal-1-scatters}
+    \caption{Experiment 2 results. All results are on the scale of average number of times \emph{per day}. Each point represents one item (e.g. ``wears socks''). 
+    Left: Observed vs. Baseline. Observed never goes below baseline (y=x line).
+    Middle: Communicative vs. Baseline. Communicative goes below baseline when baseline is high. 
+    Right: Communicative vs. Observed. Communicative suggests lower frequency the more an observation suggests higher frequency.
+    Note: ``Smokes cigarettes'' has been removed from these plots because it messes up the scale (people smoke a lot of cigarettes per day).
+    }
+    
+  \label{fig:expt2}
+\end{figure*}
+
+
+The model of backfiring language (Eq. \ref{eq:L1}) predicts that the extent to which backfiring should occur depends upon the \emph{a priori} likelihood of the action occurring. 
+In our second experiment, we aimed to elicit reactions to utterances about human behaviors covering a wide range of likely frequencies of action, as well as to simplify and generalize the experimental paradigm. 
+%modified the stimuli used in Experiment 1 to include actions associated with a wider range of prior beliefs so that we could test the quantitative predictions of our models. 
+%Specifically, we ask whether the strength and presence of backfiring varies systematically according to the strength of prior beliefs. 
+Our model predicts a continuum of the degree of backfiring ranging from utterances about events that are \emph{a priori} very likely (e.g., ``John wore shoes today") to events that are very unlikely (e.g., ``John climbed a mountain today").
+
+<<<<<<< HEAD
 In our second experiment, we modified the stimuli used in Experiment 1 to include actions associated with a wider range of prior beliefs so that we could test the quantitative predictions of our models.  Specifically, we asked whether the strength and presence of backfiring varies systematically according to the strength of prior beliefs.  Our models predict that utterances that are strongly redundant with prior beliefs (e.g., ``John wore shoes today") should backfire more than utterances that are less redundant (e.g., ``John went for a hike today"), by virtue of being less semantically informative.
+=======
+>>>>>>> cf96f6243fcaa0bcf2c3aa7ab0fd8e1a4951aa4c
 
 \subsection{Method}
 
 \subsubsection{Participants}
-Participants were XXX
+Participants were 150 workers from Amazon's Mechanical Turk platform. 
+All had at least a 95\% work approval rating.
+The task took about 7 minutes and participants were compensated \$0.80.
 
 \subsubsection{Materials and procedure}
-Participants participated in one of three conditions: the \emph{Backfiring} condition, the \emph{Observation} condition, or the \emph{Baseline} condition.
+Participants were randomly assigned to one of three conditions: the \emph{Backfiring} condition, the \emph{Observation} condition, or the \emph{Baseline} condition.
 
-In the \emph{Backfiring} condition, participants were told that they would read a series of 27 brief excerpts from conversations.  Each excerpt consisted of a single utterance: one person describing an event to a friend (e.g., ``Kelly wore socks today").  After reading each utterance, participants indicated how frequently they believed the agent in the utterance engages in the activity (e.g.,``How often does Kelly wear socks?").  Participants responded by stating \emph{X} times per week, month, year, or five years, where \emph{X} could be any number.
+In the \textbf{Observation}, participants were told on each trial that they would be given a random fact about a person doing an action and be asked to judge how often that person does the action. On each trial, participants read ``\textsc{person} did X today'', where X was an action (e.g., ``Stephen went for a run today.''). Participants were asked, ``How often does \textsc{person} do X?''  (e.g., ``How often does Stephen go for runs?'') Participants responded ``M times per K,'' by entering a number for M and choosing K from a drop-down with options week, month, year, and 5 years. 
 
-The \emph{Observation} condition was identical to the \emph{Backfiring} condition, except participants were told that they would read a series of random facts about people rather than excerpts from conversations.
+In the \textbf{Backfiring} condition, participants were instead told that they would read excerpts from conversations between friends.  
+On each trial, participants read ``You overhear two friends talking. One of them says to the other, `\textsc{person} did X today'.''
 
-In the \emph{Baseline} condition, participants were simply asked to rate how often a typical person performs each of the actions used in the \emph{Backfiring} and \emph{Observation} conditions, without having read anything else beforehand.  We asked participants to assume that the typical person had performed the action at least once, so that the priors / to avoid the possibility that... \red{we should justify why we used the exact baseline we did}
+In the \textbf{Baseline} condition, participants were asked to rate how often a typical person performs the action, without any other information.
+%  We asked participants to assume that the typical person had performed the action at least once, so that the priors / to avoid the possibility that... \red{we should justify why we used the exact baseline we did}
+%
+%consisted of a single utterance: one person describing an event to a friend (e.g., ``Kelly wore socks today").  After reading each utterance, participants indicated how frequently they believed the agent in the utterance engages in the activity (e.g.,``How often does Kelly wear socks?").  Participants responded by stating \emph{X} times per week, month, year, or five years, where \emph{X} could be any number.
 
-\subsection{Behavioral results and discussion}
-We coded responses as...
+
+\subsection{Behavioral results}
+
+Sketch of this section
+
+We must decide on 1 (or more) definitions of backfiring
+\begin{enumerate}
+\item Less frequent than not knowing anything about the person (Backfire vs. Baseline)
+\item Less frequent than you would think had you \emph{observed} the event (Backfire vs. Observation)
+\item Less frequent than not knowing anything about the person except that they have done it at least one time in the past (Backfire vs. Prior elicitation)... this is potentially important for items like ``John smoked a cigarette today.'', wherein the typical person (Baseline) doesn't smoke at all.. This is probably only subtly different from (2)
+\item Less frequent that someone who ``Does X'' (habitually; e.g. ``John smokes'' vs. ``John smoked a cigarette today.'', not measured)
+\end{enumerate}
+
+
+3 possible scatter plots are in Figure \ref{fig:expt2}.
+
+\subsection{Model analysis}
+
+Forthcoming...
 
 \section{General Discussion}
 
-Our experiments serve as conceptual replications of previous work (CITE) demonstrating that adults try to avoid redundancy in conversation by adjusting information that is in common ground between interlocutors.  Ultimately, this can result in an utterance ``backfiring", or implying that the content expressed is typically not true.  If a person notes, ``My roommate washed her dishes today," for example, then a listener who does not know the roommate will likely infer that the roommate does \emph{not} typically was her dishes; otherwise, the utterance would not be informative (CITE).
+We present a formal model for understanding how language can backfire,  or implying that the content expressed is generally not true. 
+The model derives predictions by revising common ground when a speaker utters something which would otherwise be semantically uninformative.
+In Expt.~1, we validate that this prediction depends upon the information being communicated and not observed as well as a misalignment of common ground between speaker and listener in conversation. This experiment also serves as a conceptual replication of \citeA{Kravtchenko2015} and adds to the body of literature demonstrating that adults try to avoid redundancy in conversation by adjusting information that is in common ground between interlocutors.  
+%Ultimately, this can result in an utterance ``backfiring",.  If a person notes, ``My roommate washed her dishes today," for example, then a listener who does not know the roommate will likely infer that the roommate does \emph{not} typically was her dishes; otherwise, the utterance would not be informative (CITE).
 
 We have also made several novel contributions to our understanding of this effect.  First, we have shown that this effect disappears when an interlocutor elicits the target utterance by expressing uncertainty.  If a person asks their friend, ``Did your roommate wash her dishes today?" and the friend responds, ``Yes, my roommate washed her dishes today," then the utterance no longer presupposes any shared knowledge about the roommate.  Instead, the utterance becomes semantically informative for the listener, and there is no need for the listener to infer that the roommate does not usually wash her dishes.  Thus, backfiring critically depends on a misunderstanding of information that is in common ground.  The effect also disappears when the proposition is framed as an observation rather than a communicative utterance (e.g., ``She saw that the roommate washed her dishes today").  In these contexts, there is no longer any pressure for statements to be maximally informative.  As a result, even if the statement is redundant with adults' prior beliefs, adults will accept the statement as evidence that the behavior usually occurs.  Second, we have demonstrated that the strength of backfiring depends on the strength of prior beliefs.  Hearing, ``Jane wore shoes today," for example, will result in stronger backfiring for a person who does not know Jane than will, ``Jane wore sandals today," because wearing shoes more strongly \emph{goes without saying}.  Finally, we have presented a formal pragmatics model that predicts each of these behavioral results.
+\mht{I think we should scrap this paragraph, which is a restatement of things we've said earlier, in lieu of a deeper discussion about accommodation and presupposition}
 
 %Our experiment serves as a conceptual replication of \citeA{Kravtchenko2015}.
 %Our work expands upon theirs in the following ways: 
@@ -609,7 +679,7 @@ We have also made several novel contributions to our understanding of this effec
 
 %we developed a computational model that predicts this behavior; 2) we demonstrated that adults do \emph{not} make this inference when the listener's uncertainty about the event is in common ground with the speaker, or when the utterance is removed from a conversational context (i.e., when it is framed as an observation); and 3) we provide evidence that the strength of the backfiring effect systematically varies according to the strength adults' preexisting beliefs. \red{add more explanation here}
 
-In addition to contributing to our knowledge of language processing, this work has practical relevance.  
+In addition to contributing to our knowledge of language understanding, this work has practical relevance.  
 Recent efforts to persuade the general public that there is no causal relation between vaccines and autism, for example, include articles titled, "Vaccines do not cause autism" \red{(cite e.g., CDC)}.  
 Similarly, websites, media outlets, and researchers tend to state, ``Girls can do math,'' as a way of promoting gender equality \red{(cite e.g., Smithsonian Mag}).  
 While these two statements would certainly be useful and informative for those who hold the belief that vaccines \emph{do} cause autism or that girls \emph{cannot} do math, it is unclear how they might be received by people who already share these beliefs, or who are not aware of either of these debates.  
