@@ -272,7 +272,7 @@ We incorporate these inferences into the Rational Speech-Acts framework \cite{Fr
 The \textbf{backfiring} RSA model is:  
 \begin{eqnarray}
 &&P_{L_1}(b, h \mid u)\propto P_{S_1}(u \mid b, h)\cdot P(b \mid h) \cdot P(h) \label{eq:L1}\\
-&&P_{S_1}(u \mid b, h) \propto \mathrm{exp}({\alpha \ln P_{L_0}(b \mid u, h))} \label{eq:S1}\\
+&&P_{S_1}(u \mid b, h) \propto  P_{L_0}(b \mid u, h)^{\alpha} \label{eq:S1}\\
 &&P_{L_0}(b \mid u, h)\propto \denote{u}(b) \cdot P(b \mid h) \label{eq:L0}
 \end{eqnarray}
 %
@@ -314,17 +314,19 @@ The backfiring inference depends critically on a misunderstanding of common grou
 If a listener explicitly asks, for example, ``Did your student turn in his homework today?'' then the speaker will learn that the listener is unsure of the student's habits\footnote{It is also important that the question be asked for plausible reasons that do not imply that the listener believes the habit to be absent (i.e., that the student doesn't usually turn in his homework).}.  As a result, the response, ``My student turned in his homework today,'' will become semantically informative, no longer presupposing that the listener knows about the student's habits.
 Figure \ref{fig:schematic-model} (green bars) shows what happens when the speaker and listener are both aware of the listener's knowledge.
 This is more akin to pedagogical communication, where teacher and learner are on the same page. 
-The \textbf{instructive} RSA model is:
+An \textbf{instructive} RSA model is nearly identical to the one above, with the only difference being the speaker mode:
 \begin{eqnarray}
-&&P_{L_1}(b, h \mid u)\propto P_{S_1}(u \mid b)\cdot P(b \mid h) \cdot P(h) \label{eq:L1mod}\\
-&&P_{S_1}(u \mid b) \propto \mathrm{exp}({\alpha \ln P_{L_0}(b, h \mid u))} \label{eq:S1mod}\\
-&&P_{L_0}(b, h \mid u)\propto \denote{u}(b) \cdot P(b \mid h) \label{eq:L0mod}
+%&&P_{L_1}(b, h \mid u)\propto P_{S_1}(u \mid b)\cdot P(b \mid h) \cdot P(h) \label{eq:L1mod}\\
+&&P_{S_1^{*}}(u \mid b) \propto P_{L_0}(b, h \mid u) ^ {\alpha} \label{eq:S1mod}
+%&&P_{L_0}(b, h \mid u)\propto \denote{u}(b) \cdot P(b \mid h) \label{eq:L0mod}
 \end{eqnarray}
-\mht{double check}
+Here the speaker doesn't assume the literal listener knows about the value of $h$ (compare with Eq.~\ref{eq:S1}). Thus, a pragmatic listener model who reasons about this speaker won't need to revise common ground to make the utterance informative.
 
 Another context in which we would not expect evidence to backfire is observational learning.
 Here, we would expect observing the student turning in his homework to be taken as evidence that he usually \emph{does} do his homework. 
-These predictions are borne out in a standard model of Bayesian learning (Eq.~\ref{eq:bayes}, Figure \ref{fig:schematic-model}, red bars).
+These predictions are borne out in a standard model of Bayesian learning (Eq.~\ref{eq:bayes}, Figure \ref{fig:schematic-model}, red bars)\footnote{
+In our modeling context, the instructive RSA model and the standard Bayesian learning model do not make different predictions. This is because the utterances (``The event happened.''. ``The event did not happen.'') are perfectly informative about the Question Under Discussion, which is ``Did the event happen?''.
+}.
 %\ndg{does the model predict a differences between observation and pedagogy? (it should.) cite shafto, goodman, frank for this. indicate more clearly the difference between the istructive context and the misaligned CG one... indicate why and when the listener has to accommodate by adjusting prior beliefs in order to make a statement cooperative.}
 %\mht{it does not; this may be because the utterances ("b", or "not b") are perfectly informative about the world...}
 
@@ -344,7 +346,7 @@ In our first experiment, we tested the following qualitative predictions of the 
 
 \begin{enumerate}
 \item Backfiring should occur in conversational contexts in which a speaker presupposes common ground that a listener actually lacks (e.g., when a speaker states, ``My student turned in his homework today," to a listener who is not aware of the student's typical habits; Eq.~\ref{eq:L1});
-\item Backfiring should \emph{not} occur in conversational contexts in which a listener makes it clear that she is uncertain about a habit (e.g., when the listener explicitly asks the speaker if the student turned in his homework; Eq.~\ref{eq:L1mod}); and
+\item Backfiring should \emph{not} occur in conversational contexts in which a listener makes it clear that she is uncertain about a habit (e.g., when the listener explicitly asks the speaker if the student turned in his homework; Eq.~\ref{eq:S1mod}); and
 \item Backfiring should \emph{not} occur in non-conversational contexts (e.g., when the listener simply observes that the speaker's student turned in his homework; Eq.~\ref{eq:bayes}).
 \end{enumerate}
 %ask whether directly manipulating the common ground between interlocutors and the  influences adults' interpretations of affirmations (e.g., \emph{My roommate did her dishes today.}).
@@ -747,7 +749,8 @@ While these two statements would certainly be useful and informative for those w
 Stating, ``Girls can do math'', for instance, could potentially signal to a naive listener that many people believe that girls \emph{cannot} do math, and that there are legitimate reasons to hold this belief (e.g., perhaps girls tend to be less intelligent than boys).  
 As a result, these listeners might walk away doubting girls' ability to do math more than they would have otherwise.  One way of avoiding this possibility, as our work suggests, is to establish common ground explicitly with listeners before presenting an argument that could potentially be considered uninformative by some subset of the audience.
 
-Understanding when and why utterances backfire is therefore important not only for developing theories of language, but also for effectively promoting social change.
+Speakers use language to try to convince listeners about what the world is like, but this isn't always successful. 
+Understanding when and why utterances backfire is important not only for developing theories of language, but also for effectively promoting social change.
 
 %In the present study, our focus was on affirmations of past events (e.g., ``My student turned in his homework on time''; ``The gym had clean towels today''), as a first step towards modeling this backfiring effect of language.  
 %Further work is necessary to determine how other kinds of affirmations, such as generic claims, might also backfire.
