@@ -1,6 +1,6 @@
 // time webppl bda_backfire_habits.wppl --require mht --require utils
 
-var prior_mhiter = 50000
+var prior_mhiter = 100000
 var prior_burn = prior_mhiter/2
 var prior_incrOpts = {burn:prior_burn, verbose: true, verboseLag: prior_mhiter/20}
 var priorERP = IncrementalMH(priorModel, prior_mhiter, prior_incrOpts)
@@ -93,8 +93,8 @@ var addGuessingAndScale = function(erp, phi){
 	Enumerate(function(){
 		var guessing = flip(phi)
 		var response = guessing ? 
-					scaleFromDailyRate["5 years"]*sample(erp) : 
-					scaleTo5years[uniformDraw(["day","week","month","year","5 years"])]
+					uniformDraw([1,5,10,20])*scaleTo5years[uniformDraw(["day","week","month","year","5 years"])] :
+					scaleFromDailyRate["5 years"]*sample(erp)
 		return response
 	})
 }
@@ -114,13 +114,20 @@ var posteriorBDA = function(){
 
 	// var delta_baserate = uniform(0,20)
 
-	// var = lambda_backoff = uniform(0,0.2)
-	var backoff_scale = uniform(1,10)
+	// var backoff_scale = uniform(1,10)
 
-	var phi = uniform(0,1)
+	// var lambda_backoff = gamma(0.5,1)
+
+	var phi_1 = uniform(0,1)
+	var phi_2 = uniform(0,1)
+	var phi_3 = uniform(0,1)
+	// var phi = uniform(0,1)
+	// var phi_1 = phi
+	// var phi_2 = phi
+	// var phi_3 = phi
 	// var utterance_cost = uniform(0, 10)
 	var utterance_cost = 1
-
+	// var lambda_backoff = uniform(0,0.2)
 	// var baserate_component = discretizeBeta(action_baserate, delta_baserate)
 	foreach(items, function(i){
 
@@ -129,28 +136,37 @@ var posteriorBDA = function(){
 		var preferred_time_window = df_item[0]["pref_window"]
 
 		var backfire_responses = _.pluck(subset(df_item, "condition","communication"), "freq_5years")
-		// console.log(i + backfire_responses)
 		var observation_responses = _.pluck(subset(df_item, "condition","observation"), "freq_5years")
 		var baseline_responses = _.pluck(subset(df_item, "condition","baseline"), "freq_5years")
+		// console.log(i + backfire_responses)
 		// console.log(baseline_responses)
 
-		var habit_rate_params = sample(priorERPobject[i]["habit_rate"])
+		// var habit_rate_params = sample(priorERPobject[i]["habit_rate"])
 		var habit_strength_params = sample(priorERPobject[i]["habit_strength"])
 		// console.log("before sample prior 0 ")
-
 		// console.log(habit_rate_params)
 
-		var habit_rate = beta(
-			shape_alpha(habit_rate_params.gamma,habit_rate_params.delta),
-			shape_beta(habit_rate_params.gamma,habit_rate_params.delta)
-			)
+		// var habit_rate = beta(habit_rate_params.a,habit_rate_params.b)
+		var habit_rate = habit_strength_params.theta
+
+		var lambda_habit = habit_strength_params.rate1 / scaleFromDailyRate[preferred_time_window]
+		var lambda_backoff = habit_strength_params.rate2 / scaleFromDailyRate[preferred_time_window]
+
 
 		// habit_strength_params are on the log (times in 5 years scale)
 		// (exp ^ x) / (365*5) to get daily rate
-		var lambda_habit = Math.exp(gaussian(habit_strength_params.mu,habit_strength_params.sigma)) / (365*5)
+
+
+		// var lambda_habit = Math.exp(gaussian(habit_strength_params.mu,habit_strength_params.sigma)) / (365*5)
 		// var lambda_habit = Math.exp(habit_strength_params.mu) / (365*5)
 		// console.log(lambda_habit)
-		var lambda_backoff = lambda_habit / backoff_scale
+		// var lambda_backoff = gamma(0.5,1)
+
+		// condition(lambda_backoff < lambda_habit)
+		// var backoff_scale = uniform(1,10)
+
+		// var lambda_backoff = lambda_habit / backoff_scale
+		// var lambda_backoff = uniform(0,lambda_habit)
 
 		// console.log('after sample prior 1')
 
@@ -169,7 +185,7 @@ var posteriorBDA = function(){
 		var backfireERP = listener1("It happened.", prior_parameters,speaker_optimality)
 		// console.log("RSA complete")
 		// var linked_backfire = rateLinkingFunctionWithGuessing(backfireERP,phi, preferred_time_window)
-		var erpWithGuessing = addGuessingAndScale(backfireERP, phi)
+		var erpWithGuessing = addGuessingAndScale(backfireERP, phi_1)
 		// console.log(linked_backfire)
 
 		var backfiringScr = sum(map(function(d){
@@ -181,11 +197,12 @@ var posteriorBDA = function(){
 		// console.log(i + " " + backfiringScr)
 
 
-		// var observationERP = literalBayesian("It happened.",prior_parameters, false)
+		var observationERP = literalBayesian("It happened.",prior_parameters, false)
 
-		var observationERP = altlistener1("It happened.",prior_parameters, speaker_optimality)
+		// var observationERP = altlistener1("It happened.",prior_parameters, speaker_optimality)
 
-		var obsWithGuessing = addGuessingAndScale(observationERP, phi)
+		var obsWithGuessing = addGuessingAndScale(observationERP, phi_2)
+
 		var observationScr = sum(map(function(d){
 			var scr = scorePoissonLink(obsWithGuessing, d)
 			return scr
@@ -194,7 +211,7 @@ var posteriorBDA = function(){
 		// 	// console.log("after observation")
 
 		var baselineERP = literalBayesian("It happened.",prior_parameters, true)
-		var baseWithGuessing = addGuessingAndScale(baselineERP, phi)
+		var baseWithGuessing = addGuessingAndScale(baselineERP, phi_3)
 		var baselineScr = sum(map(function(d){
 			var scr = scorePoissonLink(baseWithGuessing, d)
 			return scr
@@ -220,6 +237,13 @@ var posteriorBDA = function(){
 		// factor(forcedspeakScr)
 		// factor(backfiringScr)
 		factor(backfiringScr+baselineScr+observationScr)
+		// factor(baselineScr)
+
+		// query.add(["parameter", "lambda_backoff", i],  lambda_backoff)
+		// query.add(["parameter", "backoff_scale", i],  backoff_scale)
+
+	// query.add(["parameter", "backoff_rate", "NA"],  lambda_backoff)
+
 
 		query.add(["predictive_daily","communication", i], expectation(backfireERP))
 		query.add(["predictive_5yr","communication_plusGuess", i], expectation(erpWithGuessing))
@@ -231,10 +255,16 @@ var posteriorBDA = function(){
 		query.add(["predictive_5yr","observation_plusGuess", i], expectation(obsWithGuessing))
 
 	})
+		// query.add(["parameter", "lambda_backoff", "NA"],  lambda_backoff)
+	// query.add(["parameter", "backoff_scale", "NA"],  backoff_scale)
+	// query.add(["parameter", "backoff_rate", "NA"],  lambda_backoff)
+	// query.add(["parameter", "cost", "NA"],  cost)
 
 	query.add(["parameter", "speaker_optimality", "NA"], speaker_optimality)
-	query.add(["parameter", "backoff_scale", "NA"],  backoff_scale)
-	query.add(["parameter", "phi", "NA"],  phi)
+	// query.add(["parameter", "phi", "NA"],  phi)
+	query.add(["parameter", "phi_com", "NA"],  phi_1)
+	query.add(["parameter", "phi_obs", "NA"],  phi_2)
+	query.add(["parameter", "phi_base", "NA"],  phi_3)
 	// query.add(["parameter", "alternative_rate", "NA"], action_baserate)
 	// query.add(["parameter", "alternative_delta", "NA"], delta_baserate)
 
@@ -248,7 +278,9 @@ var incrOpts = {burn:burn, verbose: true, verboseLag: mhiter/20}
 var posteriorERP = IncrementalMH(posteriorBDA, mhiter, incrOpts)
 
 console.log("inference complete --- writing to file")
-var outFile = "results/bda-backfire-minimal-allconds-obsL1-IncrMH" + mhiter/1000 + "k-b" + burn/1000 + "k" +"_priorMH" + prior_mhiter/1000 + "k-b" + prior_burn/1000 + "ka.csv"
+// var outFile = "results/bda-backfire-minimal-allconds-backoffscaleByItem-obsL1-IncrMH" + mhiter/1000 + "k-b" + burn/1000 + "k" +"_priorMH" + prior_mhiter/1000 + "k-b" + prior_burn/1000 + "ka.csv"
+var outFile = "results/bda-backfire-minimal-allconds-2poissonPriors-mixTheta-gamma1-10-3phi-IncrMH" + mhiter/1000 + "k-b" + burn/1000 + "k" +"_priorMH" + prior_mhiter/1000 + "k-b" + prior_burn/1000 + "ka.csv"
+// var outFile = "results/bda-backfire-minimal-allconds-backoffrateGammaByItem-0phi-IncrMH" + mhiter/1000 + "k-b" + burn/1000 + "k" +"_priorMH" + prior_mhiter/1000 + "k-b" + prior_burn/1000 + "ka.csv"
 // var outFile = "results/bda-backfire-inferStrengths-IncrMH" + mhiter/1000 + "k-b" + burn/1000 + "k" +"_priorMH" + prior_mhiter/1000 + "k-b" + prior_burn/1000 + "k.csv"
 var header = "Type,Condition,Item,Value"
 
