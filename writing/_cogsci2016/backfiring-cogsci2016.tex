@@ -651,10 +651,11 @@ Twenty-two participants were excluded from the analyses for failing the instruct
 We analyzed the data by normalizing the elicited rates to the scale of average number of times in a day. For example, if a participant rated that a target person goes on a hike once a month, that was normalized to the daily rate of 0.03.  
 
 We test the backfiring effect by comparing the rate implied the utterance in a communicative context to the rate implied in the observational context, as a function of the baseline rate.
-We first compute the mean rate from the baseline condition as use that as a predictor crossed with condition (Backfire vs. Observational) in a mixed-effects linear regression, with random by-participant and by-item effects of intercept.
-After centering the predictors, we observe a main effect of baseline rate ($\beta = 1.32; SE = 0.18; t(25) = 7.1; p <0.001$), meaning that as the baseline rate increases so too do the rates in the observation and backfiring conditions. We also observe a main effect of condition ($\beta = 0.24; SE = 0.05; t(75) = 4.3;p <0.001$), with the observation condition in general implying a higher rate than the backfiring condition. Crucially, we observe an interaction between base line rate and condition ($\beta = 0.85; SE = 0.12; t(1975) = 7.08; p <0.001$), with the observation condition having a higher implied rate than the backfiring condition, with the difference growing \emph{as the baseline rate increases}. 
+We first compute the mean rate from the baseline condition and use that as a predictor crossed with condition (Backfire vs. Observational) in a mixed-effects linear regression, with random by-participant and by-item effects of intercept.
+After centering the predictors, we observe a main effect of baseline rate ($\beta = 1.32; SE = 0.18; t(25) = 7.1; p <0.001$), meaning that as the baseline rate increases so too do the rates in the observation and backfiring conditions. We also observe a main effect of condition ($\beta = -0.24; SE = 0.05; t(75) = -4.3; p <0.001$), with the backfiring condition in general implying a lower rate than the observation condition. Crucially, we observe an interaction between baseline rate and condition ($\beta = -0.85; SE = 0.12; t(1975) = -7.08; p <0.001$), with the backfiring condition having a lower implied rate than the observation condition, with the difference growing \emph{as the baseline rate increases}. 
 
-
+\mht{My plan is to include some schematic model curves as or in Figure 1, to show that we predict these curves... The quantitive model analysis section will be similar to how I've laid out below. The only issue with that is, because we are borrowing the priors from this other experiment, our quantitative model fit is decent (but not exceptional) AND I think because of the noise in our priors, the model parameters get adjusted in such a way that diminishes the backfiring effect (some backfiring, but it doesn't show up strongly). So items like ``drinks coffee'' have weak backfiring with the model parameters that best fit the data beucase other items (like ``goes on hikes'') have a lot of noise and the model is adjusting parameters to accommodate them.  With the right priors (down the road), I think this issue can be resolved.
+}
 %Linear mixed model fit by REML t-tests use Satterthwaite approximations to degrees of freedom [
 %lmerMod]
 %Formula: daily_prob ~ cbase_rate * ccondition + (1 | workerid) + (1 |      item)
@@ -688,25 +689,22 @@ After centering the predictors, we observe a main effect of baseline rate ($\bet
 %ccondition  0.000  0.000        
 %cbs_rt:ccnd 0.000  0.000  0.000 
 
-The backfiring effect can be observed in a number of ways.
-We would have evidence for backfiring if the rate implied by the utterance in a communicative context is:
-\begin{enumerate}
-\item Less frequent than not knowing anything about the person (Backfire vs. Baseline)
-\item Less frequent than you would think had you \emph{observed} the event (Backfire vs. Observation)
-\item Less frequent than not knowing anything about the person except that they have done it at least once in the past.\footnote{The distinction from (1) is potentially important for items such as ``smokes cigarettes'', wherein the typical person (Baseline) may not smoke at all. 
-This may be only subtly different from (2).
-}
-\end{enumerate}
-
-To test 
+%The backfiring effect can be observed in a number of ways.
+%We would have evidence for backfiring if the rate implied by the utterance in a communicative context is:
+%\begin{enumerate}
+%\item Less frequent than not knowing anything about the person (Backfire vs. Baseline)
+%\item Less frequent than you would think had you \emph{observed} the event (Backfire vs. Observation)
+%\item Less frequent than not knowing anything about the person except that they have done it at least once in the past.\footnote{The distinction from (1) is potentially important for items such as ``smokes cigarettes'', wherein the typical person (Baseline) may not smoke at all. 
+%This may be only subtly different from (2).
+%}
+%\end{enumerate}
+%
+%To test 
 
 %\item Less frequent that someone who ``Does X'' (habitually; e.g. ``John smokes'' vs. ``John smoked a cigarette today.'', not measured)
 
 
-
-3 possible scatter plots are in Figure \ref{fig:expt2}.
-
-\subsection{Model analysis}
+\subsection{Quantitative model analysis}
 
 In order to quantitatively compare the models to the empirical data, the prior distribution over habits $P(h)$ and the habit strength $P(h \mid b)$ need to be measured. 
 We use previously collected data from an unrelated experiment to estimate these model components. 
@@ -724,7 +722,7 @@ The data is thus distributed as: $d_{prior} \sim \theta \cdot \text{Poisson}(\la
 Having fit the prior data empirically, the RSA model has 1 parameter: the speaker optimality parameter $\alpha$ in Eq.~\ref{eq:S1}, and the Bayesian observation model has 0 parameters. 
 Like the prior data, we assume the data in Expt.~2 is generated by a Poisson distribution with rate parameter given with probability according to the probabilisitic models. \mht{Not totally sure how to write this in math...}
 
-We include in our data analysis model an alternative model of the data generating process: random behavior. This sub-model explains data points that deviate largely from our models and is important to include to get reliable es
+%We include in our data analysis model an alternative model of the data generating process: random behavior. This sub-model explains data points that deviate largely from our models and is important to include to get reliable es
 
 %
 %\begin{minipage}{0.5 \textwidth} \small
