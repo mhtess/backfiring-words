@@ -226,14 +226,14 @@ In Experiment 2, we harness participants' intuitive theories of event frequencie
 %One important prediction of this theory, then, is that this backfiring effect should disappear if the listener's uncertainty about what is in common ground is made explicit.  If, for instance, an official needed to know whether Nixon was a crook as part of a background check for serving as President, and Nixon replied, ``No, I am not a crook," then the utterance would be established as semantically informative for the listener.  As a result, it would no longer presuppose any accusation against Nixon.  Another important prediction is that the strength of the backfiring effect should vary according to the strength of the prior beliefs that are redundant with the utterance.  The more strongly one believes that people by default are not crooks, for example, the less informative the statement, ``I am not a crook," should be.
 
 
-Observing an individual participate in an event can be taken as evidence for that individual \emph{typically} participating in that event, or having the habit $h$ of doing behavior $b$. 
+Observing an individual perform an action can be taken as evidence that that individual \emph{typically} performs that action, or has the habit $h$ of doing behavior $b$. 
 %event occur multiple times can be evidence for an underlying cause that could reliably give rise to the event.
 %\red{An event that occurs multiple times can suggest that there is an underlying cause that reliably gives rise to the event?  Do we want a concrete example here?  If a bus shows up late to a bus stop three days in a row, for example, then it is probably part of a poorly run public transportation system.}
 %Indeed, observing just one instance of an event is relatively stronger evidence for a reliable cause than an unreliable cause, all else being equal.
 %\red{Indeed, an event that occurs only once is relatively stronger evidence for a reliable cause than an unreliable cause, all else being equal?}
 %Similarly, observing a behavior $b$ in a person can be taken as evidence for an underlying habit $h$. 
 For example, seeing a student turn in her homework provides some evidence that the student usually turns in her homework. 
-It is a more likely explanation than the alternative.
+It is a more likely explanation than the alternative (here, that the student does \emph{not} typically turn in her homework).
 
 %For example, if you are waiting for a bus that ends up being 15 minutes late, it is reasonable to fear it may be late the next day; public transit in this town may be unreliable. 
 %disembark in a novel location to find it raining, it is reasonable to fear it may be raining in five minutes. 
@@ -246,8 +246,8 @@ P(h \mid b) \propto P(b \mid h) P(h) \label{eq:bayes}
 As a habit is more likely to give rise to the behavior --- as $P(b \mid h)$ gets large --- so too does the behavior become more indicative of the habit, assuming the prior probabilities are constant. 
 
 Knowledge about an event can also come from a helpful interlocutor.
-When a speaker accurately represents the listener's prior knowledge (e.g., the listener and speaker are close friends; or the listener makes explicit her prior knowledge to the speaker by asking ``Did $b$ happen?'', ``Did your student turn in his homework today?''), communicating the behavior (e.g. ``My student turned in his homework today'') can lead the listener to believe the underlying habit (here, that the student \emph{typically} turns in his homework) more strongly. 
-However, when a speaker misrepresents the listener's knowledge (e.g., the speaker believes the listener knows something that she has in fact forgotten, or the listener is overhearing a conversation between friends), communicating the behavior might lead the listener to believe the habit is \emph{less} likely.  If the student did usually turn in his homework, then the utterance---``My student turn in his homework today.'''---would be uninformative.  
+When a speaker accurately represents the listener's prior knowledge (e.g., the listener and speaker are close friends; or the listener makes explicit her prior knowledge to the speaker by asking, ``Did $b$ happen?'', ``Did your student turn in his homework today?''), communicating the behavior (here, ``My student turned in his homework today'') can lead the listener to believe the underlying habit (here, that the student \emph{typically} turns in his homework) more strongly. 
+However, when a speaker misrepresents the listener's knowledge (e.g., the speaker believes the listener knows something that the listener has actually forgotten, or the listener is overhearing a conversation between friends), communicating the behavior might lead the listener to believe the habit is \emph{less} likely.  If the student did usually turn in his homework, then the utterance---``My student turned in his homework today.'''---would be uninformative.
 
 
 
@@ -262,7 +262,7 @@ However, when a speaker misrepresents the listener's knowledge (e.g., the speake
 %If a listener believes that the speaker is not representing her uncertainty correctly (e.g., because the listener has forgotten this bit of information or because the listener is overhearing a conversation), she can use the speech-act to help resolve what the speaker believes to be in common ground. 
 %\red{we might still want a concrete example here, but can add it later}
 
-We incorporate these inferences into Rational Speech-Acts framework \cite{Frank2012, Goodman2013}, as a lifted variable inference akin to the treatment by \citeA{Degen2015} and discussed in detail in \citeA{GoodmanLassiter}\footnote{Briefly, a ``lifted'' variable is a variable of uncertainty over which a pragmatic listener reasons. The inference incorporates general pragmatic principles of communication, by assuming the speaker intended a particular value of that random variable.}.
+We incorporate these inferences into the Rational Speech-Acts framework \cite{Frank2012, Goodman2013}, as a lifted variable inference akin to the treatment by \citeA{Degen2015} and discussed in detail in \citeA{GoodmanLassiter}\footnote{Briefly, a ``lifted'' variable is a variable of uncertainty over which a pragmatic listener reasons. The inference incorporates general pragmatic principles of communication, by assuming the speaker intended a particular value of that random variable.}.
 %
 The \textbf{backfiring} RSA model is:  
 \begin{eqnarray}
@@ -273,14 +273,14 @@ The \textbf{backfiring} RSA model is:
 %
 We assume the set of utterances are remarks about the event or behavior occurring or not --- $b$ or $\neg b$--- as well as the possibility of not remarking on the situation, a \emph{null} utterance that has no information content.  
 
-The prior probability of a behavior depends on the habits of the person. For demonstrative purposes, we assume that the if the habit $h$ is present, the behavior has a high probability of occurring; if the habit is absent, the probability is lower. 
+The prior probability of a behavior depends on the habits of the person. For demonstrative purposes, we assume that if the habit $h$ is present, the behavior has a high probability of occurring; if the habit is absent, the probability is lower. 
 \begin{eqnarray}
 P(b \mid h) = \begin{cases}
 \lambda_{h}  & \text{if } h\\
 \lambda_{\neg h}  & \text{if not } h
 \end{cases} \label{eq:hab}
 \end{eqnarray}
-where $\lambda_{h} > \lambda_{\neg h}$.
+where $\lambda_{h} > \lambda_{\neg h}$. \red{should this bit to the left be reformatted?}
 The model is implemented in the probabilistic programming language WebPPL \cite{dippl}, and a simple version can be seen at \mht{add forest page}.
 
 \begin{figure}
@@ -291,12 +291,12 @@ The model is implemented in the probabilistic programming language WebPPL \cite{
     Observing or hearing a proposition when speaker and listener share common ground provides evidence for the underlying habit (green and red bars $> 0$). 
     When common ground is not shared, hearing a proposition provides evidence \emph{against} the underlying habit (blue bars $<0$).
     Additionally, when the prior beliefs about a habit are least informed (prior probability around 0.5), a single observation of the behavior carries a lot of evidence, relative to when prior beliefs are more informed. 
-    The opposite is true when words backfire: The stronger the \emph{a priori} belief in the habit, the more the utterance conveys evidence against that habit. }
+    The opposite is true when words backfire: the stronger the \emph{a priori} belief in the habit, the more the utterance conveys evidence \emph{against} that habit. }
   \label{fig:schematic-model}
 \end{figure}
 
 
-The model predicts that when a speaker does not represent a listener's beliefs accurately, utterances affirming an event will be interpreted as expressing atypical behavior by implicitly implying the habit is not present ($\neg h$).
+The model predicts that when a speaker does not represent a listener's beliefs accurately, utterances affirming an event will be interpreted as expressing atypical behavior by implicitly implying that the habit is not present ($\neg h$).
 The statement, ``My student turned in his homework today,'' for instance, should suggest that the student does \emph{not} usually turn in his homework (Figure \ref{fig:schematic-model} \mht{figure to be revised}).
 %This occurs when the speaker does not represent the listener's beliefs accurately.
 %The strength of this inference is predicted to be modulated the listener's \emph{a priori} belief in the habit; the stronger the listener believes it to be the case that the roommate usually washes her dishes, the more the utterance \emph{My roommate washed her dishes today} will backfire. 
@@ -304,7 +304,7 @@ The statement, ``My student turned in his homework today,'' for instance, should
 \subsection{Alternative models}
 
 The backfiring inference depends critically on a misunderstanding of common ground. 
-If a listener explicitly asks, for example, ``Did your student turn in his homework today?'' then the speaker will learn that the listener is unsure of the student's habits\footnote{It is also important that the question be asked for plausible reasons that do not imply that the listener believes the habit to be absent (i.e., that the student doesn't usually turn in his homework).}.  As a result, the response, ``My student turned in his homework today,'' will become semantically informative, no longer presupposing the listener knows about the student's habits.
+If a listener explicitly asks, for example, ``Did your student turn in his homework today?'' then the speaker will learn that the listener is unsure of the student's habits\footnote{It is also important that the question be asked for plausible reasons that do not imply that the listener believes the habit to be absent (i.e., that the student doesn't usually turn in his homework).}.  As a result, the response, ``My student turned in his homework today,'' will become semantically informative, no longer presupposing that the listener knows about the student's habits.
 Figure \ref{fig:schematic-model} (green bars) shows what happens when the speaker and listener are both aware of the listener's knowledge.
 This is more akin to pedagogical communication, where teacher and learner are on the same page. 
 The \textbf{instructive} RSA model is:
@@ -316,10 +316,10 @@ The \textbf{instructive} RSA model is:
 \mht{double check}
 
 Another context in which we would not expect evidence to backfire is observational learning.
-Here, we would expect observing the student turning in his homework to be taken as evidence that he usually does his homework. 
+Here, we would expect observing the student turning in his homework to be taken as evidence that he usually \emph{does} do his homework. 
 These predictions are borne out in a standard model of Bayesian learning (Eq.~\ref{eq:bayes}, Figure \ref{fig:schematic-model}, red bars).
-\ndg{does the model predict a differences between observation and pedagogy? (it should.) cite shafto, goodman, frank for this. indicate more clearly the difference between the istructive context and the misaligned CG one... indicate why and when the listener has to accommodate by adjusting prior beliefs in order to make a statement cooperative.}
-\mht{it does not; this may be because the utterances ("b", or "not b") are perfectly informative about the world...}
+%\ndg{does the model predict a differences between observation and pedagogy? (it should.) cite shafto, goodman, frank for this. indicate more clearly the difference between the istructive context and the misaligned CG one... indicate why and when the listener has to accommodate by adjusting prior beliefs in order to make a statement cooperative.}
+%\mht{it does not; this may be because the utterances ("b", or "not b") are perfectly informative about the world...}
 
 %This captures the interesting issue in communicative situations wherein if an event often occurs, then----assuming the listener and speaker both have this knowledge in common ground---it is not informative to remark on it. 
 %Thus, a speaker who deliberately remarks ``My roommate did her dishes today.'' should believe that usually her roommate does not do her dishes, and believe his listener to believe this as well. 
@@ -333,7 +333,7 @@ These predictions are borne out in a standard model of Bayesian learning (Eq.~\r
 
 %\ndg{motivate experiment more clearly in terms of the modeling, and in terms of advances over previous work...}
 
-In our first experiment, we tested the qualitative predictions of the three models (backfiring, instructive, and observation)
+In our first experiment, we tested the following qualitative predictions of the three models (backfiring, instructive, and observation):
 
 \begin{enumerate}
 \item Backfiring should occur in conversational contexts in which a speaker presupposes common ground that a listener actually lacks (e.g., when a speaker states, ``My student turned in his homework today," to a listener who is not aware of the student's typical habits; Eq.~\ref{eq:L1});
