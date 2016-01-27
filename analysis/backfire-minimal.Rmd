@@ -71,7 +71,10 @@ with(c %>% filter(pass==0), table(condition, response))
 d <- left_join(d,c %>% select(workerid, pass)) %>% 
   filter(pass==1) %>%
   mutate(daily_prob = freq_5years / (365*5))
-
+d.windows<-d %>% 
+  group_by(item) %>%
+  summarize(pref_window=names(table(timeWindow))[which.max(table(timeWindow))])
+  
 
 
 ggplot(d, aes(x = logfreq, fill=condition))+
@@ -106,6 +109,12 @@ d0<-d %>%
                  n_times*adjustTo5Years[[as.character(timeWindow)]]/
                    (adjustTo5Years[[as.character(pref_window)]]))) %>%
   mutate(rounded_ntimes_prefwindow = round(ntimes_prefwindow))
+
+
+ggplot(d0 %>% filter(condition == 'baseline'), 
+       aes(x = ntimes_prefwindow, fill = pref_window))+
+  geom_histogram()+
+  facet_wrap(~item, scales='free')
 
 d0<- d0[complete.cases(d0),]
 
@@ -321,14 +330,16 @@ ggsave("~/Documents/research/backfiring-words/analysis/figures/minimal-1-dayrate
 ```{r}
 
 filePath <- "~/Documents/research/backfiring-words/models/results/"
-prefix <-"bda-backfire-minimal-IncrMH"
-#bda-backfire-minimal-IncrMH1k-b0.5k_priorMH10k-b5ka.csv
+#prefix <-"bda-backfire-minimal-allconds-backoffByItem-obsL1-IncrMH"
+#prefix <-"bda-backfire-minimal-allconds-backoffrateGamma0.5_1-0phi-IncrMH"
+prefix<- "bda-backfire-minimal-allconds-2poissonPriors-mixTheta-gamma1-10-3phi-IncrMH"
+#prefix <-"bda-backfire-minimal-allconds-IncrMH"
 samples <- 50000
 burn <- samples / 2
-priorsamples <- 50000
+priorsamples <- 100000
 priorburn <- priorsamples / 2
 m.samples<- data.frame()
-i = "b"
+i = "a"
 #for (i in c("a", "b")){
   m<-read.csv(paste(filePath, prefix, 
                      samples/1000, "k-b", 
@@ -341,23 +352,26 @@ i = "b"
   print(i)
 #}
 m.params <- m.samples %>% filter(Type =='parameter')
-m.pred <- m.samples %>% filter(Type == 'predictive_5yr')
+m.pred <- m.samples %>% filter(!(Type == 'parameter'))
 
 ```
 
 
 ```{r tj3.model.params}
 qplot(data=m.params, x= Value, geom='histogram')+
-  facet_wrap(~Condition, scales='free')
+  facet_wrap(~Condition+Item, scales='free')
 
 m.params %>%
-  group_by(Condition) %>%
+  group_by(Condition,Item) %>%
     summarise(MAP = estimate_mode(Value),
             credHigh = HPDhi(Value),
             credLow = HPDlo(Value)) 
 ```
 
-
+```{r}
+d.daily <- d0 %>% group_by(condition, item) %>%
+   multi_boot_standard(column = "daily_prob")
+```
 
 ```{r tj2.model.pred}
 
@@ -369,14 +383,19 @@ m.predStats <- m.pred %>%
   rename(item = Item,
          condition = Condition) %>%
   ungroup() %>%
-  filter(condition == "communication_plusGuess") %>%
-  mutate(condition = factor(condition, labels=c("communication")))
+#   filter(condition %in% c("communication_plusGuess",
+#                           "observation_plusGuess",
+#                           "baseline_plusGuess")) %>%
+#   mutate(condition = factor(condition, levels=c("communication_plusGuess",
+#                           "observation_plusGuess",
+#                           "baseline_plusGuess"),  
+#                           labels=c("communication", "observation", "baseline")))
+  filter(condition %in% c("communication", "observation", "baseline"))
 
 
-d.daily <- d0 %>% group_by(condition, item) %>%
-  multi_boot_standard(column = "daily_prob")
-d.5year <- d0 %>% group_by(condition, item) %>%
-  multi_boot_standard(column = "freq_5years")
+
+# d.5year <- d0 %>% group_by(condition, item) %>%
+#   multi_boot_standard(column = "freq_5years")
 
 
 # %>%
@@ -384,22 +403,23 @@ d.5year <- d0 %>% group_by(condition, item) %>%
 #                             levels=c("baseline", "observation", "backfire"),
 #                             labels=c("baseline", "observation", "communication")))
 
-m.d<- left_join(m.predStats %>%
-                  mutate(MAP = MAP / (365*5),
-                         credLow = credLow / (365*5),
-                         credHigh = credHigh / (365*5))
-                  , d.daily)
-m.d<- left_join(m.predStats, d.5year)
+# m.d<- left_join(m.predStats %>%
+#                   mutate(MAP = MAP / (365*5),
+#                          credLow = credLow / (365*5),
+#                          credHigh = credHigh / (365*5))
+#                   , d.daily)
+# m.d<- left_join(m.predStats, d.5year)
+m.d<- left_join(m.predStats, d.daily)
 
 plt2<-ggplot(m.d,aes(x=MAP, y = mean, fill=condition))+
   geom_abline(intercept = 0, slope = 1, lty = 2)+
   geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper))+
   geom_errorbarh(aes(xmin=credLow, xmax = credHigh))+
     geom_point(shape=21, size=4)+
-  xlim(-0.05,1.05)+
-  ylim(-0.05,1.05)+
+  xlim(-0.05,2.05)+
+  ylim(-0.05,2.05)+
   theme_paper()+
- # coord_fixed()+
+  coord_fixed()+
   xlab("\n Model posterior predictive")+
   ylab("Human \n")+
   theme(legend.title = element_text(hjust=0),
@@ -407,12 +427,13 @@ plt2<-ggplot(m.d,aes(x=MAP, y = mean, fill=condition))+
         legend.direction="horizontal")+
   facet_wrap(~condition)
 
+
 plt2
 
-ggplot(m.d, aes(x=condition, y=MAP, ymin = credLow, ymax=credHigh, fill=condition))+
-  geom_bar(stat='identity', position=position_dodge(), color = 'black')+
-  facet_wrap(~item)+
-  geom_errorbar(position=position_dodge())
+# ggplot(m.d, aes(x=condition, y=MAP, ymin = credLow, ymax=credHigh, fill=condition))+
+#   geom_bar(stat='identity', position=position_dodge(), color = 'black')+
+#   facet_wrap(~item)+
+#   geom_errorbar(position=position_dodge())
 
 # 
 # plt2
@@ -423,8 +444,17 @@ ggplot(m.d, aes(x=condition, y=MAP, ymin = credLow, ymax=credHigh, fill=conditio
 # 
 # plt2
 # # 
-# with(m.d, cor(MAP, mean))^2
-# 
+with(m.d, cor(MAP, mean))^2
+ 
+with(m.d %>%
+      filter(item!="smokes cigarettes"), 
+    cor(MAP, mean))^2
+
+ 
+with(m.d %>%
+        filter(condition=="communication"), 
+      cor(MAP, mean))^2
+ # 
 # with(m.d, cor(MAP, mean, use="complete.obs"))^2
 
 # with(m.d %>% filter(logFreq >= 4.5),
@@ -438,9 +468,9 @@ ggplot(m.d, aes(x=condition, y=MAP, ymin = credLow, ymax=credHigh, fill=conditio
 #         plot=plt3)#"talks/lab-mtg-120115/images/tj1-md-scatter-3colors.pdf")
 # # 
 # 
-#  m.d <- m.d %>%
-#    mutate(sqerr = (MAP-mean.x)^2)
-#  View(m.d)
+  m.d <- m.d %>%
+    mutate(sqerr = (MAP-mean)^2)
+ # View(m.d)
 ```
 
 ```{r}
@@ -477,9 +507,9 @@ ggplot(m.obs.comm, aes(x=obs_mean, xmin = obs_ci_lower, xmax = obs_ci_upper,
   geom_errorbar()+
   geom_errorbarh()+
   geom_abline(intercept = 0, slope = 1, lty = 3)+
-  coord_fixed()+
-  xlim(-0.05,1.05)+
-  ylim(-0.05,1.05)
+#  coord_fixed()+
+#  xlim(-0.05,1.05)+
+#  ylim(-0.05,1.05)
 
 with(m.obs.comm, cor(obs_mean, com_mean))
 

@@ -1,16 +1,27 @@
-// webppl hab-priors.wppl --require mht --require utils
+// webppl hab-priors.wppl --require mht
+
+var avoidEnds = function(response){
+    return response<=0 ? 0.001 : response>=1 ? 0.999 : response
+}	
 
 var fpath = "/Users/mht/Documents/research/backfiring-words/models/data/"
 
 var existData = mht.readCSV(fpath+"habprior2-existence.csv").data
-var waitData = mht.readCSV(fpath+"habprior2-logdayRate.csv").data
+var waitData = mht.readCSV(fpath+"habprior2-timesPerPrefWindow.csv").data
 
-var df_e = subset(dataFrame(existData, ["val"]), "gender", "female")
-var df_w = subset(dataFrame(waitData, ["val"]), "gender", "female")
+var df_e0 = dataFrame(existData, ["val"])
 
-var items = _.uniq(_.pluck(df_e, "item"))
+var df_e = map(function(x){
+	return _.extend(x, {
+		avoided_endval: avoidEnds(x["val"])
+	})
+}, df_e0)
+
+var df_w = dataFrame(waitData, ["ntimes_pref_rounded"])
+
+var items = _.uniq(_.pluck(df_w, "item"))
 // var items = ["wears socks"]
-var genders = _.uniq(_.pluck(df_e, "gender"))
+var genders = _.uniq(_.pluck(df_w, "gender"))
 
 
 var header = "Item,Parameter,Value"
@@ -18,8 +29,12 @@ var samples = 100000
 var burn = samples/2
 var incrOpts = {burn:burn, verbose:true, verboseLag: samples/10}
 // var mcmcOpts = {samples:samples/2, burn:burn, verbose:false}
-var outfile1 = "results/habpriors2-female-existence-logdayRate-incrMH" + samples/1000 + "k_burn" + burn/1000 + "ka.csv"
+var outfile1 = "results/habpriors2-2poisson-prefWindow-incrMH" + samples/1000 + "k_burn" + burn/1000 + "kb.csv"
 // 
+
+var shape_alpha = function(gamma,delta){return gamma * delta}
+var shape_beta = function(gamma,delta){return (1-gamma) * delta}
+
 
 var questions = ["Q1","Q2"]
 
@@ -37,21 +52,23 @@ var priorModel = function(){
 				if (q=="Q1") {
 
 					// var genderData_e = subset(df_e, "gender", "female")
+					// console.log(itemData_e)
 
-					// % of Americans question
+			 //	% of Americans question
 					var gamma = uniform(0,1)
 					var delta = uniform(0,50)
 
+					var shape_a =shape_alpha(gamma,delta)
+					var shape_b = shape_beta(gamma,delta)
+
 					var scr = sum(map(function(d){
-						return betaERP.score([shape_alpha(gamma,delta),
-											 shape_beta(gamma,delta)], 
-											 avoidEnds(d))
-					}, _.pluck(itemData_e, "val")))
+						return betaERP.score([shape_a, shape_b], d)
+					}, _.pluck(itemData_e, "avoided_endval")))
 
 					factor(scr)
 					// console.log("q1" + scr)
 
-					var predictiveExistence = beta(shape_alpha(gamma,delta), shape_beta(gamma,delta))
+					var predictiveExistence = beta(shape_a, shape_b)
 
 					query.add([i,"rate_gamma"], gamma)
 					query.add([i,"rate_delta"], delta)
@@ -60,19 +77,29 @@ var priorModel = function(){
 				} else {
 					// var genderData_w = subset(df_w, "gender", "female")
 
-					var gamma_2 = uniform(0,1)
-					var delta_2 = uniform(0,50)
-
+					var theta = uniform(0,1)
+					var lambda_1 = i == "smokes cigarettes" ? gamma(1,100) : gamma(1, 5)
+					var lambda_2 = i == "smokes cigarettes" ? gamma(1,100) : gamma(1, 5)
+					// var lambda_1 =  gamma(1, 5)
+					// var lambda_2 =  gamma(1, 5)
 					// var mu = uniform(0,10)
 					// var sigma = uniform(0,20)
 
+
 					var scr2 = sum(map(function(d){
-						return betaERP.score([
-											 shape_alpha(gamma_2,delta_2),
-											 shape_beta(gamma_2,delta_2)
-											 ], 
-											 avoidEnds(d))
-					}, _.pluck(itemData_w, "val")))
+						return util.logsumexp([
+							Math.log(theta) + poissonERP.score([lambda_1], d),
+							Math.log(1-theta)+poissonERP.score([lambda_2], d)
+						])
+					}, _.pluck(itemData_w, "ntimes_pref_rounded")))
+
+					// var scr2 = sum(map(function(d){
+					// 	return betaERP.score([
+					// 						 shape_alpha(gamma_2,delta_2),
+					// 						 shape_beta(gamma_2,delta_2)
+					// 						 ], 
+					// 						 avoidEnds(d))
+					// }, _.pluck(itemData_w, "val")))
 
 
 					// var scr2 = sum(map(function(d){
@@ -83,11 +110,23 @@ var priorModel = function(){
 					
 					// console.log("q2" + scr2)
 
-					var predictiveStrength = beta(shape_alpha(gamma_2,delta_2), shape_beta(gamma_2,delta_2))
+					var firstIsGreater = lambda_1 > lambda_2
 
-					query.add([i,"strength_gamma"], gamma_2)
-					query.add([i,"strength_delta"], delta_2)
-					query.add([i,"habit_strength"], predictiveStrength)
+					var predictive = flip(theta) ? poisson(lambda_1) : poisson(lambda_2)
+
+					var primary_rate = firstIsGreater ? lambda_1 : lambda_2
+					var secondary_rate  = firstIsGreater ? lambda_2 : lambda_1
+					var mixture = firstIsGreater ? theta : 1 - theta
+					// var predictiveStrength = beta(shape_alpha(gamma_2,delta_2), shape_beta(gamma_2,delta_2))
+
+					query.add([i, "predictive"], predictive)
+					query.add([i, "primary_prob"], mixture)
+					query.add([i, "primary_rate"], primary_rate)
+					query.add([i, "backoff_rate"], secondary_rate)
+
+					// query.add([i,"strength_gamma"], gamma_2)
+					// query.add([i,"strength_delta"], delta_2)
+					// query.add([i,"habit_strength"], predictiveStrength)
 
 				}
 
