@@ -63,7 +63,7 @@
 
 \begin{abstract}
 %\ndg{abstract is too technical. start with the puzzle of how asserting a proposition can sometimes decrease its plausibility. the use of common ground here is kind of hard to follow.}
-If a friend tells you ``Jane went for a hike today", you might think Jane is the kind of person who likes to go on hikes.  
+If you are learning about Jane and a friend tells you ``Jane went for a hike today", you might think Jane is the kind of person who likes to go on hikes.  
 However, ``Jane wore shoes today'' seems to imply the opposite. 
 In this case, listeners infer that Jane does \emph{not} like to wear shoes (e.g., \cite{Kravtchenko2015}.  
 Why should some utterances serve as evidence for a given habit, while others serve as evidence against it?  
@@ -633,12 +633,60 @@ In the \emph{Backfiring} condition, participants were instead told that they wou
 On each trial, participants read, ``You overhear two friends talking. One of them says to the other, `\textsc{person} did X today'.''
 
 In the \emph{Baseline} condition, participants were asked to rate how often a typical person performs the action, without having read any other information.
+
+Before the task and after reading the instructions, participants were asked what they would do in the task, and were given a drop-down menu with 4 options, 3 of which summarized the instructions above and one of which was a distractor. 
+
+%were asked to select from a
 %  We asked participants to assume that the typical person had performed the action at least once, so that the priors / to avoid the possibility that... \red{we should justify why we used the exact baseline we did}
 %
 %consisted of a single utterance: one person describing an event to a friend (e.g., ``Kelly wore socks today").  After reading each utterance, participants indicated how frequently they believed the agent in the utterance engages in the activity (e.g.,``How often does Kelly wear socks?").  Participants responded by stating \emph{X} times per week, month, year, or five years, where \emph{X} could be any number.
 
 
 \subsection{Behavioral results}
+
+Twenty-two participants were excluded from the analyses for failing the instructions comprehension trial.\footnote{
+15 of the 22 excluded participants were from the Observation condition, and 14 out of those 15 selected the instruction summary from one of the other conditions (i.e., only 1 selected the distractor). This may be a result of the instructions in the Observation condition being relatively generic.
+}
+
+We analyzed the data by normalizing the elicited rates to the scale of average number of times in a day. For example, if a participant rated that a target person goes on a hike once a month, that was normalized to the daily rate of 0.03.  
+
+We test the backfiring effect by comparing the rate implied the utterance in a communicative context to the rate implied in the observational context, as a function of the baseline rate.
+We first compute the mean rate from the baseline condition as use that as a predictor crossed with condition (Backfire vs. Observational) in a mixed-effects linear regression, with random by-participant and by-item effects of intercept.
+After centering the predictors, we observe a main effect of baseline rate ($\beta = 1.32; SE = 0.18; t(25) = 7.1; p <0.001$), meaning that as the baseline rate increases so too do the rates in the observation and backfiring conditions. We also observe a main effect of condition ($\beta = 0.24; SE = 0.05; t(75) = 4.3;p <0.001$), with the observation condition in general implying a higher rate than the backfiring condition. Crucially, we observe an interaction between base line rate and condition ($\beta = 0.85; SE = 0.12; t(1975) = 7.08; p <0.001$), with the observation condition having a higher implied rate than the backfiring condition, with the difference growing \emph{as the baseline rate increases}. 
+
+
+%Linear mixed model fit by REML t-tests use Satterthwaite approximations to degrees of freedom [
+%lmerMod]
+%Formula: daily_prob ~ cbase_rate * ccondition + (1 | workerid) + (1 |      item)
+%   Data: cent
+%
+%REML criterion at convergence: 5873.2
+%
+%Scaled residuals: 
+%    Min      1Q  Median      3Q     Max 
+%-3.3280 -0.1836 -0.0161  0.0742 17.7636 
+%
+%Random effects:
+% Groups   Name        Variance Std.Dev.
+% workerid (Intercept) 0.02179  0.1476  
+% item     (Intercept) 0.10979  0.3313  
+% Residual             0.93782  0.9684  
+%Number of obs: 2079, groups:  workerid, 77; item, 27
+%
+%Fixed effects:
+%                        Estimate Std. Error         df t value         Pr(>|t|)    
+%(Intercept)              0.39900    0.06928   28.00000   5.759 0.00000351692557 ***
+%cbase_rate               1.32026    0.18600   25.00000   7.098 0.00000019343954 ***
+%ccondition               0.23706    0.05525   75.00000   4.291 0.00005244157717 ***
+%cbase_rate:ccondition    0.84899    0.11985 1975.00000   7.084 0.00000000000194 ***
+%---
+%Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1
+%
+%Correlation of Fixed Effects:
+%            (Intr) cbs_rt ccndtn
+%cbase_rate  0.000               
+%ccondition  0.000  0.000        
+%cbs_rt:ccnd 0.000  0.000  0.000 
 
 The backfiring effect can be observed in a number of ways.
 We would have evidence for backfiring if the rate implied by the utterance in a communicative context is:
@@ -649,6 +697,9 @@ We would have evidence for backfiring if the rate implied by the utterance in a 
 This may be only subtly different from (2).
 }
 \end{enumerate}
+
+To test 
+
 %\item Less frequent that someone who ``Does X'' (habitually; e.g. ``John smokes'' vs. ``John smoked a cigarette today.'', not measured)
 
 
