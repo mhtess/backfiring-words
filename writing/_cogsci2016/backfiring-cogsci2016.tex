@@ -63,7 +63,12 @@
 
 \begin{abstract}
 %\ndg{abstract is too technical. start with the puzzle of how asserting a proposition can sometimes decrease its plausibility. the use of common ground here is kind of hard to follow.}
-The utterance ``Jane went for a hike today" can serve as evidence that Jane likes to go on hikes.  However, ``Jane wore shoes today'' seems to imply the opposite.  In this case, listeners infer that Jane does \emph{not} like to wear shoes (e.g., \cite{Kravtchenko2015}.  Why should some utterances serve as evidence for a given behavior, while others serve as evidence against it?  We present a formal language understanding model that is able to revise information that is common ground when an utterance is uninformative with respect to prior beliefs.  The model predicts that this ``backfiring'' inference relies on shared knowledge between speaker and listener, which we manipulate in Experiment 1, and \emph{a priori} beliefs about the event under discussion, which we manipulate and measure in Experiment 2. 
+If a friend tells you ``Jane went for a hike today", you might think Jane is the kind of person who likes to go on hikes.  
+However, ``Jane wore shoes today'' seems to imply the opposite. 
+In this case, listeners infer that Jane does \emph{not} like to wear shoes (e.g., \cite{Kravtchenko2015}.  
+Why should some utterances serve as evidence for a given habit, while others serve as evidence against it?  
+We present a formal language understanding model that is able to revise information that is common ground when an utterance is uninformative with respect to prior beliefs.  
+The model predicts that this ``backfiring'' inference relies on shared knowledge between speaker and listener, which we manipulate in Experiment 1, and \emph{a priori} beliefs about the event under discussion, which we manipulate and measure in Experiment 2. 
 %In Experiment 1, we show that this inference does not occur when interlocutors are mutually aware of information in common ground, or when a statement is removed from a conversational context.  In Experiment 2, we show that the \emph{existence} and \emph{strength} of this inference depends on the listener's prior  beliefs., which we measure empirically.
 % Finally, we present a computational model that predicts these results.
 % that when an utterance is redundant with the prior beliefs of the listener (most people wear shoes and shoe-wearing tends to happen everyday), adults will revise information that is in common ground with the speaker (here, that Jane typically wears shoes) so that the utterance becomes informative.  
@@ -247,7 +252,7 @@ As a habit is more likely to give rise to the behavior --- as $P(b \mid h)$ gets
 
 Knowledge about an event can also come from a helpful interlocutor.
 When a speaker accurately represents the listener's prior knowledge (e.g., the listener and speaker are close friends; or the listener makes explicit her prior knowledge to the speaker by asking, ``Did $b$ happen?'', ``Did your student turn in his homework today?''), communicating the behavior (here, ``My student turned in his homework today'') can lead the listener to believe the underlying habit (here, that the student \emph{typically} turns in his homework) more strongly. 
-However, when a speaker misrepresents the listener's knowledge (e.g., the speaker believes the listener knows something that the listener has actually forgotten, or the listener is overhearing a conversation between friends), communicating the behavior might lead the listener to believe the habit is \emph{less} likely.  If the student did usually turn in his homework, then the utterance---``My student turned in his homework today.'''---would be uninformative.
+However, when a speaker misrepresents the listener's knowledge (e.g., the speaker believes the listener knows something that the listener doesn't or has forgotten, or the listener is overhearing a conversation), communicating the behavior might lead the listener to believe the habit is \emph{less} likely.  If the student did usually turn in his homework, then the utterance---``My student turned in his homework today.'''---would be uninformative.
 
 
 
@@ -273,10 +278,12 @@ The \textbf{backfiring} RSA model is:
 %
 We assume the set of utterances are remarks about the event or behavior occurring or not --- $b$ or $\neg b$--- as well as the possibility of not remarking on the situation, a \emph{null} utterance that has no information content.  
 
-The prior probability of a behavior depends on the habits of the person. For demonstrative purposes, we assume that if the habit $h$ is present, the behavior has a high probability of occurring; if the habit is absent, the probability is lower. 
+The prior probability of a behavior occurring in a time window depends on the habits of the person, which influnces the rate $\lambda$ at which the behavior occurs: $P(b \mid h) = \int_{t} \lambda dt$. 
+We assume that if the habit $h$ is present, the behavior has a high probability of occurring; if the habit is absent, the probability is lower. 
 \begin{eqnarray}
-P(b \mid h) = \begin{cases}
-\lambda_{h}  & \text{if } h\\
+\lambda = 
+\begin{cases}
+ \lambda_{h}  & \text{if } h\\
 \lambda_{\neg h}  & \text{if not } h
 \end{cases} \label{eq:hab}
 \end{eqnarray}
@@ -582,7 +589,7 @@ We designed the next experiment to get around some of these issues.
 
 
 %
-\section{Experiment 2: Degrees of backfiring} \red{and model fit?}
+\section{Experiment 2: Degrees of backfiring}
 
 \begin{figure*}
 %\centering
@@ -631,22 +638,55 @@ In the \emph{Baseline} condition, participants were asked to rate how often a ty
 
 \subsection{Behavioral results}
 
-Sketch of this section
-
-We must decide on 1 (or more) definitions of backfiring
+The backfiring effect can be observed in a number of ways.
+We would have evidence for backfiring if the rate implied by the utterance in a communicative context is:
 \begin{enumerate}
 \item Less frequent than not knowing anything about the person (Backfire vs. Baseline)
 \item Less frequent than you would think had you \emph{observed} the event (Backfire vs. Observation)
-\item Less frequent than not knowing anything about the person except that they have done it at least one time in the past (Backfire vs. Prior elicitation)... this is potentially important for items like ``John smoked a cigarette today.'', wherein the typical person (Baseline) doesn't smoke at all.. This is probably only subtly different from (2)
-\item Less frequent that someone who ``Does X'' (habitually; e.g. ``John smokes'' vs. ``John smoked a cigarette today.'', not measured)
+\item Less frequent than not knowing anything about the person except that they have done it at least once in the past.\footnote{The distinction from (1) is potentially important for items such as ``smokes cigarettes'', wherein the typical person (Baseline) may not smoke at all. 
+This may be only subtly different from (2).
+}
 \end{enumerate}
+%\item Less frequent that someone who ``Does X'' (habitually; e.g. ``John smokes'' vs. ``John smoked a cigarette today.'', not measured)
+
 
 
 3 possible scatter plots are in Figure \ref{fig:expt2}.
 
 \subsection{Model analysis}
 
-Forthcoming...
+In order to quantitatively compare the models to the empirical data, the prior distribution over habits $P(h)$ and the habit strength $P(h \mid b)$ need to be measured. 
+We use previously collected data from an unrelated experiment to estimate these model components. 
+We then model the data from each of the backfiring, observation, and baseline conditions of Expt.~2 using the backfiring RSA model (Eq.~\ref{eq:L1}) and the observational Bayesian model (Eq~\ref{eq:bayes}) that both uses and neglects the observed data, respectively. 
+\subsubsection{Prior data}
+In the prior elicitation task (reported in full in Tessler \& Goodman (\emph{CogSci 2016}, submitted)), 40 MTurkers rated how often a person who has done the action (e.g. ``smoked cigarettes'') at least once, does the action. 
+The response format was the same as in Expt.~2. 
+Participants answered this question for both men and women independently. 
+From this data, we can estimate the likely rates that gave rise to the count data measured using Bayesian data analytic techniques. 
+We assume that each item had two components corresponding to individuals who do the action \emph{relatively often} (with rate $\lambda_h$) and those who do the action \emph{relatively infrequently} (rate $\lambda_{\neg h}$).
+We further infer the mixture parameter $\theta$ to determine how common it is to do the action relatively often.
+The data is thus distributed as: $d_{prior} \sim \theta \cdot \text{Poisson}(\lambda_{h}) + (1 - \theta) \cdot \text{Poisson}(\lambda_{\neg h})$.
+
+\subsubsection{Model parameters and linking function}
+Having fit the prior data empirically, the RSA model has 1 parameter: the speaker optimality parameter $\alpha$ in Eq.~\ref{eq:S1}, and the Bayesian observation model has 0 parameters. 
+Like the prior data, we assume the data in Expt.~2 is generated by a Poisson distribution with rate parameter given with probability according to the probabilisitic models. \mht{Not totally sure how to write this in math...}
+
+We include in our data analysis model an alternative model of the data generating process: random behavior. This sub-model explains data points that deviate largely from our models and is important to include to get reliable es
+
+%
+%\begin{minipage}{0.5 \textwidth} \small
+%	\begin{align*}
+%		d_{prior} \sim \begin{cases}
+%\text{Poisson}(\lambda_{h})  & \text{if } h\\
+%\text{Poisson}(\lambda_{\neg h})  & \text{if not } h
+%\end{cases} \label{eq:hab}
+%%		
+%%		&\sim \text{Poisson}(\lambda_{h}) \\
+%%		\         &\sim \text{Poisson}(\lambda{\neg h}) \\
+%	\end{align*}
+%\end{minipage}
+
+
 
 \section{General Discussion}
 
