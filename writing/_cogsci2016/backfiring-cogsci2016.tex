@@ -48,14 +48,13 @@
 \newcommand{\ndg}[1]{\textcolor{Green}{[ndg: #1]}}  
 \newcommand{\mht}[1]{\textcolor{Blue}{[mht: #1]}}  
 
-<<<<<<< HEAD
+
 \title{It goes without saying: \red{When an assertion serves as evidence against itself}}
-=======
+
 \definecolor{DarkOrange}{RGB}{255,100,50}
 \newcommand{\ellen}[1]{\textcolor{DarkOrange}{[ellen: #1]}}  
 
-\title{It goes without saying: The pragmatics of uninformative utterances}
->>>>>>> 37e14d0b526cc733352e945beae73711e997e9d0
+%\title{It goes without saying: The pragmatics of uninformative utterances}
 
 \author{ {\large \bf Michael Henry Tessler*}, {\large \bf Eleanor K. Chestnut*},
 {\large \bf Ellen M. Markman}, and {\large \bf Noah D. Goodman}  \\
@@ -73,8 +72,8 @@
 If you are learning about Jane and a friend tells you ``Jane went for a hike today", you might think Jane is the kind of person who likes to go on hikes.  
 However, ``Jane wore shoes today'' seems to imply the opposite. 
 In this case, listeners infer that Jane does \emph{not} like to wear shoes (e.g., \cite{Kravtchenko2015}.  
-Why should some utterances serve as evidence for a given habit, while others serve as evidence against it?  
-We present a formal language understanding model that is able to revise information that is common ground when an utterance is uninformative with respect to prior beliefs.  
+Why should some utterances serve as evidence for a given habit, while others \ellen{'backfire'} and serve as evidence against it?  
+We present a formal \ellen{model of language understanding} that is able to revise information that is common ground when an utterance is uninformative with respect to prior beliefs.  
 The model predicts that this ``backfiring'' inference relies on shared knowledge between speaker and listener, which we manipulate in Experiment 1, and \emph{a priori} beliefs about the event under discussion, which we manipulate and measure in Experiment 2. 
 %In Experiment 1, we show that this inference does not occur when interlocutors are mutually aware of information in common ground, or when a statement is removed from a conversational context.  In Experiment 2, we show that the \emph{existence} and \emph{strength} of this inference depends on the listener's prior  beliefs., which we measure empirically.
 % Finally, we present a computational model that predicts these results.
@@ -106,26 +105,24 @@ pragmatics; language; common ground; Bayesian model
 
 In 1973, beleaguered U.S. President Richard Nixon declared to the press corps, ``I am not a crook'' \cite{NixonQuote}.  
 If we were to take Nixon's words at face value, they would seem to suggest that he is a good guy, since that is what the words literally mean.
-However, the fact that Nixon said this, which---for a president, at least---should go without saying, we take his utterance to imply that he is actually somehow associated with corruption.
+However, the fact that Nixon said this, which---for a president, at least---should go without saying, we take his utterance to imply that he is actually somehow corrupt.
 
 %% I'd like to avoid technical words (literal, pragmatic) and citations in the first few sentences... Should be something a non-language person can appreciate
 %On a literal level, this claim argues for Nixon's innocence.  
 %Pragmatically, however, this claim presupposes that someone has accused Nixon of a crime; otherwise, the claim would not be informative (Grice, 1975).  
 %Thus, contrary to Nixon's intentions, a listener unaware of the Watergate scandal could actually \emph{learn} from this utterance that Nixon was associated with corruption.
 
-To date, this phenomenon---that utterances can ``backfire" (i.e., decrease a listener's belief in the content being asserted)---is not well understood.  Instead, the standard Bayesian treatment of learning from testimony has stressed fact that we update our beliefs about the world to be  \emph{in accordance} with information expressed through language \red{(cite)}. 
+To date, this phenomenon---that utterances can ``backfire" (i.e., decrease a listener's belief in the content being asserted)---is not well understood.  Instead, the standard Bayesian treatment of learning from testimony has stressed that we update our beliefs about the world to be  \emph{in accordance} with information expressed through language \red{(cite)}. 
 In the social psychological literature, however, a few studies have found that \emph{a priori} uninformative statements negating negative associations (e.g.,``Bob Talbert not linked with mafia"\footnote{This is uninformative because most people are not in the mafia.})
 cause adults to have a more negative impression of the target (here, Mr. Talbert) than they would otherwise \cite{Wegner1981, Yandell1979}, and can actually cause people to believe the exact opposite of what those headlines claim \cite{Gruenfeld1992}.
 % A few studies, however, provide evidence that when utterances are redundant with a listener's prior beliefs, they can imply that the opposite of what is expressed. 
 % \citeA{Wegner1981}, for example, demonstrated  despite explicitly denying incriminating information. Similarly, Gruenfeld and Wyer (1992) showed that uninformative newspaper headlines can actually    
- \citeA{Gruenfeld1992}, for example, found that fake headlines such as ``Robert Kennedy was not planning the assassination of Fidel Castro" actually caused adults to more strongly believe that Kennedy \emph{had} been planning to assassinate Castro. 
+ \citeA{Gruenfeld1992}, for example, found that fake headlines such as ``Robert Kennedy was not planning the assassination of Fidel Castro" caused adults to more strongly believe that Kennedy \emph{had} been planning to assassinate Castro. 
  Backfiring can also occur in conversation: \citeA{Kravtchenko2015} recently demonstrated that if a speaker says, ``John paid the cashier!" as part of a story about John's trip to a grocery store, adults infer that John does not typically pay cashiers.
 
-Why do claims like the ones above backfire, while others don't? We suggest that this effect depends on the common ground shared between interlocutors, and the conversational principle that utterances should be \emph{cooperative}---that is, both relevant and informative (Grice, 1975).  We develop these ideas in the section below.  In short, when an utterance does not appear on the surface to be informative, interlocutors are able to adjust information that is in common ground to \emph{make} the utterance informative (\red{CITE} accommodation?).
+Why do such claims backfire, while others don't? We suggest that this effect depends on the common ground shared between interlocutors, and the conversational principle that utterances should be \emph{cooperative}---that is, both relevant and informative (Grice, 1975).  In short, when an utterance does not appear on the surface to be informative, interlocutors are able to adjust information that is in common ground to \emph{make} the utterance informative (\red{CITE} accommodation?).
 
-In this paper, we formalize pragmatic language models wherein speaker and listener either do or do not share common ground about a person's habits (e.g., a student's tendency to turn in her homework on time).
-These models make three predictions: (a) Backfiring should occur when common ground is \emph{not} shared between interlocutors; here, the speaker will be interpreted as presupposing information that the listener was not aware of, thereby causing the listener to infer that information; (b) When common ground \emph{is} shared, standard learning from testimony should occur, because the speaker's utterance will be understood as semantically informative for the listener; and (c) The existence and strength of backfiring should vary according to the strength of the prior beliefs that are redundant with the utterance, since greater redundancy causes utterances to be less informative.  In Experiment 1, we use a two-alternative forced-choice paradigm to  test the predictions (a) \& (b) and conceptually replicate \citeA{Kravtchenko2015}, who demonstrated the basic \emph{backfiring} effect for affirmations in conversation (e.g., ``John paid the cashier!").  
-In Experiment 2, we harness participants' intuitive theories of event frequencies to construct a more minimal paradigm with a free response format to test the degree to which remarks about a wide range of events (e.g., ``Lewis went for a run today'', ``Lewis went for a hike today.') lead to backfiring (prediction c). 
+In this paper, we formalize pragmatic language models wherein speaker and listener either do or do not share common ground about a person's habits (e.g., a student's tendency to turn in her homework on time).  \ellen{In two experiments, we test three predictions from the models}: (a) Backfiring should occur when common ground is \emph{not} shared between interlocutors; here, the speaker will be interpreted as presupposing information that the listener was not aware of, thereby causing the listener to infer that information; (b) When common ground \emph{is} shared, standard learning from testimony should occur, because the speaker's utterance will be understood as semantically informative for the listener; and (c) The existence and strength of backfiring should vary according to the strength of the prior beliefs that are redundant with the utterance, since greater redundancy causes utterances to be less informative.
 
 %The model that displays the backfiring effect (common ground asymmetric) predicts the quantitative degree of backfiring contingent on the prior probability of the event occurring. 
 %We test the quantitative predictions of this model in Expt.~2. 
@@ -238,7 +235,7 @@ In Experiment 2, we harness participants' intuitive theories of event frequencie
 %One important prediction of this theory, then, is that this backfiring effect should disappear if the listener's uncertainty about what is in common ground is made explicit.  If, for instance, an official needed to know whether Nixon was a crook as part of a background check for serving as President, and Nixon replied, ``No, I am not a crook," then the utterance would be established as semantically informative for the listener.  As a result, it would no longer presuppose any accusation against Nixon.  Another important prediction is that the strength of the backfiring effect should vary according to the strength of the prior beliefs that are redundant with the utterance.  The more strongly one believes that people by default are not crooks, for example, the less informative the statement, ``I am not a crook," should be.
 
 
-Observing an individual perform an action can be taken as evidence that that individual \emph{typically} performs that action, or has the habit $h$ of doing behavior $b$. 
+Observing an individual perform an action can be taken as \ellen{some} evidence that that individual \emph{typically} performs that action, or has the habit $h$ of doing behavior $b$. 
 %event occur multiple times can be evidence for an underlying cause that could reliably give rise to the event.
 %\red{An event that occurs multiple times can suggest that there is an underlying cause that reliably gives rise to the event?  Do we want a concrete example here?  If a bus shows up late to a bus stop three days in a row, for example, then it is probably part of a poorly run public transportation system.}
 %Indeed, observing just one instance of an event is relatively stronger evidence for a reliable cause than an unreliable cause, all else being equal.
