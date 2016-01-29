@@ -446,43 +446,41 @@ The experiment in full can be viewed at \url{http://stanford.edu/~mtessler/backf
 
 We computed an \emph{endorsement score} by scaling forced-choice responses by their associated confidence level. 
 We coded the selection of the more \emph{likely} option (e.g., the student who \emph{always} does turns in his homework on time) as a 1; the other option as -1.
-We fit the \emph{endorsement score} data using a generalized mixed-effects model with random by-participant effects of intercept and random by-item effects of intercept\footnote{This was the maximal-model that our data permitted.}. 
-As predicted, participants endorsed the likely option \emph{less} in the \emph{Backfiring} condition (M=-0.09; bootstrapped 95\% CI [-0.15, -0.03]) than the in the \emph{Baseline} condition (M=0.18 [0.14,0.22]), $\beta = -0.24; SE = 0.03; t = -8.3$.
+We fit the \emph{endorsement score} data using a generalized mixed-effects model with random by-participant effects of intercept and random by-item effects of intercept and condition\footnote{This was the maximal-model that our data permitted.}. 
+As predicted, participants endorsed the likely option \emph{less} in the \emph{Backfiring} condition (M=-0.09; bootstrapped 95\% CI [-0.15, -0.03]) than the in the \emph{Baseline} condition (M=0.18 [0.14,0.22]), $\beta = -0.27; SE = 0.05; t(119) = -5.7; p < 0.001$.
 %$\beta = -0.24; SE = 0.03; t(1794) = -8.3; p<0.001$
-There was also a trend for participants to endorse the likely option \emph{slightly more} in the \emph{Observation} condition (M=0.24 [0.18, 0.29]) than in the \emph{Baseline} condition ($\beta = 0.05; SE = 0.03; t = 1.73$). 
-No such trend was observed for the \emph{Instructive} condition (M=0.18 [0.13, 0.24]). 
+Participants in the Observation condition (M=0.24 [0.18, 0.29]) and the Instructive condition (M=0.18 [0.13, 0.24]) were not any more likely to endorse the likely option than in the \emph{Baseline} condition ($\beta = 0.06; SE = 0.05; t(119) = 1.25$ and $\beta = 0.006; SE = 0.04; t(119) = 0.15$, respectively). 
 
-
-%  condition       mean   ci_lower   ci_upper
-%       (fctr)      (dbl)      (dbl)      (dbl)
-%1       prior  0.1802500  0.1381531  0.2228339
-%2 observation  0.2382083  0.1821380  0.2905667
-%3    backfire -0.0935625 -0.1521505 -0.0345349
-%4      survey  0.1887708  0.1343135  0.2415599
-%Linear mixed model fit by REML 
-%t-tests use  Satterthwaite approximations to degrees of freedom ['lmerMod']
-%Formula: score ~ condition + (1 | workerid) + (1 | item)
-%   Data: d0
-%
-%REML criterion at convergence: 3099.8
+%REML criterion at convergence: 2916.7
 %
 %Scaled residuals: 
-%    Min      1Q  Median      3Q     Max 
-%-2.5099 -0.8025  0.1406  0.7323  2.9124 
+%     Min       1Q   Median       3Q      Max 
+%-2.81054 -0.56303  0.07179  0.58951  3.12247 
 %
 %Random effects:
-% Groups   Name        Variance Std.Dev.
-% workerid (Intercept) 0.077443 0.27829 
-% item     (Intercept) 0.001255 0.03542 
-% Residual             0.260483 0.51038 
+% Groups   Name                 Variance Std.Dev. Corr             
+% workerid (Intercept)          0.012651 0.1125                    
+%          conditionobservation 0.142176 0.3771   -0.16            
+%          conditionbackfire    0.181413 0.4259    0.28  0.61      
+%          conditionsurvey      0.113661 0.3371    0.03  0.81  0.64
+% item     (Intercept)          0.001253 0.0354                    
+% Residual                      0.212359 0.4608                    
 %Number of obs: 1920, groups:  workerid, 120; item, 16
 %
 %Fixed effects:
-%                       Estimate Std. Error         df t value Pr(>|t|)    
-%(Intercept)           1.807e-01  3.561e-02  1.936e+02   5.075 9.04e-07 ***
-%conditionobservation  5.702e-02  3.300e-02  1.796e+03   1.728   0.0842 .  
-%conditionbackfire    -2.731e-01  3.299e-02  1.794e+03  -8.277 2.22e-16 ***
-%conditionsurvey       6.817e-03  3.302e-02  1.797e+03   0.206   0.8364    
+%                       Estimate Std. Error         df t value       Pr(>|t|)    
+%(Intercept)            0.180966   0.025050  77.950000   7.224 0.000000000295 ***
+%conditionobservation   0.056732   0.045531 119.020000   1.246          0.215    
+%conditionbackfire     -0.273166   0.048983 119.020000  -5.577 0.000000155815 ***
+%conditionsurvey        0.006237   0.042856 119.000000   0.146          0.885    
+%---
+%Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1
+%
+%Correlation of Fixed Effects:
+%            (Intr) cndtnbs cndtnbc
+%cndtnbsrvtn -0.440                
+%condtnbckfr -0.271  0.562         
+%conditnsrvy -0.405  0.671   0.577 
 
 To better understand the effect, 
 we further analyzed the data separately in terms of (1) the proportion of participants who selected the more \emph{likely} option and (2) the confidence ratings.
@@ -657,11 +655,18 @@ Twenty-two participants were excluded from the analyses for failing the instruct
 15 of the 22 excluded participants were from the Observation condition, and 14 out of those 15 selected the instruction summary from one of the other conditions (i.e., only 1 selected the distractor). This may be a result of the instructions in the Observation condition being relatively generic.
 }
 
-We analyzed the data by normalizing the elicited rates to the scale of average number of times in a day. For example, if a participant rated that a target person goes on a hike once a month, that was normalized to the daily rate of 0.03.  
+We analyzed the data by normalizing the elicited rates to the scale of numbers of times in a 5 year period (the maximum time window). We then log-transformed the rates. 
 
 We test the backfiring effect by comparing the rate implied the utterance in a communicative context to the rate implied in the observational context, as a function of the baseline rate.
-We first compute the mean rate from the baseline condition and use that as a predictor crossed with condition (Backfire vs. Observational) in a mixed-effects linear regression, with random by-participant and by-item effects of intercept.
-After centering the predictors, we observe a main effect of baseline rate ($\beta = 1.32; SE = 0.18; t(25) = 7.1; p <0.001$), meaning that as the baseline rate increases so too do the rates in the observation and backfiring conditions. We also observe a main effect of condition ($\beta = -0.24; SE = 0.05; t(75) = -4.3; p <0.001$), with the backfiring condition in general implying a lower rate than the observation condition. Crucially, we observe an interaction between baseline rate and condition ($\beta = -0.85; SE = 0.12; t(1975) = -7.08; p <0.001$), with the backfiring condition having a lower implied rate than the observation condition, with the difference growing \emph{as the baseline rate increases}. 
+%
+% number of times in a day. For example, if a participant rated that a target person goes on a hike once a month, that was normalized to the daily rate of 0.03.  
+
+We first compute the mean rate from the baseline condition and use that as a predictor (after centering) crossed with condition (Backfire vs. Observational) in a mixed-effects linear regression, with random by-participant effects of intercept and base rate and by-item effects of intercept and condition\footnote{This is the maximal mixed-effects structure.}. 
+Frequencies implied an observation were significantly larger than the frequencies implied in the backfiring condition ($\beta = 0.35, SE = 0.13, t(67.6) = 2.56, p = 0.01$), and there was a trend for that difference to be larger as the base rate increased ($\beta = 0.09, SE = 0.05, t(60.4) = 1.92, p = 0.059$). In addition, there was a significant main effect of base rate on the implied rate ($\beta = 0.57, SE = 0.09, t(27.1) = 6.6; p<0.01$).
+
+%We observe a main effect of base rate on the implied rate 
+%Because the elicited frequencies cover a wide range 
+%After centering the predictors, we observe a main effect of baseline rate ($\beta = 1.32; SE = 0.18; t(25) = 7.1; p <0.001$), meaning that as the baseline rate increases so too do the rates in the observation and backfiring conditions. We also observe a main effect of condition ($\beta = -0.24; SE = 0.05; t(75) = -4.3; p <0.001$), with the backfiring condition in general implying a lower rate than the observation condition. Crucially, we observe an interaction between baseline rate and condition ($\beta = -0.85; SE = 0.12; t(1975) = -7.08; p <0.001$), with the backfiring condition having a lower implied rate than the observation condition, with the difference growing \emph{as the baseline rate increases}. 
 
 \mht{My plan is to include some schematic model curves as or in Figure 1, to show that we predict these curves... The quantitive model analysis section will be similar to how I've laid out below. The only issue with that is, because we are borrowing the priors from this other experiment, our quantitative model fit is decent (but not exceptional) AND I think because of the noise in our priors, the model parameters get adjusted in such a way that diminishes the backfiring effect (some backfiring, but it doesn't show up strongly). So items like ``drinks coffee'' have weak backfiring with the model parameters that best fit the data beucase other items (like ``goes on hikes'') have a lot of noise and the model is adjusting parameters to accommodate them.  With the right priors (down the road), I think this issue can be resolved.
 }
