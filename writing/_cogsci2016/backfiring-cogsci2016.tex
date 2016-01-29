@@ -659,9 +659,9 @@ Twenty-two participants were excluded from the analyses for failing the instruct
 
 We analyzed the data by normalizing the elicited rates to the scale of average number of times in a day. For example, if a participant rated that a target person goes on a hike once a month, that was normalized to the daily rate of 0.03.  
 
-We test the backfiring effect by comparing the rate implied the utterance in a communicative context to the rate implied in the observational context, as a function of the baseline rate.
-We first compute the mean rate from the baseline condition and use that as a predictor crossed with condition (Backfire vs. Observational) in a mixed-effects linear regression, with random by-participant and by-item effects of intercept.
-After centering the predictors, we observe a main effect of baseline rate ($\beta = 1.32; SE = 0.18; t(25) = 7.1; p <0.001$), meaning that as the baseline rate increases so too do the rates in the observation and backfiring conditions. We also observe a main effect of condition ($\beta = -0.24; SE = 0.05; t(75) = -4.3; p <0.001$), with the backfiring condition in general implying a lower rate than the observation condition. Crucially, we observe an interaction between baseline rate and condition ($\beta = -0.85; SE = 0.12; t(1975) = -7.08; p <0.001$), with the backfiring condition having a lower implied rate than the observation condition, with the difference growing \emph{as the baseline rate increases}. 
+We tested the backfiring effect by comparing the rate implied by the statement in the \emph{Backfiring} condition to the rate implied in the \emph{Observation} condition, as a function of the baseline rate.
+We first compute the mean rate from the baseline condition and use that as a predictor crossed with condition (Backfiring vs. Observation) in a mixed-effects linear regression, with random by-participant and by-item effects of intercept.
+After centering the predictors, we observe a main effect of baseline rate ($\beta = 1.32; SE = 0.18; t(25) = 7.1; p <0.001$), meaning that as the baseline rate increases, so too do the rates in the \emph{Observation} and \emph{Backfiring} conditions. We also observe a main effect of condition ($\beta = -0.24; SE = 0.05; t(75) = -4.3; p <0.001$), with statements in the \emph{Backfiring} condition in general implying lower rates than those in the  \emph{Observation} condition. Crucially, we observed an interaction between baseline rate and condition ($\beta = -0.85; SE = 0.12; t(1975) = -7.08; p <0.001$), such that the differences between the rates in the \emph{Backfiring} and \emph{Observation} conditions increased \emph{as the baseline rate increased}. \red{is this what you wanted to say?}
 
 \mht{My plan is to include some schematic model curves as or in Figure 1, to show that we predict these curves... The quantitive model analysis section will be similar to how I've laid out below. The only issue with that is, because we are borrowing the priors from this other experiment, our quantitative model fit is decent (but not exceptional) AND I think because of the noise in our priors, the model parameters get adjusted in such a way that diminishes the backfiring effect (some backfiring, but it doesn't show up strongly). So items like ``drinks coffee'' have weak backfiring with the model parameters that best fit the data beucase other items (like ``goes on hikes'') have a lot of noise and the model is adjusting parameters to accommodate them.  With the right priors (down the road), I think this issue can be resolved.
 }
@@ -715,11 +715,11 @@ After centering the predictors, we observe a main effect of baseline rate ($\bet
 
 \subsection{Quantitative model analysis}
 
-In order to quantitatively compare the models to the empirical data, the prior distribution over habits $P(h)$ and the habit strength $P(h \mid b)$ need to be measured. 
-We use previously collected data from an unrelated experiment to estimate these model components\footnote{
+In order to quantitatively compare the models to the empirical data, we needed to measure the prior distribution over habits $P(h)$ and the habit strength $P(h \mid b)$. 
+We used previously collected data from an unrelated experiment to estimate these model components\footnote{
 Because the prior elicitation data used was not perfectly designed for this experiment, we do the quantitative analysis to show how in principle our model engages with the relatively free-form quantitative data measured in Expt.~2.
 }. 
-We then model the data from each of the backfiring (Eq.~\ref{eq:L1}), observation (Eq~\ref{eq:bayes}), and baseline conditions (Eq.~\ref{eq:bayes} neglecting the evidence) of Expt.~2.
+We then modeled the data from each of the \emph{Backfiring} (Eq.~\ref{eq:L1}), \emph{Observation} (Eq~\ref{eq:bayes}), and \emph{Baseline} conditions (Eq.~\ref{eq:bayes} neglecting the evidence) of Expt.~2.
 \subsubsection{Prior data}
 In the prior elicitation task (reported in full in Tessler \& Goodman (\emph{CogSci 2016}, submitted)), 40 MTurkers rated how often a person who has done the action (e.g. ``smoked cigarettes'') at least once, does the action. 
 The response format was the same as in Expt.~2. 
