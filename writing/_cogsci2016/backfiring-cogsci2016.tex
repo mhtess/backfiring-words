@@ -49,7 +49,7 @@
 \newcommand{\mht}[1]{\textcolor{Blue}{[mht: #1]}}  
 
 
-\title{It goes without saying: \red{When an assertion serves as evidence against itself}}
+\title{It goes without saying: When an assertion is evidence against itself}
 
 \definecolor{DarkOrange}{RGB}{255,100,50}
 \newcommand{\ellen}[1]{\textcolor{DarkOrange}{[ellen: #1]}}  
@@ -602,14 +602,11 @@ We designed the next experiment to get around these issues.
 
 \begin{figure*}
 %\centering
-    \includegraphics[width=\textwidth]{minimal-1-scatters}
-    \caption{Experiment 2 results. All results are on the scale of average number of times \emph{per day}. Each point represents one item (e.g. ``wears socks''). 
-    Left: Observed vs. Baseline. Observed never goes below baseline (y=x line).
-    Middle: Communicative vs. Baseline. Communicative goes below baseline when baseline is high. 
-    Right: Communicative vs. Observed. Communicative suggests lower frequency the more an observation suggests higher frequency.
-    Note: ``Smokes cigarettes'' has been removed from these plots because it messes up the scale (people smoke a lot of cigarettes per day).
+    \includegraphics[width=\textwidth]{expt2-scatter-witems}
+    \caption{
+    Left: Inferred frequency as a function of \emph{a priori} frequency (see text) for the three experimental conditions. In only the communicative condition, does the inferred rate dip below the prior rate. Both axes are on the log scale.
+    Right: Item plots in the region of interest. When the \emph{a priori} frequency is high, backfiring effects are the largest. 
     }
-    
   \label{fig:expt2}
 \end{figure*}
 
@@ -648,6 +645,23 @@ Before the task and after reading the instructions, participants were asked what
 %
 %consisted of a single utterance: one person describing an event to a friend (e.g., ``Kelly wore socks today").  After reading each utterance, participants indicated how frequently they believed the agent in the utterance engages in the activity (e.g.,``How often does Kelly wear socks?").  Participants responded by stating \emph{X} times per week, month, year, or five years, where \emph{X} could be any number.
 
+\subsection{Prior data}
+
+As a basis of comparison and for estimation of the prior distribution for the quantitative model fit, we use previously collected data from an unrelated experiment as a measure of the prior. 
+In this prior elicitation task (reported in full in Tessler \& Goodman (\emph{CogSci 2016}, submitted)), 40 MTurkers rated how often a person who has done the action (e.g. \emph{smoked cigarettes}) at least once, does the action. 
+The response format was the same as in Expt.~2. 
+
+%We then modeled the data from each of the \emph{Backfiring} (Eq.~\ref{eq:L1}), \emph{Observation} (Eq~\ref{eq:bayes}), and \emph{Baseline} conditions (Eq.~\ref{eq:bayes} neglecting the evidence) of Expt.~2.
+%\subsubsection{Prior data}
+%rated how often a person who has done the action (e.g. ``smoked cigarettes'') at least once, does the action. 
+%Participants answered this question for both men and women independently. 
+%From this data, we can estimate the likely rates that gave rise to the count data measured using Bayesian data analytic techniques. 
+%Because the participant was only told that the target person had done the action \emph{once}, we assumed that each item had two components corresponding to individuals who do the action \emph{relatively frequently} (with rate $\lambda_h$) and those who do the action \emph{relatively infrequently} (rate $\lambda_{\neg h}$).
+%These two components came together with mixture parameter $\theta$ inferred from teh data.
+%The data is thus distributed as: $d_{prior} \sim \theta \cdot \text{Poisson}(\lambda_{h}) + (1 - \theta) \cdot \text{Poisson}(\lambda_{\neg h})$.
+%
+
+
 
 \subsection{Behavioral results}
 
@@ -656,20 +670,22 @@ Twenty-two participants were excluded from the analyses for failing the instruct
 }
 
 We analyzed the data by normalizing the elicited rates to the scale of numbers of times in a 5 year period (the maximum time window). We then log-transformed the rates. 
+Figure \ref{fig:expt2} (left) shows the inferred rates on a log scale compared to the prior elicitation data (also on log scale) described above.
+Only in the communicative condition do the inferred rates drop below the prior. 
+Figure \ref{fig:expt2} (right) shows item-specific plots on a normal rate scale  from the high-prior region of interest. 
+In some cases (e.g. \emph{wears socks}), the inferred rate is less than 50\% of the \emph{baseline} rate.
 
-We test the backfiring effect by comparing the rate implied the utterance in a communicative context to the rate implied in the observational context, as a function of the baseline rate.
+To get a better idea for the reliability of this effect with our items, we compare the rate implied the utterance in a communicative context to the rate implied in the observational context, as a function of the baseline rate.
 %
 % number of times in a day. For example, if a participant rated that a target person goes on a hike once a month, that was normalized to the daily rate of 0.03.  
-
 We first compute the mean rate from the baseline condition and use that as a predictor (after centering) crossed with condition (Backfire vs. Observational) in a mixed-effects linear regression, with random by-participant effects of intercept and base rate and by-item effects of intercept and condition\footnote{This is the maximal mixed-effects structure.}. 
 Frequencies implied an observation were significantly larger than the frequencies implied in the backfiring condition ($\beta = 0.35, SE = 0.13, t(67.6) = 2.56, p = 0.01$), and there was a trend for that difference to be larger as the base rate increased ($\beta = 0.09, SE = 0.05, t(60.4) = 1.92, p = 0.059$). In addition, there was a significant main effect of base rate on the implied rate ($\beta = 0.57, SE = 0.09, t(27.1) = 6.6; p<0.01$).
+The fact that the effect in our data is small is likely driven by the fact that we have few items in the critical region where we expect backfiring to occur. 
 
 %We observe a main effect of base rate on the implied rate 
 %Because the elicited frequencies cover a wide range 
 %After centering the predictors, we observe a main effect of baseline rate ($\beta = 1.32; SE = 0.18; t(25) = 7.1; p <0.001$), meaning that as the baseline rate increases so too do the rates in the observation and backfiring conditions. We also observe a main effect of condition ($\beta = -0.24; SE = 0.05; t(75) = -4.3; p <0.001$), with the backfiring condition in general implying a lower rate than the observation condition. Crucially, we observe an interaction between baseline rate and condition ($\beta = -0.85; SE = 0.12; t(1975) = -7.08; p <0.001$), with the backfiring condition having a lower implied rate than the observation condition, with the difference growing \emph{as the baseline rate increases}. 
 
-\mht{My plan is to include some schematic model curves as or in Figure 1, to show that we predict these curves... The quantitive model analysis section will be similar to how I've laid out below. The only issue with that is, because we are borrowing the priors from this other experiment, our quantitative model fit is decent (but not exceptional) AND I think because of the noise in our priors, the model parameters get adjusted in such a way that diminishes the backfiring effect (some backfiring, but it doesn't show up strongly). So items like ``drinks coffee'' have weak backfiring with the model parameters that best fit the data beucase other items (like ``goes on hikes'') have a lot of noise and the model is adjusting parameters to accommodate them.  With the right priors (down the road), I think this issue can be resolved.
-}
 %Linear mixed model fit by REML t-tests use Satterthwaite approximations to degrees of freedom [
 %lmerMod]
 %Formula: daily_prob ~ cbase_rate * ccondition + (1 | workerid) + (1 |      item)
