@@ -150,23 +150,43 @@ In Experiment 2 we further explore the quantitative variation predicted by the m
 \section{Formalizing backfiring language}
 
 
-Observing individuals perform an action can be taken as some evidence that they \emph{typically} perform that action, or have the habit $h$ of doing behavior $b$. 
+Observing an individual perform an action can be taken as evidence that they \emph{typically} perform that action---they have the habit $h$ of doing behavior $b$. 
 For example, seeing a student turn in her homework provides some evidence that she usually turns in her homework. 
-It is a more likely explanation than the alternative (here, that the student does \emph{not} typically turn in her homework).
+%It is a more likely explanation than the alternative (here, that the student does \emph{not} typically turn in her homework).
 This {\bf inference from observation} follows from Bayes' rule:
 \begin{eqnarray}
-P(h \mid b) \propto P(b \mid h) P(h) \label{eq:bayes}
+P_{Obs}(h \mid b) \propto P(b \mid h) P(h) \label{eq:bayes}
 \end{eqnarray}
+The observation 
 As a habit is more likely to give rise to the behavior---as $P(b \mid h)$ gets large---so too does the behavior become more indicative of the habit, assuming the prior probabilities are constant. 
 
-\ndg{i think the model section can be revised in a more streamlined way: here's observation, here's interpretation without presupposition, here's backfiring. the only thing is... i'm not sure which middle model is actually appropriate to the data we have.}
+What if, instead of an observation, we hear this fact spoken by a helpful listener? This can be formalized as Bayesian updating again, but based on the observation of a speaker choosing the utterance, $u$:
+\begin{equation}
+P_{L_1}(b, h \mid u) \propto P_{S_1}(u \mid b, h)\cdot P(b \mid h) \cdot P(h) \label{eq:L1}.
+\end{equation}
+Here the listener infers both $b$ and $h$, but if she is interested only in the habit: $P_{L_1}(h \mid u) = \sum_b P_{L_1}(b, h \mid u)$.
+We imagine a speaker who attempts to convey $b$ to a literal listener, assuming the listener to knows $h$:
+\begin{eqnarray}
+&&P_{S_1}(u \mid b, h) \propto  P_{L_0}(b \mid u, h)^{\alpha} \label{eq:S1}\\
+&&P_{L_0}(b \mid u, h)\propto \denote{u}(b) \cdot P(b \mid h) \label{eq:L0}
+\end{eqnarray}
+The resulting model is a variation on the  Rational Speech Acts framework \cite{Frank2012, Goodman2013}, in which a particular fact (here the existence of the habit, $h$) 
+is presumed to be common ground by the speaker, but reasoned about by the pragmatic listener. This treatment follows \citeA{Degen2015}, within the approach discussed more generally in \citeA{GoodmanLassiter}.
 
-Knowledge about an event can also come from a helpful speaker.
-For example, if a school survey is being conducted, and a principal asks a teacher, ``Did your student turn in her homework today?" then the response, ``Yes, my student turned in her homework today," could be taken as evidence that the student usually turns in her homework.  In this case, the teacher is aware that the principal does not know the habits of his students, so he informs her of them.
+The predictions of the $L_1$ model in Equation \ref{eq:L1} critically depend on the set of alternative utterances, $u$, that the speaker is free to make.
+For a spontaneous, unconstrained utterance, we assume the possibility of remarking on the event with an affirmation or a negation --- ``b'' or ``not b''--- as well as the possibility of not remarking on the situation, a \emph{null} utterance that has no information content. 
+As we see in Figure \ref{somefig} \ndg{make fig}, where this setup is labeled as the {\bf backfiring inference}, the model makes the critical prediction that the utterance  of ``b'' decreases belief in the habit relative to the prior and relative to an \emph{observation} of $b$.
+However, if we imagine that the speaker is forced to make an affirmative and negative statement, without the opportunity to stay silent, as would be the case after being directly asked the question ``b?'', then backfiring disappears.
 
-%communicating the behavior (here, ``My student turned in his homework today'') can lead the listener to believe the underlying habit (here, that the student \emph{typically} turns in his homework) more strongly.  Critically, in this case, we assume that the person asking, ``Did your student turn in his homework today?" is \emph{not} asking the question because he or she suspects that the habit is absent (i.e., that the student doesn't usually turn in his homework); instead, the person must be asking for an unbiased reason (e.g., perhaps the person is taking a survey of student behavior).  If the person \emph{did} ask the question out of suspicion, then they would clearly already hold the belief that the student does not have the habit, and it is unclear whether the speaker's response would change their opinion.
 
-If, by contrast, a speaker misrepresents the listener's knowledge (e.g., the speaker believes the listener knows something that the listener actually doesn't know, or the listener is overhearing a conversation), communicating the behavior might lead the listener to believe the habit is \emph{less} likely.  If the student did usually turn in her homework, for example, then the utterance---``My student turned in his homework today.'''---would be uninformative.
+
+
+%Knowledge about an event can also come from a helpful speaker.
+%For example, if a school survey is being conducted, and a principal asks a teacher, ``Did your student turn in her homework today?" then the response, ``Yes, my student turned in her homework today," could be taken as evidence that the student usually turns in her homework.  In this case, the teacher is aware that the principal does not know the habits of his students, so he informs her of them.
+%
+%%communicating the behavior (here, ``My student turned in his homework today'') can lead the listener to believe the underlying habit (here, that the student \emph{typically} turns in his homework) more strongly.  Critically, in this case, we assume that the person asking, ``Did your student turn in his homework today?" is \emph{not} asking the question because he or she suspects that the habit is absent (i.e., that the student doesn't usually turn in his homework); instead, the person must be asking for an unbiased reason (e.g., perhaps the person is taking a survey of student behavior).  If the person \emph{did} ask the question out of suspicion, then they would clearly already hold the belief that the student does not have the habit, and it is unclear whether the speaker's response would change their opinion.
+%
+%If, by contrast, a speaker misrepresents the listener's knowledge (e.g., the speaker believes the listener knows something that the listener actually doesn't know, or the listener is overhearing a conversation), communicating the behavior might lead the listener to believe the habit is \emph{less} likely.  If the student did usually turn in her homework, for example, then the utterance---``My student turned in his homework today.'''---would be uninformative.
 
 
 
@@ -181,21 +201,23 @@ If, by contrast, a speaker misrepresents the listener's knowledge (e.g., the spe
 %If a listener believes that the speaker is not representing her uncertainty correctly (e.g., because the listener has forgotten this bit of information or because the listener is overhearing a conversation), she can use the speech-act to help resolve what the speaker believes to be in common ground. 
 %\red{we might still want a concrete example here, but can add it later}
 
-We incorporate these inferences into the Rational Speech-Acts framework \cite{Frank2012, Goodman2013}, as a lifted variable inference akin to the treatment by \citeA{Degen2015} and discussed in detail in \citeA{GoodmanLassiter}\footnote{Briefly, a ``lifted'' variable is a variable of uncertainty over which a pragmatic listener reasons. The inference incorporates general pragmatic principles of communication, by assuming the speaker intended a particular value of that random variable.}.
-%
-The \textbf{backfiring} RSA model is:  
-\begin{eqnarray}
-&&P_{L_1}(b, h \mid u)\propto P_{S_1}(u \mid b, h)\cdot P(b \mid h) \cdot P(h) \label{eq:L1}\\
-&&P_{S_1}(u \mid b, h) \propto  P_{L_0}(b \mid u, h)^{\alpha} \label{eq:S1}\\
-&&P_{L_0}(b \mid u, h)\propto \denote{u}(b) \cdot P(b \mid h) \label{eq:L0}
-\end{eqnarray}
-%
-Here, a pragmatic listener $L_1$ hears an utterance $u$ describing an event or behavior $b$ of a target person and is trying to infer whether that behavior occurred and what are the target's habits $h$ in general. 
-The listener assumes this utterance came from a speaker $S_1$, who is knowledgable about the event and about the person's habits. The speaker has the possibility of remarking on the event with an affirmation or a negation --- $b$ or $\neg b$--- as well as the possibility of not remarking on the situation, a \emph{null} utterance that has no information content.  
-The speaker reasons about an idealized literal listener $L_0$ in his head. Crucially, the speaker believes the listener to already know about the target person's habits $h$. In this way, the speaker presupposes this habit is in common ground.
+%We incorporate these inferences into the Rational Speech-Acts framework \cite{Frank2012, Goodman2013}, as a lifted variable inference akin to the treatment by \citeA{Degen2015} and discussed in detail in \citeA{GoodmanLassiter}\footnote{Briefly, a ``lifted'' variable is a variable of uncertainty over which a pragmatic listener reasons. The inference incorporates general pragmatic principles of communication, by assuming the speaker intended a particular value of that random variable.}.
+%%
+%The \textbf{backfiring} RSA model is:  
+%\begin{eqnarray}
+%&&P_{L_1}(b, h \mid u)\propto P_{S_1}(u \mid b, h)\cdot P(b \mid h) \cdot P(h) \label{eq:L1}\\
+%&&P_{S_1}(u \mid b, h) \propto  P_{L_0}(b \mid u, h)^{\alpha} \label{eq:S1}\\
+%&&P_{L_0}(b \mid u, h)\propto \denote{u}(b) \cdot P(b \mid h) \label{eq:L0}
+%\end{eqnarray}
+%%
+%Here, a pragmatic listener $L_1$ hears an utterance $u$ describing an event or behavior $b$ of a target person and is trying to infer whether that behavior occurred and what are the target's habits $h$ in general. 
+%The listener assumes this utterance came from a speaker $S_1$, who is knowledgable about the event and about the person's habits. The speaker has the possibility of remarking on the event with an affirmation or a negation --- $b$ or $\neg b$--- as well as the possibility of not remarking on the situation, a \emph{null} utterance that has no information content.  
+%The speaker reasons about an idealized literal listener $L_0$ in his head. Crucially, the speaker believes the listener to already know about the target person's habits $h$. In this way, the speaker presupposes this habit is in common ground.
 
-The target's behavior can be thought to be distributed in time according to a Poisson distribution:  $b \sim \text{Poisson}(\lambda)$, and the rate $\lambda$  is influenced by whether or not the person has the habit. For now, we assume that if the habit $h$ is present, the behavior occurs with a high rate  $\lambda_{h}$ and if the habit is absent, the rate is lower $\lambda_{\neg h}$,
-where $\lambda_{h} > \lambda_{\neg h}$.
+To flesh out the model, we have to describe the priors $P(h)$ and $P(b|h)$
+We can think of behaviors as events that are distributed in time according to a Poisson distribution,  $b \sim \text{Poisson}(\lambda)$, with a rate $\lambda$ that is influenced by whether or not the person has the habit. 
+For now, we assume that if the habit $h$ is present, the behavior occurs with a high rate  $\lambda_{h}$ and if the habit is absent, the rate is lower $\lambda_{\neg h}$,
+where $\lambda_{h} > \lambda_{\neg h}$. \ndg{any reason not to just use the version you'll need for expt 2?}
 In Expt.~2, we relax the notion of discrete habits and consider a continuous distribution over rates. 
 The model is implemented in the probabilistic programming language WebPPL \cite{dippl}, and a simple version can be seen at \mht{add forest page}.
 
@@ -212,33 +234,33 @@ The model is implemented in the probabilistic programming language WebPPL \cite{
 \end{figure}
 
 
-The model's predictions critically rely on the fact that the speaker does not represent the listener's beliefs accurately and are additionally sensitive to the prior probability of the behavior occurring. 
-When a habit $h$ is likely to give rise to an event $b$ (i.e., the rate $\lambda$ is sufficiently high), utterances affirming the event will be interpreted as expressing atypical behavior by implicitly implying that the habit is not present ($\neg h$).
-The statement, ``My student turned in his homework today,'' for instance, should suggest that the student does \emph{not} usually turn in his homework (Figure \ref{fig:schematic-model} \mht{what would be a good figure to show here?}).
-%This occurs when the speaker does not represent the listener's beliefs accurately.
-%The strength of this inference is predicted to be modulated the listener's \emph{a priori} belief in the habit; the stronger the listener believes it to be the case that the roommate usually washes her dishes, the more the utterance \emph{My roommate washed her dishes today} will backfire. 
+%The model's predictions critically rely on the fact that the speaker does not represent the listener's beliefs accurately and are additionally sensitive to the prior probability of the behavior occurring. 
+%When a habit $h$ is likely to give rise to an event $b$ (i.e., the rate $\lambda$ is sufficiently high), utterances affirming the event will be interpreted as expressing atypical behavior by implicitly implying that the habit is not present ($\neg h$).
+%The statement, ``My student turned in his homework today,'' for instance, should suggest that the student does \emph{not} usually turn in his homework (Figure \ref{fig:schematic-model} \mht{what would be a good figure to show here?}).
+%%This occurs when the speaker does not represent the listener's beliefs accurately.
+%%The strength of this inference is predicted to be modulated the listener's \emph{a priori} belief in the habit; the stronger the listener believes it to be the case that the roommate usually washes her dishes, the more the utterance \emph{My roommate washed her dishes today} will backfire. 
 
-\subsection{Alternative models}
-
-The backfiring inference depends critically on a misunderstanding of common ground. 
-If an interlocutor explicitly tells another, for example, ``I need to fill out this report. Did your student turn in his homework today?'' then the speaker will learn that the listener is unsure of the student's habits.
-%\footnote{It is also important that the question be asked for plausible reasons that do not imply that the listener believes the habit to be absent (i.e., that the student doesn't usually turn in his homework).}.
-As a result, the response, ``My student turned in his homework today,'' will become semantically informative, no longer presupposing that the listener knows about the student's habits.
-Figure \ref{fig:schematic-model} (green bars) shows what happens when the speaker and listener are both aware of the listener's knowledge.
-This is more akin to pedagogical communication, where teacher and learner are on the same page. 
-An \textbf{instructive} RSA model is nearly identical to the one above, with the only difference being the speaker's model of the literal listener:
-\begin{eqnarray}
-%&&P_{L_1}(b, h \mid u)\propto P_{S_1}(u \mid b)\cdot P(b \mid h) \cdot P(h) \label{eq:L1mod}\\
-&&P_{S_1^{*}}(u \mid b) \propto P_{L_0}(b, h \mid u) ^ {\alpha} \label{eq:S1mod}
-%&&P_{L_0}(b, h \mid u)\propto \denote{u}(b) \cdot P(b \mid h) \label{eq:L0mod}
-\end{eqnarray}
-Here the speaker doesn't assume the literal listener knows about the value of $h$ (compare with Eq.~\ref{eq:S1}). Thus, a pragmatic listener model who reasons about this speaker won't need to revise common ground to make the utterance informative.
-
-Another context in which we would not expect evidence to backfire is when a statement is framed as an observation.
-Here, we would expect the observation that the student turned in his homework to be taken as evidence that he usually \emph{does} do his homework. 
-These predictions are borne out in a standard model of Bayesian learning (Eq.~\ref{eq:bayes}, Figure \ref{fig:schematic-model}, red bars)\footnote{
-In our modeling context, the instructive RSA model and the standard Bayesian learning model do not make different predictions. This is because the utterances (``The event happened.''. ``The event did not happen.'') are perfectly informative about the Question Under Discussion, which is ``Did the event happen?''.
-}.
+%\subsection{Alternative models}
+%
+%The backfiring inference depends critically on a misunderstanding of common ground. 
+%If an interlocutor explicitly tells another, for example, ``I need to fill out this report. Did your student turn in his homework today?'' then the speaker will learn that the listener is unsure of the student's habits.
+%%\footnote{It is also important that the question be asked for plausible reasons that do not imply that the listener believes the habit to be absent (i.e., that the student doesn't usually turn in his homework).}.
+%As a result, the response, ``My student turned in his homework today,'' will become semantically informative, no longer presupposing that the listener knows about the student's habits.
+%Figure \ref{fig:schematic-model} (green bars) shows what happens when the speaker and listener are both aware of the listener's knowledge.
+%This is more akin to pedagogical communication, where teacher and learner are on the same page. 
+%An \textbf{instructive} RSA model is nearly identical to the one above, with the only difference being the speaker's model of the literal listener:
+%\begin{eqnarray}
+%%&&P_{L_1}(b, h \mid u)\propto P_{S_1}(u \mid b)\cdot P(b \mid h) \cdot P(h) \label{eq:L1mod}\\
+%&&P_{S_1^{*}}(u \mid b) \propto P_{L_0}(b, h \mid u) ^ {\alpha} \label{eq:S1mod}
+%%&&P_{L_0}(b, h \mid u)\propto \denote{u}(b) \cdot P(b \mid h) \label{eq:L0mod}
+%\end{eqnarray}
+%Here the speaker doesn't assume the literal listener knows about the value of $h$ (compare with Eq.~\ref{eq:S1}). Thus, a pragmatic listener model who reasons about this speaker won't need to revise common ground to make the utterance informative.
+%
+%Another context in which we would not expect evidence to backfire is when a statement is framed as an observation.
+%Here, we would expect the observation that the student turned in his homework to be taken as evidence that he usually \emph{does} do his homework. 
+%These predictions are borne out in a standard model of Bayesian learning (Eq.~\ref{eq:bayes}, Figure \ref{fig:schematic-model}, red bars)\footnote{
+%In our modeling context, the instructive RSA model and the standard Bayesian learning model do not make different predictions. This is because the utterances (``The event happened.''. ``The event did not happen.'') are perfectly informative about the Question Under Discussion, which is ``Did the event happen?''.
+%}.
 %\ndg{does the model predict a differences between observation and pedagogy? (it should.) cite shafto, goodman, frank for this. indicate more clearly the difference between the istructive context and the misaligned CG one... indicate why and when the listener has to accommodate by adjusting prior beliefs in order to make a statement cooperative.}
 %\mht{it does not; this may be because the utterances ("b", or "not b") are perfectly informative about the world...}
 
@@ -253,9 +275,9 @@ In our modeling context, the instructive RSA model and the standard Bayesian lea
 %\section{Experiment 1: Conceptual replication and extension of \citeA{Kravtchenko2015}}
 \section{Experiment 1: Backfiring depends on communicative context}
 
-The trio of models described above predict that utterances should backfire when there is an asymmetry in common ground between speaker and listener, but not when common ground is shared nor when the information is received by observation. 
-Predictions depend on the prior probability of the event occurring (given the habit) being relatively high; thus, we construct scenarios where two alternatives are present: one for which the behavior is very likely and one for which the behavior is less likely (e.g., a student who \emph{always} turns in his homework on time vs. one who \emph{only occasionally} does so).
-This is similar in spirit to \citeA{Kravtchenko2015}, though we include observation and common ground manipulation conditions. In addition, we use a two-alternative forced choice to examine the backfiring effect directly. 
+The trio of models described above---observation and pragmatics with and without the option to remain silent---predict that utterances should backfire when an \emph{a priori} likely fact is heard as a spontaneous utterance, but not when it is a simple observation or the response to a polar question. 
+Predictions depend on the prior probability of the event occurring (given the habit) being relatively high; thus, we construct two variants of each scenario: one for which the behavior is very likely and one for which the behavior is less likely (e.g., a student who \emph{always} turns in his homework on time vs. one who \emph{only occasionally} does so).
+This is similar in spirit to \citeA{Kravtchenko2015}, though we include observation and question conditions, inspired by the model. In addition, we use a two-alternative forced choice to examine the backfiring effect directly. 
 
 %\ndg{motivate experiment more clearly in terms of the modeling, and in terms of advances over previous work...}
 %\ellen{I found the terminology of three different models to be confusing.  Originally, I thought you were comparing your models to some competitors.  It seems to me that this is one model that can account for three different conditions.}
