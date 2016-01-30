@@ -1,6 +1,6 @@
 // time webppl bda_backfire_habits.wppl --require mht --require utils
 
-var prior_mhiter = 100000
+var prior_mhiter = 50000
 var prior_burn = prior_mhiter/2
 var prior_incrOpts = {burn:prior_burn, verbose: true, verboseLag: prior_mhiter/20}
 var priorERP = IncrementalMH(priorModel, prior_mhiter, prior_incrOpts)
@@ -11,22 +11,6 @@ var priorERPobject = _.object(map(function(i){
 			return [q, 	marginalize(priorERP, [i,q])]
 		},["habit_rate","habit_strength"]))]
 }, items))
-
-// var priorERPobject = _.object(map(function(i){
-// 	return [i, _.object(map(function(q){
-// 			return [q, 	_.object(map(function(p){
-// 				return [p, marginalize(priorERP, [i,q,p])]
-// 			}, ["gamma","delta"]))]
-// 		},["habit_rate","habit_strength"]))]
-// }, items))
-
-// console.log('after prior')
-
-// _.flatten([df,df,df])
-
-// priorERPobject
-
-// // priorERPobject["runs"]["habit_strength"]v
 
 var scaleFromDailyRate = {
 	"week":7,
@@ -43,48 +27,18 @@ var scaleTo5years = {
 	"5 years": 1
 }
 
-// poisson linking function between model posterior on rates (scaled to preferred_window)
-// var rateLinkingFunction = function(erp, preferred_window){
-// 	// console.log(preferred_window)
-// 	return map(function(s){
-// 		var rate = s*scaleToWindow[preferred_window]
-// 		return {p: p, rate:rate}
-// 	}, erp.support())
-// }
-
-// var rateLinkingFunctionWithGuessing = function(erp, phi, preferred_window){
-// 	var guessing = guessingRates(preferred_window)
-
-// 	var RSApredictions = map(function(s){
-// 		var p = (1-phi)*Math.exp(erp.score([],s))
-// 		var rate = s*scaleToWindow[preferred_window]
-// 		return {p: p, rate:rate}
-// 	}, erp.support())
-	
-// 	var guessingPredictions = map(function(s){
-// 		var p = phi*(1/guessing.length)
-// 		var rate = s*scaleToWindow[preferred_window]
-// 		return {p:p, rate:rate}
-// 	}, guessing)
-
-// 	return _.flatten([RSApredictions, guessingPredictions])
-// }
-
-// d must be in preferred time window
-// var scorePoissonLink = function(erp, d){
-// 	return Math.log(sum(map(function(s){
-// 		var p = Math.exp(erp.score([],s))
-// 		return p*Math.exp(poissonERP.score([s], d)) 
-// 	}, erp.support()
-// 	)))
-// }
-
-
-
 var scorePoissonLink = function(erp, d){
 	return util.logsumexp(map(function(s){
 		var logp = erp.score([],s)
 		return logp+poissonERP.score([s], d)
+	}, erp.support()
+	))
+}
+
+var normalLink = function(erp, d, data_analytic_sigma){
+	return util.logsumexp(map(function(s){
+		var logp = erp.score([],s)
+		return logp+gaussianERP.score([s, data_analytic_sigma], d)
 	}, erp.support()
 	))
 }
@@ -99,213 +53,103 @@ var addGuessingAndScale = function(erp, phi){
 	})
 }
 
-// var guessingRates = function(preferred_window){
-// 	return map(function(w){
-// 		var oncePerDay= 1/scaleToWindow[w]
-// 		return oncePerDay
-// 	}, ["week","month","year","5 years"])
-// }
 console.log(items)
 var posteriorBDA = function(){
-	var speaker_optimality = uniform(10,20)
+	var speaker_optimality = uniform(0,20)
 
-	// var action_baserate = uniform(0,0.5)
-	// var action_baserate = uniformDraw([0.001,0.01,0.1,0.2])
+	// var data_analytic_sigma = uniform(0,5)
+	// var utterance_cost = uniform(0, 10)
+	var utterance_cost = 1
 
-	// var delta_baserate = uniform(0,20)
-
-	// var backoff_scale = uniform(1,10)
-
-	// var lambda_backoff = gamma(0.5,1)
-
-	// var phi_1 = uniform(0,1)
-	// var phi_2 = uniform(0,1)
-	// var phi_3 = uniform(0,1)
-	var phi = 0// uniform(0,1)
-	var phi_1 = phi
-	var phi_2 = phi
-	var phi_3 = phi
-	var utterance_cost = uniform(0, 10)
-	// var utterance_cost = 1
-
-	var logistic_parameters = {
-		scale: uniform(0,5),
-		offset: uniform(-10,20)
-	}
-	// var lambda_backoff = uniform(0,0.2)
-	// var baserate_component = discretizeBeta(action_baserate, delta_baserate)
 	foreach(items, function(i){
 
-		// console.log(i)
-		var df_item = subset(df_rounded, "item", i)
-		// var preferred_time_window = df_item[0]["pref_window"]
-		// console.log(preferred_time_window)
 
-		var backfire_responses = _.pluck(subset(df_item, "condition","communication"), "roundedFreq")
-		var observation_responses = _.pluck(subset(df_item, "condition","observation"), "roundedFreq")
-		var baseline_responses = _.pluck(subset(df_item, "condition","baseline"), "roundedFreq")
+		var primary_mixture = uniform(0.5,1)
+
+		var df_item = subset(df, "item", i)
+
+		var backfire_responses = _.pluck(subset(df_item, "condition","communication"), "round_logdayprob") // or logdayprob with normal linking fnc
+		var observation_responses = _.pluck(subset(df_item, "condition","observation"), "round_logdayprob")
+		var baseline_responses = _.pluck(subset(df_item, "condition","baseline"), "round_logdayprob")
 		// console.log(i + backfire_responses)
 		// console.log(baseline_responses)
 
 		var habit_rate_params = sample(priorERPobject[i]["habit_rate"])
 		var habit_strength_params = sample(priorERPobject[i]["habit_strength"])
-		// console.log("before sample prior 0 ")
-		// console.log(habit_rate_params)
+
 
 		var habit_rate = beta(habit_rate_params.a,habit_rate_params.b)
 		// var habit_rate = habit_strength_params.theta
 
-		// var lambda_habit = habit_strength_params.rate1 / scaleFromDailyRate[preferred_time_window]
-		// var lambda_backoff = habit_strength_params.rate2 / scaleFromDailyRate[preferred_time_window]
-
-		// var habit_prior = gaussianPMF(
-		// 	habit_strength_params.mu,
-		// 	habit_strength_params.sigma,
-		// 	priorBins
-		// 	)
-		var habit_prior = discretizeLogNormalPrior(
-			habit_rate,
-			habit_strength_params.mu,
-			habit_strength_params.sigma
+		var habit_prior = discretizeLogNormal1(
+			Math.exp(habit_strength_params.mu),
+			Math.exp(habit_strength_params.sigma)
 			)
-		// habit_strength_params are on the log (times in 5 years scale)
-		// (exp ^ x) / (365*5) to get daily rate
 
-
-		// var lambda_habit = Math.exp(gaussian(habit_strength_params.mu,habit_strength_params.sigma)) / (365*5)
-		// var lambda_habit = Math.exp(habit_strength_params.mu) / (365*5)
-		// console.log(lambda_habit)
-		// var lambda_backoff = gamma(0.5,1)
-
-		// condition(lambda_backoff < lambda_habit)
-		// var backoff_scale = uniform(1,10)
-
-		// var lambda_backoff = lambda_habit / backoff_scale
-		// var lambda_backoff = uniform(0,lambda_habit)
-
-		// console.log('after sample prior 1')
-
-		// var habit_component = discretizeBeta(habit_strength_params.gamma, habit_strength_params.delta)
-		// console.log('after sample prior 2')
-		// var habit_rate = sample(priorERPobject[i]["habit_rate"])
-		// var habit_strength = sample(priorERPobject[i]["habit_strength"])
 		var prior_parameters = {
-			// habit_rate: habit_rate,
-			// lambda_habit: lambda_habit,
-			// lambda_backoff: lambda_backoff,
+			habit_rate: habit_rate,
 			habit_prior: habit_prior,
 			cost:utterance_cost
 		}
-		// console.log("before backfire")
-		// console.log(prior_parameters)
-		var backfireERP = continuous_listener1("It happened.", prior_parameters,speaker_optimality, logistic_parameters)
-		// console.log("RSA complete")
-		// var linked_backfire = rateLinkingFunctionWithGuessing(backfireERP,phi, preferred_time_window)
-		// var erpWithGuessing = addGuessingAndScale(backfireERP, phi_1)
-		// console.log(linked_backfire)
+
+		// console.log(habit_rate)
+		// console.log(Math.exp(habit_strength_params.mu),
+			// Math.exp(habit_strength_params.sigma))
+
+		var backfireERP = continuous_listener1("It happened.", prior_parameters,speaker_optimality)
 		// console.log(map(function(s){return [s, Math.exp(backfireERP.score([], s))]}, backfireERP.support()))
+		// console.log(backfire_responses)
 		var backfiringScr = sum(map(function(d){
-			// var scr = scorePoissonLink(erpWithGuessing, d)
 			var scr = backfireERP.score([], d)
 			// console.log("d = " + d + "; scr = " + scr)
 			return scr
 		}, backfire_responses))
 
-		// console.log(i + " " + backfiringScr)
-
-
-		var observationERP = literalBayesian("It happened.",prior_parameters, false, logistic_parameters)
-		// console.log('afeter obs')
-		// var observationERP = altlistener1("It happened.",prior_parameters, speaker_optimality)
-
-		// var obsWithGuessing = addGuessingAndScale(observationERP, phi_2)
+		var observationERP = literalBayesian("It happened.",prior_parameters, true)
+		// console.log(map(function(s){return [s, Math.exp(observationERP.score([], s))]}, observationERP.support()))
 
 		var observationScr = sum(map(function(d){
-			// var scr = scorePoissonLink(obsWithGuessing, d)
+			// console.log("d = " + d)
 			return observationERP.score([], d)
 		}, observation_responses))
 		// var observationScr = sum(map(function(d){return observationERP.score([], d)}, observation_responses))
-			// console.log("after observation")
+		// console.log("after observation")
 
-		var baselineERP = literalBayesian("It happened.",prior_parameters, true, logistic_parameters)
-		// var baseWithGuessing = addGuessingAndScale(baselineERP, phi_3)
-				// console.log(map(function(s){return [s, Math.exp(baselineERP.score([], s))]}, baselineERP.support()))
-
+		var baselineERP = literalBayesian("It happened.",prior_parameters, false)
+		// console.log(map(function(s){return [s, Math.exp(baselineERP.score([], s))]}, baselineERP.support()))
+		// console.log(baseline_responses)
 		var baselineScr = sum(map(function(d){
 			// console.log(d)
-			// var scr = scorePoissonLink(baseWithGuessing, d)
 			return baselineERP.score([], d)
 		}, baseline_responses))
-
-		// var baselineScr = sum(map(function(d){return baselineERP.score([], d)}, baseline_responses))
 		// // console.log(map(function(s){return [s, Math.exp(baselineERP.score([], s))]}, baselineERP.support()))
-
-	
-
-
-		// var forcedspeakerERP = nullHypothesis(prior_parameters, speaker_optimality)
-		// var forcedspeakerERP = nullListener1("It happened.", prior_parameters, speaker_optimality)
-		// // console.log("after forcedspeak")
-		// var observationERP = observation("It happened.", prior_parameters)
-		// // console.log("after rsa")
-
-		// console.log("after scoring")
 
 		// console.log("backfire score = " +backfiringScr)
 		// console.log("observation score = " +observationScr)
 		// console.log("baseline score = " +baselineScr)
-		// factor(forcedspeakScr)
-		// factor(backfiringScr)
 		factor(backfiringScr+baselineScr+observationScr)
 		// factor(baselineScr)
 
-		// query.add(["parameter", "lambda_backoff", i],  lambda_backoff)
-		// query.add(["parameter", "backoff_scale", i],  backoff_scale)
-
-	// query.add(["parameter", "backoff_rate", "NA"],  lambda_backoff)
-
-
 		query.add(["predictive_daily","communication", i], expectation(backfireERP))
-		// query.add(["predictive_5yr","communication_plusGuess", i], expectation(erpWithGuessing))
-
 		query.add(["predictive_daily","baseline", i], expectation(baselineERP))
-		// query.add(["predictive_5yr","baseline_plusGuess", i], expectation(baseWithGuessing))
-		
 		query.add(["predictive_daily","observation", i], expectation(observationERP))
-		// query.add(["predictive_5yr","observation_plusGuess", i], expectation(obsWithGuessing))
 
 	})
-		// query.add(["parameter", "lambda_backoff", "NA"],  lambda_backoff)
-	// query.add(["parameter", "backoff_scale", "NA"],  backoff_scale)
-	// query.add(["parameter", "backoff_rate", "NA"],  lambda_backoff)
-	// query.add(["parameter", "cost", "NA"],  cost)
-	query.add(["parameter", "utterance_cost", "NA"], utterance_cost)
 
 	query.add(["parameter", "speaker_optimality", "NA"], speaker_optimality)
-	query.add(["parameter", "logistic_scale", "NA"], logistic_parameters.scale)
-	query.add(["parameter", "logistic_offset", "NA"], logistic_parameters.offset)
-	// query.add(["parameter", "phi", "NA"],  phi)
-	// query.add(["parameter", "phi_com", "NA"],  phi_1)
-	// query.add(["parameter", "phi_obs", "NA"],  phi_2)
-	// query.add(["parameter", "phi_base", "NA"],  phi_3)
-	// query.add(["parameter", "alternative_rate", "NA"], action_baserate)
-	// query.add(["parameter", "alternative_delta", "NA"], delta_baserate)
 
 	return query
 }
 
-
-var mhiter = 100000
+var mhiter = 50000
 var burn = mhiter/2
 var incrOpts = {burn:burn, verbose: true, verboseLag: mhiter/20}
 var posteriorERP = IncrementalMH(posteriorBDA, mhiter, incrOpts)
 
 console.log("inference complete --- writing to file")
-// var outFile = "results/bda-backfire-minimal-allconds-backoffscaleByItem-obsL1-IncrMH" + mhiter/1000 + "k-b" + burn/1000 + "k" +"_priorMH" + prior_mhiter/1000 + "k-b" + prior_burn/1000 + "ka.csv"
-// var outFile = "results/bda-backfire-minimal-allconds-justCoffee--2poissonPriors-mixTheta-gamma1-10-0phi-soHigh-IncrMH" + mhiter/1000 + "k-b" + burn/1000 + "k" +"_priorMH" + prior_mhiter/1000 + "k-b" + prior_burn/1000 + "ka.csv"
-var outFile = "results/bda-backfire-continuous-logistic-cost-logNormalPrior-IncrMH" + mhiter/1000 + "k-b" + burn/1000 + "k" +"_priorMH" + prior_mhiter/1000 + "k-b" + prior_burn/1000 + "kc.csv"
-// var outFile = "results/bda-backfire-minimal-allconds-backoffrateGammaByItem-0phi-IncrMH" + mhiter/1000 + "k-b" + burn/1000 + "k" +"_priorMH" + prior_mhiter/1000 + "k-b" + prior_burn/1000 + "ka.csv"
-// var outFile = "results/bda-backfire-inferStrengths-IncrMH" + mhiter/1000 + "k-b" + burn/1000 + "k" +"_priorMH" + prior_mhiter/1000 + "k-b" + prior_burn/1000 + "k.csv"
+var outFile = "results/bda-backfire-logNormalPrior-poissonRSA-so-IncrMH" + 
+			mhiter/1000 + "k-b" + burn/1000 + "k" +"_priorMH" + prior_mhiter/1000 + 
+				"k-b" + prior_burn/1000 + "kb.csv"
 var header = "Type,Condition,Item,Value"
 
 mht.erpWriter(posteriorERP, outFile, header)
