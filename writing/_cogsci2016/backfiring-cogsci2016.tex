@@ -74,7 +74,10 @@ However, ``Jane wore shoes today'' seems to imply the opposite.
 In this case, listeners infer that Jane does \emph{not} like to wear shoes  \cite<e.g.,>{Kravtchenko2015}.  
 Why should some utterances serve as evidence for a given habit, while others `backfire' and serve as evidence against it?  
 We present a formal model of language understanding that will revise shared assumptions (common ground) to explain an utterance that is uninformative with respect to prior beliefs.  
-The model predicts that this ``backfiring'' inference relies on shared knowledge between speaker and listener, which we manipulate in Experiment 1, and \emph{a priori} beliefs about the event under discussion, which we explore in Experiment 2. 
+The model predicts that this ``backfiring'' inference relies on the fact that prior probability of the event occurring was high and that 
+the speaker did not have to say anything---in effect, that the utterance could go without saying. 
+The model predicts an utterance will \emph{not} backfire when the speaker is asked a polar question, and when the event is observed rather than relayed in conversation, which we manipulate in Experiment 1.
+The model also predicts degrees of backfiring contingent on the \emph{a priori} beliefs about the event under discussion, which we explore in Experiment 2. 
 %In Experiment 1, we show that this inference does not occur when interlocutors are mutually aware of information in common ground, or when a statement is removed from a conversational context.  In Experiment 2, we show that the \emph{existence} and \emph{strength} of this inference depends on the listener's prior  beliefs., which we measure empirically.
 % Finally, we present a computational model that predicts these results.
 % that when an utterance is redundant with the prior beliefs of the listener (most people wear shoes and shoe-wearing tends to happen everyday), adults will revise information that is in common ground with the speaker (here, that Jane typically wears shoes) so that the utterance becomes informative.  
@@ -135,13 +138,14 @@ We suggest that backfiring depends on the unusual situation where an assertion w
 
 In this paper, we show that backfiring emerges from a formal model of pragmatics in which the listener is able to revise her assumptions about common ground.
 %formalize a pragmatic language model wherein speaker and listener either do not share common ground about a person's habits (e.g., a student's tendency to turn in her homework on time).  
-The model predicts backfiring when the assertion is a priori very likely. It also predicts two conditions under which backfiring should reverse.
+The model predicts backfiring when the assertion is \emph{a priori} very likely. It also predicts two conditions under which backfiring should occur.
 First, when the evidence comes from a simple observation, rather than from a helpful speaker, it should provide positive (not negative) evidence.
 Second, if the speaker \emph{must} make the utterance, then it should no longer backfire:  making an assertion when that situation is already likely only runs a danger of being uncooperative if the speaker had the \emph{option} of keeping silent (and thus letting the prior rule). 
 We can arrange for the speaker to have no option of silence by asking a polar question: ``Are you a crook?'' ``I'm not.''
 
-In Experiment 1 we the model predictions by arranging for the same (likely) fact to be either spontaneously uttered (yielding backfiring), uttered as the response to a polar question, or as a non-social observation. We also vary the prior probability of the fact in question.
-In Experiment 2 we further explore the quantitative variation predicted by the model as a function of shared prior beliefs.
+In Experiment 1, we test the model predictions by arranging for the same (likely) fact to be either spontaneously uttered (yielding backfiring), uttered as the response to a polar question, or as a non-social observation. 
+We also vary the prior probability of the fact in question.
+In Experiment 2, we further explore the quantitative variation predicted by the model as a function of shared prior beliefs.
 
 %In two experiments, we compare to an alternative model in which background knowledge is always shared, and test three predictions from the model: (1) Backfiring should occur when common ground is \emph{not} shared between interlocutors; here, the speaker will be interpreted as presupposing information that the listener was not aware of, thereby causing the listener to infer that information; (2) When common ground \emph{is} shared, standard learning from testimony should occur, because the speaker's utterance will be understood as semantically informative for the listener; and (3) The existence and strength of backfiring should vary according to the strength of the prior beliefs---more \emph{a priori} likely assertions are less informative and more likely to cause backfiring.
 
@@ -214,11 +218,15 @@ However, if we imagine that the speaker is forced to make an affirmative and neg
 %The listener assumes this utterance came from a speaker $S_1$, who is knowledgable about the event and about the person's habits. The speaker has the possibility of remarking on the event with an affirmation or a negation --- $b$ or $\neg b$--- as well as the possibility of not remarking on the situation, a \emph{null} utterance that has no information content.  
 %The speaker reasons about an idealized literal listener $L_0$ in his head. Crucially, the speaker believes the listener to already know about the target person's habits $h$. In this way, the speaker presupposes this habit is in common ground.
 
+\mht{Maybe explain continuous version first and then note the special case when there is $h$ and $\neg h$}
+
 To flesh out the model, we have to describe the priors $P(h)$ and $P(b|h)$
 We can think of behaviors as events that are distributed in time according to a Poisson distribution,  $b \sim \text{Poisson}(\lambda)$, with a rate $\lambda$ that is influenced by whether or not the person has the habit. 
-For now, we assume that if the habit $h$ is present, the behavior occurs with a high rate  $\lambda_{h}$ and if the habit is absent, the rate is lower $\lambda_{\neg h}$,
-where $\lambda_{h} > \lambda_{\neg h}$. \ndg{any reason not to just use the version you'll need for expt 2?}
-In Expt.~2, we relax the notion of discrete habits and consider a continuous distribution over rates. 
+In the binary case, if the habit $h$ is present, the behavior occurs with a high rate  $\lambda_{h}$ and if the habit is absent, the rate is lower $\lambda_{\neg h}$,
+where $\lambda_{h} > \lambda_{\neg h}$. 
+In the continuous case, the listener has prior beliefs about the likely rates $\lambda \sim P(\lambda)$, which we will explore in Expt.~2.
+%\ndg{any reason not to just use the version you'll need for expt 2?}
+%In Expt.~2, we relax the notion of discrete habits and consider a continuous distribution over rates. 
 The model is implemented in the probabilistic programming language WebPPL \cite{dippl}, and a simple version can be seen at \mht{add forest page}.
 
 \begin{figure}
