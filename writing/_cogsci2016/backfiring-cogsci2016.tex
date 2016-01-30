@@ -386,7 +386,7 @@ Finally, since participants were not given any helpful information in the \emph{
 In all conditions, this was the case (Figure \ref{fig:expt1-all}; right panel).
 
 
-%: Prior 0.39 [0.36, 0.42] vs. Observation 0.60 [0.58, 0.62], Ignorant Speaker 0.60 [0.58, 0.61], Backfiring 0.62 [0.61, 0.64] 
+% Prior 0.39 [0.36, 0.42] vs. Observation 0.60 [0.58, 0.62], Ignorant Speaker 0.60 [0.58, 0.61], Backfiring 0.62 [0.61, 0.64] 
 Overall, participants in the \emph{Backfiring} condition interpreted utterances as expressing atypical events relative to the other three conditions, replicating \citeA{Kravtchenko2015}.  If an officemate says, ``My student turned in his homework today," then the student must not typically turn in his homework.  However, we also expected participants in the \emph{Observation} and \emph{Instructive} conditions to interpret the target statements as evidence that the relevant behavior \emph{does} typically occur more often than at baseline, which we did not find. 
 % Upon reading an observation that a student turned in his homework, for instance, we expected participants to be more likely to believe that the student usually turns in his homework, relative to baseline.  We also expected participants to interpret the statement, ``My student turned in his homework today," as evidence that the student usually turns in his homework when produced in response to a question about whether the student turned in his homework.  Instead, participants in these two conditions did not differ from those in the \emph{Baseline} condition.  
 This lack of differences could be due to participants having a strong prior belief that the ``more likely" option given the evidence was also more likely \emph{a priori}: we observed a baseline probability reliably greater than 50\% for 8 out of the 16 items.
@@ -503,13 +503,22 @@ We designed the next experiment to get around these issues.
 \end{figure*}
 
 
-The model of backfiring language (Eq. \ref{eq:L1}) predicts that the extent to which backfiring should occur depends upon the \emph{a priori} likelihood of the action occurring. 
-In our second experiment, we aimed to elicit reactions to utterances about human behaviors that vary widely in terms of this likelihood.
-
+The model of backfiring language (Eq. \ref{eq:L1}) predicts that the extent to which backfiring should occur depends upon the \emph{a priori} probability of the action occurring. 
+%In our second experiment, we explored reactions to utterances about human behaviors that vary widely in terms of this likelihood.
 %human behaviors covering a wide range of likely frequencies of action, as well as to simplify and generalize the experimental paradigm. 
 %modified the stimuli used in Experiment 1 to include actions associated with a wider range of prior beliefs so that we could test the quantitative predictions of our models. 
 %Specifically, we ask whether the strength and presence of backfiring varies systematically according to the strength of prior beliefs. 
-Specifically, our model predicts that the degree of backfiring should vary \emph{continuously} according to the \emph{a priori} likelihood of the event, with strong backfiring for utterances about events that are \emph{a priori} very likely (e.g., ``John wore socks today") and either weaker or no backfiring for events that are very \emph{un}likely (e.g., ``John climbed a mountain today"). 
+%Specifically, our model predicts that the degree of backfiring should vary according to the \emph{a priori} probability of the event, which depends on the rate or propensity $\lambda$ with which a person does an action. 
+In Expt.~1, we experimentally fixed the rate to be high (i.e., one of the alternatives \emph{always} did X). 
+In this experiment, we use data collected previously from an unrelated experiment to measure the prior distribution over propensities $P(\lambda)$. 
+
+We generalize the model in Eq.~\ref{eq:L1} to have the pragmatic listener consider a distribution of propensities of partaking in an event. Thus, instead of the listener considering whether or not the target person has a Boolean habit $h$, the model reasons about what is the likely propensity or rate $\lambda$ with which the target does the action. 
+
+We use the empirical priors to make predictions about the existence and degrees of backfiring for a variety of events.
+
+
+%
+%, with strong backfiring for utterances about events that are \emph{a priori} very likely (e.g., ``John wore socks today") and either weaker or no backfiring for events that are very \emph{un}likely (e.g., ``John climbed a mountain today"). 
 
 %\red{OR:} In our second experiment, we modified the stimuli used in Experiment 1 to include actions associated with a wider range of prior beliefs so that we could test the quantitative predictions of our models.  Specifically, we asked whether the strength and presence of backfiring varies systematically according to the strength of prior beliefs.  Our models predict that utterances that are strongly redundant with prior beliefs (e.g., ``John wore shoes today") should backfire more than utterances that are less redundant (e.g., ``John went for a hike today"), by virtue of being less semantically informative.
 
@@ -540,7 +549,7 @@ Before the task and after reading the instructions, participants were asked what
 \subsection{Prior data}
 
 As a basis of comparison and for estimation of the prior distribution for the quantitative model fit, we use previously collected data from an unrelated experiment as a measure of the prior. 
-In this prior elicitation task (reported in full in Tessler \& Goodman (\emph{CogSci 2016}, submitted)), 40 MTurkers rated how often a person who has done the action (e.g. \emph{smoked cigarettes}) at least once, does the action. 
+In this prior elicitation task (reported in full in Tessler \& Goodman (\emph{CogSci 2016}, submitted)), 40 MTurkers rated how many Americans they believed had done the action before (e.g. \emph{smoked cigarettes}), and for a typical person who had done the action before, how frequently did they do the action. 
 The response format was the same as in Expt.~2. 
 
 %We then modeled the data from each of the \emph{Backfiring} (Eq.~\ref{eq:L1}), \emph{Observation} (Eq~\ref{eq:bayes}), and \emph{Baseline} conditions (Eq.~\ref{eq:bayes} neglecting the evidence) of Expt.~2.
@@ -563,7 +572,7 @@ Twenty-two participants were excluded from the analyses for failing the instruct
 
 We analyzed the data by normalizing the elicited rates to the scale of numbers of times in a 5 year period (the maximum time window). We then log-transformed the rates. 
 Figure \ref{fig:expt2} (left) shows the inferred rates on a log scale compared to the prior elicitation data (also on log scale) described above.
-Only in the \emph{Backfiring} condition do the inferred rates drop below the prior. 
+Only in the \emph{Backfiring} condition do the inferred rates drop below the prior, whereas in the Observational condition, the data simply updates beliefs less and less. 
 Figure \ref{fig:expt2} (right) shows item-specific plots on a normal rate scale  from the high-prior region of interest. 
 In some cases (e.g. \emph{wears socks}), the inferred rate is less than 50\% of the \emph{baseline} rate.
 
@@ -571,7 +580,8 @@ To get a better idea for the reliability of this effect with our items, we compa
 %
 % number of times in a day. For example, if a participant rated that a target person goes on a hike once a month, that was normalized to the daily rate of 0.03.  
 We first computed the mean rate from the \emph{Baseline} condition and used that as a predictor (after centering) crossed with condition (Backfire vs. Observational) in a mixed-effects linear regression, with random by-participant effects of intercept and base rate and by-item effects of intercept and condition\footnote{This is the maximal mixed-effects structure.}. 
-The frequencies implied in the \emph{Observation} condition were significantly larger than those implied in the \emph{Backfiring} condition ($\beta = 0.35, SE = 0.13, t(67.6) = 2.56, p = 0.01$), and there was a trend for that difference to increase as the base rate increased ($\beta = 0.09, SE = 0.05, t(60.4) = 1.92, p = 0.059$). There was also a significant main effect of base rate on the implied rate ($\beta = 0.57, SE = 0.09, t(27.1) = 6.6; p<0.01$). \red{what does this mean?}
+The frequencies implied in the \emph{Observation} condition were significantly larger than those implied in the \emph{Backfiring} condition ($\beta = 0.35, SE = 0.13, t(67.6) = 2.56, p = 0.01$), and there was a trend for that difference to increase as the base rate increased ($\beta = 0.09, SE = 0.05, t(60.4) = 1.92, p = 0.059$). 
+%In addition, the base rate  was also a significant main effect of base rate on the implied rate ($\beta = 0.57, SE = 0.09, t(27.1) = 6.6; p<0.01$). \red{what does this mean?}
 The fact that the effect in our data is small is likely driven by the fact that we have few items in the critical region where we would expect backfiring to occur. 
 
 %We observe a main effect of base rate on the implied rate 
@@ -628,9 +638,9 @@ The fact that the effect in our data is small is likely driven by the fact that 
 
 \begin{figure*}
 %\centering
-    \includegraphics[width=\textwidth]{expt2-scatter-model-witems}
+    \includegraphics[width=\textwidth]{model-data-scatter}
     \caption{
-    Left: Model predictions as compared against the human elicited frequencies. Right: Predictions for items in the region of interest.
+    Left: Model predictions as compared against the human elicited frequencies (both are on log scales). Right: Examples of backfiring as compared to baseline and observational inferences.
     }
   \label{fig:expt2model}
 \end{figure*}
@@ -638,37 +648,36 @@ The fact that the effect in our data is small is likely driven by the fact that 
 
 \subsection{Quantitative model analysis}
 
-In order to quantitatively compare the models to the empirical data, we needed to measure the prior distribution over habits $P(h)$ and the habit strength $P(h \mid b)$. 
-We use previously collected data from an unrelated experiment (decscribed above). We then modeled the data from each of the \emph{Backfiring} (Eq.~\ref{eq:L1}), \emph{Observation} (Eq~\ref{eq:bayes}), and \emph{Baseline} conditions (Eq.~\ref{eq:bayes} neglecting the evidence) of Expt.~2.
+In order to quantitatively compare the models to the empirical data, we needed to measure the prior distribution over propensities or rates $P(\lambda)$. 
+We use previously collected data from an unrelated experiment (described above). We modeled the data from each of the \emph{Backfiring} (Eq.~\ref{eq:L1}), \emph{Observation} (Eq~\ref{eq:bayes}), and \emph{Baseline} conditions (Eq.~\ref{eq:bayes} neglecting the evidence) of Expt.~2.
 
-\subsection{Prior data}
+\subsection{Prior modeling}
 In the prior elicitation task (reported in full in Tessler \& Goodman (\emph{CogSci 2016}, submitted)), 40 MTurkers rated how often a person who has done the action (e.g. ``smoked cigarettes'') at least once, does the action. 
-As well, they rated the frequencies of people who had done the action (e.g. ``smoked cigarettes'') before. This procedure is thought to get at two major components in the prior distribution over frequency of action. 
-We model the first question as a log normal distribution ($\ln d_{Q1} \sim \text{Normal}(\mu, \sigma) $), and the second as a Beta ($ d_{Q2} \sim \text{Beta}(\gamma, \delta)$).
-\mht{If the rest is kosher, I'll explain in better detail. I did the exact same thing with the prior that I did for habituals.}
+As well, they rated the frequencies of people who had done the action (e.g. ``smoked cigarettes'') before. 
+Because some individuals rarely or never engage in an event (e.g., smoking), while others do quite frequently, we expect the prior distribution over rates to be structured as a mixture distribution between these two possibilities. 
+We model the first question as a log normal distribution ($\ln d_{Q1} \sim \text{Normal}(\mu, \sigma) $), and the second as a Beta ($ d_{Q2} \sim \text{Beta}(\gamma, \delta)$), and use the mixture distribution $\lambda \sim \theta \cdot \text{Normal}(\mu, \sigma)  + (1 - \theta) \cdot \delta_{\lambda=-\infty}$ as the prior distribution over rates.
+
 
 \subsubsection{Model details}
-\mht{This is a sketch. If it is all kosher, I'll write it up in more detail.}
+The listener in the RSA model has uncertainty about the actor's propensity $\lambda$ to take part in an event. 
+We assume events or behaviors for this actor are distributed in time according to a Poisson distribution.
+Thus $P(b \mid \lambda) = \sum_{k=1}^{\infty} P(k \mid \lambda)$, where $P(k \mid \lambda)$ is the Poisson probability mass function. 
 
-The listener in the RSA model has uncertainty about the actor's propensity to take part in an event (i.e., the strength of his habit). We connect this latent, real-valued habit (which is on the log 5-year frequency scale) to the probability of the event occurring in a day using a logistic function with parameters $k$ (scale) and $m$ (offset). 
-$$
-f(x) = \frac{1}{1 + e^{(-k*(x-m))}}
-$$
-We put priors on these parameters $k \sim \text{Uniform}(0, 10)$ and $m \sim \text{Uniform}(-20, 20)$ and infer their credible values with Bayesian data analysis. 
-The RSA model has 1 other parameter: the speaker optimality parameter $\alpha$ in Eq.~\ref{eq:S1}, and the Bayesian observation model has 0 more parameters. 
+The RSA model had 1 parameter: the speaker optimality parameter $\alpha$ in Eq.~\ref{eq:S1}, and the Bayesian observation model has 0 more parameters. 
+We infer the likely values of this parameter by Bayesian data analysis.
+We ran 2 MCMC chains with 100,000 iterations discarding the first 50,000 for burnin. 
 
 \subsubsection{Model comparison}
 
-%1    logistic_offset    NA 10.5545683 10.6844495  9.7925498
-%2     logistic_scale    NA  0.8567678  0.8630608  0.8471872
-%3 speaker_optimality    NA 19.3929040 19.9663293 11.8387894
+%1    4.071097 4.400203 3.895926
+The MAP estimate and 95\% HDI for $\alpha$ is 4.07 [3.9, 4.4].
 
-I ran 2 MCMC chains with 100,000 iterations discarding the first 50,000 for burnin. 
-The MAP estimate and 95\% HDI for $\alpha$ is 19.3 [11.8, 19.9].
-The logistic scale parameter $k$ 0.86 [ 0.85, 0.86] and offset parameter $m$ 10.5 [9.8, 10.7].
+The posterior predictive distribution as compared to the human elicited frequencies are shown in Figure \ref{fig:expt2model} (left). 
+Overall, the model explains much of the variance in the human data $r^2(81) =0.86$.
+The model does the worst job capturing the \emph{Baseline} condition: Among the Communicative and Observational conditions, the model explains almost all of the variance predicts the data well: $r^2(54) = 0.96$.
+Though almost all of the variance is captured, the effects of backfiring are subtle as compared to the baseline frequency (Figure \ref{fig:expt2model} right), though the communicative condition consistently provides less information than the observational condition.
 
-The posterior predictive distribution predicts the data well: $r^2(81) = 0.95$.
-As well, for items in the region of interest (Figure \ref{fig:expt2model} right), the model predicts backfiring in the communicative but not in the observational context. 
+
 %We include in our data analysis model an alternative model of the data generating process: random behavior. This sub-model explains data points that deviate largely from our models and is important to include to get reliable es
 
 %
@@ -686,7 +695,7 @@ As well, for items in the region of interest (Figure \ref{fig:expt2model} right)
 
 
 
-\section{General Discussion}
+\section{Discussion}
 
 We have presented a formal model for how an utterance can \emph{backfire}, or imply that its stated content is typically not true.
 %a phenomenon wherein the explicit meaning of a sentence is accompanied by an implication that the sentence is typically not true.
@@ -698,9 +707,13 @@ The model is based on the notions that 1) utterances are intended to be informat
 %In Expt.~1, we validate that this prediction depends on the information being communicated \red{not sure what this means} as well as a misalignment of common ground between speaker and listener in conversation. This experiment also serves as a conceptual replication of \citeA{Kravtchenko2015} and adds to the body of literature demonstrating that adults try to avoid redundancy in conversation (CITE).
 %Ultimately, this can result in an utterance ``backfiring",.  If a person notes, ``My roommate washed her dishes today," for example, then a listener who does not know the roommate will likely infer that the roommate does \emph{not} typically was her dishes; otherwise, the utterance would not be informative (CITE).
 
+Our model also makes several novel predictions about backfiring, which we have begun to test in Experiments 1 and 2.  In Experiment 1, after replicating the basic backfiring effect found by \citeA{Kravtchenko2015}, we showed that this effect disappears when an interlocutor elicits the target utterance by genuinely expressing uncertainty.  If a person taking a survey asks their friend, ``Did your roommate wash her dishes today?" because she needs to answer a survey and the friend responds, ``Yes, my roommate washed her dishes today," then the utterance no longer presupposes any shared knowledge about the roommate; instead, the utterance is clearly established as semantically informative for the listener.  The effect also disappears when the proposition is framed as an observation rather than a communicative utterance (e.g., ``She saw that the roommate washed her dishes today").  In these contexts, there is no longer any pressure for statements to be maximally informative.  As a result, even if the statement is redundant with adults' prior expectations, adults will accept the statement as evidence that the behavior usually occurs.  
+In Experiment 2, we demonstrated that the existence and strength of backfiring depends on the strength of prior beliefs.  
+In our experiment, we found backfiring effects for only a select group of items with the highest propensity of action. 
+Many affirmations about events will not backfire, because they are \emph{a priori} unlikely to happen on any given day. 
+Events commented on that one would believe tend to occur daily (e.g., drinking coffee, if you're a coffee drinker) will backfire when common ground is not shared. 
 
-
-Our model also makes several novel predictions about backfiring, which we tested in Experiments 1 and 2.  In Experiment 1, after replicating the basic backfiring effect found by \citeA{Kravtchenko2015}, we showed that this effect disappears when an interlocutor elicits the target utterance by genuinely expressing uncertainty.  If a person taking a survey asks their friend, ``Did your roommate wash her dishes today?" because she needs to answer a survey and the friend responds, ``Yes, my roommate washed her dishes today," then the utterance no longer presupposes any shared knowledge about the roommate; instead, the utterance is clearly established as semantically informative for the listener.  The effect also disappears when the proposition is framed as an observation rather than a communicative utterance (e.g., ``She saw that the roommate washed her dishes today").  In these contexts, there is no longer any pressure for statements to be maximally informative.  As a result, even if the statement is redundant with adults' prior expectations, adults will accept the statement as evidence that the behavior usually occurs.  In Experiment 2, we demonstrated that the existence and strength of backfiring depends on the strength of prior beliefs.  For example, for a person who does not know Jane, the utterance, ``Jane wore shoes today," will result in stronger backfiring than, ``Jane wore sandals today," because wearing shoes more strongly \emph{goes without saying}.
+%For example, for a person who does not know Jane, the utterance, ``Jane wore shoes today," will result in stronger backfiring than, ``Jane wore sandals today," because wearing shoes more strongly \emph{goes without saying}.
 
 Ultimately, our experiments contribute to the growing body of work on presupposition \red{(CITE)}.  
 Traditionally, it has been assumed that information can be presupposed only if it is already part of the common ground between speaker and listener \red{(CITE)}.  Several researchers have argued, however, that an utterance can be perfectly felicitous even if it presupposes information that the listener does not already know \red{(CITE)}.  For example, for a speaker to assert \emph{It was Percival who piqued the professor}, the speaker must believe that the listener already knows that \emph{somebody} had piqued the professor \cite{Clark1977}.  But if the listener actually lacks this knowledge, the exchange does not fall apart; instead, the listener easily and rapidly \emph{accommodates} the utterance by adjusting the common ground between herself and the speaker, inferring that it must be commonly known that someone had piqued the professor.  Here, we argue that listeners engage in a similar process when an utterance seems to be uninformative (e.g., ``John wore shoes today").  In this case, the listener accommodates the speaker by accepting as true a world in which John does not typically wear shoes.  Presupposition is thus a powerful way of communicating information.  %When a speaker presupposes information, given that the speaker is trustworthy, the speaker requires the listener to accept that information as true; otherwise, the speaker's utterance would be uncooperative \cite{Grice1975}.
@@ -742,7 +755,6 @@ Traditionally, it has been assumed that information can be presupposed only if i
 
 Our work is therefore of both \emph{practical} and theoretical relevance.  
 Recent efforts to persuade the general public that there are no gender differences in academic ability, for example, include claims such as, ``Girls can do math" (e.g., Zielinski, 2009).  To render this statement informative, a listener who already shares this belief may infer that there is reason to believe that girls \emph{cannot} do math.
-
 %While this statement could be useful and informative for those who are unsure of girls' math ability, it is unclear how it might be received by people who already share this belief, or who are not aware that this is an issue in society. 
 %is no causal relation between vaccines and autism, for example, include claims that vaccines do not cause autism (e.g., CDC, 2015).  
 %Similarly, websites, media outlets, and public figures tend to state, ``Girls can do math,'' as a way of promoting gender equality (e.g., Zielinski, 2009).  
