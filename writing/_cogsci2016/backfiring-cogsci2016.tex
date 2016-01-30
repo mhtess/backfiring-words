@@ -71,7 +71,7 @@
 %\ndg{abstract is too technical. start with the puzzle of how asserting a proposition can sometimes decrease its plausibility. the use of common ground here is kind of hard to follow.}
 If you just met Jane and her friend tells you, ``Jane went on a hike today", you might think Jane is the kind of person who likes to go on hikes.  
 However, ``Jane wore shoes today'' seems to imply the opposite. 
-In this case, listeners infer that Jane does \emph{not} like to wear shoes (e.g., \cite{Kravtchenko2015}.  
+In this case, listeners infer that Jane does \emph{not} like to wear shoes  \cite<e.g.,>{Kravtchenko2015}.  
 Why should some utterances serve as evidence for a given habit, while others 'backfire' and serve as evidence against it?  
 We present a formal model of language understanding that can revise information that is common ground when an utterance is uninformative with respect to prior beliefs.  
 The model predicts that this ``backfiring'' inference relies on shared knowledge between speaker and listener, which we manipulate in Experiment 1, and \emph{a priori} beliefs about the event under discussion, which we manipulate and measure in Experiment 2. 
@@ -672,10 +672,13 @@ We ran 2 MCMC chains with 100,000 iterations discarding the first 50,000 for bur
 %1    4.071097 4.400203 3.895926
 The MAP estimate and 95\% HDI for $\alpha$ is 4.07 [3.9, 4.4].
 
-The posterior predictive distribution as compared to the human elicited frequencies are shown in Figure \ref{fig:expt2model} (left). 
+The posterior predictive distribution as compared to the human elicited frequencies are shown in Figure \ref{fig:expt2model} (left; log-log plot). 
+The model exhibits the same gradient in implied frequency as our participants.
+The effects of backfiring are subtle (Figure \ref{fig:expt2model} right), though it is clear the communicative condition consistently provides less information than the observational condition.
+The model accounts for the data from the Baseline condition the worst. The points of largest deviation were all events that relatively few people experience (e.g., climbing mountains, stealing chewing gum). It may well be the question asked in the Baseline condition (``How often does the typical person climb mountains?'') led participants to rate a frequency corresponding to ``never'', whereas in the prior elicitation task we explicitly ask about the people who have done this activity at least once before. 
+
 Overall, the model explains much of the variance in the human data $r^2(81) =0.86$.
-The model does the worst job capturing the \emph{Baseline} condition: Among the Communicative and Observational conditions, the model explains almost all of the variance predicts the data well: $r^2(54) = 0.96$.
-Though almost all of the variance is captured, the effects of backfiring are subtle as compared to the baseline frequency (Figure \ref{fig:expt2model} right), though the communicative condition consistently provides less information than the observational condition.
+By removing the data from the \emph{Baseline} condition, the model explains almost all of the variance in the other two conditions: $r^2(54) = 0.96$.
 
 
 %We include in our data analysis model an alternative model of the data generating process: random behavior. This sub-model explains data points that deviate largely from our models and is important to include to get reliable es
