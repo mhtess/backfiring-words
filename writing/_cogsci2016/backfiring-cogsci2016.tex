@@ -69,11 +69,11 @@
 
 \begin{abstract}
 %\ndg{abstract is too technical. start with the puzzle of how asserting a proposition can sometimes decrease its plausibility. the use of common ground here is kind of hard to follow.}
-If you just met Jane and a friend tells you, ``Jane went for a hike today", you might think Jane is the kind of person who likes to go on hikes.  
+If you just met Jane and her friend tells you, ``Jane went on a hike today", you might think Jane is the kind of person who likes to go on hikes.  
 However, ``Jane wore shoes today'' seems to imply the opposite. 
 In this case, listeners infer that Jane does \emph{not} like to wear shoes (e.g., \cite{Kravtchenko2015}.  
 Why should some utterances serve as evidence for a given habit, while others 'backfire' and serve as evidence against it?  
-We present a formal model of language understanding that is able to revise information that is common ground when an utterance is uninformative with respect to prior beliefs.  
+We present a formal model of language understanding that can revise information that is common ground when an utterance is uninformative with respect to prior beliefs.  
 The model predicts that this ``backfiring'' inference relies on shared knowledge between speaker and listener, which we manipulate in Experiment 1, and \emph{a priori} beliefs about the event under discussion, which we manipulate and measure in Experiment 2. 
 %In Experiment 1, we show that this inference does not occur when interlocutors are mutually aware of information in common ground, or when a statement is removed from a conversational context.  In Experiment 2, we show that the \emph{existence} and \emph{strength} of this inference depends on the listener's prior  beliefs., which we measure empirically.
 % Finally, we present a computational model that predicts these results.
@@ -121,11 +121,11 @@ Research in social psychology, however, has shown that a headline such as ``Robe
  %\citeA{Gruenfeld1992}, for example, found that fake lines such as ``Robert Kennedy was not planning the assassination of Fidel Castro" caused adults to more strongly believe that Kennedy \emph{had} been planning to assassinate Castro. 
 Similarly, \citeA{Kravtchenko2015} recently showed that if a speaker says, ``John paid the cashier!" as part of a story about John's trip to a store, adults infer that John does not typically pay cashiers.
 
-Why do such claims backfire, while others don't? We suggest that this effect depends on the common ground shared between interlocutors, and the conversational principle that utterances should be \emph{cooperative}---that is, both relevant and informative (Grice, 1975).  In short, when an utterance does not appear on the surface to be informative, listeners will adjust their understanding of what the speaker believed was in common ground to \emph{make} the utterance informative \red{(CITE)}.
+Why do such claims backfire, while others don't? We suggest that this effect depends on the common ground shared between interlocutors, and the conversational principle that utterances should be \emph{cooperative}---that is, both relevant and informative \cite{Grice1975}.  In short, when an utterance does not appear on the surface to be informative, listeners will adjust their understanding of what the speaker believed was in common ground to \emph{make} the utterance informative \red{(CITE)}.
 
  %in order to \emph{make} the utterance informative (\red{CITE} accommodation?).
 
-In this paper, we formalize pragmatic language models wherein speaker and listener either do or do not share common ground about a person's habits (e.g., a student's tendency to turn in her homework on time).  In two experiments, we test three predictions from the models: (a) Backfiring should occur when common ground is \emph{not} shared between interlocutors; here, the speaker will be interpreted as presupposing information that the listener was not aware of, thereby causing the listener to infer that information; (b) When common ground \emph{is} shared, standard learning from testimony should occur, because the speaker's utterance will be understood as semantically informative for the listener; and (c) The existence and strength of backfiring should vary according to the strength of the prior beliefs that are redundant with the utterance, since greater redundancy causes utterances to be less informative.
+In this paper, we formalize a pragmatic language model wherein speaker and listener either do not share common ground about a person's habits (e.g., a student's tendency to turn in her homework on time).  In two experiments, we test three predictions from the model and an alternative model in which common ground is shared: (a) Backfiring should occur when common ground is \emph{not} shared between interlocutors; here, the speaker will be interpreted as presupposing information that the listener was not aware of, thereby causing the listener to infer that information; (b) When common ground \emph{is} shared, standard learning from testimony should occur, because the speaker's utterance will be understood as semantically informative for the listener; and (c) The existence and strength of backfiring should vary according to the strength of the prior beliefs that are redundant with the utterance, since greater redundancy causes utterances to be less informative.
 
 
 
@@ -143,11 +143,11 @@ P(h \mid b) \propto P(b \mid h) P(h) \label{eq:bayes}
 As a habit is more likely to give rise to the behavior --- as $P(b \mid h)$ gets large --- so too does the behavior become more indicative of the habit, assuming the prior probabilities are constant. 
 
 Knowledge about an event can also come from a helpful speaker.
-For example, if a school survey is being conducted, and a principal asks a teacher, ``Did your student turn in her homework today?" then the response, ``Yes, my student turned in her homework today," could be taken as evidence that the student usually turns in her homework.  In this case, the teacher is aware that the principle does not know the habits of his students, so he informs her of them.
+For example, if a school survey is being conducted, and a principal asks a teacher, ``Did your student turn in her homework today?" then the response, ``Yes, my student turned in her homework today," could be taken as evidence that the student usually turns in her homework.  In this case, the teacher is aware that the principal does not know the habits of his students, so he informs her of them.
 
 %communicating the behavior (here, ``My student turned in his homework today'') can lead the listener to believe the underlying habit (here, that the student \emph{typically} turns in his homework) more strongly.  Critically, in this case, we assume that the person asking, ``Did your student turn in his homework today?" is \emph{not} asking the question because he or she suspects that the habit is absent (i.e., that the student doesn't usually turn in his homework); instead, the person must be asking for an unbiased reason (e.g., perhaps the person is taking a survey of student behavior).  If the person \emph{did} ask the question out of suspicion, then they would clearly already hold the belief that the student does not have the habit, and it is unclear whether the speaker's response would change their opinion.
 
-In contrast, when a speaker misrepresents the listener's knowledge (e.g., the speaker believes the listener knows something that the listener actually doesn't know, or the listener is overhearing a conversation), communicating the behavior might lead the listener to believe the habit is \emph{less} likely.  If the student did usually turn in her homework, for example, then the utterance---``My student turned in his homework today.'''---would be uninformative.
+If, by contrast, a speaker misrepresents the listener's knowledge (e.g., the speaker believes the listener knows something that the listener actually doesn't know, or the listener is overhearing a conversation), communicating the behavior might lead the listener to believe the habit is \emph{less} likely.  If the student did usually turn in her homework, for example, then the utterance---``My student turned in his homework today.'''---would be uninformative.
 
 
 
@@ -171,18 +171,14 @@ The \textbf{backfiring} RSA model is:
 &&P_{L_0}(b \mid u, h)\propto \denote{u}(b) \cdot P(b \mid h) \label{eq:L0}
 \end{eqnarray}
 %
-We assume the set of utterances are remarks about the event or behavior occurring or not --- $b$ or $\neg b$--- as well as the possibility of not remarking on the situation, a \emph{null} utterance that has no information content.  
+Here, a pragmatic listener $L_1$ hears an utterance $u$ describing an event or behavior $b$ of a target person and is trying to infer whether that behavior occurred and what are the target's habits $h$ in general. 
+The listener assumes this utterance came from a speaker $S_1$, who is knowledgable about the event and about the person's habits. The speaker has the possibility of remarking on the event with an affirmation or a negation --- $b$ or $\neg b$--- as well as the possibility of not remarking on the situation, a \emph{null} utterance that has no information content.  
+The speaker reasons about an idealized literal listener $L_0$ in his head. Crucially, the speaker believes the listener to already know about the target person's habits $h$. In this way, the speaker presupposes this habit is in common ground.
 
-The prior probability of a behavior occurring in a time window depends on the habits of the person, which influnces the rate $\lambda$ at which the behavior occurs: $P(b \mid h) = \int_{t} \lambda dt$. 
-We assume that if the habit $h$ is present, the behavior has a high probability of occurring; if the habit is absent, the probability is lower. 
-\begin{eqnarray}
-\lambda = 
-\begin{cases}
- \lambda_{h}  & \text{if } h\\
-\lambda_{\neg h}  & \text{if not } h
-\end{cases} \label{eq:hab}
-\end{eqnarray}
-where $\lambda_{h} > \lambda_{\neg h}$. The model is implemented in the probabilistic programming language WebPPL \cite{dippl}, and a simple version can be seen at \mht{add forest page}.
+The target's behavior can be thought to be distributed in time according to a Poisson distribution:  $b \sim \text{Poisson}(\lambda)$, and the rate $\lambda$  is influenced by whether or not the person has the habit. For now, we assume that if the habit $h$ is present, the behavior occurs with a high rate  $\lambda_{h}$ and if the habit is absent, the rate is lower $\lambda_{\neg h}$,
+where $\lambda_{h} > \lambda_{\neg h}$.
+In Expt.~2, we relax the notion of discrete habits and consider a continuous distribution over rates. 
+The model is implemented in the probabilistic programming language WebPPL \cite{dippl}, and a simple version can be seen at \mht{add forest page}.
 
 \begin{figure}
 \centering
@@ -198,19 +194,19 @@ where $\lambda_{h} > \lambda_{\neg h}$. The model is implemented in the probabil
 
 
 The model predicts that when a speaker does not represent a listener's beliefs accurately, utterances affirming an event will be interpreted as expressing atypical behavior by implicitly implying that the habit is not present ($\neg h$).
-The statement, ``My student turned in his homework today,'' for instance, should suggest that the student does \emph{not} usually turn in his homework (Figure \ref{fig:schematic-model} \mht{figure to be revised}).
+The statement, ``My student turned in his homework today,'' for instance, should suggest that the student does \emph{not} usually turn in his homework (Figure \ref{fig:schematic-model} \mht{what would be a good figure to show here?}).
 %This occurs when the speaker does not represent the listener's beliefs accurately.
 %The strength of this inference is predicted to be modulated the listener's \emph{a priori} belief in the habit; the stronger the listener believes it to be the case that the roommate usually washes her dishes, the more the utterance \emph{My roommate washed her dishes today} will backfire. 
 
 \subsection{Alternative models}
 
 The backfiring inference depends critically on a misunderstanding of common ground. 
-If a listener explicitly asks, for example, ``Did your student turn in his homework today?'' then the speaker will learn that the listener is unsure of the student's habits.
+If an interlocutor explicitly tells another, for example, ``I need to fill out this report. Did your student turn in his homework today?'' then the speaker will learn that the listener is unsure of the student's habits.
 %\footnote{It is also important that the question be asked for plausible reasons that do not imply that the listener believes the habit to be absent (i.e., that the student doesn't usually turn in his homework).}.
 As a result, the response, ``My student turned in his homework today,'' will become semantically informative, no longer presupposing that the listener knows about the student's habits.
 Figure \ref{fig:schematic-model} (green bars) shows what happens when the speaker and listener are both aware of the listener's knowledge.
 This is more akin to pedagogical communication, where teacher and learner are on the same page. 
-An \textbf{instructive} RSA model is nearly identical to the one above, with the only difference being the speaker mode:
+An \textbf{instructive} RSA model is nearly identical to the one above, with the only difference being the speaker's model of the literal listener:
 \begin{eqnarray}
 %&&P_{L_1}(b, h \mid u)\propto P_{S_1}(u \mid b)\cdot P(b \mid h) \cdot P(h) \label{eq:L1mod}\\
 &&P_{S_1^{*}}(u \mid b) \propto P_{L_0}(b, h \mid u) ^ {\alpha} \label{eq:S1mod}
