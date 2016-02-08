@@ -1,0 +1,476 @@
+---
+title: "Backfiring 2/8/16 update"
+author: "mht"
+date: "February 8, 2016"
+output: html_document
+---
+
+Post-cogsci update
+
+
+## Model motivation
+
+In the backfiring model with the simplest causal, background knoweldge (i.e. intutive theory), people are thought to either have habits or not have habits (e.g. goes for runs), and those give rise to the target behavior (e.g. running on a particular day) with either high or low probability, respectively (called here, **habit strength** and **baserate strength**).
+
+This is the causal knowledge inside the pragmatic listener. The listener's intuitive theory of the speaker is that they can either comment on the event in the affirmative ("John went for a run today.") or negative ("John did not go for a run today."), or stay silent (speaker does not remark on John running). Further, the pragmatic listener believes the speaker to be presupposing that she (the listener) knows the status of that habit (i.e. knows whether or not John usually goes for runs).
+
+The backfiring inference depends on (1) the speaker having the option of not remarking on the situation and (2) the listener believing the speaker to be presupposing that she (the listener) knows the status of the habit.
+
+Given a fixed **habit strength** and **baserate strength**, there is also a (potentially small) predicted effect wherein magnitude of backfiring is expected to be strongest when the *a priori* beliefs are strongest, whereas the mangitude of observational learning is expected to be strongest when the *a priori beliefs are weakest (either, you believe the opposite is likely, or you don't have strong beliefs a priori).
+
+
+
+## Experiment 1: Explicit Alternatives
+
+16 items. Each could be instantiated in one of 4 conditions.
+
+1. Communicative / Backfiring
+2. Observation
+3. Survey / Polar Question
+4. Baseline
+
+n = 120. Each participant completed 16 trials, with 4 trials of each of the 4 conditions. 
+
+DV: Forced choice + confidence
+
+Experiment can be viewed [here](http://stanford.edu/~mtessler/backfiring-words/experiments/2afc/forcedchoice-1.html).
+
+
+```{r data.load}
+d<-read.csv("~/Documents/research/backfiring-words/data/forcedchoice-2-trials.csv")
+
+d0 <- d %>%
+  select(workerid, item, rt, response, condition, confidence) %>%
+  mutate(likelyPerson = response=="likely-key",
+         condition = factor(condition, 
+                       levels=c("prior", "literal", 
+                                "pragmatic", "speakermanipulation"),
+                       labels=c("baseline","observation","backfire","survey")),
+         score = ifelse(likelyPerson, confidence, -confidence))
+```
+
+
+```{r fc2.rt}
+
+qplot(data=d, x = rt/1000, geom='histogram')
+
+d.rt <- d %>%
+  group_by(workerid) %>%
+  summarise(rt = mean(rt/1000))
+
+qplot(data=d.rt, x= rt, geom='histogram')
+
+mean(d.rt$rt)
+sqrt(var(d.rt$rt))
+
+rt.fullExpt <- d %>% 
+  group_by(workerid) %>%
+  summarize(minutes = sum(rt)/(1000*60)) %>%
+  mutate(avg_scnds = 60*minutes/(16))
+
+qplot(data=rt.fullExpt, x= minutes, geom='histogram')
+qplot(data=rt.fullExpt, x= avg_scnds, geom='histogram')
+View(rt.fullExpt)
+
+```
+
+
+```{r fc2.confidence}
+
+qplot(data=d, x = confidence, geom='histogram')
+
+qplot(data=d, x = confidence, geom='histogram', fill=condition)+
+  facet_wrap(~condition)
+
+```
+
+### Planned comparisons
+
+
+### Figure 2
+
+```{r}
+d.fig<-bind_rows(
+d0 %>%
+  mutate(response = response=="likely-key") %>%
+  group_by(condition) %>%
+  multi_boot_standard(column="response") %>%
+#   rename(fc = mean,
+#          fc_lower=ci_lower, 
+#          fc_upper=ci_upper) %>%
+  mutate(format = "Choice",
+         chance =0.5),
+
+
+d0 %>%
+  group_by(condition) %>%
+  multi_boot_standard(column="confidence") %>%
+#   rename(conf = mean,
+#          conf_lower = ci_lower,
+#          conf_upper = ci_upper) %>%
+  mutate(format = "Confidence",
+         chance = 0.5),
+
+d0 %>%
+  group_by(condition) %>%
+  multi_boot_standard(column="score") %>%
+#   rename(conf = mean,
+#          conf_lower = ci_lower,
+#          conf_upper = ci_upper) %>%
+  mutate(format = "Endorsement",
+         chance = 0)
+) %>%
+  mutate(format = factor(format,
+                         levels=c("Endorsement","Choice", "Confidence")))
+
+ggplot(d.fig, aes(x=condition, y = mean))+
+  geom_bar(stat='identity', width = 0.4, position=position_dodge(0.4))+
+  geom_errorbar(aes(ymin=ci_lower, ymax=ci_upper),
+                width=0.3, position=position_dodge(0.4))+
+  geom_hline(aes(yintercept = chance), lty=2)+
+  theme_paper()+
+  #theme(axis.text.y = element_blank())+
+#  scale_fill_brewer(palette="Set1")+
+  guides(fill=F)+
+  #ylim(0,1)+
+  ylab("Participant response")+
+  facet_wrap(~format)+
+  xlab("")+
+  coord_flip()
+
+ggsave("~/Documents/research/backfiring-words/writing/_cogsci2016/figures/expt1-3responses.pdf",
+       height = 3.5, width = 11)
+
+
+```
+
+#### Analysis 1: Forced choice data
+
+```{r comparison.1}
+
+d0 %>% group_by(condition) %>%
+  summarise(M = mean(response=="likely-key"),
+            N = length(response)) %>%
+  mutate(sterr = sqrt(M*(1-M)/N))
+
+d0 %>%
+  mutate(response = response=="likely-key") %>%
+  group_by(condition) %>%
+  multi_boot_standard(column="response")
+
+## maximal model that converges without 
+rs1<-glmer(likelyPerson~condition + (1| workerid) + (1 | item),
+           family="binomial",
+          data = d0)
+
+summary(rs1)
+
+# same thing but no intercept to get Betas
+## not reported
+rs1.sansInt<-glmer(likelyPerson~ -1
+                     (1 | workerid) + (1 | item),
+           family="binomial",
+          data = d0)
+
+summary(rs1.sansInt)
+```
+
+#### Analysis 2: Confidence ratings 
+
+```{r comparison.2}
+
+d0 %>%
+  group_by(condition) %>%
+  multi_boot_standard(column="confidence")
+
+
+rs2<-lmer(confidence ~ condition + (1 | workerid) + (1 | item),
+          data = d0)
+
+summary(rs2)
+```
+
+#### Analysis 3: Composite scores
+
+```{r comparison.3}
+
+d0 %>%
+  group_by(condition) %>%
+  multi_boot_standard(column="score")
+
+d0.cent <- d0 %>% 
+  mutate(cent_score = score - mean(score))
+
+rs4<-lmer(score ~ condition + (1 + condition | workerid) + (1 | item),
+          data = d0)
+
+summary(rs4)
+
+
+rs4<-lmer(score ~ condition + (1  | workerid) + (1 + condition | item),
+          data = d0)
+
+summary(rs4)
+
+
+
+rs4.si<-lmer(score ~ -1 + condition + (1 | workerid) + (1 | item),
+          data = d0)
+
+summary(rs4.si)
+
+```
+
+
+
+## Median split of item based on score
+
+```{r score.medianSplit}
+
+d.scr<-d0 %>%
+  group_by(item, condition) %>%
+  multi_boot_standard(column="score")
+
+med<-median(d.scr$mean)
+d0.medSplit<-left_join(d0, 
+  d.scr %>%
+    filter(condition=='prior') %>%
+    mutate(medSplit = mean < med) %>%
+    mutate(medSplit = factor(medSplit, levels=c("TRUE", "FALSE"),
+                             labels=c("weak prior", "strong prior"))) %>%
+    select(item, medSplit))
+
+d.scr.med<-d0.medSplit %>%
+  group_by(medSplit, condition) %>%
+  multi_boot_standard(column="score")
+
+
+d.scr.med0<-left_join(d.scr.med %>%
+  filter(condition != 'prior') ,
+  d.scr.med %>%
+    filter(condition == 'prior') %>%
+    rename(prior = mean,
+           prior_lower = ci_lower,
+           prior_upper = ci_upper) %>%
+    select(-condition))
+
+ggplot(d.scr.med0, aes(x=condition, y=mean, color=condition))+
+  geom_errorbar(aes(ymin=ci_lower, ymax=ci_upper),
+                width=0.1, position=position_dodge(0.4), size=1.5)+
+  #geom_hline(yintercept = 0.0, lty=2)+
+  geom_hline(aes(yintercept = prior), lty=2)+
+  geom_hline(aes(yintercept = prior_lower), lty=3)+
+  geom_hline(aes(yintercept = prior_upper), lty=3)+
+  facet_grid(.~medSplit)+
+  theme_paper()+
+  scale_color_brewer(palette='Set1')+
+ # guides(color=F)+
+  #ylim(-0.3,0.3)+
+  ylab("Endorsement score")+
+  xlab("")+
+  theme(legend.position="bottom",
+        legend.direction="horizontal",
+        axis.text.x = element_blank())
+
+#ggsave("~/Documents/research/backfiring-words/analysis/figures/fc2-score-medSplit.pdf", width=6, height =8)
+ggsave("~/Documents/research/backfiring-words/writing/_cogsci2016/figures//fc2-score-medSplit.pdf", width=5, height =5)
+
+
+ ```
+
+Data by item
+
+```{r fc2.item}
+
+
+d.item <- d0 %>%
+  group_by(item, condition) %>%
+  multi_boot_standard(column="likelyPerson")
+
+
+qplot(data=d.item %>% filter(condition=="prior"), x = mean, geom='histogram', binwidth=0.05)
+
+ggplot(d.item, aes(x=condition, y=mean, fill=condition))+
+  geom_bar(stat='identity', width = 0.7, position=position_dodge(0.7))+
+  geom_errorbar(aes(ymin=ci_lower, ymax=ci_upper),
+                width=0.5, position=position_dodge(0.7))+
+  theme_paper()+
+  facet_wrap(~item)+
+  geom_hline(yintercept=0.5, lty=3)+
+  scale_fill_solarized()+
+  ylab("proportion who choose 'likely' person")+
+  theme(axis.text.x = element_blank())+
+  xlab("")
+
+ggsave("~/Documents/research/backfiring-words/analysis/figures/fc2-byItem.pdf", width=14, height =12)
+
+```
+
+
+### Posterior - prior
+
+```{r}
+
+d.change <- left_join(d.item,
+                      d.item %>% filter(condition=='prior') %>%
+                        select(item, mean) %>%
+                        rename(prior = mean)) %>%
+  filter(condition!="prior") %>%
+  mutate(change = mean - prior,
+         ci_lower = ci_lower - prior,
+         ci_upper = ci_upper - prior)
+  
+ggplot(d.change, aes(x=prior, y=change, color = condition))+
+  geom_point()+
+  geom_errorbar(aes(ymin  = ci_lower, ymax = ci_upper))+
+  geom_line()+
+  facet_wrap(~condition)
+
+```
+
+
+### Prior / posterior
+
+```{r}
+
+d.change <- left_join(d.item,
+                      d.item %>% filter(condition=='prior') %>%
+                        select(item, mean) %>%
+                        rename(prior = mean)) %>%
+  filter(condition!="prior") %>%
+  mutate(change =  prior / mean,
+         ci_lower = prior / ci_lower,
+         ci_upper = prior / ci_upper)
+  
+ggplot(d.change, aes(x=prior, y=change, color = condition))+
+  geom_point()+
+  geom_errorbar(aes(ymin  = ci_lower, ymax = ci_upper))+
+  geom_line()+
+  facet_wrap(~condition)
+
+```
+
+### Linear effect as a function of prior
+
+
+```{r}
+
+d0.wp<-left_join(d0, 
+                 d.item %>% filter(condition=='prior') %>%
+                        select(item, mean) %>%
+                        rename(prior = mean)) %>%
+  filter(condition!="prior") 
+
+
+rs<-lmer(score~prior*condition + (1 + condition|workerid), data = d0.wp)
+summary(rs)
+
+
+rs<-glmer(likelyPerson~prior*condition + (1|workerid), data = d0.wp,
+          family='binomial')
+summary(rs)
+```
+
+
+```{r fc2.collapsed.stats}
+d.stat <- d0 %>%
+  group_by(condition) %>%
+  multi_boot_standard(column="likelyPerson")
+
+ggplot(d.stat, aes(x=condition, y=mean, fill=condition))+
+  geom_bar(stat='identity', width = 0.4, position=position_dodge(0.4))+
+  geom_errorbar(aes(ymin=ci_lower, ymax=ci_upper),
+                width=0.3, position=position_dodge(0.4))+
+  geom_hline(yintercept = 0.5, lty=2)+
+  theme_paper()+
+  scale_fill_solarized()+
+  guides(fill=F)+
+  ylim(0,1)+
+  ylab("proportion who choose 'likely' person")
+
+ggsave("~/Documents/research/backfiring-words/analysis/figures/fc2.pdf", width=6, height =5)
+
+```
+
+```{r fc2.collapsed.stats}
+
+head(d0)
+rs<-glmer(data=d0, likelyPerson ~ condition + (1 | workerid) + 
+            (1  + condition | item), family='binomial')
+summary(rs)
+```
+
+```{r fc2.confidence}
+
+d.conf <- d0 %>%
+  group_by(condition) %>%
+  multi_boot_standard(column="confidence")
+
+ggplot(d.conf, aes(x=condition, y=mean, fill=condition))+
+  geom_bar(stat='identity', width = 0.4, position=position_dodge(0.4))+
+  geom_errorbar(aes(ymin=ci_lower, ymax=ci_upper),
+                width=0.3, position=position_dodge(0.4))+
+  geom_hline(yintercept = 0.5, lty=2)+
+  theme_paper()+
+  scale_fill_solarized()+
+  guides(fill=F)+
+  ylim(0,1)+
+  ylab("confidence")
+
+
+ggsave("~/Documents/research/backfiring-words/analysis/figures/fc2-confidence.pdf", width=6, height =5)
+
+```
+
+
+```{r score}
+
+d.scr<-d0 %>%
+  group_by(condition) %>%
+  multi_boot_standard(column="score")
+
+ggplot(d.scr, aes(x=condition, y=mean, color=condition))+
+  #geom_bar(stat='identity', width = 0.4, position=position_dodge(0.4))+
+  geom_errorbar(aes(ymin=ci_lower, ymax=ci_upper),
+                width=0.3, size = 2, position=position_dodge(0.4))+
+  geom_hline(yintercept = 0, lty=2)+
+  theme_paper()+
+  scale_fill_solarized()+
+  guides(color=F)+
+  ylim(-0.3,0.3)+
+  ylab("Endorsement score")+
+  xlab("")
+
+ggsave("~/Documents/research/backfiring-words/analysis/figures/fc2-score.pdf", width=6, height =5)
+
+
+
+d.scr.raw<-d %>%
+  select(workerid, item, rt, response, condition, confidence) %>%
+  mutate(likelyPerson = response=="likely-key",
+         score = ifelse(likelyPerson, confidence, -confidence)) 
+
+rs1<-lmer(data = d.scr.raw, score ~ condition + (1 + condition | workerid) + (1 + condition | item))
+
+```
+
+
+
+```{r score.byItem}
+
+
+ggplot(d.scr, aes(x=condition, y=mean, color=condition))+
+  #geom_bar(stat='identity', width = 0.4, position=position_dodge(0.4))+
+  geom_errorbar(aes(ymin=ci_lower, ymax=ci_upper),
+                width=0.4, position=position_dodge(0.4), size=1.5)+
+  geom_hline(yintercept = 0.0, lty=2)+
+  facet_wrap(~item)+
+  theme_paper()+
+  scale_color_solarized()+
+  guides(fill=F)+
+  #ylim(-0.3,0.3)+
+  ylab("score")
+
+ggsave("~/Documents/research/backfiring-words/analysis/figures/fc2-score-byItem.pdf.pdf", width=14, height =12)
+
+```

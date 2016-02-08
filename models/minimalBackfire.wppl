@@ -2,17 +2,42 @@ var meaning = function(utt, effect){
     return utt =="mm" ? true : utt==effect
 }
 
-var alpha = 10
+var alpha = 5
+var how_popular_is_the_habit = 0.3
+var rate_given_habit = 0.99
+var rate_give_no_habit = 0.2
 
-var nullListener0 = cache(function(utterance) {
+var baseline = cache(function(utterance) {
   Enumerate(function(){
-    var causalPower = flip(0.99) ? 0.99 : 0.5
+    var causalPower = flip(how_popular_is_the_habit) ? 
+              rate_given_habit : 
+              rate_give_no_habit
+    condition(true)
+    return causalPower
+  })
+})
+
+var observation = cache(function(utterance) {
+  Enumerate(function(){
+    var causalPower = flip(how_popular_is_the_habit) ? 
+              rate_given_habit : 
+              rate_give_no_habit
     var effect = flip(causalPower)
     var m = meaning(utterance, effect)
     condition(m)
-    return effect
+    return causalPower
   })
 })
+
+// var nullListener0 = cache(function(utterance) {
+//   Enumerate(function(){
+//     var causalPower = flip(0.99) ? 0.99 : 0.5
+//     var effect = flip(causalPower)
+//     var m = meaning(utterance, effect)
+//     condition(m)
+//     return effect
+//   })
+// })
 
 var listener0 = cache(function(utterance, causalPower) {
   Enumerate(function(){
@@ -25,7 +50,8 @@ var listener0 = cache(function(utterance, causalPower) {
 
 var speaker1 = cache(function(effect, causalPower) {
   Enumerate(function(){
-    var utterance = [true, false, "mm"][discrete([1,1,10])]
+    var utterance = [true, false, "mm"][discrete([1,1,1])]
+    // var utterance = [true, false][discrete([1,1])]
     var L0 = listener0(utterance, causalPower)
     // var L0 = nullListener0(utterance)
     factor(L0.score([],effect))
@@ -35,7 +61,10 @@ var speaker1 = cache(function(effect, causalPower) {
 
 var listener1 = function(utterance) {
   Enumerate(function(){
-  	var causalPower = flip(0.99) ? 0.99 : 0.5
+  	var causalPower = flip(how_popular_is_the_habit) ? 
+              rate_given_habit : 
+              rate_give_no_habit
+    // var causalPower = flip(0.99) ? 0.99 : 0.1
 	  var effect = flip(causalPower)
     var S1 = speaker1(effect, causalPower)
     factor(alpha*S1.score([],utterance))
@@ -43,7 +72,19 @@ var listener1 = function(utterance) {
   })
 }
 
-// listener1(true)
+var r0 = expectation(baseline(true))
+var r1 = expectation(observation(true))
+var r2 = expectation(listener1(true))
+
+console.log("baseline = " + r0)
+console.log("observation = " + r1)
+console.log("backfiring = " + r2)
+
+console.log("log backfire - log baseline = " + (Math.log(r2) - Math.log(r0)))
+console.log("log observation - log baseline = " + (Math.log(r1) - Math.log(r0)))
+
+
+
 // 
 // speaker1(true, 0.99)
-listener0(true, 0.99)
+// listener0(true, 0.99)
