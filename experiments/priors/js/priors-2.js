@@ -85,6 +85,9 @@ function make_slides(f) {
                     $("#time_frequency_b").val(),
                      $("#time_comparison_a").val(),
                      $("#time_comparison_b").val()]
+      $(".err").hide();
+      $(".err2").hide();
+      $(".err3").hide();
 
       if (_.contains(responses, ""))  {
         $(".err").show();
