@@ -102,14 +102,24 @@ function make_slides(f) {
     },
 
     log_responses : function() {
+      //debugger;
        exp.data_trials.push({
          "trial_type" : "twostep_elicitation",
          "trial_num": this.trialNum,
-         "item": this.stim.item,
-         "category": this.stim.type,
-         "existence" : exp.sliderPost,
-         "nTimes" : responses,
+         "item": this.stim.habitual,
+         "category": this.stim.category,
+         "q1_response": responses[0], 
+         "q1_interval": responses[2], 
+         "q2_response": responses[1], 
+         "q2_interval": responses[3], 
+         "q3_response": responses[4], 
+         "q3_interval": responses[6], 
+         "q4_response": responses[5], 
+         "q4_interval": responses[7],
+         //"existence" : exp.sliderPost,
+         //"nTimes" : response,
          //"timeWindow": freq,
+         //Here we log the 
          "rt":this.rt
        });
     }
@@ -170,7 +180,7 @@ function init() {
       screenUW: exp.width
     };
   //blocks of the experiment:
-  exp.structure=["i0", "instructions","catch", "single_trial", 'subj_info', 'thanks'];
+  exp.structure=["single_trial","i0", "instructions","catch",  'subj_info', 'thanks'];
   
   exp.data_trials = [];
   //make corresponding slides:
