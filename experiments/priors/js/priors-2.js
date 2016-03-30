@@ -77,6 +77,25 @@ function make_slides(f) {
     },
 
     button : function() {
+      debugger;
+      // Record the user responses with these dictionaries
+      response_1 = {
+        ntimes: $("#population_frequency_a").val(),
+        out_of: $("#population_comparison_a").val()
+      }
+      response_2 = {
+        ntimes: $("#population_frequency_b").val(), 
+        out_of: $("#population_comparison_b").val()
+      }
+      response_3 = {
+        ntimes: $("#time_frequency_a").val(),
+        out_of: $("#time_comparison_a").val()
+      }
+      response_4 = {
+        ntimes: $("#time_frequency_b").val(),
+        out_of: $("#time_comparison_b").val()
+      }
+      //We keep the responses array to easily check if any of the entries are " " in the first error check.
       responses = [$("#population_frequency_a").val(),
                   $("#population_frequency_b").val(),
                   $("#population_comparison_a").val(),
@@ -85,17 +104,20 @@ function make_slides(f) {
                     $("#time_frequency_b").val(),
                      $("#time_comparison_a").val(),
                      $("#time_comparison_b").val()]
+      
+
+      //Hide the error message if the error has been corrected
       $(".err").hide();
       $(".err2").hide();
       $(".err3").hide();
 
-      if (_.contains(responses, ""))  {
+      if (_.contains(responses, "")){
         $(".err").show();
       //Check to make sure the second response is larger than the first
-      }else if (parseInt(responses[0])/parseInt(responses[2]) < (parseInt(responses[1])/parseInt(responses[3]))){
+      }else if (parseInt(response_1.ntimes)/parseInt(response_1.out_of) < (parseInt(response_2.ntimes)/parseInt(response_2.out_of))){
         $(".err2").show();
       //Check to make sure responses are whole numbers
-      }else if(parseFloat(responses[0])%1 != 0 || parseFloat(responses[1])%1 !=0 || parseFloat(responses[4])%1 != 0 || parseFloat(responses[5])%1 !=0){
+      }else if(parseFloat(response_1.ntimes)%1 != 0 || parseFloat(response_2.ntimes)%1 !=0 || parseFloat(response_3.ntimes)%1 != 0 || parseFloat(response_4.ntimes)%1 !=0){
         $(".err3").show();
       }else{
         this.rt = Date.now() - this.startTime;
@@ -111,14 +133,14 @@ function make_slides(f) {
          "trial_num": this.trialNum,
          "item": this.stim.habitual,
          "category": this.stim.category,
-         "q1_response": responses[0], 
-         "q1_interval": responses[2], 
-         "q2_response": responses[1], 
-         "q2_interval": responses[3], 
-         "q3_response": responses[4], 
-         "q3_interval": responses[6], 
-         "q4_response": responses[5], 
-         "q4_interval": responses[7],
+         "q1_response": response_1.ntimes, 
+         "q1_interval": response_1.out_of, 
+         "q2_response": response_2.ntimes, 
+         "q2_interval": response_2.out_of, 
+         "q3_response": response_3.ntimes, 
+         "q3_interval": response_3.out_of, 
+         "q4_response": response_4.ntimes, 
+         "q4_interval": response_4.out_of,
          //"existence" : exp.sliderPost,
          //"nTimes" : response,
          //"timeWindow": freq,
@@ -183,7 +205,7 @@ function init() {
       screenUW: exp.width
     };
   //blocks of the experiment:
-  exp.structure=["i0", "instructions","catch", "single_trial", 'subj_info', 'thanks'];
+  exp.structure=["single_trial", "i0", "instructions","catch", 'subj_info', 'thanks'];
   
   exp.data_trials = [];
   //make corresponding slides:
