@@ -68,10 +68,22 @@ function make_slides(f) {
       $(".err2").hide();
       $(".err3").hide();
 
-      $(".question1").html("How many Americans do you think have <strong> " + stim.past + "</strong> before?<br>");
-      $(".question2").html("How many Americans do you think <strong> " +stim.habitual+ "</strong> yesterday?");
-      $(".question3").html("Imagine a person who <strong> "+stim.habitual+"</strong> yesterday.<br>How often does he or she "+stim.verb+"?");
-      $(".question4").html("Imagine a person who has <strong>" + stim.past + "</strong> before but did not do it yesterday. <br>How often does he or she "+stim.verb+"?");
+      var intervalDictionary = {
+        day: "yesterday",
+        week: "last week",
+        month: "last month",
+        year: "last year",
+        "5 years": "in the last 5 years"
+      }
+
+      this.q1 = "How many Americans do you think have <strong> " + stim.past_participle + "</strong> <em>before</em>?<br>"
+      this.q2 = "How many Americans do you think <strong> " +stim.past+ "</strong> <em>"+intervalDictionary[stim.interval]+"</em>?"
+      this.q3 = "Imagine a person who <strong> "+stim.past+"</strong> <em>"+intervalDictionary[stim.interval]+"</em>.<br>How often does he or she "+stim.verb+"?"
+      this.q4 = "Imagine a person who has <strong>" + stim.past_participle + "</strong> before but did not do it <em>"+intervalDictionary[stim.interval]+"</em>. <br>How often does he or she "+stim.verb+"?"
+      $(".question1").html(this.q1);
+      $(".question2").html(this.q2);
+      $(".question3").html(this.q3);
+      $(".question4").html(this.q4);
 
 
     },
@@ -132,14 +144,20 @@ function make_slides(f) {
          "trial_num": this.trialNum,
          "item": this.stim.habitual,
          "category": this.stim.category,
-         "q1_response": response_1.ntimes, 
-         "q1_interval": response_1.out_of, 
-         "q2_response": response_2.ntimes, 
-         "q2_interval": response_2.out_of, 
-         "q3_response": response_3.ntimes, 
+         "q1_people": response_1.ntimes, 
+         "q1_sample": response_1.out_of, 
+         "q2_people": response_2.ntimes, 
+         "q2_sample": response_2.out_of, 
+         "q3_instances": response_3.ntimes, 
          "q3_interval": response_3.out_of, 
-         "q4_response": response_4.ntimes, 
+         "q4_instances": response_4.ntimes, 
          "q4_interval": response_4.out_of,
+         "past":this.stim.past,
+         "past_participle":this.stim.past_participle,
+         "question1":this.q1,
+         "question2":this.q2,
+         "question3":this.q3,
+         "question4":this.q4,
          //"existence" : exp.sliderPost,
          //"nTimes" : response,
          //"timeWindow": freq,
