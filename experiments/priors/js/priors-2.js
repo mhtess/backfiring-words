@@ -77,7 +77,6 @@ function make_slides(f) {
     },
 
     button : function() {
-      debugger;
       // Record the user responses with these dictionaries
       response_1 = {
         ntimes: $("#population_frequency_a").val(),
@@ -205,7 +204,7 @@ function init() {
       screenUW: exp.width
     };
   //blocks of the experiment:
-  exp.structure=["single_trial", "i0", "instructions","catch", 'subj_info', 'thanks'];
+  exp.structure=[ "i0", "instructions","catch", "single_trial", 'subj_info', 'thanks'];
   
   exp.data_trials = [];
   //make corresponding slides:
