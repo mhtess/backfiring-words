@@ -18,12 +18,6 @@ var stimuli = [
 	interval: "day"
 }
 {
-	verb: "wear shoes", // e.g. how often does he or she ___ ?
-	past: "wore shoes", // e.g. ___ yesterday?
-	past_participle: "worn shoes", // e.g. have __ before?
-	interval: "day"
-}
-{
 	verb: "wear their glasses", // e.g. how often does he or she ___ ?
 	past: "wore their glasses", // e.g. ___ yesterday?
 	past_participle: "worn worn their glasses", // e.g. have __ before?
