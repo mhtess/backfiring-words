@@ -71,12 +71,12 @@ var stimuli = [
 	past_participle: "exercised", // e.g. have __ before?
 	interval: "month"
 }
-//{
-//	verb: "change their bedsheets", // e.g. how often does he or she ___ ?
-//	past: "changed their bedsheets", // e.g. ___ yesterday?
-//	past_participle: "changed their bedsheets", // e.g. have __ before?
-//	interval: "week"
-//}
+{
+	verb: "change their bedsheets", // e.g. how often does he or she ___ ?
+	past: "changed their bedsheets", // e.g. ___ yesterday?
+	past_participle: "changed their bedsheets", // e.g. have __ before?
+	interval: "week"
+}
 {
 	verb: "have a birthday party", // e.g. how often does he or she ___ ?
 	past: "had a birthday party", // e.g. ___ yesterday?
