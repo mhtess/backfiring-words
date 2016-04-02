@@ -23,12 +23,12 @@ var stimuli = [
 //	past_participle: "worn worn their glasses", // e.g. have __ before?
 //	interval: "day"
 //}
-//{
-//	verb: "buy their own groceries", // e.g. how often does he or she ___ ?
-//	past: "bought their own groceries", // e.g. ___ yesterday?
-//	past_participle: "bought their own groceries", // e.g. have __ before?
-//	interval: "week"
-//}
+{
+	verb: "buy their own groceries", // e.g. how often does he or she ___ ?
+	past: "bought their own groceries", // e.g. ___ yesterday?
+	past_participle: "bought their own groceries", // e.g. have __ before?
+	interval: "week"
+}
 {
 	verb: "eat breakfast", // e.g. how often does he or she ___ ?
 	past: "ate breakfast", // e.g. ___ yesterday?
@@ -95,12 +95,12 @@ var stimuli = [
 	past_participle: "worn shoes", // e.g. have __ before?
 	interval: "day"
 }
-{
-	verb: "wash their hair", // e.g. how often does he or she ___ ?
-	past: "washed their hair", // e.g. ___ yesterday?
-	past_participle: "washed their hair", // e.g. have __ before?
-	interval: "week"
-}
+//{
+//	verb: "wash their hair", // e.g. how often does he or she ___ ?
+//	past: "washed their hair", // e.g. ___ yesterday?
+//	past_participle: "washed their hair", // e.g. have __ before?
+//	interval: "week"
+//}
 {
 	verb: "take a vacation", // e.g. how often does he or she ___ ?
 	past: "took a vacation", // e.g. ___ yesterday?
