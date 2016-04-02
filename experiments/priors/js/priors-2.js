@@ -76,10 +76,10 @@ function make_slides(f) {
         "5 years": "in the last 5 years"
       }
 
-      this.q1 = "How many Americans do you think have <strong> " + stim.past_participle + "</strong> <em>before</em>?<br>"
-      this.q2 = "How many Americans do you think <strong> " +stim.past+ "</strong> <em>"+intervalDictionary[stim.interval]+"</em>?"
-      this.q3 = "Imagine a person who <strong> "+stim.past+"</strong> <em>"+intervalDictionary[stim.interval]+"</em>.<br>How often does he or she "+stim.verb+"?"
-      this.q4 = "Imagine a person who has <strong>" + stim.past_participle + "</strong> before but did not do it <em>"+intervalDictionary[stim.interval]+"</em>. <br>How often does he or she "+stim.verb+"?"
+      this.q1 = "How many Americans do you think have <em>" + stim.past_participle + "</em><strong> before</strong>?<br>"
+      this.q2 = "How many Americans do you think  <em>" +stim.past+ "</em><strong> "+intervalDictionary[stim.interval]+"</strong>?"
+      this.q3 = "Imagine a person who <em> "+stim.past+"</em> <strong>"+intervalDictionary[stim.interval]+"</strong>.<br>How often does he or she "+stim.verb+"?"
+      this.q4 = "Imagine a person who has <em>" + stim.past_participle + "</em> before but did not do it <strong>"+intervalDictionary[stim.interval]+"</strong>. <br>How often does he or she "+stim.verb+"?"
       $(".question1").html(this.q1);
       $(".question2").html(this.q2);
       $(".question3").html(this.q3);
