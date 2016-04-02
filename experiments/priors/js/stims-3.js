@@ -20,7 +20,7 @@ var stimuli = [
 //{
 ////	verb: "wear their glasses", // e.g. how often does he or she ___ ?
 //	past: "wore their glasses", // e.g. ___ yesterday?
-//	past_participle: "worn worn their glasses", // e.g. have __ before?
+//	past_participle: "worn worn their glasses", // esho.g. have __ before?
 //	interval: "day"
 //}
 {
@@ -89,12 +89,12 @@ var stimuli = [
 	past_participle: "paid their taxes", // e.g. have __ before?
 	interval: "year"
 }
-{
-	verb: "wear shoes", // e.g. how often does he or she ___ ?
-	past: "wore shoes", // e.g. ___ yesterday?
-	past_participle: "worn shoes", // e.g. have __ before?
-	interval: "day"
-}
+//{
+//	verb: "wear shoes", // e.g. how often does he or she ___ ?
+//	past: "wore shoes", // e.g. ___ yesterday?
+//	past_participle: "worn shoes", // e.g. have __ before?
+//	interval: "day"
+//}
 {
 	verb: "wash their hair", // e.g. how often does he or she ___ ?
 	past: "washed their hair", // e.g. ___ yesterday?
