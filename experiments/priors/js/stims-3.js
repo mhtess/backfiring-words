@@ -23,12 +23,12 @@ var stimuli = [
 //	past_participle: "worn worn their glasses", // e.g. have __ before?
 //	interval: "day"
 //}
-{
-	verb: "buy their own groceries", // e.g. how often does he or she ___ ?
-	past: "bought their own groceries", // e.g. ___ yesterday?
-	past_participle: "bought their own groceries", // e.g. have __ before?
-	interval: "week"
-}
+//{
+//	verb: "buy their own groceries", // e.g. how often does he or she ___ ?
+//	past: "bought their own groceries", // e.g. ___ yesterday?
+//	past_participle: "bought their own groceries", // e.g. have __ before?
+//	interval: "week"
+//}
 {
 	verb: "eat breakfast", // e.g. how often does he or she ___ ?
 	past: "ate breakfast", // e.g. ___ yesterday?
