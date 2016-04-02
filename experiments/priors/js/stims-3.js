@@ -108,18 +108,6 @@ var stimuli = [
 	interval: "year"
 }
 {
-	verb: "wear shoes", // e.g. how often does he or she ___ ?
-	past: "wore shoes", // e.g. ___ yesterday?
-	past_participle: "worn shoes", // e.g. have __ before?
-	interval: "day"
-}
-{
-	verb: "wear sandals", // e.g. how often does he or she ___ ?
-	past: "wore sandals", // e.g. ___ yesterday?
-	past_participle: "worn sandals", // e.g. have __ before?
-	interval: "day"
-}
-{
 	verb: "wear tie-dye", // e.g. how often does he or she ___ ?
 	past: "wore tie-dye", // e.g. ___ yesterday?
 	past_participle: "worn tie-dye", // e.g. have __ before?
@@ -138,9 +126,33 @@ var stimuli = [
 	interval: "day"
 }
 {
-	verb: "wear shoes", // e.g. how often does he or she ___ ?
-	past: "wore shoes", // e.g. ___ yesterday?
-	past_participle: "worn shoes", // e.g. have __ before?
+	verb: "drink lemonade", // e.g. how often does he or she ___ ?
+	past: "drank lemonade", // e.g. ___ yesterday?
+	past_participle: "drunk lemonade", // e.g. have __ before?
 	interval: "day"
+}
+{
+	verb: "go on a hike", // e.g. how often does he or she ___ ?
+	past: "went on a hike", // e.g. ___ yesterday?
+	past_participle: "gone on a hike", // e.g. have __ before?
+	interval: "month"
+}
+{
+	verb: "go to Renaissance fairs", // e.g. how often does he or she ___ ?
+	past: "went to a Renaissance fair", // e.g. ___ yesterday?
+	past_participle: "gone to a Renaissance fair", // e.g. have __ before?
+	interval: "year"
+}
+{
+	verb: "go skiing", // e.g. how often does he or she ___ ?
+	past: "went skiing", // e.g. ___ yesterday?
+	past_participle: "gone skiing", // e.g. have __ before?
+	interval: "year"
+}
+{
+	verb: "take dance lessons", // e.g. how often does he or she ___ ?
+	past: "took dance lessons", // e.g. ___ yesterday?
+	past_participle: "taken dance lessons", // e.g. have __ before?
+	interval: "week"
 }
 ]
