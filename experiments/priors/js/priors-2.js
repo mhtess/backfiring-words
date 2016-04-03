@@ -65,6 +65,8 @@ function make_slides(f) {
       $("#time_comparison_a").val('')
       $("#time_comparison_b").val('')
       $(".err").hide();
+      $(".err0").hide();
+
       $(".err2").hide();
       $(".err3").hide();
 
@@ -119,11 +121,14 @@ function make_slides(f) {
 
       //Hide the error message if the error has been corrected
       $(".err").hide();
+      $(".err0").hide();
       $(".err2").hide();
       $(".err3").hide();
-
-      if (_.contains(responses, "")){
+      if ((_.contains(responses, "")) || (_.contains(responses, null))) {
         $(".err").show();
+      //Check to make sure the second response is larger than the first
+      }else if (_.contains(responses, "0")){
+        $(".err0").show();
       //Check to make sure the second response is larger than the first
       }else if (parseInt(response_1.ntimes)/parseInt(response_1.out_of) < (parseInt(response_2.ntimes)/parseInt(response_2.out_of))){
         $(".err2").show();
@@ -233,7 +238,7 @@ function init() {
       screenUW: exp.width
     };
   //blocks of the experiment:
-  exp.structure=[ "i0", "instructions","catch", "single_trial", 'subj_info', 'thanks'];
+  exp.structure=["single_trial", "i0", "instructions","catch",  'subj_info', 'thanks'];
   
   exp.data_trials = [];
   //make corresponding slides:
