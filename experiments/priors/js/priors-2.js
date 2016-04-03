@@ -147,8 +147,7 @@ function make_slides(f) {
        exp.data_trials.push({
          "trial_type" : "twostep_elicitation",
          "trial_num": this.trialNum,
-         "item": this.stim.habitual,
-         "category": this.stim.category,
+         "item": this.stim.verb,
          "q1_people": response_1.ntimes, 
          "q1_sample": response_1.out_of, 
          "q2_people": response_2.ntimes, 
