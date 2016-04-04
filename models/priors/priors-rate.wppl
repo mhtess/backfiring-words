@@ -1,0 +1,41 @@
+// time webppl priors-rate.wppl --require mht
+
+var df = dataFrame(mht.readCSV("../data/priors-2-rate.csv").data, ["val"])
+
+var model = function(){
+  var items = _.uniq(_.pluck(df, "past"))
+  var questions = _.uniq(_.pluck(df, "key"))
+  foreach(questions, function(q){
+    var df_q = subset(df, "key", q)
+    foreach(items, function(i){
+      var itemData = _.pluck(subset(df_q, "past", i), "val")
+      var mu = uniform(-10,4)
+      var sigma = uniform(0,3)
+      var scr = sum(map(function(d){return gaussianERP.score([mu,sigma], d)}, itemData))
+      // console.log(itemData)
+      factor(scr)
+      // query.add("parameter", {item:i, question: q, gamma: g,delta: d})
+      // query.add([i,q], {item:i, question: q, gamma: g,delta: d})
+      query.add([i,q], [mu,sigma])
+    })
+  })
+  return query
+}
+
+var samples = 100
+var burn = 50
+var steps = 5
+var stepSize = 0.001
+var posterior = MCMC(model, 
+             {samples:samples, burn: burn, verbose:true,
+         kernel: {HMC: {steps:steps, stepSize:stepSize}}})
+
+var output_file =  "results/priors-rate-posterior-HMC-"+samples+"b"+burn+"st"+steps+"sz"+stepSize+".csv"
+mht.erpWriter(posterior, 
+   output_file,
+  "Item,Query,Mu,Sigma")
+
+// var posterior = IncrementalMH(model,1000, {burn: 500, verbose:true,verboseLag:100})
+
+console.log("file written to " + output_file)
+// posterior

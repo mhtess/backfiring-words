@@ -1,0 +1,89 @@
+// time webppl priors.wppl --require mht
+
+var df_freq = dataFrame(mht.readCSV("../data/priors-2-freq.csv").data, ["val"])
+var df_rate = dataFrame(mht.readCSV("../data/priors-2-rate.csv").data, ["val"])
+
+var model = function(){
+  var items = _.uniq(_.pluck(df_freq, "past"))
+
+  foreach(items, function(i){
+
+    var item_freq = subset(df_freq, "past", i)
+    var item_rate = subset(df_rate, "past", i)
+
+    // question 0: "how many people have done X before?"
+    var freq_0 = _.pluck(subset(item_freq, "key", "q1_prop"), "val")
+    var g0 = beta(1,1)
+    var d0 = uniform(0,30)
+
+    var a0 = d0*g0
+    var b0 = d0*(1-g0)
+    var scr0 = sum(map(function(d){return betaERP.score([a0,b0], d)}, freq_0))
+    // console.log(scr0)
+
+    // question 1: "how many people did X yesterday?" (or last week, month, etc..)
+    var freq_1 = _.pluck(subset(item_freq, "key", "q2_prop"), "val")
+    var g1 = beta(1,1)
+    var d1 = uniform(0,30)
+
+    var a1 = d1*g1
+    var b1 = d1*(1-g1)
+    var scr1 = sum(map(function(d){return betaERP.score([a1,b1], d)}, freq_1)) 
+    // console.log(scr1)
+
+    // question 2: given person did X yesterday, how often do they do X?
+    var rate_2 = _.pluck(subset(item_rate, "key", "log_q3rate"), "val")
+    var mu_2 = uniform(-7.5,3)
+    var sigma_2 = uniform(0,3)
+    var scr2 = sum(map(function(d){return gaussianERP.score([mu_2,sigma_2], d)}, rate_2)) 
+    // console.log(scr2)
+
+    // question 3: given person did NOT do X yesterday, how often do they do X?
+    var rate_3 = _.pluck(subset(item_rate, "key", "log_q4rate"), "val")
+    var mu_3 = uniform(-7.5,3)
+    var sigma_3 = uniform(0,3)
+    var scr3 = sum(map(function(d){return gaussianERP.score([mu_3,sigma_3], d)}, rate_3))
+    // console.log(scr3)
+
+    factor(scr0+scr1+scr2+scr3)
+
+    var predictive0 = beta(a0,b0)
+    var predictive1 = beta(a1,b1)
+    var predictive2 = gaussian(mu_2, sigma_2)
+    var predictive3 = gaussian(mu_3, sigma_3)
+    var prediction = flip(predictive0) ?
+                      flip(predictive1) ?
+                        gaussian(mu_2, sigma_2) :
+                        gaussian(mu_3, sigma_3) :
+                        -8
+    // query.add("parameter", {item:i, question: q, gamma: g,delta: d})
+    // query.add([i,q], {item:i, question: q, gamma: g,delta: d})
+    query.add(i, [prediction, g0,d0,g1,d1,mu_2,sigma_2,mu_3, sigma_3])
+
+  })
+
+  return query
+}
+
+var samples = 500000
+var burn = 250000
+// var steps = 5
+// var stepSize = 0.0002
+// var posterior = MCMC(model, 
+//              {samples:samples, burn: burn, verbose:true,
+//          kernel: {HMC: {steps:steps, stepSize:stepSize}}})
+
+// var output_file =  "results/priors-full-posterior-HMC-"+samples+"b"+burn+"st"+steps+"sz"+stepSize+".csv"
+// mht.erpWriter(posterior, 
+//    output_file,
+//   "Item,Prediction,Gamma_0,Delta_0,Gamma_1,Delta_1,Mu_2,Sigma_2,Mu_3,Sigma_3")
+
+var posterior = IncrementalMH(model,samples, {burn: burn, verbose:true,verboseLag:samples/20})
+
+var output_file =  "results/priors-full-posterior-IncrMH-"+samples+"b"+burn+".csv"
+mht.erpWriter(posterior, 
+   output_file,
+  "Item,Prediction,Gamma_0,Delta_0,Gamma_1,Delta_1,Mu_2,Sigma_2,Mu_3,Sigma_3")
+
+// posterior
+console.log("file written to " + output_file)
