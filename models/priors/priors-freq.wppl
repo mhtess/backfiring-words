@@ -1,0 +1,43 @@
+// time webppl priors.wppl --require mht
+
+var df = dataFrame(mht.readCSV("../data/priors-2-freq.csv").data, ["val"])
+
+var model = function(){
+  var items = _.uniq(_.pluck(df, "past"))
+  var questions = _.uniq(_.pluck(df, "key"))
+  foreach(questions, function(q){
+    var df_q = subset(df, "key", q)
+    foreach(items, function(i){
+      var itemData = _.pluck(subset(df_q, "past", i), "val")
+      var g = beta(1,1)
+      var d = uniform(0,30)
+      var a = d*g
+      var b = d*(1-g)
+      var scr = sum(map(function(d){return betaERP.score([a,b], d)}, itemData)) 
+      factor(scr)
+      // query.add("parameter", {item:i, question: q, gamma: g,delta: d})
+      // query.add([i,q], {item:i, question: q, gamma: g,delta: d})
+      query.add([i,q], [g,d])
+    })
+  })
+  return query
+}
+
+var samples = 10000
+var burn = 5000
+var steps = 5
+var stepSize = 0.0026
+var posterior = MCMC(model, 
+             {samples:samples, burn: burn, verbose:true,
+         kernel: {HMC: {steps:steps, stepSize:stepSize}}})
+
+var output_file =  "results/priors-freq-posterior-HMC-"+samples+"b"+burn+"st"+steps+"sz"+stepSize+".csv"
+mht.erpWriter(posterior, 
+   output_file,
+  "Item,Query,Gamma,Delta")
+
+// var posterior = IncrementalMH(model,100, {burn: 5, verbose:true,verboseLag:10})
+
+console.log("file written to " + output_file)
+
+// mht.readCSV("../data/priors-2-freq.csv").data.slice(0, )
