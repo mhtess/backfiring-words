@@ -372,7 +372,7 @@ function init() {
 
   repeatWorker = false;
   (function(){
-      var ut_id = "mht-backfire-20160123";
+      var ut_id = "mht-backfire-20160412";
       if (UTWorkerLimitReached(ut_id)) {
         $('.slide').empty();
         repeatWorker = true;
@@ -384,10 +384,7 @@ function init() {
   exp.catch_trials = [];
 
 
-
-
-
-  exp.condition = _.sample(["baseline","observation","communication"])
+  // exp.condition = _.sample(["baseline","observation","communication"])
   exp.condition = "communication"
 
 
