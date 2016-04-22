@@ -1,0 +1,219 @@
+---
+title: "Pilot study: Backfiring 'Propensity' judgments"
+author: "mht"
+date: "April 13, 2016"
+output: html_document
+---
+
+```{r preamble, echo=FALSE}
+
+histToSamples <- function(df, samples){
+  df[rep(row.names(df), df$Probability*(samples)), 1:ncol(df)-1]
+}
+
+scaleTimetoDay <- list(
+  day = 1, 
+  week = 1/7,
+  month = 1/30,
+  year = 1/365,
+  "5 years" = 1/(365*5)
+)
+
+```
+
+```{r echo=FALSE}
+d<-read.csv("~/Documents/research/backfiring-words/data/propensity-1-trials.csv")
+p<-read.csv("~/Documents/research/backfiring-words/data/priors-2-trials.csv")
+```
+
+
+```{r echo=FALSE}
+# Add column to backfiring data designating the interval used in the utterance prompt (e.g. "John did X ___" [today, this week, year, ...]). The model wants to know this information.
+
+interval_dictionary <- list(
+  "today." = "day",
+  "week." = "week",
+  "month." = "month",
+  "year."  = "year"
+)
+
+get_utt_interval <- function(utt){
+  interval_dictionary[tail(strsplit(utt, " ")[[1]],n =1)]
+}
+
+
+d <- d %>%
+  mutate(utt = as.character(observationSentence)) %>%
+  rowwise() %>%
+  mutate(utt_interval = get_utt_interval(utt)) %>%
+  ungroup() %>%
+  mutate(utt_interval = I(utt_interval))
+
+# write.csv(d,file="~/Documents/research/backfiring-words/models/data/propensity-1-trials.csv", row.names=F)
+
+```
+
+
+```{r echo=FALSE}
+p.rate<- p %>%
+  select(workerid,trial_num,past, rt, 
+         q3_instances, q4_instances, q3_interval, q4_interval) %>%
+  rowwise() %>%
+  mutate(q3_rate = q3_instances*scaleTimetoDay[[as.character(q3_interval)]],
+         q4_rate = q4_instances*scaleTimetoDay[[as.character(q4_interval)]],
+         log_q3rate = log(q3_rate),
+         log_q4rate = log(q4_rate)) %>%
+  ungroup()
+```
+
+```{r echo=FALSE}
+d.tidy <- d %>% 
+  group_by(past) %>%
+  multi_boot_standard(column="log_dayrate") %>%
+  mutate(src = 'backfire')
+
+p.tidy<- p.rate %>%
+  group_by(past) %>%
+  multi_boot_standard(column="log_q3rate") %>% 
+  mutate(src = 'prior')
+```
+
+## Raw data
+
+Data is on a log-scale.
+
+`Prior_high_component` are the responses to one of the questions in the prior elicitation task. The question was aimed to get at *the people who do the action relatively often*. The question was: Imagine a person who did X yesterday, how often does he or she do X?
+
+The backfiring question is only subtly different. The prompt is:
+
+You overhear two friends talking. One of them says to the other, "Person did X today."
+
+The backfiring experiment can be found [here](http://stanford.edu/~mtessler/backfiring-words/experiments/posterior/propensity-1.html).
+
+The prior experiment can be found [here](http://stanford.edu/~mtessler/backfiring-words/experiments/priors/priors-2.html)
+
+```{r echo=FALSE, fig.width=12, fig.height=8}
+dp.raw<-bind_rows(
+  d %>% select(past, log_dayrate) %>%
+  rename(rate = log_dayrate) %>%
+  mutate(src = 'backfire'),
+  p.rate %>% select(past, log_q3rate) %>%
+    rename(rate = log_q3rate) %>%
+    mutate(src = 'prior_high_component')
+) %>%
+  mutate(src = factor(src, levels=c("prior_high_component", "backfire")))
+
+
+ggplot(dp.raw, aes(x=rate, fill=src))+
+  geom_histogram(position=position_dodge())+
+  facet_wrap(~past, scales='free')
+
+```
+
+## Average data 
+
+Still log-scale. Still "prior" means the answer to the "high_component" question.
+
+```{r echo=FALSE, fig.width=10, fig.height=10}
+
+dp<- bind_rows(
+  p.tidy, 
+  d.tidy
+) %>%
+  mutate(src = factor(src, levels=c("prior", "backfire")))
+
+ggplot(dp, aes(x=src, y=mean, 
+               ymin=ci_lower, ymax=ci_upper, color=src, group=past))+
+#  geom_bar(stat='identity', position =position_dodge())+
+  geom_line(color='black', lty=2)+
+  geom_errorbar(position=position_dodge(), width =0.3, size = 1)+
+  facet_wrap(~past)
+
+```
+
+
+
+# Model 
+
+```{r echo=FALSE}
+m<- as.data.frame(fread("~/Documents/research/backfiring-words/models/results/bda-backfire-propensity1-n30-so-normalLink-IncrMH25k-b12.5k_priorMH300k-b150kb.csv"))
+
+m.samp<- histToSamples(m, 12500)
+
+m.params<- m.samp %>% filter(Type!="predictive_daily") %>% select(-Item)
+m.pred <- m.samp %>% filter(Type=="predictive_daily")
+
+```
+
+## Posterior over parameters
+
+The model has 2 parameters: The speaker optimality parameter inside of RSA, and a data analytic gaussian noise parameter. Gaussian noise gets added to the listener (L1) posterior distribution. This allows us to condition on participants' raw data, rather than discretizing to an adhoc binsize (RSA is discretized to an adhoc bin size).
+
+```{r echo=FALSE}
+ggplot(m.params,
+       aes(x = Value))+
+  geom_histogram()+
+  facet_wrap(~Condition, scales='free')
+
+```
+
+## Posterior predictive distributions
+
+**Baseline** corresponds to the mean of the prior distribution (taking into account all of the information from the prior elicitation task; i.e., both how popularity the activity is and how frequently it is done). **Communication** is the backfiring model. **Observation** is a "literal" Bayesian observer model. 
+
+```{r echo=FALSE, fig.width=12, fig.height=10}
+m.pred <- bind_rows(
+  m.pred %>%
+    filter(Condition!="baseline"),
+  m.pred %>% 
+    filter(Condition=='baseline') %>%
+     mutate(Value = log(Value))
+)
+
+
+ggplot(m.pred,
+       aes(x = Value, fill = Condition))+
+  geom_histogram()+
+  facet_wrap(~Item, scales='free')
+
+```
+
+## Scatterplots
+
+Data vs. Prior, Backfiring RSA, Observation model (literal Bayesian)
+
+```{r echo=FALSE}
+md.tidy <- left_join(
+  m.pred %>%
+    group_by(Condition, Item) %>%
+    summarize(MAP = estimate_mode(Value),
+            cred_upper = hdi_upper(Value),
+            cred_lower = hdi_lower(Value)) %>%
+    ungroup(),
+  d.tidy %>% 
+    rename(Item = past) %>%
+    select(-src)
+)
+
+
+ggplot(md.tidy,
+       aes(x=MAP, xmin=cred_lower, xmax=cred_upper,
+           y=mean, ymin=ci_lower, ymax=ci_upper))+
+  geom_point()+
+  geom_errorbar()+
+  geom_errorbarh()+
+  geom_abline(intercept=0,slope=1, lty=3)+
+  facet_wrap(~Condition)+
+  coord_fixed()+
+  ylab("Human judgment after hearing utterance")+
+  xlab("Prior mean, Backfiring  model, Observation model")
+
+```
+
+The left most facet is are participant judgments from the backfiring experiment vs. the prior mean. In the bottom left, participants' judgments look to be greater than the prior mean (that is, hearing the utterance provides evidence that the action occurs often). 
+In the top right, participants' judgments look to be smaller than the prior mean (i.e., there is backfiring).
+
+The middle facet is the backfiring RSA model, which seems to correspond the best to the data.
+
+The right most facet is the observation model, which consistently overestimates the implied frequency.
+
