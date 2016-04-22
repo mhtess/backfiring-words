@@ -1,6 +1,6 @@
 // time webppl bda_backfire_habits.wppl --require mht --require utils
 
-var prior_mhiter = 300000
+var prior_mhiter = 3000
 var prior_burn = prior_mhiter/2
 var prior_incrOpts = {burn:prior_burn, verbose: true, verboseLag: prior_mhiter/20}
 var priorERP = IncrementalMH(priors_3compModel, prior_mhiter, prior_incrOpts)
@@ -13,6 +13,7 @@ var priorERPobject = _.object(map(function(i){
 }, items))
 
 var scaleFromDailyRate = {
+	"day": 1,
 	"week":7,
 	"month":30,
 	"year":365,
@@ -64,7 +65,8 @@ var posteriorBDA = function(){
 	foreach(items, function(i){
 
 		var df_item = subset(df, "past", i)
-
+		var utt_window = df_item[0]["utt_interval"]
+		// console.log(i+ " " + utt_window)
 		var backfire_responses = _.pluck(subset(df_item, "condition","communication"), "log_dayrate") // or logdayprob with normal linking fnc
 		// var observation_responses = _.pluck(subset(df_item, "condition","observation"), "logdayprob")
 		// var baseline_responses = _.pluck(subset(df_item, "condition","baseline"), "logdayprob")
@@ -73,7 +75,13 @@ var posteriorBDA = function(){
 
 		var itemPriors = priorERPobject[i]
 		var prior_i = sample(itemPriors)
-		var habit_prior = discretize3NormalPrior(prior_i)
+		// habit_prior is in terms of rate in a window
+		// window is determined by utt_window "John went to the gym this month." --> habit_prior will be in terms of monthly rate
+		// this makes it easy to pass to RSA, since it just conditions on it happening once in the window
+		var habit_prior = discretize3NormalPrior(
+			prior_i, 
+			Math.log(scaleFromDailyRate[utt_window])
+			)
 
 		// var habit_rate_params = sample(priorERPobject[i]["habit_rate"])
 		// var habit_strength_params = sample(priorERPobject[i]["habit_strength"])
@@ -96,13 +104,22 @@ var posteriorBDA = function(){
 		// console.log(Math.exp(habit_strength_params.mu),
 			// Math.exp(habit_strength_params.sigma))
 		// console.log('enter rsa')
+
+		// RSA's output is in terms of "window rate"; data is daily rate
 		var backfireERP = listener1("It happened.", habit_prior,speaker_optimality, utterance_cost)
+
+		var appropriateWindowBackfireERP = Enumerate(function(){
+			var windowRate = sample(backfireERP)
+			var dailyRate = windowRate-Math.log(scaleFromDailyRate[utt_window])
+			return dailyRate
+		})
+
 		// console.log(map(function(s){return [s, Math.exp(backfireERP.score([], s))]}, backfireERP.support()))
 		// console.log(backfire_responses)
 		// console.log('leave rsa')
 		var backfiringScr = sum(map(function(d){
 			// var scr = backfireERP.score([], d)
-			var scr = normalLink(backfireERP, d, data_analytic_sigma)
+			var scr = normalLink(appropriateWindowBackfireERP, d, data_analytic_sigma)
 			// console.log("d = " + d + "; scr = " + scr)
 			return scr
 		}, backfire_responses))
@@ -136,19 +153,29 @@ var posteriorBDA = function(){
 		factor(backfiringScr)
 		// factor(backfiringScr)
 
-		query.add(["predictive_daily","communication", i], expectation(backfireERP))
-		query.add(["predictive_daily","observation", i], expectation(observationERP))
-		query.add(["predictive_daily","baseline", i], expectation(habit_prior, function(x){return Math.log(x)}))
+		query.add(["predictive_daily","communication", i, utt_window], 
+			expectation(appropriateWindowBackfireERP)
+			)
+		query.add(["predictive_daily","observation", i, utt_window], 
+			expectation(observationERP, 
+				function(x){return x-Math.log(scaleFromDailyRate[utt_window])}
+				)
+			)
+		query.add(["predictive_daily","baseline", i, utt_window], 
+			expectation(habit_prior, 
+				function(x){return Math.log(x)-Math.log(scaleFromDailyRate[utt_window])}
+				)
+			)
 
 	})
 
-	query.add(["parameter", "speaker_optimality", "NA"], speaker_optimality)
-	query.add(["parameter", "data_analytic_sigma", "NA"], data_analytic_sigma)
+	query.add(["parameter", "speaker_optimality", "NA", "NA"], speaker_optimality)
+	query.add(["parameter", "data_analytic_sigma", "NA", "NA"], data_analytic_sigma)
 
 	return query
 }
 
-var mhiter = 25000
+var mhiter = 250
 var burn = mhiter/2
 var incrOpts = {burn:burn, verbose: true, verboseLag: mhiter/20}
 var posteriorERP = IncrementalMH(posteriorBDA, mhiter, incrOpts)
@@ -158,7 +185,8 @@ console.log("inference complete --- writing to file")
 var outFile = "results/bda-backfire-propensity1-n30-so-normalLink-IncrMH" + 
 			mhiter/1000 + "k-b" + burn/1000 + "k" +"_priorMH" + prior_mhiter/1000 + 
 				"k-b" + prior_burn/1000 + "kb.csv"
-var header = "Type,Condition,Item,Value"
+
+var header = "Type,Condition,Item,Window,Value"
 
 mht.erpWriter(posteriorERP, outFile, header)
 
