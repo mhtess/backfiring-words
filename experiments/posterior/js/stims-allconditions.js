@@ -1,3 +1,7 @@
+var child_directed_prompt = "Let me tell you a story about John..."
+var solicotor_asking_prompt = ""
+var picture_sharing_prompt = ""
+
 var stimuli = [
 {
 	verb: "use a cell phone", // e.g. how often does he or she ___ ?
@@ -5,6 +9,9 @@ var stimuli = [
 	past_participle: "used a cell phone", // e.g. have __ before?
 	interval: "day",
 	possessive: false
+	child_directed: "",
+	solicitor_asked: "",
+	picture_sharing: ""
 },
 {
 	verb: "wear shoes", // e.g. how often does he or she ___ ?
