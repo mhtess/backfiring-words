@@ -1,6 +1,6 @@
-var child_directed_prompt = "Let me tell you a story about John..."
-var solicotor_asking_prompt = ""
-var picture_sharing_prompt = ""
+var child_directed_prompt = "Child: Can you tell me a story about [name]?  Mother: Ok.  This morning, "
+var solicotor_asking_prompt = "Solicitor: Hi, I am conducting a survey for "
+var picture_sharing_prompt = "Person 1: Look at this picture I took of [name] today!"
 
 var stimuli = [
 {
@@ -9,8 +9,8 @@ var stimuli = [
 	past_participle: "used a cell phone", // e.g. have __ before?
 	interval: "day",
 	possessive: false
-	child_directed: "",
-	solicitor_asked: "",
+	child_directed: "[name] woke up and ate breakfast.  Then, [name] used a cell phone.  After that, [name] went to work!",
+	solicitor_asked: "Verizon.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] used a cell phone today?  Random stranger: Yes, [name] used a cell phone today.",
 	picture_sharing: ""
 },
 {
