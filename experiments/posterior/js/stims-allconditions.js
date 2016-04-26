@@ -19,8 +19,8 @@ var stimuli = [
 	past_participle: "worn shoes", // e.g. have __ before?
 	interval: "day",
 	possessive: false
-	child_directed: "[name] put on slipp.  Then, [name] wore shoes.  After that, [name] went outside to play!",
-	solicitor_asked: "Verizon.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] used a cell phone today?  Random stranger: Yes, [name] used a cell phone today.",
+	child_directed: "This morning, [name] wanted to run outside.  So, [name] wore shoes today.  Then, [name] played at the playground.  After that, [name] took a nap!",
+	solicitor_asked: "Fleet Feet.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] wore shoes today?  Random stranger: Yes, [name] wore shoes today.",
 	picture_sharing: ""
 },
 {
@@ -29,6 +29,9 @@ var stimuli = [
 	past_participle: "worn a shirt", // e.g. have __ before?
 	interval: "day",
 	possessive: false
+	child_directed: "This morning, [name] woke up and got dressed.  So, [name] wore a shirt today.  Then, [name] put on a scarf.  After that, [name] went for a walk!",
+	solicitor_asked: "American Apparel.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] wore a shirt today?  Random stranger: Yes, [name] wore a shirt today.",
+	picture_sharing: ""
 },
 {
 	verb: "wear glasses", // e.g. how often does he or she ___ ?
