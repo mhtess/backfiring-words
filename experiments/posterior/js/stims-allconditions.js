@@ -1,4 +1,4 @@
-var child_directed_prompt = "Child: Can you tell me a story about [name]?  Mother: Ok.  This morning, "
+var child_directed_prompt = "Mother: Look, there's [name].  Child: Can you tell me a story about [name]?  Mother: Ok. "
 var solicotor_asking_prompt = "Solicitor: Hi, I am conducting a survey for "
 var picture_sharing_prompt = "Person 1: Look at this picture I took of [name] today!"
 
@@ -9,7 +9,7 @@ var stimuli = [
 	past_participle: "used a cell phone", // e.g. have __ before?
 	interval: "day",
 	possessive: false
-	child_directed: "[name] woke up and ate breakfast.  Then, [name] used a cell phone.  After that, [name] went to work!",
+	child_directed: "This morning, [name] wanted to call [his] daddy.  So, [name] used a cell phone today.  Then, [name] had lunch.  After that, [name] went to the park!",
 	solicitor_asked: "Verizon.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] used a cell phone today?  Random stranger: Yes, [name] used a cell phone today.",
 	picture_sharing: ""
 },
@@ -19,6 +19,9 @@ var stimuli = [
 	past_participle: "worn shoes", // e.g. have __ before?
 	interval: "day",
 	possessive: false
+	child_directed: "[name] put on slipp.  Then, [name] wore shoes.  After that, [name] went outside to play!",
+	solicitor_asked: "Verizon.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] used a cell phone today?  Random stranger: Yes, [name] used a cell phone today.",
+	picture_sharing: ""
 },
 {
 	verb: "wear a shirt", // e.g. how often does he or she ___ ?
