@@ -99,6 +99,9 @@ var stimuli = [
 	past_participle: "driven a car", // e.g. have __ before?
 	interval: "day",
 	possessive: false
+	child_directed: "This morning, [name] decided to visit a friend.  So, [name] drove a car today.  Then, [name] had lunch.  After that, [name] came back home!",
+	solicitor_asked: "Honda.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] drove a car today?  Random stranger: Yes, [name] drove a car today.",
+	picture_sharing: ""
 },
 {
 	verb: "wash their dishes", // e.g. how often does he or she ___ ?
@@ -106,6 +109,9 @@ var stimuli = [
 	past_participle: "washed their dishes", // e.g. have __ before?
 	interval: "day",
 	possessive: true
+	child_directed: "This morning, [name] ate breakfast at home.  So, [name] washed [her/his] dishes today.  Then, [name] took a shower.  After that, [name] went for a walk!",
+	solicitor_asked: "SoftSoap.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] washed their own dishes today?  Random stranger: Yes, [name] washed their own dishes today.",
+	picture_sharing: ""
 },
 {
 	verb: "exercise", // e.g. how often does he or she ___ ?
@@ -113,6 +119,9 @@ var stimuli = [
 	past_participle: "exercised", // e.g. have __ before?
 	interval: "month",
 	possessive: false
+	child_directed: "This month, [name] .  So, [name] exercised this month.  Then, [name] put on clothes.  After that, [name] ate some breakfast!",
+	solicitor_asked: "Opticians of America.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] wore glasses today?  Random stranger: Yes, [name] wore glasses today.",
+	picture_sharing: ""
 },
 {
 	verb: "change their bedsheets", // e.g. how often does he or she ___ ?
