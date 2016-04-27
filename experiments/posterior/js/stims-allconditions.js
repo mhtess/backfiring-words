@@ -49,7 +49,7 @@ var stimuli = [
 	past_participle: "bought their own groceries", // e.g. have __ before?
 	interval: "week",
 	possessive: true
-	child_directed: "This morning, [name] woke up and was hungry.  So, [name] bought [her/his] own groceries this week(???).  Then, [name] made some lunch.  After that, [name] took a nap!",
+	child_directed: "This morning, [name] woke up but didn't have any food in the house.  So, [name] bought [her/his] own groceries this week(???).  Then, [name] made some lunch.  After that, [name] took a nap!",
 	solicitor_asked: "Safeway.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] bought their own groceries this week?  Random stranger: Yes, [name] bought their own groceries this week.",
 	picture_sharing: ""
 },
@@ -59,6 +59,9 @@ var stimuli = [
 	past_participle: "eaten breakfast", // e.g. have __ before?
 	interval: "day",
 	possessive: false
+	child_directed: "This morning, [name] woke up and was hungry.  So, [name] ate breakfast today.  Then, [name] took a bath.  After that, [name] read a book!",
+	solicitor_asked: "MacDonald's.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] ate breakfast today?  Random stranger: Yes, [name] ate breakfast today.",
+	picture_sharing: ""
 },
 {
 	verb: "drink coffee", // e.g. how often does he or she ___ ?
@@ -66,6 +69,9 @@ var stimuli = [
 	past_participle: "drunk coffee", // e.g. have __ before?
 	interval: "day",
 	possessive: false
+	child_directed: "This morning, [name] woke up and was thirsty.  So, [name] drank coffee today.  Then, [name] went for a job.  After that, [name] took a shower!",
+	solicitor_asked: "Starbucks.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] drank coffee today?  Random stranger: Yes, [name] drank coffee today.",
+	picture_sharing: ""
 },
 {
 	verb: "eat meat", // e.g. how often does he or she ___ ?
@@ -73,6 +79,9 @@ var stimuli = [
 	past_participle: "eaten meat", // e.g. have __ before?
 	interval: "day",
 	possessive: false
+	child_directed: "This morning, [name] woke up and was really hungry.  So, [name] ate meat today.  Then, [name] washed their hands.  After that, [name] watched TV!",
+	solicitor_asked: "VegNews Magazine.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] ate meat today?  Random stranger: Yes, [name] ate meat today.",
+	picture_sharing: ""
 },
 {
 	verb: "go outside", // e.g. how often does he or she ___ ?
@@ -80,6 +89,9 @@ var stimuli = [
 	past_participle: "gone outside", // e.g. have __ before?
 	interval: "day",
 	possessive: false
+	child_directed: "This morning, [name] woke up and wanted to see the sun.  So, [name] went outside today.  Then, [name] put on sunglasses.  After that, [name] relaxed in a hammock!",
+	solicitor_asked: "Banana Boat sunscreen.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] went outside today?  Random stranger: Yes, [name] went outside today.",
+	picture_sharing: ""
 },
 {
 	verb: "drive a car", // e.g. how often does he or she ___ ?
