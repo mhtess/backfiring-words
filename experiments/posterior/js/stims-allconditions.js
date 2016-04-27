@@ -165,8 +165,8 @@ var stimuli = [
 	past_participle: "washed their hair", // e.g. have __ before?
 	interval: "week",
 	possessive: true
-	child_directed: "This morning, [name] woke up and needed to be able to see.  So, [name] wore glasses today.  Then, [name] put on clothes.  After that, [name] ate some breakfast!",
-	solicitor_asked: "Opticians of America.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] wore glasses today?  Random stranger: Yes, [name] wore glasses today.",
+	child_directed: "This morning, [name] got up and took a shower.  So, [name] washed [her/his] hair this week.  Then, [name] got dressed.  After that, [name] ate some food!",
+	solicitor_asked: "L'Oreal Paris.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] washed their hair this week?  Random stranger: Yes, [name] washed [her/his] hair this week.",
 	picture_sharing: ""
 },
 {
@@ -175,6 +175,9 @@ var stimuli = [
 	past_participle: "taken a vacation", // e.g. have __ before?
 	interval: "year",
 	possessive: false
+	child_directed: "This morning, [name] got in a car and drove to the country.  So, [name] took a vacation this year.  Then, [name] got dressed.  After that, [name] ate some food!",
+	solicitor_asked: "L'Oreal Paris.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] took a vacation this year?  Random stranger: Yes, [name] took a vacation this year.",
+	picture_sharing: ""
 },
 {
 	verb: "wear tie-dye", // e.g. how often does he or she ___ ?
