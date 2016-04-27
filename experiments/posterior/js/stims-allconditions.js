@@ -215,7 +215,7 @@ var stimuli = [
 	past_participle: "drunk lemonade", // e.g. have __ before?
 	interval: "day",
 	possessive: false
-	child_directed: "This morning, [name] decided to make a nice drink.  So, [name] drank lemonade today.  Then, [name] made some cookies.  After that, [name] invited some friends over!",
+	child_directed: "This morning, [name] made a drink.  So, [name] drank lemonade today.  Then, [name] made some cookies.  After that, [name] invited some friends over!",
 	solicitor_asked: "Tropicana.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] drank lemonade today?  Random stranger: Yes, [name] drank lemonade today.",
 	picture_sharing: ""
 },
@@ -225,6 +225,9 @@ var stimuli = [
 	past_participle: "gone on a hike", // e.g. have __ before?
 	interval: "month",
 	possessive: false
+	child_directed: "This morning, [name] went up into the mountains.  So, [name] went for a hike this month.  Then, [name] took some photos.  After that, [name] came back home!",
+	solicitor_asked: "Patagonia.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] went for a hike this month?  Random stranger: Yes, [name] went for a hike this month.",
+	picture_sharing: ""
 },
 {
 	verb: "go to Renaissance fairs", // e.g. how often does he or she ___ ?
@@ -232,6 +235,9 @@ var stimuli = [
 	past_participle: "gone to a Renaissance fair", // e.g. have __ before?
 	interval: "year",
 	possessive: false
+	child_directed: "This morning, [name] put on an elaborate costume.  So, [name] went to a Renaissance fair this year.  Then, [name] had a swordfight.  After that, [name] ate dinner!",
+	solicitor_asked: "the Society for Creative Anachronism.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] went to a Renaissance fair this year?  Random stranger: Yes, [name] went to a Renaissance fair this year.",
+	picture_sharing: ""
 },
 {
 	verb: "go skiing", // e.g. how often does he or she ___ ?
@@ -239,6 +245,9 @@ var stimuli = [
 	past_participle: "gone skiing", // e.g. have __ before?
 	interval: "year",
 	possessive: false
+	child_directed: "This morning, [name] put on some ski boots.  So, [name] went skiing this year.  Then, [name] had a bowl of soup.  After that, [name] rested inside!",
+	solicitor_asked: "Mount Snow.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] went skiing this year?  Random stranger: Yes, [name] went skiing this year.",
+	picture_sharing: ""
 },
 {
 	verb: "take dance lessons", // e.g. how often does he or she ___ ?
@@ -246,6 +255,9 @@ var stimuli = [
 	past_participle: "taken dance lessons", // e.g. have __ before?
 	interval: "week",
 	possessive: false
+	child_directed: "This morning, [name] put on some ballet slippers.  So, [name] took dance lessons this week.  Then, [name] stretched.  After that, [name] hung out with friends!",
+	solicitor_asked: "the New York City Ballet.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] took dance lessons this week?  Random stranger: Yes, [name] took dance lessons this week.",
+	picture_sharing: ""
 }
 ]
 
