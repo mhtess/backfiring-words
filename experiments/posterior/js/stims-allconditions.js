@@ -39,6 +39,9 @@ var stimuli = [
 	past_participle: "worn glasses", // esho.g. have __ before?
 	interval: "day",
 	possessive: false
+	child_directed: "This morning, [name] woke up and needed to be able to see.  So, [name] wore glasses today.  Then, [name] put on clothes.  After that, [name] ate some breakfast!",
+	solicitor_asked: "Opticians of America.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] wore glasses today?  Random stranger: Yes, [name] wore glasses today.",
+	picture_sharing: ""
 },
 {
 	verb: "buy their own groceries", // e.g. how often does he or she ___ ?
@@ -46,6 +49,9 @@ var stimuli = [
 	past_participle: "bought their own groceries", // e.g. have __ before?
 	interval: "week",
 	possessive: true
+	child_directed: "This morning, [name] woke up and was hungry.  So, [name] bought [her/his] own groceries this week(???).  Then, [name] made some lunch.  After that, [name] took a nap!",
+	solicitor_asked: "Safeway.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] bought their own groceries this week?  Random stranger: Yes, [name] bought their own groceries this week.",
+	picture_sharing: ""
 },
 {
 	verb: "eat breakfast", // e.g. how often does he or she ___ ?
