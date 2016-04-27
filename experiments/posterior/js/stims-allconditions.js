@@ -109,7 +109,7 @@ var stimuli = [
 	past_participle: "washed their dishes", // e.g. have __ before?
 	interval: "day",
 	possessive: true
-	child_directed: "This morning, [name] ate breakfast at home.  So, [name] washed [her/his] dishes today.  Then, [name] took a shower.  After that, [name] went for a walk!",
+	child_directed: "This morning, [name] ate breakfast at home.  So, [name] washed [her/his] dishes today.  Then, [name] read a magazine.  After that, [name] went for a walk!",
 	solicitor_asked: "SoftSoap.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] washed their own dishes today?  Random stranger: Yes, [name] washed their own dishes today.",
 	picture_sharing: ""
 },
@@ -119,8 +119,8 @@ var stimuli = [
 	past_participle: "exercised", // e.g. have __ before?
 	interval: "month",
 	possessive: false
-	child_directed: "This month, [name] .  So, [name] exercised this month.  Then, [name] put on clothes.  After that, [name] ate some breakfast!",
-	solicitor_asked: "Opticians of America.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] wore glasses today?  Random stranger: Yes, [name] wore glasses today.",
+	child_directed: "This morning, [name] went for a run.  So, [name] exercised this month.  Then, [name] took a shower.  After that, [name] ate breakfast!",
+	solicitor_asked: "24 Hour Fitness.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] exercised this month?  Random stranger: Yes, [name] exercised this month.",
 	picture_sharing: ""
 },
 {
@@ -129,6 +129,9 @@ var stimuli = [
 	past_participle: "changed their bedsheets", // e.g. have __ before?
 	interval: "week",
 	possessive: true
+	child_directed: "This morning, [name] woke up and cleaned the house.  So, [name] changed [her/his] bedsheets this week.  Then, [name] ate lunch.  After that, [name] watered the garden!",
+	solicitor_asked: "Bed, Bath, & Beyond.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] changed their bedsheets today?  Random stranger: Yes, [name] changed their bedsheets today.",
+	picture_sharing: ""
 },
 {
 	verb: "have a birthday party", // e.g. how often does he or she ___ ?
