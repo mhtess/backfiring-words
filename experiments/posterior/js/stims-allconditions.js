@@ -185,6 +185,9 @@ var stimuli = [
 	past_participle: "worn tie-dye", // e.g. have __ before?
 	interval: "day",
 	possessive: false
+	child_directed: "This morning, [name] woke up and put on a shirt.  So, [name] wore tie-dye today(???).  Then, [name] made breakfast.  After that, [name] walked around the park!",
+	solicitor_asked: "Happy Hippie Foundation.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] wore tie-dye today?  Random stranger: Yes, [name] wore tie-dye today.",
+	picture_sharing: ""
 },
 {
 	verb: "wear a hat", // e.g. how often does he or she ___ ?
@@ -192,6 +195,9 @@ var stimuli = [
 	past_participle: "worn a hat", // e.g. have __ before?
 	interval: "day",
 	possessive: false
+	child_directed: "This morning, [name] got up and it was cold out.  So, [name] wore a hat today.  Then, [name] made hot chocolate.  After that, [name] read the news!",
+	solicitor_asked: "the Gap.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] wore a hat today?  Random stranger: Yes, [name] wore a hat today.",
+	picture_sharing: ""
 },
 {
 	verb: "eat pasta", // e.g. how often does he or she ___ ?
@@ -199,6 +205,9 @@ var stimuli = [
 	past_participle: "eaten pasta", // e.g. have __ before?
 	interval: "day",
 	possessive: false
+	child_directed: "This morning, [name] went to the grocery store and bought some food.  So, [name] ate pasta today(???).  Then, [name] had some ice cream.  After that, [name] washed the dishes!",
+	solicitor_asked: "the Olive Garden.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] ate pasta today?  Random stranger: Yes, [name] ate pasta today.",
+	picture_sharing: ""
 },
 {
 	verb: "drink lemonade", // e.g. how often does he or she ___ ?
@@ -206,6 +215,9 @@ var stimuli = [
 	past_participle: "drunk lemonade", // e.g. have __ before?
 	interval: "day",
 	possessive: false
+	child_directed: "This morning, [name] decided to make a nice drink.  So, [name] drank lemonade today.  Then, [name] made some cookies.  After that, [name] invited some friends over!",
+	solicitor_asked: "Tropicana.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] drank lemonade today?  Random stranger: Yes, [name] drank lemonade today.",
+	picture_sharing: ""
 },
 {
 	verb: "go on a hike", // e.g. how often does he or she ___ ?
