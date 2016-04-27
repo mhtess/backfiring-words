@@ -139,6 +139,9 @@ var stimuli = [
 	past_participle: "had a birthday party", // e.g. have __ before?
 	interval: "year",
 	possessive: false
+	child_directed: "This morning, it was [name's] birthday.  So, [name] had a birthday party this year.  Then, [name] spent time with a lot of friends.  After that, [name] ate some cake!",
+	solicitor_asked: "Party City.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] had a birthday party this year?  Random stranger: Yes, [name] had a birthday party this year.",
+	picture_sharing: ""
 },
 {
 	verb: "pay their taxes", // e.g. how often does he or she ___ ?
@@ -146,6 +149,9 @@ var stimuli = [
 	past_participle: "paid their taxes", // e.g. have __ before?
 	interval: "year",
 	possessive: true
+	child_directed: "This morning, [name] remembered it was the day that taxes were due.  So, [name] paid their taxes this year.  Then, [name] went for a walk outside.  After that, [name] drank some tea!",
+	solicitor_asked: "the IRS.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] paid their taxes this year?  Random stranger: Yes, [name] paid [her/his] taxes this year.",
+	picture_sharing: ""
 },
 //{
 //	verb: "wear shoes", // e.g. how often does he or she ___ ?
@@ -159,6 +165,9 @@ var stimuli = [
 	past_participle: "washed their hair", // e.g. have __ before?
 	interval: "week",
 	possessive: true
+	child_directed: "This morning, [name] woke up and needed to be able to see.  So, [name] wore glasses today.  Then, [name] put on clothes.  After that, [name] ate some breakfast!",
+	solicitor_asked: "Opticians of America.  Who was the last person you interacted with today?  Random stranger: My friend [name].  Solicitor: Do you know if [name] wore glasses today?  Random stranger: Yes, [name] wore glasses today.",
+	picture_sharing: ""
 },
 {
 	verb: "take a vacation", // e.g. how often does he or she ___ ?
