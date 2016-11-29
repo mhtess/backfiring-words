@@ -1,0 +1,480 @@
+---
+title: "Backfire reboot"
+output: html_notebook
+---
+
+```{r}
+project.path <- "~/Documents/research/backfiring-words/"
+```
+
+# Prior
+
+```{r}
+d.prior <- read.csv( paste(project.path, "data/priors-2-trials.csv", sep = "") )
+d.prior.catch <- read.csv (paste (project.path, "data/priors-2-catch_trials.csv", sep = "") )
+
+d.prior <- left_join(d.prior, d.prior.catch %>% select(workerid, pass)) %>%
+  filter(pass == 1)
+```
+
+
+```{r}
+str(d.prior)
+d.p <- d.prior %>% 
+  select(workerid, item, 
+         ends_with("sample"), ends_with("people"), 
+         ends_with("interval"), ends_with("instances"))
+
+
+d.p.mixtures <- d.p %>%
+  select(workerid, item, ends_with("sample"), ends_with("people")) %>%
+  gather(key, val, -workerid,-item) %>%
+  separate(key, into = c("question", "type")) %>%
+  spread(type, val) %>%
+  mutate(proportion = people / sample)
+
+# not sure why this throws a warning, no data seems to be lost...
+d.p.rates <- d.p %>%
+  select(workerid, item, ends_with("interval"), ends_with("instances")) %>%
+  gather(key, val, -workerid, -item) %>%
+  separate(key, into = c("question", "type")) %>%
+  spread(type, val) %>%
+  mutate(intervalScale = ifelse(interval == "day", 1,
+                         ifelse(interval == "week", 7,
+                         ifelse(interval == "month", 30,
+                         ifelse(interval == "year", 365,
+                         ifelse(interval == "5 years", 365*5, 0))))))
+
+```
+
+Mixture component model
+
+```{r}
+mixtureComponentModel <- '
+var model = function(){
+  var p = uniformDrift({a: 0, b: 1, width: 0.1});
+  var obsFn = function(d){
+    observe(Binomial({p: p, n: d.sample}), d.people)
+  }
+  mapData({data:data}, obsFn)
+  return {p: p}
+}
+'
+```
+
+Run mixture component of prior model
+
+```{r}
+items <- levels(d.p.mixtures$item)
+questions <- levels(factor(d.p.mixtures$question))
+numSamples <- 20000
+
+rs.fullPost = data.frame()
+rs.summary = data.frame()
+
+for (i in items){
+  for (q in questions){
+    
+    d.iq <- d.p.mixtures %>% filter(item == i & question == q)
+    
+    rs.bda <- webppl(mixtureComponentModel,
+                     data = d.iq,
+                     data_var = "data",
+                     inference_opts = list(method = "MCMC",
+                                           samples = numSamples,
+                                           burn = numSamples / 2,
+                                           verbose = T),
+                     model_var = "model",
+                     output_format = "samples")
+    
+    rs.item <- rs.bda %>% mutate(item = i, question = q)
+    rs.fullPost <- bind_rows(rs.fullPost, rs.item)
+    rs.summary <- bind_rows(rs.summary, rs.item %>%
+                              group_by(item, question) %>%
+                              summarize(MAP = estimate_mode(p),
+                                        cred_upper = hdi_upper(p),
+                                        cred_lower = hdi_lower(p)))
+    
+    print(paste("item = ", i, " ::: question = ", q, sep = ""))
+    
+  }
+}
+
+ggplot(rs.fullPost, aes(x = p))+
+  geom_histogram(position = position_dodge())+
+  facet_grid(question~item, scales = 'free')
+
+save(rs.summary, 
+     file = paste(project.path,
+                       "models/results/prior_results/mixtureComponents_summary_mcmc2k.Rdata", sep = ""))
+```
+
+Rates model
+
+```{r}
+ratesModel <- '
+var model = function(){
+  var mu = gamma({shape: 0.5, scale: 1});
+  var obsFn = function(d){
+    observe(Poisson({mu: mu*d.intervalScale}), d.instances)
+  }
+  mapData({data: data}, obsFn)
+  return {mu: mu}
+}
+'
+```
+
+Run rates model
+
+```{r}
+items <- levels(d.p.rates$item)
+questions <- levels(factor(d.p.rates$question))
+numSamples <- 10000
+
+rs.rates.fullPost = data.frame()
+rs.rates.summary = data.frame()
+
+for (i in items){
+  for (q in questions){
+    
+    d.iq <- d.p.rates %>% filter(item == i & question == q)
+    
+    rs.bda <- webppl(ratesModel,
+                     data = d.iq,
+                     data_var = "data",
+                     inference_opts = list(method = "MCMC",
+                                           samples = numSamples,
+                                           burn = numSamples / 2,
+                                           verbose = T),
+                     model_var = "model",
+                     output_format = "samples")
+    
+    rs.item <- rs.bda %>% mutate(item = i, question = q)
+    rs.rates.fullPost <- bind_rows(rs.rates.fullPost, rs.item)
+    rs.summary <- bind_rows(rs.summary, rs.item %>%
+                              group_by(item, question) %>%
+                              summarize(MAP = estimate_mode(mu),
+                                        cred_upper = hdi_upper(mu),
+                                        cred_lower = hdi_lower(mu)))
+    
+    print(paste("item = ", i, " ::: question = ", q, sep = ""))
+    
+  }
+}
+
+save(rs.summary, 
+     file = paste(project.path,
+                       "models/results/prior_results/mixtureComponents_rates_summary_mcmc2k.Rdata", sep = ""))
+```
+
+
+# Posterior
+
+```{r}
+load(paste(project.path,
+                       "models/results/prior_results/mixtureComponents_rates_summary_mcmc2k.Rdata", sep = ""))
+
+d.post <- read.csv( paste(project.path, "data/propensity-1-trials.csv", sep = "") )
+
+```
+
+Backfiring RSA model
+
+```{r}
+backfireRSA <- '
+var limitedPoisson = function(mu){
+  var probs = map(function(x){return Math.exp(Poisson({mu: mu}).score(x)) }, [0,1,2,3,4])
+  return discrete(probs)
+}
+
+var meaning = function(utterance, state){
+  return utterance === "yes" ? state > 0 :
+          utterance === "no" ? state === 0 :
+          true
+}
+
+var utterancePrior = function(){
+  return uniformDraw(["yes", "mu"])
+}
+
+var priorParams = data.priorParams;
+var speakerOptimality = data.speakerOptimality[0];
+
+var listener0 = cache(function(priorComponent, utterance, priorParams){
+  return Infer({method: "enumerate"}, function(){
+    var state = limitedPoisson(priorParams["rates"][priorComponent]);
+    var m = meaning(utterance, state);
+    condition(m)
+    return state
+  })
+})
+
+var speaker = cache(function(priorComponent, state, speakerOptimality, priorParams){
+  return Infer({method: "enumerate"}, function(){
+    var utterance = utterancePrior();
+    var L0 = listener0(priorComponent, utterance, priorParams);
+    factor(speakerOptimality * L0.score(state) )
+    return utterance
+  })
+})
+
+'
+
+
+# webppl(backfireRSA, 
+#        data_var = "data",
+#        data = list(
+#          priorParams = 
+#            list(mixtureProbs = c(0.3, 0.3, 0.4),
+#                 rates = c(0.00001, 0.5, 2)),
+#          speakerOptimality = 4)
+#        )
+```
+
+
+Posterior on "Does it" component
+
+```{r}
+
+l1.v1 <- '
+var listener1 = function(utterance, priorParams, speakerOptimality, cost){
+  return Infer({method: "enumerate"}, function(){
+    var priorComponent = discrete(priorParams.mixtureProbs);
+    var state = limitedPoisson(priorParams["rates"][priorComponent]);
+    var S1 = speaker(priorComponent, state, speakerOptimality, priorParams);
+    observe(S1, utterance)
+    var predictive = limitedPoisson(priorParams["rates"][priorComponent])
+    return priorComponent
+  })
+}
+
+
+Math.exp(listener1("yes", priorParams, speakerOptimality, 1).score(2))
+'
+
+rates = list("today." = 1,
+               "week." = 7,
+               "month." = 30,
+               "year." = 365)
+getInterval = function(x){
+  interval = last(last(strsplit(x, split = " ")))
+  return(rates[[interval]])
+}
+
+rs.brsa <- data.frame()
+
+for (i in items){
+  print(i)
+
+  prior.df <- left_join(
+    rs.summary %>% filter(item == i) %>% select(question, item, MAP) %>%
+      spread(question, MAP),
+    d.post %>% 
+      filter(item == i) %>%
+      select(item, observationSentence) %>%
+      rowwise() %>% 
+      mutate(interval = getInterval(as.character(observationSentence))) %>%
+      ungroup() %>%
+      select(-observationSentence) %>%
+      unique()
+  )
+  
+  priorParams <- list(mixtureProbs = c(1 - prior.df$q1, 
+                                       prior.df$q1 - prior.df$q2,
+                                       prior.df$q2),
+                      rates = c(0.00001, 
+                                prior.df$interval*prior.df$q4,
+                                prior.df$interval*prior.df$q3))
+  
+  dataToPass <- list(priorParams = priorParams,
+                     speakerOptimality = 5)
+  
+  prob.firstComponent <- webppl(paste(backfireRSA,l1.v1, sep='\n'), data_var = "data", data = dataToPass)
+  rs.brsa <- bind_rows(rs.brsa, data.frame(item = i, prior = prior.df$q2, 
+                                           posterior = prob.firstComponent))
+  
+}
+
+
+ggplot(rs.brsa %>%
+         gather(key, val, -item) %>%
+         mutate(key = factor(key, levels = c("prior", "posterior"))), 
+       aes( x = key, y = val, color = item, group = item))+
+  geom_line()+
+  facet_wrap(~item)
+
+
+```
+
+
+Pedagogy model for comparison
+
+```{r}
+pedagogyRSA <- '
+var limitedPoisson = function(mu){
+  var probs = map(function(x){return Math.exp(Poisson({mu: mu}).score(x)) }, [0,1,2,3,4])
+  return discrete(probs)
+}
+
+var meaning = function(utterance, state){
+  return utterance === "yes" ? state > 0 :
+          utterance === "no" ? state === 0 :
+          true
+}
+
+var utterancePrior = function(){
+  return uniformDraw(["yes", "no"])
+}
+
+var priorParams = data.priorParams;
+var speakerOptimality = data.speakerOptimality[0];
+
+var listener0 = cache(function(utterance){
+  return Infer({method: "enumerate"}, function(){
+    var priorComponent = discrete(priorParams.mixtureProbs);
+    var state = limitedPoisson(priorParams["rates"][priorComponent]);
+    var m = meaning(utterance, state);
+    condition(m)
+    return state
+  })
+})
+
+var speaker = cache(function(state){
+  return Infer({method: "enumerate"}, function(){
+    var utterance = utterancePrior();
+    var L0 = listener0(utterance);
+    factor(speakerOptimality * L0.score(state) )
+    return utterance
+  })
+})
+
+var listener1 = function(utterance){
+  return Infer({method: "enumerate"}, function(){
+    var priorComponent = discrete(priorParams.mixtureProbs);
+    var state = limitedPoisson(priorParams["rates"][priorComponent]);
+    var S1 = speaker(state);
+    observe(S1, utterance)
+    var predictive = limitedPoisson(priorParams["rates"][priorComponent])
+    return predictive
+  })
+}
+
+expectation(listener1("yes"))
+'
+
+observationBayes <- '
+var limitedPoisson = function(mu){
+  var probs = map(function(x){return Math.exp(Poisson({mu: mu}).score(x)) }, [0,1,2,3,4])
+  return discrete(probs)
+}
+
+var meaning = function(utterance, state){
+  return utterance === "yes" ? state > 0 :
+          utterance === "no" ? state === 0 :
+          true
+}
+
+var priorParams = data.priorParams;
+var speakerOptimality = data.speakerOptimality[0];
+
+var listener0 = cache(function(utterance){
+  return Infer({method: "enumerate"}, function(){
+    var priorComponent = discrete(priorParams.mixtureProbs);
+    var state = limitedPoisson(priorParams["rates"][priorComponent]);
+    var m = meaning(utterance, state);
+    condition(m)
+    var postPred = limitedPoisson(priorParams["rates"][priorComponent])
+    return postPred
+  })
+})
+expectation(listener0("yes"))
+'
+
+```
+
+Posterior on rates
+
+```{r}
+l1.v2 <- '
+var listener1 = function(utterance, priorParams, speakerOptimality, cost){
+  return Infer({method: "enumerate"}, function(){
+    var priorComponent = discrete(priorParams.mixtureProbs);
+    var state = limitedPoisson(priorParams["rates"][priorComponent]);
+    var S1 = speaker(priorComponent, state, speakerOptimality, priorParams);
+    observe(S1, utterance)
+    var predictive = limitedPoisson(priorParams["rates"][priorComponent])
+    return predictive
+  })
+}
+
+
+expectation(listener1("yes", priorParams, speakerOptimality, 1))
+'
+
+
+rs.brsa <- data.frame()
+
+for (i in items){
+  print(i)
+
+  prior.df <- left_join(
+    rs.summary %>% filter(item == i) %>%
+    select(question, item, MAP) %>%
+      spread(question, MAP),
+    d.post %>% 
+      filter(item == i) %>%
+      select(item, observationSentence) %>%
+      rowwise() %>% 
+      mutate(interval = getInterval(as.character(observationSentence))) %>%
+      ungroup() %>%
+      select(-observationSentence) %>%
+      unique()
+  )
+  
+  priorParams <- list(mixtureProbs = c(1 - prior.df$q1, 
+                                       prior.df$q1 - prior.df$q2,
+                                       prior.df$q2),
+                      rates = c(0.00001, 
+                                prior.df$interval*prior.df$q4,
+                                prior.df$interval*prior.df$q3))
+  
+  dataToPass <- list(priorParams = priorParams,
+                     speakerOptimality = 5)
+  observationExpval <- webppl(observationBayes, data_var = "data", data = dataToPass)
+
+  posteriorExpval <- webppl(paste(backfireRSA,l1.v2, sep='\n'), data_var = "data", data = dataToPass)
+  
+  pedagogyExpval <- webppl(pedagogyRSA, data_var = "data", data = dataToPass)
+  
+  
+  priorExpval <- sum(priorParams$rates * priorParams$mixtureProbs)
+  
+  rs.brsa <- bind_rows(rs.brsa, data.frame(item = i, 
+                                           prior = priorExpval, 
+                                           observation = observationExpval,
+                                           pedagogy = pedagogyExpval,
+                                           posterior = posteriorExpval,
+                                           interval = prior.df$interval,
+                                           c1 = priorParams$rates[2],
+                                           c2 = priorParams$rates[3]
+                                           ))
+  
+}
+
+
+ggplot(rs.brsa %>%
+         gather(key, val, -item) %>%
+         mutate(key = factor(key, levels = c("prior", "posterior"))), 
+       aes( x = key, y = val, color = item, group = item))+
+  geom_line()+
+  facet_wrap(~item, scales = 'free')
+```
+
+
+Run this gives you an "arguments imply different number of rows" error after a certain number of runs. I wonder if this is due to running 3 different webppl calls one after another (some finish before others?), because If I rerun all three webppl calls, they do seem to all get an answer.
+
+Also currently pedagogical and observation give extremely similar / identical answers. 
+
+Is this because of my semantics? That I am operating at the level of instances?
+
+is this because of the state prior being a predictive over counts (as opposed to over rates)?
